@@ -1,37 +1,32 @@
-# cbums
-씨부엉 공식 서비스 프로젝트
-우아한 형제들 배달의 민족 git-flow
+CBU Management System
+=====================
 
-master : 제품으로 출시될 수 있는 브랜치
+# 참여자
+### Project Manager
+* 1기 박현준
+### Front-end
+* 6기 최지미
+* 6기 류연동
+* 7기 김지윤
+### Back-end
+* 5기 최우석
+* 6기 장희수
 
-develop : 다음 출시 버전을 개발하는 브랜치
+# 프로젝트 목표
+* 씨부엉 동아리 관리 시스템 구축
+* 씨부엉 부원들이 이용가능한 다양한 서비스 구축
 
-feature : 기능을 개발하는 브랜치
+# 개발중인 서비스
+### 일반 사용자
+* 지원서 작성 및 제출
+* 프로젝트 모집, 개설, 탐색, 신청
+* 도서 공유
+* 게시판 개설, 게시글 작성, 댓글 작성
+### 운영자
+* 지원서 제작 및 제출된 지원서 관리
+* 사용자 정보 관리
+* 프로젝트 관리
+* 게시판 관리
 
-release : 이번 출시 버전을 준비하는 브랜치
-
-hotfix : 출시 버전에서 발생한 버그를 수정 하는 브랜치
-
-##project structor
-
-config - class which will read from property files
-
-cache - caching mechanism class files
-
-constants - constant defined class
-
-controller - controller class
-
-exception - exception class
-
-model - pojos classes will be present
-
-security - security classes
-
-service - Impl classes
-
-util - utility classes
-
-validation - validators classes
-
-bootloader - main class
+# 차후계획
+* 우리 조만간 회식 한번 해요..... 모인지 벌써 6개월인데 밥 한 끼 같이 못먹었네 
