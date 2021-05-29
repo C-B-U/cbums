@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>씨부엉</title>
+    <link rel="stylesheet" href="CBU_Style.css">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+   
+</head>
+<body>
+    <div id="wrap">
+        <header>
+           <div class="header-wrap">
+       
+              <div class="header-wrap__logo">
+                  <a href="#"><img id="logo_img" src="../images/logo.png" alt="씨부엉 상단 로고" height="36"></a>
+              </div>
+              <div class="header-wrap__logo-mobile mobile">
+                  <a href="#"><img src="../images/mobileLogo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
+              </div>
+               <nav>
+                   <ul class="nav-wrap">
+                       <li><a href="#">home</a></li>
+                       <li><a href="#">공지사항</a></li>
+                       <li><a href="#">스터디</a></li>
+                       <li><a href="#">컨텐츠</a></li>
+                       <li><a href="#">회원 관리</a></li>
+                   </ul>
+                   
+                   <div class="nav-wrap-mobile mobile" onclick='openNav()'>
+                       <i class="fas fa-bars"></i>
+                   </div>
+                   <div id="mysidenav" class="nav-wrap-sidenav mobile">
+                    <a href="#" class="closebtn" onclick='closeNav()'>x</a>
+                       <a href="#">카테고리1</a>
+                       <a href="#">카테고리2</a>
+                       <a href="#">카테고리3</a>
+                       <a href="#">카테고리4</a>
+                       <a href="#">카테고리5</a>
+                   </div>
+                </nav>
+             </div>
+         
+        </header>
+        <main>
+           <div class="main-wrap">
+               <div class="main__CBU-image">
+                    <a href="#"><img src="../images/header.png" alt="씨부엉 메인 배너" style="width:100%"></a>
+               </div>
+               <div class="main__member mobile">
+                   <a href="#"><div class="main__member-join">회원가입</div></a>
+                   <a href="#"><div class="main__member-login">로그인</div></a>
+               </div>
+               <div class="main__CBU-image-moible mobile">
+                   <img src="mobileBanner2.png" alt="씨부엉 메인 배너 모바일" style="width:100%">
+               </div>
+               
+               <div class="main__study">
+                  <div class="main__study-info">
+                       <h2 class="main__study-h2">Recruiting Study</h2>
+                       <div class="main__study-detail-mobile mobile">
+                          <a href="#"><p>자세히 보기</p><i class="fas fa-chevron-right " style="color: black"></i></a>
+                       </div>
+                   </div>
+                   <div class="main__study-wrap">
+                        <div class="main__slide-container">
+                            <div class="main__slide-list">
+                               <div class="main__study-slide">
+                                  <a href="#">
+                                   <div class="main__slide-box" style="background-color: #837d75"></div>
+                                   <h3>CBUMS　</h3>
+                                   <!--입력 시 ㄱ+한자 1번 '　' 공백문자 필요-->
+                                   </a>
+                               </div>
+                               <div class="main__study-slide">
+                                  <a href="#">
+                                   <div class="main__slide-box" style="background-color: #f4c853"></div>
+                                   <h3>자료구조　</h3>
+                                   </a>
+                               </div>
+                               <div class="main__study-slide">
+                                  <a href="#">
+                                   <div class="main__slide-box" style="background-color: #bab843"></div>
+                                   <h3>C언어　　</h3>
+                                   </a>
+                               </div>
+                               <div class="main__study-slide">
+                                  <a href="#">
+                                   <div class="main__slide-box" style="background-color: #ffb4c6"></div>
+                                   <h3>JAVA　　</h3>
+                                   </a>
+                               </div>
+                               <div class="main__study-slide">
+                                  <a href="#">
+                                   <div class="main__slide-box" style="background-color: #54d6b6"></div>
+                                   <h3>파이썬　</h3>
+                                   </a>
+                           </div>
+                           <div class="main__study-slide">
+                                  <a href="#">
+                                   <div class="main__slide-box" style="background-color: #c3a2f3"></div>
+                                   <h3>스터디6　</h3>
+                                   </a>
+                           </div>
+                        </div>
+                    </div>
+                       <div class="main__study-buttons">
+                           <span class="main__study-buttonA"><i class="fas fa-chevron-left " style="color: white"></i></span>
+                           <span class="main__study-buttonB"><i class="fas fa-chevron-right " style="color: white"></i></span>
+                       </div>
+                   </div>
+                   
+                
+               </div>
+               <div class="contour mobile">
+                   
+               </div>
+               <div class="main__join">
+                       <h2 class="main__join-h2">Join</h2>
+                        <div class="main__join-image">
+                            <div><img src="../images/join1.jpg" alt="동아리 소개1" ></div>
+                            <div><img src="../images/join2.jpg" alt="동아리 소개2" ></div>
+                            <div><img src="../images/join3.jpg" alt="동아리 소개3" ></div>
+                        </div>
+                        <ul class="main__join-text">
+                            <li>능동적인 공부</li>
+                            <li>협력적인 프로젝트</li>
+                            <li>어쩌고 저쩌고</li>
+                        </ul>
+                        <div class="main__join-button-wrap">
+                            <a href="#"><div class="main__join-button"><h4>씨부엉 가입하기</h4></div></a>
+                        </div>
+                   </div>
+                  <div class="main__etc">
+                     <div class="main__etc-notice">
+                      <div class="main__etc-notice-info mobile">
+                           <h2 class="main__etc-h2">공지사항</h2>
+                           <div class="main__etc-detail-mobile mobile">
+                              <a href="#"><p>자세히 보기</p><i class="fas fa-chevron-right " style="color: black"></i></a>
+                            </div>
+                      </div>
+                        <div class="main__study-wrap mobile">
+                            <div class="main__slide-container">
+                                <div class="main__slide-list">
+                                    <div class="main__study-slide">
+                                        <a href="#">
+                                        <div class="main__slide-box" style="background-color: #837d75"></div>
+                                        <h3>진행사항 업로드</h3>
+                                        <!--입력 시 ㄱ+한자 1번 '　' 공백문자 필요-->
+                                        </a>
+                                       </div>
+                                       <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #f4c853"></div><h3>동아리　 가입방법</h3>
+                                           </a>
+                                       </div>
+                                       <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #bab843"></div>
+                                           <h3>스터디　 가입방법</h3>
+                                           </a>
+                                       </div>
+                                       <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #ffb4c6"></div>
+                                           <h3>규칙　　　 </h3> 
+                                           </a>
+                                       </div>
+                                       <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #54d6b6"></div>
+                                           <h3>공지사항1</h3>
+                                           </a>
+                                   </div>
+                                   <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #c3a2f3"></div>
+                                           <h3>공지사항2</h3>
+                                           </a>
+                                   </div>
+                                </div>
+                            </div>
+                        `</div>
+                        </div>
+                    </div> 
+                    <div class="contour mobile">
+                   
+                   </div>
+                      <div class="main__etc-active mobile">
+                          <div class="main__etc-notice-info mobile">
+                           <h2 class="main__etc-h2">활동</h2>
+                           <div class="main__etc-detail-mobile mobile">
+                              <a href="#"><p>자세히 보기</p><i class="fas fa-chevron-right " style="color: black"></i></a>
+                            </div>
+                         </div>
+                         <div class="main__study-wrap mobile">
+                            <div class="main__slide-container">
+                                <div class="main__slide-list">
+                                    <div class="main__study-slide">
+                                        <a href="#">
+                                        <div class="main__slide-box" style="background-color: #837d75"></div>
+                                        <h3>IT or 코딩 스터디</h3>
+                                        <!--입력 시 ㄱ+한자 1번 '　' 공백문자 필요-->
+                                        </a>
+                                       </div>
+                                       <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #f4c853"></div><h3>공모전　 팀원 찾기</h3>
+                                           </a>
+                                       </div>
+                                       <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #bab843"></div>
+                                           <h3>소규모　 프로젝트</h3>
+                                           </a>
+                                       </div>
+                                       <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #ffb4c6"></div>
+                                           <h3>활동1　　 </h3> 
+<!--                                          ㄱ+한자 1번 '　' 공백문자 필요-->
+                                           </a>
+                                       </div>
+                                       <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #54d6b6"></div>
+                                           <h3>공지사항1</h3>
+                                           </a>
+                                   </div>
+                                   <div class="main__study-slide">
+                                          <a href="#">
+                                           <div class="main__slide-box" style="background-color: #c3a2f3"></div>
+                                           <h3>공지사항2</h3>
+                                           </a>
+                                   </div>
+                                </div>
+                            </div>
+                        `</div>
+                      </div>
+                  </div> 
+        
+        </main>
+        <footer>
+            <div class="footer-wrap">
+                <div class="footer__info">
+                   <div class="footer__info-wrap">
+                    <div class="footer__info-CBU">
+                        <div class="footer_info-mobile">한국산업기술대학교</div>
+                        <div class="footer_info-mobile">프로그래밍 동아리</div>
+                        <div class="footer_mobile">씨부엉</div>
+                        <div class="footer_mobile" >http://www.abcdefgh.ac.kr</div>
+                    </div>
+                    <div class="footer__info-staffs">
+                       <div class="footer__info-staffs-mobile mobile">
+                           <div class="footer_info-mobile">회장 김김김</div>
+                           <div class="footer_info-mobile">010-1010-1010</div>
+                       </div>
+                        <ul class="footer__info-staffA footer_mobile">
+                            <li>회장 김김김</li>
+                            <li>010-1010-1010</li>
+                            <li >naver@naver.com</li>
+                        </ul>
+                        <ul class="footer__info-staffB footer_mobile">
+                            <li>부회장 박박박</li>
+                            <li>010-1010-1010</li>
+                            <li>naver@naver.com</li>
+                        </ul>
+                    </div>
+                    <div class="footer__info-logo mobile">
+                        <img src="../images/mobileLogo.png" alt="씨부엉 하단 로고" width="120">
+                    </div>
+                  </div>
+
+                </div>
+                
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+		function openNav() {
+			document.getElementById('mysidenav').style.width = '250px';
+		}
+		function closeNav() {
+			document.getElementById('mysidenav').style.width = '0';
+		}
+	</script>
+</body>
+</html>
