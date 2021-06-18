@@ -73,6 +73,16 @@ nav{
     .header-wrap__logo-mobile{
         margin: 1em;
     }
+    .nav-wrap{
+        display: none;
+    }
+
+    .new-wrap{ 
+        width: 138%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
     .nav-wrap-mobile{
         display: flex;
         width: 150px;
