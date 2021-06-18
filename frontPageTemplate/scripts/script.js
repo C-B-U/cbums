@@ -2,8 +2,8 @@ const swiper = new Swiper('.swiper-container', {
     // Optional parameters
     direction: 'horizontal',
     loop: false,
-    slidesPerView: 3,
-    slidesPerGroup: 3,
+    slidesPerView: 3.1,
+    slidesPerGroup: 3.1,
     observer: true,
     observeParents: true,
     spaceBetween: 24,
