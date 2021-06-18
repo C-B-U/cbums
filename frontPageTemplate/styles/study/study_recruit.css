@@ -1,0 +1,38 @@
+.main_wrap{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.main__search-wrap{
+    height: 1%;
+    border: solid 2px #c1c1c1;
+}
+.main__title > h2{
+    margin: 0;
+}
+.main__search{
+    display: flex;
+ 
+}
+select{
+    border: 0;
+}
+
+input{
+    border: none;
+}
+
+.main__serach-button{
+    display: flex;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.main__serach-button > i{
+    color: #c1c1c1;
+    font-size: 1.2em;
+}
+
+
