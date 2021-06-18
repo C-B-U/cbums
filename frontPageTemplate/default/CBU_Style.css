@@ -101,7 +101,7 @@ h2.main__study-h2:after {
 }
 
 
-.main__slide-container{
+.swiper-container{
     width: 100%;
     overflow: hidden;
     
@@ -111,14 +111,8 @@ h2.main__study-h2:after {
         transparent 100%);
 }
 
-
-
-.main__study-slide > a{
+.swiper-slide > a{
     color: black;
-    
-}
-.main__slide-list{
-    display: flex;
     
 }
 
@@ -126,10 +120,8 @@ h2.main__study-h2:after {
     display: block;
     width: 120px;
     height: 120px;
-    margin: 0 10px;
-    background-color: coral;
+    margin: 0;
     cursor: pointer;
-    
     
 }
 
@@ -151,42 +143,13 @@ h3:hover{
     
 }
 
-.main__study-buttonA:active{
-    opacity:1;
-}
+.swiper-button-next{
 
-.main__study-buttonB:active{
-    opacity:1;
-}
-
-
-
-.main__study-buttonA{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 50px;
-    bottom: 85px;
-    width: 50px;
-    height: 50px;
-    background-color: black;
-    border-radius: 100%;
-    opacity:0.6;
+    color: black;
     cursor: pointer;
 }
-.main__study-buttonB{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 50px;
-    bottom: 85px;
-    width: 50px;
-    height: 50px;
-    background-color: black;
-    border-radius: 100%;
-    opacity:0.6;
+.swiper-button-prev{
+    color: black;
     cursor: pointer;
 }
 
@@ -455,22 +418,28 @@ pc 1920px ~ 1200px
         margin-top: 0.15em;
     }
     
-    .main__study-wrap{
-        width: 100%;
-        height: 185px;
-        -webkit-mask: none;
+    
         
-        
-        
-    }
+    
     .contour{
         width: 90%;
         margin: 0 auto;
         border-bottom: 3px solid #ded6cf;
     }
    
-    .main__slide-container{
+    .slide-wrap{
         width: 100%;
+        height: 185px;
+       
+        
+    }
+
+    .swiper-wrapper{
+        -webkit-mask: none;
+    }
+
+    .swiper-container{
+        width: 96%;
         margin-left: 1em;
         overflow: hidden;
         -webkit-mask: none;
@@ -483,14 +452,14 @@ pc 1920px ~ 1200px
         border-radius: 1.2em;
         
     }
-    .main__study-slide{
+    .swiper-slide{
         position: relative;
     }
     h3{
         position: absolute;
         width: 100px;
         bottom: 7px;
-        left: 23px;
+        left: 10px;
         font-size: 1.3em;
         font-weight: bold;
         color: white;
@@ -499,18 +468,29 @@ pc 1920px ~ 1200px
     h3:hover{
         font-size: 1.3em;
     }
-    
+    .header-wrap{
+        width: 100%;
+    }
     .nav-wrap{
         display: none;
     }
+    .new-wrap{ 
+        width: 138%;
+        display: flex;
+        justify-content: space-between;
+    }
     .nav-wrap-mobile{
         display: flex;
-        justify-content: flex-end;
+        width: 150px;
+        justify-content: flex-start;
         margin: 1em;
+   
         font-size: 1.5em;
         color: #53504b;
         cursor: pointer;
+        float: left;
     }
+   
 
     .nav-wrap-sidenav {
         height:100%;
@@ -518,7 +498,7 @@ pc 1920px ~ 1200px
         position: fixed;
         z-index:2;
         top: 0;
-        right: 0;
+        left: 0;
         background-color: rgb(255, 252, 247);
         overflow-x: hidden;
         transition:0.3s ease-in-out;
@@ -545,9 +525,10 @@ pc 1920px ~ 1200px
     .closebtn{
         position: absolute;
         top:0;
-        left: -25px;
+        right: -120px;
 		font-size: 26px !important;
-		margin-left: 50px;
+		margin-left: 0px;
+        
     }
     
     .main__study-buttons{
@@ -654,6 +635,7 @@ pc 1920px ~ 1200px
         padding: 0 0.5em;
     }
 }
+
 
 /*html 슬라이드 name 수정, 회원가입 로그인 글씨 구현, 메뉴 슬라이드 구현, 터치슬라이드 구현*/
     
