@@ -41,7 +41,8 @@ CBU Management System
 * React native (예정)
 
 # 업데이트 내역
-### 0.0.1 6/20
+### 0.0.1 
+##### (21/06/20)
 * Django MVC 모델 구축
 * Templates(HTML), Static(CSS, JS, img file) 로 View 분할
 * defaultPage 템플릿 추가
