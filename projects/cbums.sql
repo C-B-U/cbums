@@ -9,8 +9,7 @@ CREATE TABLE TB_member
     `m_rg_no`       int(3)         NULL        COMMENT '기수', 
     `class_no`      int(10)        NOT NULL    COMMENT '학번', 
     `department`    VARCHAR(15)    NOT NULL    COMMENT '학과', 
-    `m_image`       VARCHAR(45)    NULL        COMMENT '프로필 사진', 
-    `agora_status`  TINYINT(1)     NOT NULL    DEFAULT 0 COMMENT '아고라 참여 여부(미참: 0, 참여: 1)', 
+    `m_image`       VARCHAR(45)    NULL        COMMENT '프로필 사진',
     `sysop_status`  TINYINT(1)     NOT NULL    DEFAULT 0 COMMENT '운영자 여부(일반 사용자: 0, 운영자: 1)', 
     CONSTRAINT  PRIMARY KEY (m_email)
 );
