@@ -32,6 +32,12 @@ CBU Management System
 # 차후계획
 * 우리 조만간 회식 한번 해요..... 모인지 벌써 6개월인데 밥 한 끼 같이 못먹었네 
 
+# git branch flow
+* master : 제품으로 출시될 수 있는 브랜치
+* develop : 다음 출시 버전을 개발하는 브랜치
+* feature : 기능을 개발하는 브랜치
+* hotfix : 출시 버전에서 발생한 버그를 수정 하는 브랜치
+
 # 기술 스택
 * Django
 * MySql
