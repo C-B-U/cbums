@@ -31,3 +31,17 @@ CBU Management System
 
 # 차후계획
 * 우리 조만간 회식 한번 해요..... 모인지 벌써 6개월인데 밥 한 끼 같이 못먹었네 
+
+# 기술 스택
+* Django
+* MySql
+* AWS EC2
+* AWS S3
+* React (예정)
+* React native (예정)
+
+# 업데이트 내역
+### 0.0.1 6/20
+* Django MVC 모델 구축
+* Templates(HTML), Static(CSS, JS, img file) 로 View 분할
+* defaultPage 템플릿 추가
