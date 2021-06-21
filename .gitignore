@@ -1,2 +1,5 @@
 # 구름 ide에서 생성되는 파일
 goorm.manifest
+
+# mysql 세팅 파일
+projects/mysql_setting.py
