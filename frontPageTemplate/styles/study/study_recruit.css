@@ -1,15 +1,26 @@
 .main_wrap{
-    width: 60%;
+    width: 52.08%;
     margin: 0 auto;
+}
+
+.main__title{
     display: flex;
     justify-content: space-between;
+    padding: 1.3em 2em 2.7em;
 }
 .main__search-wrap{
-    height: 1%;
+    display: flex;
+    height: 30px;
     border: solid 2px #c1c1c1;
 }
-.main__title > h2{
+.main__title-top{
+    display: flex;
+}
+.main__title-top > h2{
     margin: 0;
+    color: #424043;
+    padding-bottom: 0.2em;
+    border-bottom:solid 2px #424043; 
 }
 .main__search{
     display: flex;
@@ -24,7 +35,6 @@ input{
 }
 
 .main__serach-button{
-    display: flex;
     border: none;
     background-color: white;
     cursor: pointer;
@@ -35,4 +45,122 @@ input{
     font-size: 1.2em;
 }
 
+
+.main__tab-wrap{
+    width: 80%;
+    height: 450px;
+    margin: 0 auto;
+}
+.main__tab-menu ul{
+    overflow: hidden;
+    background-color: #c8c8c8;
+    padding: 0;
+    margin: 0;
+}
+
+.main__tab-menu li{
+    float: left;
+    
+}
+
+.main__tab-menu li a{
+    display: block;
+    color: white;
+    padding: 1em 2.5em; 
+    font-weight: bold;
+    font-size: 1.1em;
+    
+}
+
+.main__tab-menu li a:hover{
+    color:  #424043;
+    
+}
+
+.main__tab-menu li.active .btn{
+  color: #424043;
+  background-color: white;
+}
+
+.main__tab-content-concern-container {
+  width: 100%; 
+  background: #fff; 
+  box-sizing: border-box;
+}
+
+.main__tab-content-concern{
+  display: none
+}
+
+.main__tab-content-concern.target {
+  padding: 0;
+  display: block;
+}
+
+.main__tab-content-thread{
+    display: flex;
+    padding: 0.5em 2em;
+    border-bottom: 1px solid lightgray;
+}
+
+.tabcontent-item{
+    display: flex;
+    justify-content: space-between;
+  
+}
+
+.tabcontent-item.sequence{
+    width: 3em;
+}
+
+.tabcontent-item.study-name{
+     width:12em;
+}
+
+.tabcontent-item.concern1{
+     width:5em;
+}
+.tabcontent-item.concern2{
+     width:7em;
+}
+.tabcontent-item.maximum-number{
+     width:4em;
+}
+.tabcontent-item.recruit-status{
+     width:5em;
+}
+
+h3{
+    margin: 1em;
+    margin-top: 2em;
+}
+
+
+.main__tab-make-wrap{
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 1em 1em 1em;
+}
+
+.main__tab-make-mylist > a{
+    display: block;
+    border-bottom: solid 1px lightgray;
+    padding: 0.1em;
+    color: grey;
+}
+
+.main__tab-make > a{
+    display: block;
+    border: 2px solid lightslategray;
+    padding: 0.3em;
+    color: black;
+    font-weight: 500;
+}
+.main__tab-list{
+    display: flex;
+    justify-content: center;
+}
+.main__tab-list > a{
+    color: red;
+}
 

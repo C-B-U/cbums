@@ -45,34 +45,116 @@
                  </nav>
               </div>
          </header>
-      <main>
-          <div class="main_wrap">
-             <div class="main__title">
-                  <h2>스터디 목록</h2>
-              </div>
-              <div class="main__search-wrap">
-               <div class="main__search">
-                    <table width="200">
-                       <tr>
-                        <td>
-                         <select name="keyField">
-                          <option value="subject">스터디명</option>
-                          <option value="writer">개설자명</option>
-                          </select>
-                         </td>
-                         <td>
-                         <input id="search" type="search">
-                         </td>
-                         <td>
-                             <button class="main__serach-button" type="submit" name="click" value=""><i class="fa fa-search"></i></button>
-                         </td> 
-                      </tr>
-                  </table>
-                  </div>
-              </div>
-              
-          </div>
-      </main>
+         <main>
+            <div class="main_wrap">
+              <div class="main__title">
+               <div class="main__title-top">
+                    <h2>스터디 목록</h2>
+                </div>
+                <div class="main__search-wrap">
+                 <div class="main__search">
+                      <table width="200">
+                         <tr>
+                          <td>
+                           <select name="keyField">
+                            <option value="subject">스터디명</option>
+                            <option value="writer">개설자명</option>
+                            </select>
+                           </td>
+                           <td>
+                           <input id="search" type="search">
+                           </td>
+                           <td>
+                               <button class="main__serach-button" type="submit" name="click" value=""><i class="fa fa-search"></i></button>
+                           </td> 
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                </div>
+                <div class="main__tab-wrap">
+                    <div class="main__tab-menu">
+                        <ul>
+                            <li class="main__tab-menu-item active" data-tab="tab1"><a href="#" class="btn">JAVA</a></li>
+                            <li class="main__tab-menu-item" data-tab="tab2"><a href="#" class="btn">Python</a></li>
+                            <li class="main__tab-menu-item" data-tab="tab3"><a href="#" class="btn">알고리즘</a></li>
+                            <li class="main__tab-menu-item" data-tab="tab4"><a href="#" class="btn">자료구조</a></li>
+                        </ul>
+                    </div>
+                 <!--a태그 필요-->
+                    <div class="main__tab-content-concern-container">
+                       <div id="tab1" class="main__tab-content-concern target">
+                          <div class="main__tab-content-thread">
+                               <div class="tabcontent-item sequence">1</div>
+                               <div class="tabcontent-item study-name">JAVA 스터디</div>
+                               <div class="tabcontent-item concern1">#JAVA</div>
+                               <div class="tabcontent-item concern2">#스터디</div>
+                               <div class="tabcontent-item current-number">0</div>
+                               <div class="tabcontent-item maximum-number">/6</div>
+                               <div class="tabcontent-item recruit-status">모집중</div>
+                           </div>
+                            <div class="main__tab-content-thread">
+                              <div class="tabcontent-item sequence">2</div>
+                               <div class="tabcontent-item study-name">자바!</div>
+                               <div class="tabcontent-item concern1">#JAVA</div>
+                               <div class="tabcontent-item concern2">#스터디</div>
+                               <div class="tabcontent-item current-number">1</div>
+                               <div class="tabcontent-item maximum-number">/6</div>
+                               <div class="tabcontent-item recruit-status">모집중</div>
+                           </div>
+                       </div>
+                       
+                       <div id="tab2" class="main__tab-content-concern">
+                          <div class="main__tab-content-thread">
+                               <div class="tabcontent-item sequence">1</div>
+                               <div class="tabcontent-item study-name">Python 스터디</div>
+                               <div class="tabcontent-item concern1">#Python</div>
+                               <div class="tabcontent-item concern2">#스터디</div>
+                               <div class="tabcontent-item current-number">1</div>
+                               <div class="tabcontent-item maximum-number">/6</div>
+                               <div class="tabcontent-item recruit-status">모집중</div>
+                           </div>
+                       </div>
+                        <div id="tab3" class="main__tab-content-concern">
+                          <div class="main__tab-content-thread">
+                               <div id="null">스터디가 존재하지 않습니다.</div>
+                          </div>
+                       </div>
+                        <div id="tab4" class="main__tab-content-concern">
+                          <div class="main__tab-content-thread">
+                             <div id="null">스터디가 존재하지 않습니다.</div>
+                           </div>
+                       </div>  
+                    </div>
+                    <div class="main__tab-content-etc-container">
+                        <div class="main__tab-content-etc">
+                           <h3>이외</h3>
+                            <div class="main__tab-content-thread">
+                              <div class="tabcontent-item sequence">1</div>
+                               <div class="tabcontent-item study-name">CBUMS</div>
+                               <div class="tabcontent-item concern1">#web</div>
+                               <div class="tabcontent-item concern2">#프로젝트</div>
+                               <div class="tabcontent-item current-number">6</div>
+                               <div class="tabcontent-item maximum-number">/6</div>
+                               <div class="tabcontent-item recruit-status">모집완료</div>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="main__tab-make-wrap">
+                        <div class="main__tab-make-mylist">
+                            <a href="#">내가 개설한 스터디</a>
+                        </div>
+                        <div class="main__tab-make">
+                            <a href="#">개설하기</a>
+                        </div>
+                        
+                    </div>
+                     <div class="main__tab-list">
+                            <a href="#">1</a>
+                        </div>
+                </div>
+            </div>
+        </main>
       <footer>
           <div class="footer-wrap">
                  <div class="footer__info">
@@ -109,4 +191,6 @@
              </div>
       </footer>
     </div>
+    <script src="../../scripts/study_recruit.js"></script>
  </body>
+ </html>
