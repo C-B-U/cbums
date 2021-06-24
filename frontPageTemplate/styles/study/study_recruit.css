@@ -13,10 +13,11 @@ main{
     display: flex;
     justify-content: space-between;
     padding: 2em 4em 2.7em 4em;
+ 
 }
 .main__search-wrap{
     display: flex;
-    height: 30px;
+    height: 30px;                 
     border: solid 2px #c1c1c1;
 }
 .main__title-top{
@@ -54,7 +55,7 @@ input{
 
 
 .main__tab-wrap{
-    width: 83%;
+    width: 73%;
     height: 450px;
     margin: 0 auto;
 }
@@ -120,12 +121,12 @@ input{
 
 .tabcontent-item.sequence{
     font-size: 0.7em;
-    margin-top: 0.2em;
+    margin-top: 0.3em;
     margin-right: 3em;
 }
 
 .tabcontent-item.study-name{
-    width: 10em;
+    width: 11em;
     font-size: 0.9em;
     margin-top: 0.1em;
     font-weight: 600;
@@ -137,7 +138,7 @@ input{
     width:5em;
     font-size: 0.8em;
     margin-top: 0.2em;
-    margin-right: 2em;
+    margin-right: 0em;
 }
 .tabcontent-item.concern2{
     display: block;
@@ -166,15 +167,16 @@ input{
      font-size: 0.8em;
 }
 .tabcontent-item.recruit-status{
-    width:4em;
+    width:5em;
     margin-top: 0.2em;
     font-size: 0.8em;
     color: red;
     font-weight: 600;
 }
 
-.tabcontent-item.recruit-status-complete{
-    width:4em;
+.tabcontent-item.recruit-status-complete{    
+         
+    width:5em;
     margin-top: 0.2em;
     font-size: 0.8em;
     color: darkgrey;
