@@ -31,7 +31,7 @@ class TbBoardSubscription(models.Model):
         
 class TbBook(models.Model):
     isbn = models.IntegerField(primary_key=True)
-    book_owner = models.ForeignKey('TbMember', models.DO_NOTHING, db_column='book_owner')
+    book_owner = models.ForeignKey('TbMember', models.DO_NOTHING, db_column='book_owner', related_name='book_owner')
     book_name = models.CharField(max_length=45)
     book_borrower = models.ForeignKey('TbMember', models.DO_NOTHING, db_column='book_borrower', blank=True, null=True)
     book_rg_dt = models.DateTimeField()
@@ -44,7 +44,7 @@ class TbBook(models.Model):
 
 class TbBookTag(models.Model):
     isbn = models.OneToOneField(TbBook, models.DO_NOTHING, db_column='isbn', primary_key=True)
-    book_owner = models.ForeignKey(TbBook, models.DO_NOTHING, db_column='book_owner')
+    book_owner = models.ForeignKey(TbBook, models.DO_NOTHING, db_column='book_owner', related_name='tag_book_owner')
     tag_name = models.ForeignKey('TbTag', models.DO_NOTHING, db_column='tag_name')
 
     class Meta:
@@ -188,7 +188,7 @@ class TbProjectMember(models.Model):
         
 class TbProjectParticipation(models.Model):
     p_seq = models.OneToOneField('TbProjectProgress', models.DO_NOTHING, db_column='p_seq', primary_key=True)
-    progress_date = models.ForeignKey('TbProjectProgress', models.DO_NOTHING, db_column='progress_date')
+    progress_date = models.ForeignKey('TbProjectProgress', models.DO_NOTHING, db_column='progress_date', related_name='p_progress_date')
     p_m = models.ForeignKey(TbProjectMember, models.DO_NOTHING, db_column='p_m')
     attend_status = models.IntegerField()
     homework_submit_status = models.IntegerField(blank=True, null=True)
@@ -241,5 +241,3 @@ class TbTag(models.Model):
     class Meta:
         managed = False
         db_table = 'TB_tag'
-
-        
