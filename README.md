@@ -6,9 +6,7 @@ CBU Management System
 * 1기 박현준
 ### Front-end
 * 6기 최지미
-* 6기 류연동
 * 7기 김지윤
-* 7기 이지호
 ### Back-end
 * 5기 최우석
 * 6기 장희수
