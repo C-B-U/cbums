@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>씨부엉</title>
-    <link rel="stylesheet" href="../styles/default.css">
+    
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'styles/default.css' %}">
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="../styles/swiper.min.css">
-    <link rel="stylesheet" href="../styles/elementSetting.css">
-    <link rel="stylesheet" href="../styles/header.css">
-    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="{% static 'styles/swiper.min.css' %}">
+
 
    
 </head>
@@ -20,7 +21,7 @@
            <div class="header-wrap">
        
               <div class="header-wrap__logo">
-                  <a href="#"><img id="logo_img" src="../images/default/logo.png" alt="씨부엉 상단 로고" height="36"></a>
+                  <a href="#"><img id="logo_img" src="{% static 'images/default/logo.png' %}" alt="씨부엉 상단 로고" height="36"></a>
               </div>
               
                <nav>
@@ -45,7 +46,7 @@
                        <i class="fas fa-bars"></i>
                    </div>
                    <div class="header-wrap__logo-mobile mobile">
-                    <a href="#"><img src="../images/default/mobileLogo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
+                    <a href="#"><img src="{% static 'images/default/mobileLogo.png' %}" alt="씨부엉 상단 로고 모바일" height="36"></a>
                 </div>
              
               
@@ -56,16 +57,14 @@
         <main>
            <div class="main-wrap">
                <div class="main__CBU-image">
-                    <a href="#"><img src="../images/default/header.png" alt="씨부엉 메인 배너" style="width:100%"></a>
+                    <a href="#"><img src="{% static 'images/default/header.png' %}" alt="씨부엉 메인 배너" style="width:100%"></a>
                </div>
-               <div class="main__member-wrap mobile">
-                <div class="main__member">
+               <div class="main__member mobile">
                    <a href="#"><div class="main__member-join">회원가입</div></a>
                    <a href="#"><div class="main__member-login">로그인</div></a>
-                </div>
-            </div>
+               </div>
                <div class="main__CBU-image-moible mobile">
-                   <img src="../images/default/mobileBanner2.png" alt="씨부엉 메인 배너 모바일" style="width:100%">
+                   <img src="{% static 'images/default/mobileBanner2.png' %}" alt="씨부엉 메인 배너 모바일" style="width:100%">
                </div>
                
                <div class="main__study">
@@ -131,9 +130,9 @@
                <div class="main__join">
                        <h2 class="main__join-h2">Join</h2>
                         <div class="main__join-image">
-                            <div><img src="../images/default/join1.jpg" alt="동아리 소개1" ></div>
-                            <div><img src="../images/default/join2.jpg" alt="동아리 소개2" ></div>
-                            <div><img src="../images/default/join3.jpg" alt="동아리 소개3" ></div>
+                            <div><img src="{% static 'images/default/join1.jpg' %}" alt="동아리 소개1" ></div>
+                            <div><img src="{% static 'images/default/join2.jpg' %}" alt="동아리 소개2" ></div>
+                            <div><img src="{% static 'images/default/join3.jpg' %}" alt="동아리 소개3" ></div>
                         </div>
                         <ul class="main__join-text">
                             <li>능동적인 공부</li>
@@ -280,7 +279,7 @@
                         </ul>
                     </div>
                     <div class="footer__info-logo mobile">
-                        <img src="../images/default/mobileLogo.png" alt="씨부엉 하단 로고" width="120">
+                        <img src="{% static 'images/default/mobileLogo.png' %}" alt="씨부엉 하단 로고" width="120">
                     </div>
                   </div>
 
@@ -289,7 +288,7 @@
             </div>
         </footer>
     </div>
-    <script src="../scripts/swiper.min.js"></script>
-    <script src="../scripts/script.js"></script>
+    <script src="{% static 'scripts/swiper.min.js' %}"></script>
+    <script src="{% static 'scripts/script.js' %}  "></script>
 </body>
 </html>

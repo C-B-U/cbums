@@ -1,3 +1,24 @@
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+# 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!! 깃허브 업로드 X 보안주의!!
+
+# 원래는 보안상 업로드 하지 않는게 맞으나, 로컬 개발 기간 동안에만 한에서 업로드
+
 """
 Django settings for config project.
 
@@ -12,6 +33,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+import mysql_setting
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +43,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(s_*_1z$0un^2nys%hi%ivvea380)wp@r+zg@cfuq#kabe)52z'
+
+# SECRET_KEY = '(s_*_1z$0un^2nys%hi%ivvea380)wp@r+zg@cfuq#kabe)52z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,6 +62,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'cbums',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +81,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,13 +100,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
 
+
+DATABASES = mysql_setting.DATABASES
+SECRET_KEY = mysql_setting.SECRET_KEY
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -119,3 +150,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
