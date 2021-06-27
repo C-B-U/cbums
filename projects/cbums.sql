@@ -4,12 +4,13 @@
 CREATE TABLE TB_member
 (
     `m_email`       VARCHAR(40)    NOT NULL    COMMENT '사용자 이메일(id대용)', 
-    `password`      VARCHAR(64)    NOT NULL    COMMENT '비밀번호(sha256 암호화)', 
+    `password`      VARCHAR(64)    NULL    COMMENT '비밀번호(sha256 암호화)', 
     `m_name`        VARCHAR(12)    NOT NULL    COMMENT '이름', 
     `m_rg_no`       int(3)         NULL        COMMENT '기수', 
     `class_no`      int(10)        NOT NULL    COMMENT '학번', 
     `department`    VARCHAR(15)    NOT NULL    COMMENT '학과', 
     `m_image`       VARCHAR(45)    NULL        COMMENT '프로필 사진',
+    `m_introduce`   VARCHAR(60)    NULL        COMMENT '자기소개',
     `sysop_status`  TINYINT(1)     NOT NULL    DEFAULT 0 COMMENT '운영자 여부(일반 사용자: 0, 운영자: 1)', 
     CONSTRAINT  PRIMARY KEY (m_email)
 );
@@ -43,9 +44,11 @@ CREATE TABLE TB_project
     `p_name`            VARCHAR(45)    NOT NULL    COMMENT '프로젝트 명', 
     `p_rg_dt`           DATETIME       NOT NULL    COMMENT '개설일자', 
     `maximum_m`         INT(20)        NULL        COMMENT '최대인원', 
-    `project_producer`  VARCHAR(40)    NOT NULL    COMMENT '개설자', 
+    `p_producer`        VARCHAR(40)    NOT NULL    COMMENT '개설자', 
     `producer_hidden`   TINYINT        NOT NULL    DEFAULT 0 COMMENT '개설자 익명 여부(공개: 0, 익명: 1)', 
-    `project_image`     VARCHAR(45)    NULL        COMMENT '프로젝트 타이틀 이미지', 
+    `p_image`           VARCHAR(45)    NULL        COMMENT '프로젝트 타이틀 이미지', 
+    `p_rg_no`           INT(3)         NOT NULL    COMMENT '프로젝트 기수', 
+    `p_recruit_status`  TINYINT        NOT NULL    COMMENT '프로젝트 모집 여부',
     CONSTRAINT  PRIMARY KEY (p_seq)
 );
 
