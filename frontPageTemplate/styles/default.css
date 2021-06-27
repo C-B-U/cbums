@@ -271,7 +271,7 @@ pc 1920px ~ 1200px
 태블릿 ~ 768px
 모바일 ~ 480px 
 */
-@media all and (min-width:768px) and (max-width:1023px){
+@media all and (min-width:768px) and (max-width:1200px){
      .header-wrap{
        width: 60%; 
        margin: 0 auto;
