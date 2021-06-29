@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,9 +56,10 @@
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                            <div class="swiper-slide">
-                               <form>                        <!--form 옵션 설정 필요-->
+                               <form>                        
+                                   <!--form 옵션 설정 필요-->
                                 <div class="main__slide-studyname">
-                                    스터디명 <input type="text" name="studyname" autocomplete="off">
+                                    스터디명 <input type="text" name="studyname" autocomplete="off"> 
                                 </div>
                                 <div class="main__slide-duration">
                                     진행 기간 <input type="date" name="duration-first">~<input type="date" name="duration-last">
@@ -89,11 +90,11 @@
                         </div>
                         <div class="swiper-pagination"></div>
                         <div class="siwper-button">
-                            <div class="swiper-button-prev">이전</div>
-                            <div class="swiper-button-next">다음</div>      
+                            <div id="prevButton" class="swiper-button-prev" onclick="updateButton()"><h4>이전</h4></div>
+                            <div id="nextButton" class="swiper-button-next" onclick="updateButton()"><h4>다음</h4></div>      
                         </div>
                         <div class="main__slide-submit">
-                            <button type="button">개설</button> <!--버튼 위치 자바스크립트 필요-->
+                            <button class="disabled" id="submitButton" type="button"><h4>개설</h4></button> <!--버튼 위치 자바스크립트 필요-->
                         </div>
                         
                         
@@ -139,7 +140,8 @@
           </div>
           <script src="../../scripts/sidebar.js"></script>
           <script src="../../scripts/swiper.min.js"></script>
-          <script src="../../scripts/study_make.js"></script>
+          <script src="../../scripts/study/stduy_make/study_make_slide.js"></script>
+          <script src="../../scripts/study/stduy_make/study_make_button.js"></script>
 
 </body>
 </html>
