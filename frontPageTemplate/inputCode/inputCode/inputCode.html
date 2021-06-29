@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <link rel="stylesheet" href="../styles/signUp.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/inputCode.css">
     <link rel="stylesheet" href="../styles/elementSetting.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/header.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>password</title>
 </head>
+
 <body class="wrap">
     <header>
         <div class="header-wrap">
@@ -51,37 +50,18 @@
     <article class="article">
         <div class="article__inner">
             <div><img src="../images/boxDeco.png" alt="boxDeco" class="article__boxDeco"></div>
-            <h1 class="article__boxTitle">회원가입</h1>
+            <h1 class="article__boxTitle">이메일 인증</h1>
             <div class="article__boxList">
-                <ul class="boxList__infor">
-                    <li>
-                        <label>이름</label>
-                        <input type="text" placeholder="이름 입력">
-                    </li>
-                    <li>
-                        <label>학번</label>
-                        <input type="number" placeholder="학번 입력">
-                    </li>
-                    <li>
-                        <label>닉네임</label>
-                        <input type="text" placeholder="닉네임 입력">
-                    </li>
-                    <li>
-                        <label>비밀번호</label>
-                        <input type="password" placeholder="비밀번호 입력">
-                    </li>
-                    <li>
-                        <label>비밀번호 확인</label>
-                        <input type="password" placeholder="비밀번호 확인">
-                    </li>
-                    <li>
-                        <button class="boxList__infor--submit">제출하기</button>
-                    </li>
+                <label class="boxList__checkCode">인증 코드</label>
+                <ul>
+                    <input type="text" class="boxList__inputCode" placeholder="인증 코드 입력">
+                    <button style="cursor:pointer" class="boxList__certifyButton"
+                        onclick="location.href='#'">인증</button>
                 </ul>
-                <p class="boxList__controls">
-                    <span class="prev"><i class="fas fa-arrow-left"></i></span>
-                    <span class="next"><i class="fas fa-arrow-right"></i></span>
-                </p>
+                <label class="boxList__checkCertify">인증을 완료해주세요</label>
+                <button style="cursor:pointer" class="boxList__submitButton" onclick="location.href='#'">인증 완료</button>
+                <div class="boxList__schoolName boxList__schoolName1">한국산업기술대학교</div>
+                <div class="boxList__schoolName">프로그래밍 동아리 <span class="boxList__schoolName--emp">씨부엉</span></div>
             </div>
         </div>
     </article>
@@ -118,6 +98,6 @@
             </div>
         </div>
     </footer>
-    <script src="../scripts/signUp.js"></script>
 </body>
+
 </html>
