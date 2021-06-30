@@ -69,26 +69,12 @@ header {
   background-color: white;
 }
 
-.article__boxList>ul>input{
-  transform:translateX(12px);
-}
-
-.article__boxList>ul>button{
-  transform:translateX(-4px);
-}
-
-.boxList__checkCode{
+.article__boxList>label{
   font-size: 1.125rem;
   font-weight: bold;
 }
 
-.boxList__checkCertify{
-  font-size: 0.825rem;
-  font-weight: lighter;
-  transform:translateY(-10px);
-}
-
-.boxList__inputCode {
+.boxList__inputEmail {
   width: 200px;
   height: 30px;
   margin: 0 auto;
@@ -98,7 +84,7 @@ header {
   border: 1px solid #9e9e9e;
 }
 
-.boxList__inputCode:focus {
+.boxList__inputEmail:focus {
   outline: none;
   box-shadow: 0px 0px 2px #9e9e9e;
 }
@@ -142,7 +128,7 @@ header {
   font-size: 1rem;
 }
 
-.boxList__inputCode:focus::placeholder {
+.boxList__inputEmail:focus::placeholder {
   color: transparent;
 }
 
@@ -173,11 +159,11 @@ header {
     margin: 0;
   }
 
-  .boxList__checkCode {
+  .boxList__labelEmail {
     font-size: 1.125rem;
   }
 
-  .boxList__inputCode {
+  .boxList__inputEmail {
     width: 50%;
   }
 }
@@ -185,24 +171,7 @@ header {
 @media screen and (min-width: 280px) and (max-width: 767px) {
   .article {
     width: 100%;
-    height: 650px;
-  }
-
-  .article__boxList>ul>input{
-    transform: translateX(10px);
-    width: 150px;
-  }
-
-  .article__boxList>ul>button{
-  transform:translateX(-5px);
-}
-
-.boxList__checkCertify{
-  transform: translateY(-20px);
-}
-
-  .boxList__certifyButton{
-    margin: auto;
+    height: 500px;
   }
 
   .article__inner {
@@ -215,7 +184,7 @@ header {
   }
 
   .article__boxTitle {
-    height: 70px;
+    height: 60px;
     color: white;
     background-color: #847d74;
   }
@@ -225,17 +194,17 @@ header {
   }
 
   .article__boxList {
-    height: 350px;
+    height: 250px;
     margin: 0;
     box-shadow: 0 0 20px #9e9e9e;
     background-color: white;
   }
 
-  .boxList__inputCode {
+  .boxList__inputSEmail {
     padding: 2.5px;
   }
 
-  .boxList__inputCode:focus {
+  .boxList__inputEmail:focus {
     outline: none;
     box-shadow: 0px 0px 2px #9e9e9e;
   }
@@ -264,7 +233,7 @@ header {
     padding: 3px 6px;
     font-size: 0.875rem;
   }
-  .boxList__inputCode {
+  .boxList__inputEmail {
     width: 70%;
   }
 }
