@@ -80,9 +80,12 @@
                               
                                <div class="main__slide-tag">
                                    태그 <br>
-                                   <form class="main__slide-tag-form"><input type="text" name="tag" autocomplete="off" placeholder="태그 입력">
-                                   <ul class="main__slide-tag-list"> <!-- JavaScript로 생성된 태그 elements를 넣을 class ,  javascript 필요 -->
-                                </ul>
+                                   <form class="main__slide-tag-form"><input type="text" id="main__slide-tag-input" name="tag" autocomplete="off" placeholder="태그 클릭 시 삭제">
+                                    <button class="main__slide-tag-button" type="button"><p>+</p></button>
+                                   <ul class="main__slide-tag-list"> 
+                                        <li class="main__slide-tag-list-item">#web</li>
+                                        <li class="main__slide-tag-list-item">#스터디</li>
+                                    </ul>
                                 </form>
                                 </div>
 
@@ -90,11 +93,11 @@
                         </div>
                         <div class="swiper-pagination"></div>
                         <div class="siwper-button">
-                            <div id="prevButton" class="swiper-button-prev" onclick="updateButton()"><h4>이전</h4></div>
-                            <div id="nextButton" class="swiper-button-next" onclick="updateButton()"><h4>다음</h4></div>      
+                            <div id="prevButton" class="swiper-button-prev"><h4>이전</h4></div>
+                            <div id="nextButton" class="swiper-button-next"><h4>다음</h4></div>      
                         </div>
                         <div class="main__slide-submit">
-                            <button class="disabled" id="submitButton" type="button"><h4>개설</h4></button> <!--버튼 위치 자바스크립트 필요-->
+                            <button class="disabled" id="submitButton" type="button"><h4>개설</h4></button> 
                         </div>
                         
                         
@@ -142,6 +145,7 @@
           <script src="../../scripts/swiper.min.js"></script>
           <script src="../../scripts/study/stduy_make/study_make_slide.js"></script>
           <script src="../../scripts/study/stduy_make/study_make_button.js"></script>
+          <script src="../../scripts/study/stduy_make/study_make_tag.js"></script>
 
 </body>
 </html>
