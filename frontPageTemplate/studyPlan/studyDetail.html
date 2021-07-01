@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/certifyMail.css">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <link rel="stylesheet" href="../styles/studyDetail.css">
     <link rel="stylesheet" href="../styles/elementSetting.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/header.css">
-    <title>password</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
 </head>
-
 <body class="wrap">
     <header>
         <div class="header-wrap">
@@ -49,16 +50,39 @@
     </header>
     <article class="article">
         <div class="article__inner">
-            <div><img src="../images/boxDeco.png" alt="boxDeco" class="article__boxDeco"></div>
-            <h1 class="article__boxTitle">이메일 인증</h1>
+            <h1 class="article__boxTitle">스터디 계획표</h1>
             <div class="article__boxList">
-                <label>이메일 주소</label>
-                <input type="email" class="boxList__inputEmail" placeholder="이메일 주소 입력">
-                <button style="cursor:pointer" class="boxList__submitButton" onclick="location.href='#'">인증코드
-                    전송</button>
-                <div class="boxList__schoolName boxList__schoolName1">한국산업기술대학교</div>
-                <div class="boxList__schoolName">프로그래밍 동아리 <span class="boxList__schoolName--emp">씨부엉</span></div>
+                <div class="article__table">
+                    <label>계획표를 작성해서 제출해주세요 :D</label>
+                    <table>
+                    <tr class="table__studyInfor">
+                        <tr><td>스터디 명</td><td><input border=0" type="text"></td></tr>
+                        <tr><td>스터디 과목</td><td><input type="text"></td></tr>
+                        <tr><td>스터디 기간</td><td><input type="date">~<input type="date"></td></td></tr>
+                    </tr>
+                </table>
+                <table>
+                    <tr class="table__studentInfor">
+                        <tr><td>팀원 이름</td><td>연락처</td><td>학번</td></tr>
+                    </tr><td><textarea cols="10" rows="8"></textarea></td><td><textarea cols="20" rows="8"></textarea></td><td><textarea cols="20" rows="8"></textarea></td></tr>
+                    </tr>
+                </table>
+                <table>
+                    <tr class="table__studyRule">
+                        <td>스터디 규칙</td></tr>
+                        <tr><td><textarea cols="60" rows="7"></textarea></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr class="table__studyPlan">
+                        <td>스터디 계획 첨부</td></tr>
+                        <tr><td><input type="file"></td></tr>
+                    
+                </table>
             </div>
+            <button class="boxList__infor--submit">제출하기</button>
+            </div>
+        </div>
         </div>
     </article>
     <footer>
@@ -94,6 +118,6 @@
             </div>
         </div>
     </footer>
+    <script src="../scripts/studyDetail.js"></script>
 </body>
-
 </html>

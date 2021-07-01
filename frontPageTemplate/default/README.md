@@ -1,1 +1,0 @@
-# made by jimi Choi!
