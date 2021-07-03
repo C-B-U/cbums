@@ -1,3 +1,63 @@
+@font-face {
+    font-family: 'NotoKrB';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Noto Sans Bold'), local('NotoSans-Bold'), url(/fonts/NotoSans-Bold.eot);
+    src: url(/fonts/NotoSans-Bold.eot?#iefix) format('embedded-opentype'),
+    url(/fonts/NotoSans-Bold.woff2) format('woff2'),
+    url(/fonts/NotoSans-Bold.woff) format('woff');
+}
+
+body { font-family: 'Noto Sans KR', sans-serif; margin: 0; }
+li {list-style: none;}
+a {text-decoration: none;}
+.mobile {
+    display: none;
+}
+header { 
+    background-color: white; 
+    display: flex;
+    align-items: center;
+}
+
+.header-wrap{
+    width: 52.08%; /*1000px*/
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.header-wrap__logo{
+    margin: 1em;
+}
+nav{
+    width: 72%; /*720px*/
+}
+.nav-wrap{
+    display: flex;
+    justify-content: space-around;
+    height: 50%;
+    margin: 1em;
+    padding: 0 3%;
+    background-color: #EFECE8;
+    border-radius: 4em;
+}
+.nav-wrap > li {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.8em;
+    
+}
+.nav-wrap > li a{
+    display: block;
+    color:  #61605c;
+}
+.nav-wrap > li a:hover{
+    color: #020202;
+}
+
 main{
     background-color: #EFECE8;
 }
@@ -177,8 +237,31 @@ h2.main__join-h2:after {
     
 }
 
-.mobile{
-    display: none;
+footer{
+    background-color: #c1c1c1;
+    margin: -22px 0;
+}
+
+.footer__info{
+   
+    width: 52.08%; 
+    margin: 0 auto;
+    color: white;
+    
+}
+.footer__info-wrap{
+     display: flex;
+    justify-content: space-between;
+    
+}
+
+.footer__info-CBU{
+    margin: 1.5em 0;
+    font-size: 0.82em;
+}
+.footer__info-staffs{
+    margin: 0.5em;
+    font-size: 0.70em;
 }
 
 
@@ -194,7 +277,8 @@ pc 1920px ~ 1200px
        margin: 0 auto;
        display: flex;
        justify-content: space-around;
-     }
+    
+}
     .main-wrap{
         width: 60%;
         margin: 0 auto;
@@ -210,7 +294,10 @@ pc 1920px ~ 1200px
     .nav-wrap > li{
         font-size: 0.6em;
     }
-    
+    .footer__info{
+        width: 60%; 
+       margin: 0 auto;
+    }
     
 .main__study-buttonA{
     display: flex;
@@ -249,6 +336,19 @@ pc 1920px ~ 1200px
         display: block;
     }
     
+    .header-wrap{
+    width: 100%; 
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    
+}
+    .header-wrap__logo{
+        display: none;
+    }
+    .header-wrap__logo-mobile{
+        margin: 1em;
+    }
     main{
         width: 100%;
     }
@@ -259,10 +359,6 @@ pc 1920px ~ 1200px
     }
     .main__CBU-image{
         display: none;
-    }
-    .main__member-wrap{
-        display: flex;
-       
     }
     .main__member{
         position: absolute;
@@ -279,11 +375,9 @@ pc 1920px ~ 1200px
         color: white;
     }
     .main__member-join{
-        display: flex;
         border-bottom: 2px solid white;
     }
     .main__member-login{
-        display: flex;
         border-bottom: 2px solid white;
     }
     
@@ -483,15 +577,58 @@ pc 1920px ~ 1200px
     }
     
     
+    
+    .footer__info{
+        width: 95%;
+        height: 220px;
+        margin: 0 auto;
+        display: flex;
+        
+        
+    
+    }
+    
     .main__study-buttons{
         display: none;
     }
     
-  
+    .footer_mobile{
+        display: none;
+    }
+    
+    .footer__info{
+        display: block;
+        margin: 0;
+        
+        
+    }
+    .footer__info-CBU{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        height: 15px;
+        font-size: 0.9em;
+        font-weight: 600;
+        margin-top: 30px;
+
+    }
+    .footer__info-staffs-mobile{
+        display: flex;
+        justify-content: center;
+        font-size: 1.3em;
+        font-weight: 600;
+    }
+    .footer__info-wrap{
+        display: block;
+        padding-top: 50px;
+    }
+    .footer__info-logo{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .footer_info-mobile{
+        padding: 0 0.5em;
+    }
 }
-
-
-    
-    
-
-
