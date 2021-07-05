@@ -35,7 +35,3 @@ document.querySelector('.prev').addEventListener('click', function(){
     //     }
     // });
 });
-
-if(slideWidth<=380){
-    document.querySelector('.')
-}
