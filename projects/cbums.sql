@@ -55,7 +55,7 @@ CREATE TABLE TB_project
 ALTER TABLE TB_project COMMENT '프로젝트';
 
 ALTER TABLE TB_project
-    ADD CONSTRAINT FK_TB_project_project_producer_TB_member_m_email FOREIGN KEY (project_producer)
+    ADD CONSTRAINT FK_TB_project_project_producer_TB_member_m_email FOREIGN KEY (p_producer)
         REFERENCES TB_member (m_email) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 
