@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>활동일지 게시판</title>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../styles/elementSetting.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/study/study_workJournal/study_workJournal.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="header-wrap">
+               <div class="header-wrap__logo">
+                   <a href="../../default/default.html"><img id="logo_img" src="../../images/default/logo.png" alt="씨부엉 상단 로고" height="36"></a>
+               </div>
+                <nav>
+                    <ul class="nav-wrap">
+                        <li><a href="../../default/default.html">home</a></li>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">스터디</a></li>
+                        <li><a href="#">컨텐츠</a></li>
+                        <li><a href="#">회원 관리</a></li>
+                    </ul>
+                        <div id="mysidenav" class="nav-wrap-sidenav mobile">
+                         <a href="#" class="closebtn" onclick='closeNav()'>x</a>
+                        <a href="#">카테고리1</a>
+                        <a href="#">카테고리2</a>
+                        <a href="#">카테고리3</a>
+                        <a href="#">카테고리4</a>
+                        <a href="#">카테고리5</a>
+                        </div>
+                          <div class="new-wrap mobile">
+                           <div class="nav-wrap-mobile mobile" onclick='openNav()'>
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <div class="header-wrap__logo-mobile mobile">
+                           <a href="../../default/default.html"><img src="../../images/default/mobileLogo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
+                       </div>
+                   </div>
+                 </nav>
+              </div>
+         </header>
+         <main>
+            <div class="main_wrap">
+                <div class="main__title-wrap">
+                <div class="main__title">
+                    <h2>스터디1</h2>   <!--스터디명-->
+                </div>    
+                <div class="main__search-wrap">
+                    <div class="main__search">
+                         <table width="200">
+                            <tr>
+                             <td>
+                              <select name="keyField">
+                               <option value="subject">제목</option>
+                               <option value="writer">작성자명</option>
+                               </select>
+                              </td>
+                              <td>
+                              <input id="search" type="search" name="search">
+                              </td>
+                              <td>
+                                  <button class="main__serach-button" type="submit" name="click" value=""><i class="fa fa-search"></i></button>
+                              </td> 
+                           </tr>
+                       </table>
+                       </div>
+                   </div>
+                </div>
+                <div class="main__table-wrap">
+                    <table class="main__table">
+                        <colgroup>
+                            <col class="no">
+                            <col class="title">
+                            <col class="writer">
+                            <col class="date">
+                            <col class="view">
+                          </colgroup>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th> 
+                            <th>작성자</th>
+                            <th>작성일자</th>
+                            <th>조회수</th>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><a href="#">스터디 3주차</a></td>
+                            <td>6기 최부엉</td>
+                            <td>2021.07.05</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="#">스터디 2주차</a></td>
+                            <td>6기 최부엉</td>
+                            <td>2021.07.03</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="#">스터디 1주차</a></td>
+                            <td>6기 최부엉</td>
+                            <td>2021.07.01</td>
+                            <td>3</td>
+                        </tr>
+                    </table>
+                    <div class="main__writing">
+                        <form>
+                        <button class="main__writing-button" type="button">글쓰기</button> <!--글 작성 버튼-->
+                        </form>
+                    </div>
+                    <div class="main__page-box"> 
+                        <a href="#" class="main__page-box-number">1</a>  <!--페이지 수-->
+                    </div>
+                </div>
+               
+            </div>
+         </main>
+         <footer>
+            <div class="footer-wrap">
+                   <div class="footer__info">
+                      <div class="footer__info-wrap">
+                       <div class="footer__info-CBU">
+                           <div class="footer_info-mobile">한국산업기술대학교</div>
+                           <div class="footer_info-mobile">프로그래밍 동아리</div>
+                           <div class="footer_mobile">씨부엉</div>
+                           <div class="footer_mobile" >http://www.abcdefgh.ac.kr</div>
+                       </div>
+                       <div class="footer__info-staffs">
+                          <div class="footer__info-staffs-mobile mobile">
+                              <div class="footer_info-mobile">회장 김김김</div>
+                              <div class="footer_info-mobile">010-1010-1010</div>
+                          </div>
+                           <ul class="footer__info-staffA footer_mobile">
+                               <li>회장 김김김</li>
+                               <li>010-1010-1010</li>
+                               <li >naver@naver.com</li>
+                           </ul>
+                           <ul class="footer__info-staffB footer_mobile">
+                               <li>부회장 박박박</li>
+                               <li>010-1010-1010</li>
+                               <li>naver@naver.com</li>
+                           </ul>
+                       </div>
+                       <div class="footer__info-logo mobile">
+                           <img src="../../images/default/mobileLogo.png" alt="씨부엉 하단 로고" width="120">
+                       </div>
+                     </div>
+   
+                   </div>
+                   
+               </div>
+        </footer>
+    </div>
+    <script src="../../scripts/sidebar.js"></script>
+</body>
+</html>
