@@ -112,12 +112,13 @@ class TbFormQuestion(models.Model):
         
 class TbMember(models.Model):
     m_email = models.CharField(primary_key=True, max_length=40)
-    password = models.CharField(max_length=64)
+    password = models.CharField(max_length=64, null=True)
     m_name = models.CharField(max_length=12)
     m_rg_no = models.IntegerField(blank=True, null=True)
     class_no = models.IntegerField()
     department = models.CharField(max_length=15)
     m_image = models.CharField(max_length=45, blank=True, null=True)
+    m_introduce = models.CharField(max_length=60, blank=True, null=True)
     sysop_status = models.IntegerField()
 
     class Meta:
@@ -165,10 +166,11 @@ class TbProject(models.Model):
     p_name = models.CharField(max_length=45)
     p_rg_dt = models.DateTimeField()
     maximum_m = models.IntegerField(blank=True, null=True)
-    project_producer = models.ForeignKey(TbMember, models.DO_NOTHING, db_column='project_producer')
+    p_producer = models.ForeignKey(TbMember, models.DO_NOTHING, db_column='p_producer')
     producer_hidden = models.IntegerField()
-    project_image = models.CharField(max_length=45, blank=True, null=True)
-
+    p_image = models.CharField(max_length=45, blank=True, null=True)
+    p_rg_no = models.IntegerField()
+    p_recruit_status = models.IntegerField()
     class Meta:
         managed = False
         db_table = 'TB_project'
