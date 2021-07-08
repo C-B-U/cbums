@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <link rel="stylesheet" href="../../styles/study/myStudy/myStudy.css">
+    <link rel="stylesheet" href="../../styles/elementSetting.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body class="wrap">
+    <header>
+        <div class="header-wrap">
+
+            <div class="header-wrap__logo">
+                <a href="#"><img id="logo_img" src="../../images/study/myStudy/logo.png" alt="씨부엉 상단 로고"
+                        height="36"></a>
+            </div>
+
+            <nav>
+                <ul class="nav-wrap">
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">스터디</a></li>
+                    <li><a href="#">컨텐츠</a></li>
+                    <li><a href="#">회원 관리</a></li>
+                </ul>
+                <div id="mysidenav" class="nav-wrap-sidenav mobile">
+                    <a href="#" class="closebtn" onclick='closeNav()'>x</a>
+                    <a href="#">카테고리1</a>
+                    <a href="#">카테고리2</a>
+                    <a href="#">카테고리3</a>
+                    <a href="#">카테고리4</a>
+                    <a href="#">카테고리5</a>
+                </div>
+                <div class="new-wrap mobile">
+                    <div class="nav-wrap-mobile mobile" onclick='openNav()'>
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="header-wrap__logo-mobile mobile">
+                        <a href="#"><img src="../../images/study/myStudy/logo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <article class="article">
+        <div class="article__openedStudy">
+            <div class="openedStudy__title">
+                개설한 스터디
+            </div>
+            <div class="openedStudy__contents">
+                <div class="openedStudy__first">
+                    <ul class="openedStudy__list">
+                        <li class="openedStudy__list--name">DB손해보험</li>
+                        <li class="openedStudy__list--tag">#Database #Study</li>
+                        <li class="openedStudy__list--NumOfPeople"><strong style="color:#ff8f8f">3</strong>/6</li>
+                        <span class="openedStudy__list--btn"><i class="fas fa-angle-up"></i></span>
+                        </li>
+                    </ul>
+                    <div class="openedStudy__openTable">
+                        <table class="openedStudy__table">
+                            <thead>
+                                <tr>
+                                    <th class="openedStudy__table--name">이름</th>
+                                    <th class="openedStudy__table--clubNum">기수</th>
+                                    <th class="openedStudy__table--applyDate">신청 날짜</th>
+                                    <th class="openedStudy__table--phoneNum">연락처</th>
+                                    <th class="openedStudy__table--phoneNum">수락/거절</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>ㅇㅂㅇ</th>
+                                    <td>7기</td>
+                                    <td>21/07/08</td>
+                                    <td>010-0000-0000</td>
+                                    <td><button>수락</button> <button>거절</button></td>
+                                </tr>
+                                <tr>
+                                    <th>ㅇㅡㅇ</th>
+                                    <td>6기</td>
+                                    <td>21/07/08</td>
+                                    <td>010-0000-0000</td>
+                                    <td><button>수락</button> <button>거절</button></td>
+                                </tr>
+                                <tr>
+                                    <th>ㅇㅅㅇ</th>
+                                    <td>5기</td>
+                                    <td>21/07/08</td>
+                                    <td>010-0000-0000</td>
+                                    <td><button>수락</button>
+                                        <button>거절</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="openedStudy__second">
+                    <ul class="openedStudy__list">
+                        <li class="openedStudy__list--name">자바를 자바보자</li>
+                        <li class="openedStudy__list--tag">#Java #Study</li>
+                        <li class="openedStudy__list--NumOfPeople"><strong style="color:#ff8f8f">2</strong>/4</li>
+                        <span class="openedStudy__list--btn"><i class="fas fa-angle-up"></i></span>
+                        </li>
+                    </ul>
+                    <div class="openedStudy__openTable">
+                        <table class="openedStudy__table">
+                            <thead>
+                                <tr>
+                                    <th class="openedStudy__table--name">이름</th>
+                                    <th class="openedStudy__table--clubNum">기수</th>
+                                    <th class="openedStudy__table--applyDate">신청 날짜</th>
+                                    <th class="openedStudy__table--phoneNum">연락처</th>
+                                    <th class="openedStudy__table--phoneNum">수락/거절</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>ㅇㅂㅇ</th>
+                                    <td>7기</td>
+                                    <td>21/07/08</td>
+                                    <td>010-0000-0000</td>
+                                    <td><button>수락</button> <button>거절</button></td>
+                                </tr>
+                                <tr>
+                                    <th>ㅇㅡㅇ</th>
+                                    <td>6기</td>
+                                    <td>21/07/08</td>
+                                    <td>010-0000-0000</td>
+                                    <td><button>수락</button> <button>거절</button></td>
+                                </tr>
+                                <tr>
+                                    <th>ㅇㅅㅇ</th>
+                                    <td>5기</td>
+                                    <td>21/07/08</td>
+                                    <td>010-0000-0000</td>
+                                    <td><button>수락</button>
+                                        <button>거절</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <div class="footer-wrap">
+            <div class="footer__info">
+                <div class="footer__info-wrap">
+                    <div class="footer__info-CBU">
+                        <div class="footer_info-mobile">한국산업기술대학교</div>
+                        <div class="footer_info-mobile">프로그래밍 동아리</div>
+                        <div class="footer_mobile">씨부엉</div>
+                        <div class="footer_mobile">http://www.abcdefgh.ac.kr</div>
+                    </div>
+                    <div class="footer__info-staffs">
+                        <div class="footer__info-staffs-mobile mobile">
+                            <div class="footer_info-mobile">회장 김김김</div>
+                            <div class="footer_info-mobile">010-1010-1010</div>
+                        </div>
+                        <ul class="footer__info-staffA footer_mobile">
+                            <li>회장 김김김</li>
+                            <li>010-1010-1010</li>
+                            <li>naver@naver.com</li>
+                        </ul>
+                        <ul class="footer__info-staffB footer_mobile">
+                            <li>부회장 박박박</li>
+                            <li>010-1010-1010</li>
+                            <li>naver@naver.com</li>
+                        </ul>
+                    </div>
+                    <div class="footer__info-logo mobile">
+                        <img src="../../images/study/myStudy/mobileLogo.png" alt="씨부엉 하단 로고" width="120">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../../scripts/study/myStudy/myStudy.js"></script>
+</body>
+
+</html>
