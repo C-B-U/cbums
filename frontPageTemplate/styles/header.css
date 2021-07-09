@@ -81,6 +81,7 @@ nav{
         display: flex;
         justify-content: space-between;
     }
+    
     .nav-wrap-mobile{
         display: flex;
         width: 150px;
