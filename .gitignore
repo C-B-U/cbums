@@ -6,6 +6,7 @@ projects/mysql_setting.py
 
 # 가상환경
 venvs/
+venv/
 
 # 캐시
 __pycache__/
