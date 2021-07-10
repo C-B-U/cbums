@@ -1,0 +1,10 @@
+asgiref==3.3.1
+config==0.5.0.post0
+Django==3.1.7
+djangorestframework==3.12.4
+Markdown==3.3.4
+mysql==0.0.3
+mysql-connector-python==8.0.25
+mysqlclient==2.0.3
+pytz==2021.1
+sqlparse==0.4.1
