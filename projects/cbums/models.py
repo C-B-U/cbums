@@ -15,7 +15,7 @@ class TbBoard(models.Model):
     board_production_dt = models.DateTimeField()
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_board'
 
 
@@ -25,7 +25,7 @@ class TbBoardSubscription(models.Model):
     subscription_dt = models.DateTimeField()
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_board_subscription'
         unique_together = (('board_name', 'subscriber'),)
         
@@ -37,7 +37,7 @@ class TbBook(models.Model):
     book_rg_dt = models.DateTimeField()
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_book'
         unique_together = (('isbn', 'book_owner'),)
 
@@ -48,7 +48,7 @@ class TbBookTag(models.Model):
     tag_name = models.ForeignKey('TbTag', models.DO_NOTHING, db_column='tag_name')
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_book_tag'
         unique_together = (('isbn', 'book_owner', 'tag_name'),)
 
@@ -61,7 +61,7 @@ class TbComment(models.Model):
     comment_rg_dt = models.DateTimeField()
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_comment'
 
 
@@ -75,7 +75,7 @@ class TbForm(models.Model):
     producer = models.ForeignKey('TbMember', models.DO_NOTHING, db_column='producer')
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_form'
         
 class TbFormAnswer(models.Model):
@@ -85,7 +85,7 @@ class TbFormAnswer(models.Model):
     answer_content = models.CharField(max_length=6000)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_form_answer'
         unique_together = (('form_seq', 'question_seq', 'form_writer'),)
 
@@ -95,7 +95,7 @@ class TbFormContent(models.Model):
     question_seq = models.ForeignKey('TbFormQuestion', models.DO_NOTHING, db_column='question_seq')
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_form_content'
         unique_together = (('form_seq', 'question_seq'),)
 
@@ -107,7 +107,7 @@ class TbFormQuestion(models.Model):
     producer_dt = models.DateTimeField()
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_form_question'
         
 class TbMember(models.Model):
@@ -122,7 +122,7 @@ class TbMember(models.Model):
     sysop_status = models.IntegerField()
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_member'
 
 
@@ -131,7 +131,7 @@ class TbMemberTag(models.Model):
     tag_name = models.ForeignKey('TbTag', models.DO_NOTHING, db_column='tag_name')
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_member_tag'
         unique_together = (('m_email', 'tag_name'),)
         
@@ -148,7 +148,7 @@ class TbPost(models.Model):
     parent_post_seq = models.ForeignKey('self', models.DO_NOTHING, db_column='parent_post_seq', blank=True, null=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_post'
 
 
@@ -157,7 +157,7 @@ class TbPostTag(models.Model):
     tag_name = models.ForeignKey('TbTag', models.DO_NOTHING, db_column='tag_name')
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_post_tag'
         unique_together = (('post_seq', 'tag_name'),)
         
@@ -172,7 +172,7 @@ class TbProject(models.Model):
     p_rg_no = models.IntegerField()
     p_recruit_status = models.IntegerField()
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_project'
 
 
@@ -184,7 +184,7 @@ class TbProjectMember(models.Model):
     sign_up_status = models.IntegerField()
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_project_member'
         unique_together = (('p_seq', 'p_m'),)
         
@@ -196,7 +196,7 @@ class TbProjectParticipation(models.Model):
     homework_submit_status = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_project_participation'
         unique_together = (('p_seq', 'progress_date', 'p_m'),)
 
@@ -208,7 +208,7 @@ class TbProjectPlan(models.Model):
     homework = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_project_plan'
         unique_together = (('p_seq', 'plan_date'),)
 
@@ -220,7 +220,7 @@ class TbProjectProgress(models.Model):
     progress_image = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_project_progress'
         unique_together = (('p_seq', 'progress_date'),)
 
@@ -230,7 +230,7 @@ class TbProjectTag(models.Model):
     tag_name = models.ForeignKey('TbTag', models.DO_NOTHING, db_column='tag_name')
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_project_tag'
         unique_together = (('p_seq', 'tag_name'),)
 
@@ -241,5 +241,5 @@ class TbTag(models.Model):
     producer = models.ForeignKey(TbMember, models.DO_NOTHING, db_column='producer')
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'TB_tag'
