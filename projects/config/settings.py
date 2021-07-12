@@ -48,6 +48,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+    
 
 # 구름 ide에서 테스트 실행시키기 위해 전체 호스트로 설정, 후에 수정해야 함!
 ALLOWED_HOSTS = ['*']
@@ -108,10 +109,19 @@ DATABASES = {
     }
 }
 """
-
-
-DATABASES = mysql_setting.DATABASES
 SECRET_KEY = mysql_setting.SECRET_KEY
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = mysql_setting.DATABASES
+
+# DATABASES = mysql_setting.DATABASES
+# SECRET_KEY = mysql_setting.SECRET_KEY
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
