@@ -15,7 +15,7 @@
     <div class="wrap">
         <header>
             <div class="header-wrap">
-               <div class="header-wrap__logo">
+                <div class="header-wrap__logo">
                    <a href="../../default/default.html"><img id="logo_img" src="../../images/default/logo.png" alt="씨부엉 상단 로고" height="36"></a>
                </div>
                 <nav>
@@ -39,13 +39,13 @@
                             <i class="fas fa-bars"></i>
                         </div>
                         <div class="header-wrap__logo-mobile mobile">
-                           <a href="../../default/default.html"><img src="../../images/default/mobileLogo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
-                       </div>
-                   </div>
-                 </nav>
-              </div>
-         </header>
-         <main>
+                            <a href="../../default/default.html"><img src="../../images/default/mobileLogo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
             <div class="main_wrap">
                 <div class="main__title-wrap">
                     <div class="main__title">
@@ -54,17 +54,32 @@
                 </div>
                 <div class="main__writing-wrap">
                     <form class="main__writing-form">
-                        <table class="main__writing-table">  <!--활동일지 글쓰기 -->
+                        <table class="main__writing-table">  <!--활동일지 글쓰기-->
                             <tr>
-                                <th>제목</th>   
-                                <td><input type="text" name="study-title" autocomplete="off"> </td>  <!--제목-->
+                                <th id="title">제목</th>   
+                                <td><input type="text" name="study-title" autocomplete="off"></td>  <!--제목-->
                             </tr>
                             <tr>
                                 <th>참여인원</th>
                                 <td>
-                                    <ul>
+                                    <ul class="main__writing-table-checkbox-ul">
                                         <li>
-                                            <label class="main__writing-table-checkbox"><input type="checkbox" name=""></label>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="participation-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="participation-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="participation-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="participation-checkbox"></label>
                                         </li>
                                     </ul>
                                 </td>
@@ -75,23 +90,46 @@
                             </tr>
                             <tr>
                                 <th>세부내용</th>
-                                <td><textarea name="study-explanation" style="resize: none; width: 100%; height: 130px;" required wrap="hard"></textarea></td>
+                                <td><textarea name="study-explanation" style="resize: none; width: 98%; height: 130px;" required wrap="hard"></textarea></td>
                             </tr>
                             <tr>
                                 <th>활동사진</th>
-                                <td><input type="file" name="study-image" id="study-image"></td>
+                                <td><input type="file" name="study-image" id="study-image"><div id="image_container"></div></td>
                             </tr>
                             <tr>
                                 <th>숙제여부</th>
-                                <td></td>
+                                <td>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                </td>
                             </tr>
                         </table>
-                        <button type="button" class="main__writing-button">등록</button>
+                        <div class="main__writing-button-wrap">
+                            <button type="button" class="main__writing-button">등록</button>
+                        </div>
                     </form>
                 </div>
             </div>
-         </main>
-         <footer>
+        </main>
+        <footer>
             <div class="footer-wrap">
                    <div class="footer__info">
                       <div class="footer__info-wrap">
@@ -121,12 +159,13 @@
                            <img src="../../images/default/mobileLogo.png" alt="씨부엉 하단 로고" width="120">
                        </div>
                      </div>
-   
-                   </div>
+                     
+                    </div>
                    
                </div>
         </footer>
     </div>
     <script src="../../scripts/sidebar.js"></script>
+    <script src="../../scripts/study/study_workJournalWriting/study_workJournalWriting.js"></script>
 </body>
 </html>

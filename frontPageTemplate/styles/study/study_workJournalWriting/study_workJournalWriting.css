@@ -12,13 +12,41 @@ main{
     justify-content: space-between;
     padding: 2em 4em 0em;
 }
-
 .main__title > h2{
     margin: 0;
     color: #424043;
     padding-bottom: 0.1em;
     border-bottom:solid 2px #424043; 
 }
+#title{
+    text-align: left;
+}
+.main__writing-button-wrap{
+    display: flex;
+    justify-content: flex-end;
+}
+.main__writing-button{
+    margin: 0em 4em 4em 5em;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 1em;
+    
+    background-color: #fff1f5;
+    cursor: pointer;
+}
+.main__writing-table{
+    width: 81%;
+    margin: 3em 4em 2em 4em;
+    border-collapse: collapse;
+}
+.main__writing-table-checkbox-ul{
+    padding: 0;
+}
+th, td{
+    border: 1px solid #444444;
+    padding: 10px;
+}
+
 @media all and (min-width:768px) and (max-width:1023px){
     .main_wrap{
         width: 60%;
@@ -39,7 +67,6 @@ main{
         font-size: 1.3em;
     }
 }
-
 @media all and (max-width:767px){
     .main_wrap{
         width: 100%;
