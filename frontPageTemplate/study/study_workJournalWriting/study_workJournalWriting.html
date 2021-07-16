@@ -57,29 +57,41 @@
                         <table class="main__writing-table">  <!--활동일지 글쓰기-->
                             <tr>
                                 <th id="title">제목</th>   
-                                <td><input type="text" name="study-title" autocomplete="off"></td>  <!--제목-->
+                                <td><input type="text" name="study-title" autocomplete="off" style="width: 95%;"></td>  <!--제목-->
                             </tr>
                             <tr>
-                                <th>참여인원</th>
+                                <th>참여인원</th> <!--팀원들 출석/결석/지각 여부-->
                                 <td>
                                     <ul class="main__writing-table-checkbox-ul">
                                         <li>
-                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="participation-checkbox"></label>
+                                            <label class="main__writing-table-checkbox">
+                                                <div class="main__writing-table-button">결석</div>
+                                                 6기 최부엉
+                                            </label>
                                         </li>
                                     </ul>
                                     <ul class="main__writing-table-checkbox-ul">
                                         <li>
-                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="participation-checkbox"></label>
+                                            <label class="main__writing-table-checkbox">
+                                                <div class="main__writing-table-button">결석</div>
+                                                7기 김부엉
+                                            </label>
                                         </li>
                                     </ul>
                                     <ul class="main__writing-table-checkbox-ul">
                                         <li>
-                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="participation-checkbox"></label>
+                                            <label class="main__writing-table-checkbox"> 
+                                            <div class="main__writing-table-button">결석</div>
+                                                8기 김부엉
+                                            </label>
                                         </li>
                                     </ul>
                                     <ul class="main__writing-table-checkbox-ul">
                                         <li>
-                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="participation-checkbox"></label>
+                                            <label class="main__writing-table-checkbox">
+                                                <div class="main__writing-table-button">결석</div>
+                                                9기 김부엉
+                                            </label>
                                         </li>
                                     </ul>
                                 </td>
@@ -90,16 +102,16 @@
                             </tr>
                             <tr>
                                 <th>세부내용</th>
-                                <td><textarea name="study-explanation" style="resize: none; width: 98%; height: 130px;" required wrap="hard"></textarea></td>
+                                <td><textarea name="study-explanation" style="resize: none; width: 95%; height: 130px;" required wrap="hard"></textarea></td>
                             </tr>
                             <tr>
                                 <th>활동사진</th>
-                                <td><input type="file" name="study-image" id="study-image"><div id="image_container"></div></td>
+                                <td><input type="file" name="study-image" id="study-image" multiple><div id="image_container"></div></td>
                             </tr>
                             <tr>
-                                <th>숙제여부</th>
+                                <th>숙제여부</th> 
                                 <td>
-                                    <ul class="main__writing-table-checkbox-ul">
+                                    <ul class="main__writing-table-checkbox-ul"> <!--팀원들의 숙제 여부-->
                                         <li>
                                             <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox"></label>
                                         </li>
@@ -124,6 +136,7 @@
                         </table>
                         <div class="main__writing-button-wrap">
                             <button type="button" class="main__writing-button">등록</button>
+                            
                         </div>
                     </form>
                 </div>
