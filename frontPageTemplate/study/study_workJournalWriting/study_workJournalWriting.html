@@ -66,23 +66,26 @@
                                     <ul class="main__writing-table-checkbox-ul">
                                         <li>
                                             <label class="main__writing-table-checkbox">
-                                                <input class="main__writing-table-button" type="button" name="mem1" value="결석"> 
-                                                 6기 최부엉
+                                                <div class="main__writing-table-button" onclick="switchValue(this, 0)">결석</div>
+                                                <input class="main__writing-table-attend" type="hidden" name="mem1" value="0" > <!--value 결석:0, 지각:1, 출석:2-->
+                                                6기 김부엉
                                             </label>
                                         </li>
                                     </ul>
                                     <ul class="main__writing-table-checkbox-ul">
                                         <li>
                                             <label class="main__writing-table-checkbox">
-                                                <input class="main__writing-table-button" type="button" name="mem2" value="결석">
+                                                <div class="main__writing-table-button" onclick="switchValue(this, 1)">결석</div>
+                                                <input class="main__writing-table-attend" type="hidden" name="mem2" value="0">
                                                 7기 김부엉
                                             </label>
                                         </li>
                                     </ul>
                                     <ul class="main__writing-table-checkbox-ul">
                                         <li>
-                                            <label class="main__writing-table-checkbox"> 
-                                                <input class="main__writing-table-button" type="button" name="mem3" value="결석">
+                                            <label class="main__writing-table-checkbox">
+                                                <div class="main__writing-table-button" onclick="switchValue(this, 2)">결석</div>
+                                                <input class="main__writing-table-attend" type="hidden" name="mem3" value="0">
                                                 8기 김부엉
                                             </label>
                                         </li>
@@ -90,7 +93,8 @@
                                     <ul class="main__writing-table-checkbox-ul">
                                         <li>
                                             <label class="main__writing-table-checkbox">
-                                                <input class="main__writing-table-button" type="button" name="mem4" value="결석">
+                                                <div class="main__writing-table-button" onclick="switchValue(this, 3)">결석</div>
+                                                <input class="main__writing-table-attend" type="hidden"  name="mem4" value="0">
                                                 9기 김부엉
                                             </label>
                                         </li>
