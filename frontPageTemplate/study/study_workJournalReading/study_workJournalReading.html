@@ -47,9 +47,115 @@
          </header>
          <main>
             <div class="main_wrap">
-                
+                <div class="main__title-wrap">
+                    <div class="main__title">
+                        <h2>스터디1</h2>   <!--스터디명-->
+                    </div>  
+                </div>
+                <div class="main__reading-wrap">
+                        <table class="main__reading-table">  <!--활동일지 열람 페이지-->
+                            <tr>
+                                <th id="title">제목</th>   
+                                <td>자바스터디 1주차</td>  <!--제목-->
+                            </tr>
+                            <tr>
+                                <th>참여인원</th> <!--팀원들 출석/결석/지각 여부-->
+                                <td>
+                                    <ul class="main__reading-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__reading-table-checkbox">
+                                                <div class="main__reading-table-button">결석</div>
+                                                <input class="main__reading-table-attend" type="hidden" name="mem1" value="0" > <!--value 결석:0, 지각:1, 출석:2-->
+                                                6기 김부엉
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__reading-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__reading-table-checkbox">
+                                                <div class="main__reading-table-button">결석</div>
+                                                <input class="main__reading-table-attend" type="hidden" name="mem2" value="0">
+                                                7기 김부엉
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__reading-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__reading-table-checkbox">
+                                                <div class="main__reading-table-button">결석</div>
+                                                <input class="main__reading-table-attend" type="hidden" name="mem3" value="0">
+                                                8기 김부엉
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__reading-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__reading-table-checkbox">
+                                                <div class="main__reading-table-button">결석</div>
+                                                <input class="main__reading-table-attend" type="hidden"  name="mem4" value="0">
+                                                9기 김부엉
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>진행날짜</th>
+                                <td>2021년 07월 18일</td>
+                            </tr>
+                            <tr>
+                                <th>세부내용</th>
+                                <td>
+                                    <div class="main__reading-table-tdBox">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, ut qui nemo repellendus, 
+                                        possimus quia inventore odit vero corporis rerum officiis molestiae dolores aliquam pariatur doloremque, 
+                                        aspernatur soluta tempore magnam.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>활동사진</th>
+                                <td>
+                                    <ul  class="main__reading-image-ul">
+                                        <li><img src="../../images/default/join1.jpg" alt="활동사진1" class="main__reading-image"></li>
+                                        <li><img src="../../images/default/join2.jpg"  alt="활동사진1" class="main__reading-image"></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>숙제여부</th> 
+                                <td>
+                                    <ul class="main__reading-table-checkbox-ul"> <!--팀원들의 숙제 여부-->
+                                        <li>
+                                            <label class="main__reading-table-checkbox"><input type="checkbox" name="homework-checkbox" value="Y" checked>6기 김부엉</label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__reading-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__reading-table-checkbox"><input type="checkbox" name="homework-checkbox" value="Y" checked>7기 김부엉</label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__reading-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__reading-table-checkbox"><input type="checkbox" name="homework-checkbox" value="Y" checked>8기 김부엉</label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__reading-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__reading-table-checkbox"><input type="checkbox" name="homework-checkbox" value="N">9기 김부엉</label>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="main__reading-button-wrap">
+                            <button type="button" class="main__reading-button-modify">수정</button>
+                            <button type="button" class="main__reading-button-delete">삭제</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-         </main>
+        </main>
          <footer>
             <div class="footer-wrap">
                    <div class="footer__info">
