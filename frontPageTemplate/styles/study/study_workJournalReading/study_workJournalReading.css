@@ -44,22 +44,20 @@ main{
     cursor: pointer;
     
 }
-td{
+.main__reading-table td{
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
-    padding: 10px;
+    padding: 1em;
 }
-th{
+.main__reading-table th{
     width: 23%;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     background-color: #f3f6f7;
     padding: 10px;
 }
-td{
-    padding: 1em;
-}
-input,textarea{
+
+.main__reading-table input{
     margin: 0.5em;
 }
 .main__reading-button-wrap{
@@ -75,7 +73,7 @@ input,textarea{
     margin-bottom: 0.5em;
 }
 .main__reading-button-delete{
-    margin: 0em 6.5em 4em 5em;
+    margin: 0em 6.5em 1em 5em;
     padding: 0.5em 1em;
     border: none;
     border-radius: 1em;
@@ -85,7 +83,7 @@ input,textarea{
     cursor: pointer;
 }
 .main__reading-button-modify{
-    margin: 0em 4em 4em 4.6em;
+    margin: 0em 4em 1em 4.6em;
     padding: 0.5em 1em;
     border: none;
     border-radius: 1em;
@@ -94,7 +92,48 @@ input,textarea{
     border: 1px solid rgb(189, 189, 189);
     cursor: pointer;
 }
-
+.main__listing-title{
+    padding: 2em 3.7em 0em;
+}
+.main__listing-wrap > table {
+    width:85%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+.main__listing-table td{
+    font-size: 0.9em;
+    text-align: center;       
+}
+.main__listing-table td:first-child{
+    text-align: left;
+    padding-left: 0.5em;
+}
+.main__listing-table td > a{
+      color: rgb(35, 35, 35);
+  }
+.main__listing-table td> a:hover{
+      border-bottom: 1px solid black;
+  }
+.main__listing-table tr {
+      border-bottom: 1px solid #f2f2f2;
+      padding: 10px;
+  }
+.main__listing-table tr:hover{
+      background-color: rgb(241, 241, 241);
+  }
+.title{width: 60%;}
+.writer{text-align: center;}
+.date{text-align: center;}
+.main__listing-table th,.main__listing-table td{
+      padding: 0.8em 0;
+  }
+.main__page-box > a{
+    display: flex;
+    justify-content: center;
+    color: red; 
+    padding: 1em;
+    padding-bottom: 3em;
+}
 @media all and (min-width:768px) and (max-width:1023px){
     .main_wrap{
         width: 60%;
@@ -115,11 +154,19 @@ input,textarea{
         font-size: 1.3em;
     }
     .main__reading-button-delete{
-        margin: 0em 3em 4em 5em;
+        margin: 0em 3em 2em 5em;
     }
     .main__reading-button-modify{
-        margin: 0em 4em 4em 4.5em;
+        margin: 0em 4em 2em 4.5em;
     }
+    .main__listing-title{
+        padding: 0em 3.7em 0em 3em;
+    }
+    .main__listing-table td{
+        font-size: 0.87em;
+        text-align: center;       
+    }
+    .title{width: 60%;}
 }
 @media all and (max-width:767px){
     .main_wrap{
@@ -149,11 +196,18 @@ input,textarea{
         justify-content: space-between;
     }
     .main__reading-button-delete{
-        margin: 0em 1.7em 4em 5em;
+        margin: 0em 1.7em 1em 5em;
     }
     .main__reading-button-modify{
-        margin: 0em 4em 4em 2em;
+        margin: 0em 4em 1em 2em;
     }
-   
+    .main__listing-title{
+        padding: 2em 3.7em 0em 2.4em;
+    }
+    .main__listing-table td{
+        font-size: 0.85em;
+        text-align: center;       
+    }
+    .title{width: 50%;}
     
 }
