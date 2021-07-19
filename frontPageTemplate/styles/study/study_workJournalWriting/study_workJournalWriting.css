@@ -45,20 +45,44 @@ main{
     cursor: pointer;
     
 }
-th, td{
-    border: 1px solid #444444;
+td{
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     padding: 10px;
 }
+th{
+    width: 23%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #f3f6f7;
+    padding: 10px;
+}
+
 input,textarea{
     margin: 0.5em;
 }
-.main__writing-button{
+.main__writing-button-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+.main__writing-button-cancel{
     margin: 0em 4em 4em 5em;
     padding: 0.5em 1em;
     border: none;
     border-radius: 1em;
     background-color: #fff1f5;
-    border: 1px solid rgb(93, 93, 93);
+    color: #585858;
+    border: 1px solid rgb(189, 189, 189);
+    cursor: pointer;
+}
+.main__writing-button-write{
+    margin: 0em 6em 4em 5em;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 1em;
+    background-color: #fff1f5;
+    color: #585858;
+    border: 1px solid rgb(189, 189, 189);
     cursor: pointer;
 }
 
@@ -80,6 +104,12 @@ input,textarea{
         padding-bottom: 0.1em;
         border-bottom:solid 2px #424043; 
         font-size: 1.3em;
+    }
+    .main__writing-button-cancel{
+        margin: 0em 4em 4em 4.7em;
+    }
+    .main__writing-button-write{
+        margin: 0em 3em 4em 5em;
     }
 }
 @media all and (max-width:767px){
@@ -105,10 +135,11 @@ input,textarea{
         margin: 2em;
         width: 88%;
     }
-    .main__writing-button{
-        margin: 0em 4em 4em 2.5em;
+    .main__writing-button-cancel{
+        margin: 0em 0em 4em 2.5em;
+    }
+    .main__writing-button-write{
+        margin: 0em 2em 4em 0em;
     }
   
-   
-    
 }
