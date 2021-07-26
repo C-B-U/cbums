@@ -13,11 +13,11 @@ public class ProjectParticipation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectParticipationId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_progress_id",nullable = false)
     private ProjectProgress projectProgress;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_member_id",nullable = false)
     private ProjectMember member;
 

@@ -9,19 +9,22 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class Board {
+public class Book{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long boardId;
-    @Column(nullable = false)
-    private String name;
+    private Long bookId;
+
+    private String bookName;
+    private String isbn;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id", nullable = false)
-    private Member producer;
+    private Member owner;
 
-   // @Temporal(TemporalType.TIMESTAMP)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="member_id", nullable = false)
+    private Member borrower;
+
     @Column(nullable = false)
-    private LocalDateTime openingDatetime;
-
+    private LocalDateTime registerDatetime;
 }

@@ -25,7 +25,7 @@ public class Form {
 
     private Integer registerNumber; // 비모집 지워서인 경우 null
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id", nullable = false)
     private Member producer;
 }
