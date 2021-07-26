@@ -22,6 +22,7 @@ dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	//implementation 'org.springframework.security:spring-security-test'
 	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+	implementation 'org.hibernate:hibernate-java8:5.5.4.Final'
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	compileOnly 'org.projectlombok:lombok:1.18.20'

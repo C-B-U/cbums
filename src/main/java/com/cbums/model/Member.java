@@ -4,10 +4,7 @@ package com.cbums.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -18,15 +15,20 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
+    @Column(nullable = false)
     private String email;
+
     private String password;
+    @Column(nullable = false)
     private String name;
     private Integer registerNumber;
+    @Column(nullable = false)
     private Integer classNumber;
+    @Column(nullable = false)
     private String department;
     private String profileImage;
     private String introduce;
-    //private
 
-
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
 }
