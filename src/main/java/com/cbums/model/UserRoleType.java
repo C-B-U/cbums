@@ -1,5 +1,5 @@
 package com.cbums.model;
 
-public enum RoleType {
+public enum UserRoleType {
     ADMIN, USER
 }

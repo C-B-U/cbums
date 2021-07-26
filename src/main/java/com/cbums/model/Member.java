@@ -21,6 +21,8 @@ public class Member {
     private String password;
     @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
+    private String nickName;
     private Integer registerNumber;
     @Column(nullable = false)
     private Integer classNumber;
@@ -30,5 +32,5 @@ public class Member {
     private String introduce;
 
     @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    private UserRoleType userRoleType;
 }
