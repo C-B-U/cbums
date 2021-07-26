@@ -14,8 +14,8 @@ a {text-decoration: none;}
 .mobile {
     display: none;
 }
-header { 
-    background-color: white; 
+header {
+    background-color: white;
     display: flex;
     align-items: center;
 }
@@ -25,7 +25,7 @@ header {
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
-    
+
 }
 
 .header-wrap__logo{
@@ -48,7 +48,7 @@ nav{
     align-items: center;
     font-weight: bold;
     font-size: 0.8em;
-    
+
 }
 .nav-wrap > li a{
     display: block;
@@ -77,15 +77,15 @@ h2{
     font-weight:bold;
     font-size: 1.2em;
     margin-top: 4%;
-    
+
 }
 h2.main__study-h2:after {
-        content: "";
-        display: block;
-        width: 9.5%;
-        border-bottom: 2px solid #D5DDC5;
-        margin: 1.5% auto;
-      }
+    content: "";
+    display: block;
+    width: 9.5%;
+    border-bottom: 2px solid #D5DDC5;
+    margin: 1.5% auto;
+}
 
 .main__study-wrap{
     position: relative;
@@ -93,10 +93,10 @@ h2.main__study-h2:after {
     height: 170px;
     max-width: 1000px;
     margin: 0 auto;
-   -webkit-mask: linear-gradient(to right,transparent,
-        black 5%,
-        black 93%,
-        transparent 100%);
+    -webkit-mask: linear-gradient(to right,transparent,
+    black 5%,
+    black 93%,
+    transparent 100%);
     overflow: hidden;
 }
 
@@ -104,16 +104,16 @@ h2.main__study-h2:after {
 .swiper-container{
     width: 100%;
     overflow: hidden;
-    
+
     -webkit-mask: linear-gradient(to right,transparent,
-        black 5%,
-        black 93%,
-        transparent 100%);
+    black 5%,
+    black 93%,
+    transparent 100%);
 }
 
 .swiper-slide > a{
     color: black;
-    
+
 }
 
 .main__slide-box{
@@ -122,11 +122,11 @@ h2.main__study-h2:after {
     height: 120px;
     margin: 0;
     cursor: pointer;
-    
+
 }
 
 h3{
-    
+
     display: flex;
     justify-content: center;
     margin: 6% 0;
@@ -139,8 +139,8 @@ h3:hover{
 .main__study-buttons{
     display: flex;
     justify-content: space-around;
-    
-    
+
+
 }
 
 .swiper-button-next{
@@ -156,7 +156,7 @@ h3:hover{
 
 
 .main__study {
-  position: relative;
+    position: relative;
 }
 
 .main__join{
@@ -166,12 +166,12 @@ h2.main__join-h2{
     padding-top: 4%;
 }
 h2.main__join-h2:after {
-        content: "";
-        display: block;
-        width: 9.5%;
-        border-bottom: 2px solid white;
-        margin: 1.5% auto;
-      }
+    content: "";
+    display: block;
+    width: 9.5%;
+    border-bottom: 2px solid white;
+    margin: 1.5% auto;
+}
 .main__join-image{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -180,13 +180,13 @@ h2.main__join-h2:after {
     margin: 0 auto;
     padding: 0.8em 2em;
     background-color: white;
-    
-   
+
+
     -webkit-mask: linear-gradient(to right,transparent,
-        black 10%,
-        black 92%,
-        transparent 100%);
-    
+    black 10%,
+    black 92%,
+    transparent 100%);
+
 }
 .main__join-image img{
     width: 90%;
@@ -206,7 +206,7 @@ h2.main__join-h2:after {
 .main__join-button-wrap{
     display: flex;
     justify-content: center;
-    
+
 }
 .main__join-button{
     display: flex;
@@ -220,8 +220,8 @@ h2.main__join-h2:after {
     border-radius: 1.8em;
     box-shadow: 5px 5px 5px rgba(150,150,150,1);
     background-color: #EFECE8;
-    
-    
+
+
 }
 .main__join-button:hover{
     background-color: #ffffff;
@@ -234,7 +234,7 @@ h2.main__join-h2:after {
 .main__etc{
 
     padding: 10em;
-    
+
 }
 
 footer{
@@ -243,16 +243,16 @@ footer{
 }
 
 .footer__info{
-   
-    width: 52.08%; 
+
+    width: 52.08%;
     margin: 0 auto;
     color: white;
-    
+
 }
 .footer__info-wrap{
-     display: flex;
+    display: flex;
     justify-content: space-between;
-    
+
 }
 
 .footer__info-CBU{
@@ -269,20 +269,20 @@ footer{
 /*
 pc 1920px ~ 1200px
 태블릿 ~ 768px
-모바일 ~ 480px 
+모바일 ~ 480px
 */
 @media all and (min-width:768px) and (max-width:1200px){
-     .header-wrap{
-       width: 60%; 
-       margin: 0 auto;
-       display: flex;
-       justify-content: space-around;
-    
-}
+    .header-wrap{
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+
+    }
     .main-wrap{
         width: 60%;
         margin: 0 auto;
-        
+
     }
     .main__study-container{
         height: 125px;
@@ -295,37 +295,37 @@ pc 1920px ~ 1200px
         font-size: 0.6em;
     }
     .footer__info{
-        width: 60%; 
-       margin: 0 auto;
+        width: 60%;
+        margin: 0 auto;
     }
-    
-.main__study-buttonA{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 95px;
-    width: 50px;
-    height: 50px;
-    background-color: black;
-    border-radius: 100%;
-    opacity:0.6;
-    
-}
-.main__study-buttonB{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 40px;
-    bottom: 95px;
-    width: 50px;
-    height: 50px;
-    background-color: black;
-    border-radius: 100%;
-    opacity:0.6;
-    
-}
+
+    .main__study-buttonA{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 95px;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        border-radius: 100%;
+        opacity:0.6;
+
+    }
+    .main__study-buttonB{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 40px;
+        bottom: 95px;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        border-radius: 100%;
+        opacity:0.6;
+
+    }
 
 }
 
@@ -335,14 +335,14 @@ pc 1920px ~ 1200px
     .mobile {
         display: block;
     }
-    
+
     .header-wrap{
-    width: 100%; 
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    
-}
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+
+    }
     .header-wrap__logo{
         display: none;
     }
@@ -352,7 +352,7 @@ pc 1920px ~ 1200px
     main{
         width: 100%;
     }
-   
+
     .main-wrap{
         position: relative;
         width: 100%;
@@ -369,7 +369,7 @@ pc 1920px ~ 1200px
         top: 20px;
         font-weight: bold;
         z-index: 1;
-        
+
     }
     .main__member > a{
         color: white;
@@ -380,15 +380,15 @@ pc 1920px ~ 1200px
     .main__member-login{
         border-bottom: 2px solid white;
     }
-    
+
     .main__CBU-image-mobile{
         z-index: 0;
     }
-    
+
     h2.main__study-h2:after{
         border-bottom: none;
     }
-    
+
     .main__study-info{
         display: flex;
         justify-content: space-between;
@@ -397,9 +397,9 @@ pc 1920px ~ 1200px
     .main__study-info>h2{
         margin: 0;
         font-size: 1.3em;
-    
+
     }
-    
+
     .main__study-detail-mobile > a{
         display: flex;
         font-size: 0.7em;
@@ -414,21 +414,21 @@ pc 1920px ~ 1200px
     .main__study-detail-mobile a > i{
         margin-top: 0.15em;
     }
-    
-    
-        
-    
+
+
+
+
     .contour{
         width: 90%;
         margin: 0 auto;
         border-bottom: 3px solid #ded6cf;
     }
-   
+
     .slide-wrap{
         width: 100%;
         height: 185px;
-       
-        
+
+
     }
 
     .swiper-wrapper{
@@ -447,7 +447,7 @@ pc 1920px ~ 1200px
         width: 125px;
         height: 150px;
         border-radius: 1.2em;
-        
+
     }
     .swiper-slide{
         position: relative;
@@ -460,7 +460,7 @@ pc 1920px ~ 1200px
         font-size: 1.3em;
         font-weight: bold;
         color: white;
-        
+
     }
     h3:hover{
         font-size: 1.3em;
@@ -471,7 +471,7 @@ pc 1920px ~ 1200px
     .nav-wrap{
         display: none;
     }
-    .new-wrap{ 
+    .new-wrap{
         width: 138%;
         display: flex;
         justify-content: space-between;
@@ -481,13 +481,13 @@ pc 1920px ~ 1200px
         width: 150px;
         justify-content: flex-start;
         margin: 1em;
-   
+
         font-size: 1.5em;
         color: #53504b;
         cursor: pointer;
         float: left;
     }
-   
+
 
     .nav-wrap-sidenav {
         height:100%;
@@ -500,8 +500,8 @@ pc 1920px ~ 1200px
         overflow-x: hidden;
         transition:0.3s ease-in-out;
         padding-top: 60px;
-        
-        
+
+
     }
     .nav-wrap-sidenav a {
         padding: 15px 11px 11px 42px;
@@ -517,44 +517,44 @@ pc 1920px ~ 1200px
     .nav-wrap-sidenav a:first-child{
         border-bottom: none;
         color: black;
-        
+
     }
     .closebtn{
         position: absolute;
         top:0;
         right: -120px;
-		font-size: 26px !important;
-		margin-left: 0px;
-        
+        font-size: 26px !important;
+        margin-left: 0px;
+
     }
-    
+
     .main__study-buttons{
         display: none;
     }
-    
+
     .main__join{
         display: none;
     }
-    
+
     .main__etc{
         padding: 0;
         height: 260px;
-        
+
     }
-        
+
     .main__etc-notice-info{
-        
+
         display: flex;
         justify-content: space-between;
         margin: 2em 2em 1.5em 2em;
     }
-   
+
     .main__etc-h2{
         margin: 0;
         font-size: 1.3em;
-    
+
     }
-    
+
     .main__etc-detail-mobile > a{
         display: flex;
         font-size: 0.7em;
@@ -569,38 +569,38 @@ pc 1920px ~ 1200px
     .main__etc-detail-mobile a > i{
         margin-top: 0.15em;
     }
-    
+
     .main__etc-active{
         width: 100%;
         height: 270px;
-        
+
     }
-    
-    
-    
+
+
+
     .footer__info{
         width: 95%;
         height: 220px;
         margin: 0 auto;
         display: flex;
-        
-        
-    
+
+
+
     }
-    
+
     .main__study-buttons{
         display: none;
     }
-    
+
     .footer_mobile{
         display: none;
     }
-    
+
     .footer__info{
         display: block;
         margin: 0;
-        
-        
+
+
     }
     .footer__info-CBU{
         display: flex;
@@ -627,7 +627,7 @@ pc 1920px ~ 1200px
         justify-content: center;
         margin-top: 20px;
     }
-    
+
     .footer_info-mobile{
         padding: 0 0.5em;
     }
