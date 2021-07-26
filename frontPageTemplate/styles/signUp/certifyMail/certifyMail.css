@@ -33,7 +33,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 600px;
+  height: 900px;
   background-color: #eae8e2;
 }
 
@@ -63,36 +63,45 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 320px;
+  height: 600px;
   margin: 0;
   box-shadow: 0 0 20px #9e9e9e;
   background-color: white;
 }
 
-.article__boxList>label{
-  font-size: 1.125rem;
+.boxList__titleLabel {
   font-weight: bold;
+  font-size: 22px;
 }
 
-.boxList__inputEmail {
+.boxList__inputEmail,
+.boxList__inputEmailCode {
+  display: block;
   width: 200px;
   height: 30px;
-  margin: 0 auto;
   padding: 5px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+  border: 1px solid #9e9e9e;
   text-align: center;
   border-radius: 15px;
-  border: 1px solid #9e9e9e;
 }
 
-.boxList__inputEmail:focus {
+.boxList__inputEmail,
+.boxList__inputEmailCode:focus {
   outline: none;
   box-shadow: 0px 0px 2px #9e9e9e;
 }
 
-.article__boxList label,
 .article__boxList input,
-.article__boxList button {
-  margin: 10px;
+.article__boxList label {
+  margin: 30px auto;
+}
+
+.boxList__sendEmailCode {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
 .boxList__schoolName {
@@ -108,9 +117,9 @@ header {
   font-weight: bold;
 }
 
-.boxList__submitButton {
-  display: inline-block;
-  margin-top: 15px;
+.boxList__checkEmailButton,
+.boxList__sendEmailCodeButton {
+  display: block;
   padding: 6px 12px;
   text-align: center;
   background-color: #847d74;
@@ -121,14 +130,20 @@ header {
   font-size: 1rem;
 }
 
-.boxList__submitButton:hover {
+.boxList__checkEmailButton:hover,
+.boxList__sendEmailCodeButton:hover {
   background-color: #9e9e9e;
-  outline: none;
-  padding: 5px 10px;
-  font-size: 1rem;
+}
+
+.boxList__sendEmailCodeButton {
+  margin-bottom: 30px;
 }
 
 .boxList__inputEmail:focus::placeholder {
+  color: transparent;
+}
+
+.boxList__inputEmailCode:focus::placeholder {
   color: transparent;
 }
 

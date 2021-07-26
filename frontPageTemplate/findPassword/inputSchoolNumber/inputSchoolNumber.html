@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../styles/footer.css">
     <link rel="stylesheet" href="../../styles/header.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>changePassword</title>
+    <title>changePassword_inputSchoolNumber</title>
 </head>
 
 <body class="wrap">
@@ -52,9 +52,13 @@
             <div><img src="../../images/findPassword/inputSchoolNumber/boxDeco.png" alt="boxDeco" class="article__boxDeco"></div>
             <h1 class="article__boxTitle">비밀번호 찾기</h1>
             <div class="article__boxList">
-                <label class="boxList__labelSchoolNumber">학번 입력</label>
-                <input type="text" class="boxList__inputSchoolNumber" placeholder="학번 입력">
-                <button style="cursor:pointer" class="boxList__submitButton" onclick="location.href='#'">찾기</button>
+                <div class="article__boxList--input">
+                    <form action="#" method="POST">
+                        <label class="boxList__labelSchoolNumber">학번 입력</label>
+                        <input type="text" class="boxList__inputSchoolNumber" placeholder="학번 입력" name="changePwd_schoolNumber">
+                        <input type="submit" style="cursor:pointer" class="boxList__submitButton" value="찾기" name="boxList__submitButton">
+                    </form>
+                </div>
                 <div class="boxList__schoolName boxList__schoolName1">한국산업기술대학교</div>
                 <div class="boxList__schoolName">프로그래밍 동아리 <span class="boxList__schoolName--emp">씨부엉</span></div>
             </div>

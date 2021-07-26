@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../styles/header.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>inputSignUpContent</title>
 </head>
 <body class="wrap">
     <header>
@@ -53,31 +53,37 @@
             <div><img src="../../images/signUp/inputSignUpContent/boxDeco.png" alt="boxDeco" class="article__boxDeco"></div>
             <h1 class="article__boxTitle">회원가입</h1>
             <div class="article__boxList">
-                <ul class="boxList__infor">
-                    <li>
-                        <label>이름</label>
-                        <input type="text" placeholder="이름 입력">
-                    </li>
-                    <li>
-                        <label>학번</label>
-                        <input type="number" placeholder="학번 입력">
-                    </li>
-                    <li>
-                        <label>닉네임</label>
-                        <input type="text" placeholder="닉네임 입력">
-                    </li>
-                    <li>
-                        <label>비밀번호</label>
-                        <input type="password" placeholder="비밀번호 입력">
-                    </li>
-                    <li>
-                        <label>비밀번호 확인</label>
-                        <input type="password" placeholder="비밀번호 확인">
-                    </li>
-                    <li>
-                        <button class="boxList__infor--submit">제출하기</button>
-                    </li>
-                </ul>
+                <form action="#" method="POST">
+                    <ul class="boxList__infor">
+                        <li>
+                            <label>이름</label>
+                            <input type="text" placeholder="이름 입력" name="name">
+                        </li>
+                        <li>
+                            <label>학번</label>
+                            <input type="number" placeholder="학번 입력" name="schoolNumber">
+                        </li>
+                        <li>
+                            <label>아이디</label>
+                            <input type="number" placeholder="학번 입력" name="signUpId">
+                        </li>
+                        <li>
+                            <label>닉네임</label>
+                            <input type="text" placeholder="닉네임 입력" name="nickname">
+                        </li>
+                        <li>
+                            <label>비밀번호</label>
+                            <input type="password" placeholder="비밀번호 입력" name="signUpPassword">
+                        </li>
+                        <li>
+                            <label>비밀번호 확인</label>
+                            <input type="password" placeholder="비밀번호 확인" name="checkPassword">
+                        </li>
+                        <li>
+                            <input type="submit" style="cursor:pointer" class="boxList__infor--submit">
+                        </li>
+                    </ul>
+                </form>
                 <p class="boxList__controls">
                     <span class="prev"><i class="fas fa-arrow-left"></i></span>
                     <span class="next"><i class="fas fa-arrow-right"></i></span>

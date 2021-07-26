@@ -112,7 +112,7 @@ nav {
   margin-bottom: 20px;
 }
 
-.article__boxList ul > li > input {
+.article__boxList ul > li > input:not(.boxList__infor--submit) {
   width: 200px;
   height: 30px;
   margin: 0 0 10px 0;
@@ -131,10 +131,26 @@ nav {
   color: transparent;
 }
 
+.boxList__infor--submit {
+  margin-top: 30px;
+  width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #9e9e9e;
+  background-color: #9e9e9e;
+  font-size: 16px;
+  color: white;
+}
+
+.boxList__infor--submit:hover {
+  border: 1px solid #c1c1c1;
+  background-color: #c1c1c1;
+}
+
 .boxList__infor {
   position: relative;
   display: flex;
-  width: 2700px;
+  width: 3150px;
   transition: 0.5s ease-out;
 }
 
@@ -144,26 +160,6 @@ nav {
   align-items: center;
   margin: 0 auto;
   width: 450px;
-}
-
-.boxList__infor--submit {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 6px 12px;
-  text-align: center;
-  background-color: #847d74;
-  border: none;
-  outline: none;
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.boxList__infor--submit:hover {
-  background-color: #9e9e9e;
-  outline: none;
-  padding: 5px 10px;
-  font-size: 1rem;
 }
 
 .boxList__controls {
@@ -352,11 +348,6 @@ footer {
 
   .boxList__infor > li {
     width: 350px;
-  }
-
-  .boxList__infor--submit {
-    position: relative;
-    top: 40px;
   }
 
   .article__boxList label,

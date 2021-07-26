@@ -9,17 +9,15 @@
     <link rel="stylesheet" href="../styles/elementSetting.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/header.css">
-    <title>password</title>
+    <title>login</title>
 </head>
 
 <body class="wrap">
     <header>
         <div class="header-wrap">
-
             <div class="header-wrap__logo">
                 <a href="#"><img id="logo_img" src="../images/login/logo.png" alt="씨부엉 상단 로고" height="36"></a>
             </div>
-
             <nav>
                 <ul class="nav-wrap">
                     <li><a href="#">home</a></li>
@@ -52,11 +50,13 @@
             <div><img src="../images/login/boxDeco.png" alt="boxDeco" class="article__boxDeco"></div>
             <h1 class="article__boxTitle">로그인</h1>
             <div class="article__boxList">
-                <label>아이디</label>
-                <input type="text" class="boxList__inputId" placeholder="아이디 입력">
-                <label>비밀번호</label>
-                <input type="password" class="boxList__inputPwd" placeholder="비밀번호 입력">
-                <button style="cursor:pointer" class="boxList__submitButton" onclick="location.href='#'">로그인</button>
+                <form action="#" method="POST">
+                    <label>아이디</label>
+                    <input type="text" class="boxList__inputId" placeholder="아이디 입력" name="loginId">
+                    <label>비밀번호</label>
+                    <input type="password" class="boxList__inputPwd" placeholder="비밀번호 입력" name="loginPassword">
+                    <input type="submit" style="cursor:pointer" class="boxList__submitButton" value="로그인" name="loginButton">
+                </form>
                 <div class="boxList__schoolName boxList__schoolName1">한국산업기술대학교</div>
                 <div class="boxList__schoolName">프로그래밍 동아리 <span class="boxList__scoholName--emp">씨부엉</span></div>
             </div>

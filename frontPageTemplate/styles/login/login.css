@@ -64,18 +64,19 @@ header {
   align-items: center;
   justify-content: center;
   height: 420px;
-  margin: 0;
+  margin: 0 auto;
   box-shadow: 0 0 20px #9e9e9e;
   background-color: white;
 }
 
-.article__boxList>label{
+.article__boxList label {
   font-size: 1.125rem;
   font-weight: bold;
 }
 
 .boxList__inputId,
 .boxList__inputPwd {
+  display: block;
   width: 200px;
   height: 30px;
   padding: 5px;
@@ -125,9 +126,6 @@ header {
 
 .boxList__submitButton:hover {
   background-color: #9e9e9e;
-  outline: none;
-  padding: 5px 10px;
-  font-size: 1rem;
 }
 
 input:focus::placeholder {
@@ -157,8 +155,9 @@ input:focus::placeholder {
   }
 
   .article__boxList {
+    display: flex;
+    flex-direction: column;
     height: 320px;
-    margin: 0;
     padding: 20px;
   }
 
@@ -168,7 +167,7 @@ input:focus::placeholder {
 
   .boxList__inputId,
   .boxList__inputPwd {
-    width: 50%;
+    width: 180px;
   }
 }
 
@@ -220,7 +219,7 @@ input:focus::placeholder {
   }
 
   .article__boxList label,
-  .article__boxList input{
+  .article__boxList input {
     margin: 8px;
   }
 
@@ -239,12 +238,8 @@ input:focus::placeholder {
     font-size: 0.875rem;
   }
 
-  .boxList__submitButton:hover {
-    padding: 3px 6px;
-    font-size: 0.875rem;
-  }
   .boxList__inputId,
   .boxList__inputPwd {
-    width: 70%;
+    width: 280px;
   }
 }
