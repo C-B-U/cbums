@@ -9,22 +9,21 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class Book{
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookId;
-
-    private String bookName;
-    private String isbn;
+    private Long commentId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="owner_member_id", nullable = false)
-    private Member owner;
+    @JoinColumn(name="post_id", nullable = false)
+    private Post post;
+
+    private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="borrower_member_id")
-    private Member borrower;
+    @JoinColumn(name="member_id", nullable = false)
+    private Member member;
 
-    @Column(nullable = false)
+    private Integer likesCount = 0;
     private LocalDateTime registerDatetime;
 }

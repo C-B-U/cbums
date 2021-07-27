@@ -38,7 +38,7 @@ public class Post {
     private Integer visitsCount = 0;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "parent_post_id")
     private Post parentPost;
 
 
