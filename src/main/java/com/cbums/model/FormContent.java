@@ -13,11 +13,11 @@ public class FormContent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long formContentId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "form_id",nullable = false)
     private Form form;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "form_question_id",nullable = false)
     private FormQuestion formQuestion;
 }

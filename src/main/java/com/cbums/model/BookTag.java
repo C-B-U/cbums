@@ -8,18 +8,16 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Tag {
-
+public class BookTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tagId;
-
-    @Column(nullable = false)
-    private String name;
+    private Long bookTagId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id")
-    private Member producer;
+    @JoinColumn(name="book_id", nullable = false)
+    private Book book;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="tag_id", nullable = false)
+    private Tag tag;
 }

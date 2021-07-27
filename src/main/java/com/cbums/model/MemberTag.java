@@ -4,24 +4,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-public class Board {
+public class MemberTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long boardId;
-    @Column(nullable = false)
-    private String name;
+    private Long memberTagId;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id", nullable = false)
-    private Member producer;
+    private Member member;
 
-   // @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private LocalDateTime openingDatetime;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="tag_id", nullable = false)
+    private Tag tag;
 }

@@ -23,7 +23,7 @@ public class Project {
 
     private Integer maximumMember;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
     private Member producer;
 

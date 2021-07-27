@@ -14,15 +14,15 @@ public class FormAnswer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long formAnswerId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "form_id",nullable = false)
     private Form form;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "form_question_id",nullable = false)
     private FormQuestion formQuestion;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id",nullable = false)
     private Member member;
 

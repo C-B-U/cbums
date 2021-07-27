@@ -4,22 +4,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
-@Setter
 @Getter
-public class ProjectPlan {
+@Setter
+public class ProjectTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long projectPlanId;
+    private Long projectTagId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id",nullable = false)
+    @JoinColumn(name="project_id", nullable = false)
     private Project project;
 
-    private LocalDate planDate;
-    private String content;
-    private String homework;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="tag_id", nullable = false)
+    private Tag tag;
 }
