@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/common-layout">
+
+<th:block layout:fragment="contentStyle">
+    <!--link rel="stylesheet" th:href="@{/styles/default/default.css}" -->
+</th:block>
+
+<div layout:fragment="content">
+    <form th:action="@{/}" method="post">
+        <label>
+            아이디
+            <input type="text" name="id">
+        </label>
+        <label>
+            pw
+            <input type="password" name="password">
+        </label>
+        <input type="submit" value="로그인">
+    </form>
+</div>
+
+<th:block layout:fragment="contentScript">
+    <!--script th:src="@{/scripts/default/default.js}"></script -->
+</th:block>
+</html>
