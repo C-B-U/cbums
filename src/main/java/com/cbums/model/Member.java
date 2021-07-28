@@ -1,6 +1,7 @@
 package com.cbums.model;
 
 
+import com.cbums.type.UserRoleType;
 import lombok.Getter;
 import lombok.Setter;
 

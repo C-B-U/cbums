@@ -1,5 +1,7 @@
 package com.cbums.model;
 
+import com.cbums.type.AttendType;
+import com.cbums.type.HomeworkSubmitType;
 import lombok.Getter;
 import lombok.Setter;
 

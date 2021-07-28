@@ -1,7 +1,7 @@
 package com.cbums.service;
 
 import com.cbums.model.Member;
-import com.cbums.model.UserRoleType;
+import com.cbums.type.UserRoleType;
 import com.cbums.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,6 +21,7 @@ public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
 
     public Member joinForWriteForm(Member member) {
+        memberRepository.save(member);
         return member;
     }
 
