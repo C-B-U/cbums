@@ -1,6 +1,7 @@
 package com.cbums.controller;
 
 import com.cbums.controller.postParameter.JoinForWriteFormParameter;
+import com.cbums.controller.postParameter.SignUpFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -27,9 +28,15 @@ public class MemberController {
         return "/default";
     }
 
-    @PostMapping("/sign-up")
-    public String signUp() {
+    @PostMapping("/check-accept-sign-up")
+    public String checkAcceptSignUp(String email) {
+        memberService.isAccept(email);
+        return "";
+    }
 
-        return "/";
+    @PostMapping("/sign-up")
+    public String signUp(SignUpFormParameter signUpFormParameter) {
+
+        return "/default";
     }
 }

@@ -25,10 +25,23 @@ public class MemberService implements UserDetailsService {
         return member;
     }
 
+    public boolean isAccept(String email) {
+
+        // 만약 email에 해당하는 값이 없다면? TODO
+        // 함수형 프로그래밍으로 변환 TODO
+        Member member = memberRepository.findByEmail(email).get();
+
+        if(member.getUserRoleType() == UserRoleType.VISITANT) {
+            return false;
+        }
+        return true;
+    }
+
     public Member signUp(Member member) {
 
         return member;
     }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberRepository.findByEmail(email).get();
