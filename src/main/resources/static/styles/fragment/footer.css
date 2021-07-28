@@ -10,7 +10,9 @@ footer {
     color: white;
 
 }
-
+.mobile {
+    display: none;
+}
 .footer__info-wrap {
     display: flex;
     justify-content: space-between;
@@ -64,6 +66,9 @@ footer {
 }
 
 @media all and (max-width: 767px) {
+    .mobile {
+        display: block;
+    }
     .footer__info-staffs-mobile {
         display: flex;
         justify-content: center;

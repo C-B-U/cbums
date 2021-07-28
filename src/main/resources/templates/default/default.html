@@ -1,226 +1,24 @@
+
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로그래밍 동아리 씨부엉</title>
-    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="../styles/swiper.min.css">
-    <link rel="stylesheet" href="../styles/elementSetting.css">
-    <link rel="stylesheet" href="../styles/header.css">
-    <link rel="stylesheet" href="../styles/footer.css">
-    <link rel="stylesheet" href="../styles/default/default.css">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/common-layout">
 
-   
-</head>
-<body>
-    <div id="wrap">
+<th:block layout:fragment="contentStyle">
+    <link rel="stylesheet" th:href="@{/styles/default/default.css}" >
+</th:block>
 
-        <main>
-           <div class="main-wrap">
-               <div class="main__CBU-image">
-                    <a href="#"><img src="../images/default/header.png" alt="씨부엉 메인 배너" style="width:100%"></a>
-               </div>
-               <div class="main__member-wrap mobile">
-                <div class="main__member">
-                   <a href="#"><div class="main__member-join">회원가입</div></a>
-                   <a href="#"><div class="main__member-login">로그인</div></a>
-                </div>
-            </div>
-               <div class="main__CBU-image-moible mobile">
-                   <img src="../images/default/mobileBanner2.png" alt="씨부엉 메인 배너 모바일" style="width:100%">
-               </div>
-               
-               <div class="main__study">
-                  <div class="main__study-info">
-                       <h2 class="main__study-h2">Recruiting Study</h2>
-                       <div class="main__study-detail-mobile mobile">
-                          <a href="#"><p>자세히 보기</p><i class="fas fa-chevron-right " style="color: black"></i></a>
-                       </div>
-                   </div>
-                   <div class="slide-wrap">
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                               <div class="swiper-slide">
-                                  <a href="#">
-                                   <div class="main__slide-box" style="background-color: #837d75"></div>
-                                   <h3>CBUMS　</h3>
-                                   <!--입력 시 ㄱ+한자 1번 '　' 공백문자 필요-->
-                                   </a>
-                               </div>
-                               <div class="swiper-slide">
-                                  <a href="#">
-                                   <div class="main__slide-box" style="background-color: #f4c853"></div>
-                                   <h3>자료구조　</h3>
-                                   </a>
-                               </div>
-                               <div class="swiper-slide">
-                                  <a href="#">
-                                   <div class="main__slide-box" style="background-color: #bab843"></div>
-                                   <h3>C언어　　</h3>
-                                   </a>
-                               </div>
-                               <div class="swiper-slide">
-                                  <a href="#">
-                                   <div class="main__slide-box" style="background-color: #ffb4c6"></div>
-                                   <h3>JAVA　　</h3>
-                                   </a>
-                               </div>
-                               <div class="swiper-slide">
-                                  <a href="#">
-                                   <div class="main__slide-box" style="background-color: #54d6b6"></div>
-                                   <h3>파이썬　</h3>
-                                   </a>
-                           </div>
-                           <div class="swiper-slide">
-                                  <a href="#">
-                                   <div class="main__slide-box" style="background-color: #c3a2f3"></div>
-                                   <h3>스터디6　</h3>
-                                   </a>
-                           </div>
-                        </div>
-                    </div>
-                       <div class="main__study-buttons">
-                           <span class="swiper-button-next" style="color: black;"></span>
-                           <span class="swiper-button-prev" style="color: black;"></span>
-                       </div>
-                   </div>
-                   
-                
-               </div>
-               <div class="contour mobile">
-                   
-               </div>
-               <div class="main__join">
-                       <h2 class="main__join-h2">Join</h2>
-                        <div class="main__join-image">
-                            <div><img src="../images/default/join1.jpg" alt="동아리 소개1" ></div>
-                            <div><img src="../images/default/join2.jpg" alt="동아리 소개2" ></div>
-                            <div><img src="../images/default/join3.jpg" alt="동아리 소개3" ></div>
-                        </div>
-                        <ul class="main__join-text">
-                            <li>능동적인 공부</li>
-                            <li>협력적인 프로젝트</li>
-                            <li>어쩌고 저쩌고</li>
-                        </ul>
-                        <div class="main__join-button-wrap">
-                            <a href="#"><div class="main__join-button"><h4>씨부엉 가입하기</h4></div></a>
-                        </div>
-                   </div>
-                  <div class="main__etc">
-                     <div class="main__etc-notice">
-                      <div class="main__etc-notice-info mobile">
-                           <h2 class="main__etc-h2">공지사항</h2>
-                           <div class="main__etc-detail-mobile mobile">
-                              <a href="#"><p>자세히 보기</p><i class="fas fa-chevron-right " style="color: black"></i></a>
-                            </div>
-                      </div>
-                        <div class="slide-wrap mobile">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                        <div class="main__slide-box" style="background-color: #837d75"></div>
-                                        <h3>진행사항 업로드</h3>
-                                        <!--입력 시 ㄱ+한자 1번 '　' 공백문자 필요-->
-                                        </a>
-                                       </div>
-                                       <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #f4c853"></div><h3>동아리　 가입방법</h3>
-                                           </a>
-                                       </div>
-                                       <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #bab843"></div>
-                                           <h3>스터디　 가입방법</h3>
-                                           </a>
-                                       </div>
-                                       <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #ffb4c6"></div>
-                                           <h3>규칙　　　 </h3> 
-                                           </a>
-                                       </div>
-                                       <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #54d6b6"></div>
-                                           <h3>공지사항1</h3>
-                                           </a>
-                                   </div>
-                                   <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #c3a2f3"></div>
-                                           <h3>공지사항2</h3>
-                                           </a>
-                                   </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div> 
-                    <div class="contour mobile">
-                   
-                   </div>
-                      <div class="main__etc-active mobile">
-                          <div class="main__etc-notice-info mobile">
-                           <h2 class="main__etc-h2">활동</h2>
-                           <div class="main__etc-detail-mobile mobile">
-                              <a href="#"><p>자세히 보기</p><i class="fas fa-chevron-right " style="color: black"></i></a>
-                            </div>
-                         </div>
-                         <div class="slide-wrap mobile">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                        <div class="main__slide-box" style="background-color: #837d75"></div>
-                                        <h3>IT or 코딩 스터디</h3>
-                                        <!--입력 시 ㄱ+한자 1번 '　' 공백문자 필요-->
-                                        </a>
-                                       </div>
-                                       <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #f4c853"></div><h3>공모전　 팀원 찾기</h3>
-                                           </a>
-                                       </div>
-                                       <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #bab843"></div>
-                                           <h3>소규모　 프로젝트</h3>
-                                           </a>
-                                       </div>
-                                       <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #ffb4c6"></div>
-                                           <h3>활동1　　 </h3> 
-<!--                                          ㄱ+한자 1번 '　' 공백문자 필요-->
-                                           </a>
-                                       </div>
-                                       <div class=" swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #54d6b6"></div>
-                                           <h3>공지사항1</h3>
-                                           </a>
-                                   </div>
-                                   <div class="swiper-slide">
-                                          <a href="#">
-                                           <div class="main__slide-box" style="background-color: #c3a2f3"></div>
-                                           <h3>공지사항2</h3>
-                                           </a>
-                                   </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                  </div> 
-        
-        </main>
+<div layout:fragment="content">
+   welcome~ 반가워요
+    <button th:onclick="|location.href = '@{/page/user}'|"> 로그인 </button>
+    <button th:onclick="|location.href = '@{/page/user}'|"> 회원가입 </button>
+    <button th:onclick="|location.href = '@{/page/user}'|"> 스터디 </button>
+    <button th:onclick="|location.href = '@{/page/user}'|"> 운영자 </button>
 
-    </div>
-    <script src="../scripts/swiper.min.js"></script>
-    <script src="../scripts/default/script.js"></script>
-    <script src="../scripts/sidebar.js"></script>
-</body>
+</div>
+
+<th:block layout:fragment="contentScript">
+    <script th:src="@{/scripts/default/default.js}"></script>
+</th:block>
 </html>
