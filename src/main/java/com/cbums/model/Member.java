@@ -19,18 +19,25 @@ public class Member {
     private String email;
 
     private String password;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String nickName;
+
     private Integer registerNumber;
+
     @Column(nullable = false)
     private Integer classNumber;
+
     @Column(nullable = false)
     private String department;
+
     private String profileImage;
+
     private String introduce;
 
     @Enumerated(EnumType.STRING)
-    private UserRoleType userRoleType;
+    private UserRoleType userRoleType = UserRoleType.VISITANT;
 }

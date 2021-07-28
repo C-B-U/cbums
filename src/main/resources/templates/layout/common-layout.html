@@ -5,25 +5,25 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-  <title>프로그래밍 동아리 씨부엉</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" th:href="@{/styles/default.css}" >
-  <th:block th:replace="fragment/config :: configFragment"></th:block>
+    <title>프로그래밍 동아리 씨부엉</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/elementSetting.css}">
+    <th:block th:replace="fragment/config :: configFragment"></th:block>
 </head>
 
 <body>
 <!-- header fragment 사용 -->
 <div id="wrap">
-  <th:block th:replace="fragment/header :: headerFragment"></th:block>
+    <th:block th:replace="fragment/header :: headerFragment"></th:block>
 
-  <!--
-      content fragment 사용
-      현재 layout을 사용하는 content fragment의 내용을 삽입한다.
-  -->
-  <th:block layout:fragment="content"></th:block>
+    <!--
+        content fragment 사용
+        현재 layout을 사용하는 content fragment의 내용을 삽입한다.
+    -->
+    <th:block layout:fragment="content"></th:block>
 
-  <!-- footer fragment 사용 -->
-  <th:block th:replace="fragment/footer :: footerFragment"></th:block>
+    <!-- footer fragment 사용 -->
+    <th:block th:replace="fragment/footer :: footerFragment"></th:block>
 </div>
 
 <th:block th:replace="fragment/scripts :: scriptsFragment"></th:block>

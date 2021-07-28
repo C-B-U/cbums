@@ -12,11 +12,17 @@ header {
 
 }
 
+.mobile {
+    display: none;
+}
 .header-wrap__logo{
     margin: 1em;
 }
 
 @media all and (min-width: 768px) and (max-width: 1200px) {
+    .mobile {
+        display: block;
+    }
     .header-wrap {
         width: 60%;
         margin: 0 auto;
