@@ -32,12 +32,14 @@ public class MemberService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberRepository.findByEmail(email).get();
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        if (email.equals("admin")) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.ADMIN.name()));
-        } else if(member.getRegisterNumber() != null) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.MEMBER.name()));
-        } else {
-            grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.VISITANT.name()));
+        switch (member.getUserRoleType()) {
+            case ADMIN:
+                grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.ADMIN.name()));
+            case MEMBER:
+                grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.MEMBER.name()));
+            default:
+                grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.VISITANT.name()));
+                break;
         }
 
         return new User(member.getEmail(), member.getPassword(), grantedAuthorities);
