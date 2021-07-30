@@ -1,5 +1,7 @@
 package com.cbums.model;
 
+import com.cbums.type.ProjectRoleType;
+import com.cbums.type.ProjectSignUpType;
 import lombok.Getter;
 import lombok.Setter;
 
