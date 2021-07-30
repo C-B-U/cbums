@@ -5,6 +5,7 @@ import com.cbums.type.UserRoleType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
@@ -18,5 +19,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query("UPDATE Member m SET" +
             " m.password = :password, m.introduce = :introduce, m.profileImage = :image " +
             "WHERE m.memberId = :memberId")
-    public void setAcceptMember(Long memberId, String password, String introduce, String image);
+    public void setAcceptMember(@Param("memberId") Long memberId,
+                                @Param("password") String password,
+                                @Param("introduce") String introduce,
+                                @Param("image") String image);
 }
