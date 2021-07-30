@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -25,22 +26,19 @@ public class MemberService implements UserDetailsService {
         return member;
     }
 
-    public boolean isAccept(String email) {
+    public Long getAcceptMember(String email) {
 
-        // 만약 email에 해당하는 값이 없다면? TODO
+        Optional<Member> member = memberRepository.findByEmail(email);
+        member.orElseThrow(NullPointerException::new);
         // 함수형 프로그래밍으로 변환 TODO
-        Member member = memberRepository.findByEmail(email).get();
+        if(member.get().getUserRoleType() == UserRoleType.VISITANT) {
+            // throw
 
-        if(member.getUserRoleType() == UserRoleType.VISITANT) {
-            return false;
         }
-        return true;
+        //세션으로 넘길 때 암호화를 해야하나...? 일단 보류 TODO
+        return member.get().getMemberId();
     }
 
-    public Member signUp(Member member) {
-
-        return member;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
