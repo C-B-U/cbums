@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/common-layout">
+
+<th:block layout:fragment="contentStyle">
+</th:block>
+
+<div layout:fragment="content">
+    <form th:action="@{/member/join-for-write-form}" method="post">
+
+        <label>name<input type="text" name="name"></label>
+        <label>department<input type="text" name="department"></label>
+        <label>email<input type="text" name="email"></label>
+        <label>classNumber<input type="text" name="classNumber"></label>
+        <label>nickName<input type="text" name="nickName"></label>
+        <input type="submit" value="제출">
+    </form>
+</div>
+
+<th:block layout:fragment="contentScript">
+</th:block>
+</html>

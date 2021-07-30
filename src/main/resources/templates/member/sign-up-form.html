@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/common-layout">
+
+<th:block layout:fragment="contentStyle">
+</th:block>
+
+<div layout:fragment="content">
+    <form th:action="@{/member/sign-up-form}" method="post">
+        <label>비밀번호<input type="password" name="password"></label>
+        <label>비밀번호 확인<input type="password" name="passwordCheck"></label>
+        <label>자기소개<input type="text" name="introduce"></label>
+        <label>프로필사진<input type="text" name="image"></label>
+        <input type="submit" value="제출">
+    </form>
+
+</div>
+
+<th:block layout:fragment="contentScript">
+</th:block>
+</html>

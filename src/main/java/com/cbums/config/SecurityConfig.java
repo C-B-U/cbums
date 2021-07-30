@@ -1,6 +1,6 @@
 package com.cbums.config;
 
-import com.cbums.model.UserRoleType;
+import com.cbums.type.UserRoleType;
 import com.cbums.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -50,12 +50,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
                 .csrf().disable();
-        http.authorizeRequests()
-                .and() // 로그인 설정
-                .formLogin()
+        // 로그인 설정
+        http.formLogin()
                 .loginPage("/login")
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
-                .permitAll();
+                .permitAll()
+                .and().exceptionHandling().accessDeniedPage("/kkkk");
+        ;
                 /*
                 .and() // 로그아웃 설정
                 .logout()
@@ -63,9 +65,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/user/logout/result")
                 .invalidateHttpSession(true)
                 .and()
-                // 403 예외처리 핸들링
-                .exceptionHandling().accessDeniedPage("/user/denied");
                 */
+
+                // 403 예외처리 핸들링
+
+
     }
 
 

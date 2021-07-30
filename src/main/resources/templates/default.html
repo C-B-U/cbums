@@ -11,11 +11,11 @@
 
 <div layout:fragment="content">
    welcome~ 반가워요
-    <button th:onclick="|location.href = '@{/page/user}'|"> 로그인 </button>
-    <button th:onclick="|location.href = '@{/page/user}'|"> 회원가입 </button>
-    <button th:onclick="|location.href = '@{/page/user}'|"> 스터디 </button>
-    <button th:onclick="|location.href = '@{/page/user}'|"> 운영자 </button>
-
+    <button th:onclick="|location.href = '@{/login}'|"> 로그인 </button>
+    <button th:onclick="|location.href = '@{/member/sign-up}'|"> 회원가입 </button>
+    <button th:onclick="|location.href = '@{/study}'|"> 스터디 </button>
+    <button th:onclick="|location.href = '@{/admin}'|"> 운영자 </button>
+    <button th:onclick="|location.href = '@{/form}'|"> 지원서 </button>
 </div>
 
 <th:block layout:fragment="contentScript">
