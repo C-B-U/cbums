@@ -4,12 +4,11 @@ import com.cbums.controller.postParameter.JoinForWriteFormParameter;
 import com.cbums.controller.postParameter.SignUpFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.MemberService;
+import com.cbums.service.exception.NotAcceptMemberException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,7 +19,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
-    private final HttpServletRequest request;
 
     @PostMapping("/join-for-write-form")
     public String joinForWriteForm(JoinForWriteFormParameter joinForWriteFormParameter) {
@@ -37,27 +35,29 @@ public class MemberController {
     @PostMapping("/check-accept-sign-up")
     public String checkAcceptSignUp(String email) {
         try {
-            Long memberId = memberService.getAcceptMember(email);
-            HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("signUpUserId", memberId);
-            return "redirect:/member/sign-up";
-        }catch (NullPointerException e) {
-            return "/";
+            String acceptMemberEmail = memberService.getAcceptMember(email);
+
+            return "redirect:/member/sign-up-form";
+        }catch (NotAcceptMemberException e) {
+            return "/default";
         }
     }
 
     @GetMapping("/sign-up")
     public String signUpPage() {
-        HttpSession httpSession = request.getSession();
-        Long memberId = Optional
-                .of((Long)httpSession.getAttribute("signUpUserId"))
-                .orElseThrow(NullPointerException::new);
 
-        return "/sign-up";
+        return "/member/sign-up";
     }
 
-    @PostMapping("/sign-up")
-    public String signUp(SignUpFormParameter signUpFormParameter) {
+    @GetMapping("/sign-up-form")
+    public String signUpFormPage(){
+        return "/member/sign-up-form";
+    }
+
+    @PostMapping("/sign-up-form")
+    public String signUpForm(SignUpFormParameter signUpFormParameter) {
+
+        memberService.setMemberOtherInfo(signUpFormParameter);
 
         return "/default";
     }
