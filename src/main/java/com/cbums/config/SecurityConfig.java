@@ -55,8 +55,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
-                .permitAll()
-                .and().exceptionHandling().accessDeniedPage("/kkkk");
+                .permitAll();
+
+        http.exceptionHandling().accessDeniedPage("/denied");
         ;
                 /*
                 .and() // 로그아웃 설정

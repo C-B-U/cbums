@@ -10,7 +10,7 @@
 </th:block>
 
 <div layout:fragment="content">
-    <form action="/login" method="post">
+    <form th:action="@{/login}" method="post">
         <label>
             아이디
             <input type="text" name="username">
