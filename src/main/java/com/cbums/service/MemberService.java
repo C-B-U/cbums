@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -60,26 +61,15 @@ public class MemberService implements UserDetailsService {
         httpSession.removeAttribute("accept-email");
 
         Member member = memberRepository.findByEmail(email).get();
-        String password = setHashPassword(signUpFormParameter.getPassword());
+        String password = new BCryptPasswordEncoder().encode(signUpFormParameter.getPassword());
         memberRepository.setAcceptMember(member.getMemberId(),
                 password,
                 signUpFormParameter.getIntroduce(),
                 signUpFormParameter.getImage());
 
-      //  HttpSession httpSession = request.getSession();
-      //  httpSession.removeAttribute("signUpUserId");
     }
 
-    private String setHashPassword(String password) {
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("SHA-256");
-            md.update(password.getBytes(StandardCharsets.UTF_8));
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println(e.getMessage());
-        }
-        return md.digest().toString();
-    }
+
 
     public List<Member> getMembers() {
         return memberRepository.findAll();
