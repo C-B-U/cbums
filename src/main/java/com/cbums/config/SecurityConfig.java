@@ -50,10 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
                 .csrf().disable();
-        http.authorizeRequests()
-                .and() // 로그인 설정
-                .formLogin()
+        // 로그인 설정
+        http.formLogin()
                 .loginPage("/login")
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
                 .permitAll()
                 .and().exceptionHandling().accessDeniedPage("/kkkk");
