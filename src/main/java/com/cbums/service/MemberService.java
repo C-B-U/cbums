@@ -64,8 +64,12 @@ public class MemberService implements UserDetailsService {
 
 
 
-    public List<Member> getMembers() {
+    public List<Member> findMembers() {
         return memberRepository.findAll();
+    }
+
+    public Member findMemberById(Long id) {
+        return memberRepository.getById(id);
     }
 
     @Override

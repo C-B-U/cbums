@@ -15,4 +15,8 @@ public class ProjectService {
     public List<Project> findProjects(){
         return projectRepository.findAll();
     }
+
+    public Project findProjectById(Long id) {
+        return projectRepository.getById(id);
+    }
 }

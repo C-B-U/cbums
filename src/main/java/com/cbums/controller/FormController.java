@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/form/**")
+@RequestMapping("/form")
 @RequiredArgsConstructor
 public class FormController {
 
