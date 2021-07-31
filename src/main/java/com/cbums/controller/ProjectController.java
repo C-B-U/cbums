@@ -3,6 +3,9 @@ package com.cbums.controller;
 import com.cbums.model.Member;
 import com.cbums.model.Project;
 import com.cbums.service.ProjectService;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,17 +22,22 @@ public class ProjectController {
     private final ProjectService projectService;
 
     @GetMapping("/")
-    public String projectPage() {
+    public JsonObject getProjectList() {
+        JsonObject jsonObject = new JsonObject();
+        List<Project> projectList = projectService.findProjects();
+        JsonArray jsonArr = new Gson().toJsonTree(projectList).getAsJsonArray();
+        jsonObject.add("projectList", jsonArr);
 
-        return "/project";
+        return jsonObject;
     }
 
+/*
     @GetMapping("/li")
     public List<Project> projectListViewPage() {
         List<Project> sample = new ArrayList<Project>();
 
         return sample;
     }
-
+*/
 
 }

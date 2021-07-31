@@ -17,7 +17,7 @@ public class AdminMemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/member")
+    @GetMapping("/")
     public List<Member> memberViewPage() {
         return memberService.getMembers();
     }
