@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AdminController {
 
-    @GetMapping("/")
+    @GetMapping("")
     public String adminPage() {
 
         return "/admin/admin-menu";

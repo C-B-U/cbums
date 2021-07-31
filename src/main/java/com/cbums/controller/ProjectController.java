@@ -5,6 +5,7 @@ import com.cbums.model.Project;
 import com.cbums.service.ProjectService;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ public class ProjectController {
 
     private final ProjectService projectService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public JsonObject getProjectList() {
         JsonObject jsonObject = new JsonObject();
         List<Project> projectList = projectService.findProjects();
@@ -36,7 +37,7 @@ public class ProjectController {
     public JsonObject getProject(@PathVariable("seq") Long seq) {
         JsonObject jsonObject = new JsonObject();
         Project project = projectService.findProjectById(seq);
-        jsonObject.addProperty("project",new Gson().toJson(project));
+        // jsonObject.add("project",project);
         return jsonObject;
     }
 

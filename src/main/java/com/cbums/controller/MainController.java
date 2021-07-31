@@ -13,7 +13,7 @@ public class MainController {
 
     private final MemberService memberService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String defaultPage() {
         return "/default";
     }

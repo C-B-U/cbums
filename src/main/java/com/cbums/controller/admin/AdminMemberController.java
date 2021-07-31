@@ -20,7 +20,7 @@ public class AdminMemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public JsonObject getMemberList() {
         JsonObject jsonObject = new JsonObject();
         List<Member> memberList = memberService.findMembers();
@@ -34,7 +34,9 @@ public class AdminMemberController {
     public JsonObject getMember(@PathVariable("seq") Long seq) {
         JsonObject jsonObject = new JsonObject();
         Member member = memberService.findMemberById(seq);
-        jsonObject.addProperty("member",new Gson().toJson(member));
+        String memberJson = new Gson().toJson(member);
+        // 역직렬화 오류 TODO
+        jsonObject.add("member",new Gson().toJsonTree(member).getAsJsonObject());
         return jsonObject;
     }
 

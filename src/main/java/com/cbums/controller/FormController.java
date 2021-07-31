@@ -15,7 +15,7 @@ public class FormController {
 
     private final FormService formService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Form> createForm() {
         return formService.findForms();
     }
