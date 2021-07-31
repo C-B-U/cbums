@@ -20,8 +20,6 @@ class MemberRepositoryTest {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    MemberService memberService;
-    @Autowired
     MemberRepository memberRepository;
 
     Member 작성자 = null;
@@ -34,7 +32,7 @@ class MemberRepositoryTest {
         작성자.setNickName("루핑투핑");
     }
     @Test
-    public void 지원서_작성_시_작성자_정보_입력() throws Exception{
+    public void 지원서_작성_시_작성자_정보_입력() {
 
 
         //given
@@ -49,7 +47,7 @@ class MemberRepositoryTest {
     }
 
     @Test
-    public void 가입승인된_사용자_회원가입() throws Exception {
+    public void 가입승인된_사용자_회원가입() {
 
         //given
         logger.info("작성자 입력");

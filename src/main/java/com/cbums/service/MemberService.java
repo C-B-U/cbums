@@ -10,7 +10,6 @@ import com.cbums.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,9 +18,6 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 @Service
@@ -35,7 +31,7 @@ public class MemberService implements UserDetailsService {
         return member;
     }
 
-    public String getAcceptMember(String email) throws NotAcceptMemberException {
+    public void checkAcceptMember(String email) throws NotAcceptMemberException {
 
         Optional<Member> member = memberRepository.findByEmail(email);
         member.orElseThrow(NullPointerException::new);
@@ -48,7 +44,6 @@ public class MemberService implements UserDetailsService {
         httpSession.setAttribute("accept-email", email);
         //세션으로 넘길 때 암호화를 해야하나...? 일단 보류 TODO
 
-        return member.get().getEmail();
     }
 
 
