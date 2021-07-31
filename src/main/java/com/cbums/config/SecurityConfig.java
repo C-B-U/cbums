@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -36,37 +37,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 해당 서비스(userService)에서는 UserDetailsService를 implements해서
                 // loadUserByUsername() 구현해야함 (서비스 참고)
                 .passwordEncoder(new BCryptPasswordEncoder());
+        super.configure(auth);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.cors()
+                .and()
+                .csrf().disable()
+                .authorizeRequests()
                 // 페이지 권한 설정
                 .antMatchers("/admin/**").hasRole(UserRoleType.ADMIN.name())
                 .antMatchers("/study/**").hasRole(UserRoleType.MEMBER.name())
                 .antMatchers("/**").permitAll()
                 .anyRequest().permitAll()
-                .and()
-                .cors()
-                .and()
-                .csrf().disable();
+
+
         // 로그인 설정
-        http.formLogin()
+                .and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/login-success")
                 .permitAll()
-                .and().exceptionHandling().accessDeniedPage("/kkkk");
-        ;
-                /*
-                .and() // 로그아웃 설정
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                .logoutSuccessUrl("/user/logout/result")
-                .invalidateHttpSession(true)
-                .and()
-                */
+        //로그아웃 설정
 
+                .and().logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/logout")
+                .invalidateHttpSession(true)
+        //403 예외처리
+                .and().exceptionHandling()
+                .accessDeniedPage("/denied");
                 // 403 예외처리 핸들링
 
 

@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/common-layout">
+
+<th:block layout:fragment="contentStyle">
+    <link rel="stylesheet" th:href="@{/styles/default/default.css}" >
+</th:block>
+
+<div layout:fragment="content">
+   welcome~ 근데 여기는 못들와요~
+</div>
+
+<th:block layout:fragment="contentScript">
+    <script th:src="@{/scripts/default/default.js}"></script>
+</th:block>
+</html>

@@ -39,7 +39,7 @@ public class MemberController {
 
             return "redirect:/member/sign-up-form";
         }catch (NotAcceptMemberException e) {
-            return "/default";
+            return "/denied";
         }
     }
 

@@ -2,6 +2,7 @@ package com.cbums.service;
 
 import com.cbums.controller.postParameter.SignUpFormParameter;
 import com.cbums.model.Member;
+import com.cbums.model.SecurityUser;
 import com.cbums.repository.FormRepository;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.type.UserRoleType;
@@ -21,10 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -78,18 +76,24 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberRepository.findByEmail(email).get();
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        switch (member.getUserRoleType()) {
-            case ADMIN:
-                grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.ADMIN.name()));
-            case MEMBER:
-                grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.MEMBER.name()));
+        SecurityUser securityUser = new SecurityUser();
+        securityUser.setUsername(member.getEmail());
+        securityUser.setPassword(member.getPassword());
+
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        switch (member.getUserRoleType().name()) {
+            case "ADMIN":
+                grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            case "MEMBER":
+                grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_MEMBER"));
             default:
-                grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.VISITANT.name()));
+                grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_VISITED"));
                 break;
         }
 
-        return new User(member.getEmail(), member.getPassword(), grantedAuthorities);
+        securityUser.setAuthorities(grantedAuthorities);
+
+        return securityUser;
     }
 
 }
