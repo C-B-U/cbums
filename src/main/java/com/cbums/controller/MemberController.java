@@ -7,12 +7,7 @@ import com.cbums.service.MemberService;
 import com.cbums.service.exception.NotAcceptMemberException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/member/**")
@@ -35,7 +30,7 @@ public class MemberController {
     @PostMapping("/check-accept-sign-up")
     public String checkAcceptSignUp(String email) {
         try {
-            String acceptMemberEmail = memberService.getAcceptMember(email);
+            memberService.checkAcceptMember(email);
 
             return "redirect:/member/sign-up-form";
         }catch (NotAcceptMemberException e) {

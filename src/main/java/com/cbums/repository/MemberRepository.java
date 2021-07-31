@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    public Optional<Member> findByMemberId(Long id);
     public Optional<Member> findByEmail(String email);
 
     @Modifying(clearAutomatically = true)
