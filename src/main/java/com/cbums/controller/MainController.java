@@ -25,4 +25,9 @@ public class MainController {
     public String deniedPage() {
         return "/denied";
     }
+    @GetMapping("/login-success")
+    public String loginSuccessPage() {
+        return "/login-success";
+    }
+
 }
