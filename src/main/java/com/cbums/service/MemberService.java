@@ -88,7 +88,14 @@ public class MemberService implements UserDetailsService {
 
         securityUser.setAuthorities(grantedAuthorities);
 
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("login-user", member.getMemberId());
         return securityUser;
+    }
+
+    public void logout(){
+        HttpSession httpSession = request.getSession();
+        httpSession.removeAttribute("login-user");
     }
 
 }

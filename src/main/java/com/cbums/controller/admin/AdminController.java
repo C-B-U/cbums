@@ -1,4 +1,4 @@
-package com.cbums.controller;
+package com.cbums.controller.admin;
 
 import com.cbums.model.Form;
 import com.cbums.model.Member;
@@ -16,22 +16,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final MemberService memberService;
-    private final FormService formService;
-
     @GetMapping("/")
     public String adminPage() {
 
         return "/admin/admin-menu";
     }
 
-    @GetMapping("/member")
-    public List<Member> memberViewPage() {
-        return memberService.getMembers();
-    }
-
-    @GetMapping("/form")
-    public List<Form> formViewPage() {
-        return formService.getForms();
-    }
 }
