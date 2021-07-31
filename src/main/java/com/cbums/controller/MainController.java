@@ -15,4 +15,14 @@ public class MainController {
     public String loginPage() {
         return "/login";
     }
+
+    @GetMapping("/logout")
+    public String logoutPage() {
+        return "/logout";
+    }
+
+    @GetMapping("/denied")
+    public String deniedPage() {
+        return "/denied";
+    }
 }

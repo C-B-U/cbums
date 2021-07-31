@@ -21,10 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -78,11 +75,11 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberRepository.findByEmail(email).get();
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        switch (member.getUserRoleType()) {
-            case ADMIN:
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        switch (member.getUserRoleType().name()) {
+            case "ADMIN":
                 grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.ADMIN.name()));
-            case MEMBER:
+            case "MEMBER":
                 grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.MEMBER.name()));
             default:
                 grantedAuthorities.add(new SimpleGrantedAuthority(UserRoleType.VISITANT.name()));
