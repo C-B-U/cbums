@@ -4,8 +4,10 @@ import com.cbums.controller.postParameter.CreateFormFormParameter;
 import com.cbums.controller.postParameter.CreateFormQuestionParameter;
 import com.cbums.controller.postParameter.CreateFormContentParameter;
 import com.cbums.model.Form;
+import com.cbums.model.FormAnswer;
 import com.cbums.model.FormContent;
 import com.cbums.model.FormQuestion;
+import com.cbums.service.FormAnswerService;
 import com.cbums.service.FormContentService;
 import com.cbums.service.FormQuestionService;
 import com.cbums.service.FormService;
@@ -26,6 +28,7 @@ public class AdminFormController {
     private final FormService formService;
     private final FormQuestionService formQuestionService;
     private final FormContentService formContentService;
+    private final FormAnswerService formAnswerService;
 
     @PostMapping("/")
     public String postForm(CreateFormFormParameter createFormFormParameter) {
@@ -76,4 +79,16 @@ public class AdminFormController {
 
         return "redirect:/form/content/"+savedFormContentId;
     }
+
+    @GetMapping("/content/{formSeq}/answer")
+    public JsonObject getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
+        JsonObject jsonObject = new JsonObject();
+        List<FormAnswer> formAnswerList =
+                formAnswerService.findFormAnswerListByFormId(formSeq);
+        JsonArray jsonArr = new Gson().toJsonTree(formAnswerList).getAsJsonArray();
+        jsonObject.add("formAnswerService", jsonArr);
+
+        return jsonObject;
+    }
+    // 각 개인별로 조회 TODO
 }

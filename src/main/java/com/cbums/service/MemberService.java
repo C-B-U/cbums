@@ -66,7 +66,7 @@ public class MemberService implements UserDetailsService {
 
 
 
-    public List<Member> findMembers() {
+    public List<Member> findMemberList() {
         return memberRepository.findAll();
     }
 

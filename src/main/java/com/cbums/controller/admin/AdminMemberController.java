@@ -21,7 +21,7 @@ public class AdminMemberController {
     @GetMapping("")
     public JsonObject getMemberList() {
         JsonObject jsonObject = new JsonObject();
-        List<Member> memberList = memberService.findMembers();
+        List<Member> memberList = memberService.findMemberList();
         JsonArray jsonArr = new Gson().toJsonTree(memberList).getAsJsonArray();
         jsonObject.add("memberList", jsonArr);
 

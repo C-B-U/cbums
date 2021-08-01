@@ -37,8 +37,10 @@ public class FormAnswerService {
             formAnswer.setContent(answer.get(k));
             formAnswerRepository.save(formAnswer);
         }
-
-
-
     }
+
+    public List<FormAnswer> findFormAnswerListByFormId(Long FormId) {
+        return formAnswerRepository.findFormAnswerListByFormId(FormId);
+    }
+
 }
