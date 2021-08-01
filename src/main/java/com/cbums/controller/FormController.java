@@ -9,13 +9,13 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/form/**")
+@RequestMapping("/form")
 @RequiredArgsConstructor
 public class FormController {
 
     private final FormService formService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Form> createForm() {
         return formService.findForms();
     }

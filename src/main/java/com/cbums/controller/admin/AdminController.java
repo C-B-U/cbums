@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/**")
+@RequestMapping("/admin")
 @RequiredArgsConstructor
 public class AdminController {
 
-    @GetMapping("/")
+    @GetMapping("")
     public String adminPage() {
 
         return "/admin/admin-menu";
