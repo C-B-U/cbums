@@ -15,12 +15,8 @@ public class FormAnswer {
     private Long formAnswerId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "form_id",nullable = false)
-    private Form form;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "form_question_id",nullable = false)
-    private FormQuestion formQuestion;
+    @JoinColumn(name = "form_content_id",nullable = false)
+    private FormContent formContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id",nullable = false)

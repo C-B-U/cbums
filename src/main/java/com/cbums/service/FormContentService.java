@@ -9,6 +9,8 @@ import com.cbums.repository.FormRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class FormContentService {
@@ -28,4 +30,7 @@ public class FormContentService {
         return savedFormContent.getFormContentId();
     }
 
+    public List<FormQuestion> findFormContentQuestionListByFormId(Long FormId) {
+        return formContentRepository.findFormContentQuestionListByFormId(FormId);
+    }
 }
