@@ -11,7 +11,7 @@ import java.util.List;
 public interface FormContentRepository extends JpaRepository<FormContent, Long> {
 
 
-    @Query("SELECT FormQuestion from FormContent fc where fc.form.formId = :formId ")
-    public List<FormQuestion> findFormContentQuestionListByFormId(@Param("formId") Long formId);
+    @Query("SELECT fc from FormContent fc where fc.form.formId = :formId ")
+    public List<FormContent> findFormContentListByFormId(@Param("formId") Long formId);
 
 }

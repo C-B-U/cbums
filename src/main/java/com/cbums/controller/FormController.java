@@ -46,20 +46,20 @@ public class FormController {
         return jsonObject;
     }
 
-    @GetMapping("/{seq}/question")
-    public JsonObject getFormContentQuestionList(@PathVariable("seq") Long seq) {
+    @GetMapping("/content/{formSeq}")
+    public JsonObject getFormContentQuestionList(@PathVariable("formSeq") Long formSeq) {
         JsonObject jsonObject = new JsonObject();
-        List<FormQuestion> formQuestionList =
-                formContentService.findFormContentQuestionListByFormId(seq);
+        List<FormContent> formContentList =
+                formContentService.findFormContentListByFormId(formSeq);
         JsonArray jsonArr = new Gson().
-                toJsonTree(formQuestionList).getAsJsonArray();
-        jsonObject.add("formQuestionList", jsonArr);
+                toJsonTree(formContentList).getAsJsonArray();
+        jsonObject.add("formContentList", jsonArr);
 
         return jsonObject;
     }
 
     //이것에 과연 필요한 코드인가?
-    @GetMapping("/{formSeq}/question/{questionSeq}")
+    @GetMapping("/content/question/{questionSeq}")
     public JsonObject getFormContentQuestion(
             @PathVariable("formSeq") Long formSeq,
             @PathVariable("questionSeq") Long questionSeq) {
@@ -75,10 +75,9 @@ public class FormController {
     }
 
     //작성자 정보
-    @PostMapping(value = "/{formSeq}/answer}",  produces = "application/json; charset=utf8")
-    public String postFormAnswer(@PathVariable("formSeq") Long formSeq,
-                @RequestBody Map<Long, String> answer) {
-        formAnswerService.createFormAnswer(formSeq, answer);
+    @PostMapping(value = "/content/answer",  produces = "application/json; charset=utf8")
+    public String postFormAnswer(@RequestBody Map<Long, String> answer) {
+        formAnswerService.createFormAnswer(answer);
         return "redirect:/";
     }
 

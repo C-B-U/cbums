@@ -29,8 +29,7 @@ public class FormContentService {
         FormContent savedFormContent =  formContentRepository.save(formContent);
         return savedFormContent.getFormContentId();
     }
-
-    public List<FormQuestion> findFormContentQuestionListByFormId(Long FormId) {
-        return formContentRepository.findFormContentQuestionListByFormId(FormId);
+    public List<FormContent> findFormContentListByFormId(Long FormId){
+        return formContentRepository.findFormContentListByFormId(FormId);
     }
 }
