@@ -3,6 +3,7 @@ package com.cbums.controller;
 import com.cbums.model.Form;
 import com.cbums.model.FormContent;
 import com.cbums.model.FormQuestion;
+import com.cbums.service.FormAnswerService;
 import com.cbums.service.FormContentService;
 import com.cbums.service.FormQuestionService;
 import com.cbums.service.FormService;
@@ -25,6 +26,7 @@ public class FormController {
     private final FormService formService;
     private final FormQuestionService formQuestionService;
     private final FormContentService formContentService;
+    private final FormAnswerService formAnswerService;
 
     @GetMapping("")
     public JsonObject getFormList() {
@@ -76,8 +78,7 @@ public class FormController {
     @PostMapping(value = "/{formSeq}/answer}",  produces = "application/json; charset=utf8")
     public String postFormAnswer(@PathVariable("formSeq") Long formSeq,
                 @RequestBody Map<Long, String> answer) {
-
-
+        formAnswerService.createFormAnswer(formSeq, answer);
         return "redirect:/";
     }
 

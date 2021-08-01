@@ -14,7 +14,7 @@ public class FormAnswerService {
     //MemberService를 받아야 하나 Repo를 받아야하나... TODO
     private final MemberRepository memberRepository;
 
-    public void createFormAnswer(Long formId,String writer, Map<Long,String> answer) {
+    public void createFormAnswer(Long formId, Map<Long,String> answer) {
 
     }
 }
