@@ -27,7 +27,9 @@ public class MemberService implements UserDetailsService {
     private final HttpServletRequest request;
 
     public Member joinForWriteForm(Member member) {
-        memberRepository.save(member);
+        Member savedMember = memberRepository.save(member);
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("form-writer-id", savedMember.getMemberId());
         return member;
     }
 
