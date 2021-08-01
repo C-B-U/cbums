@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 public class FormQuestion {
     @Id
-    @GeneratedValue(FormContent = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long formQuestionId;
 
     private String content;
