@@ -2,15 +2,23 @@ package com.cbums.model;
 
 
 import com.cbums.type.UserRoleType;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.lang.reflect.Type;
 
 @Entity
 @Getter
 @Setter
-public class Member {
+public class Member implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,4 +49,10 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private UserRoleType userRoleType = UserRoleType.VISITANT;
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    }
+
 }

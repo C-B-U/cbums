@@ -2,9 +2,7 @@ package com.cbums.controller.admin;
 
 import com.cbums.model.Member;
 import com.cbums.service.MemberService;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,9 +32,9 @@ public class AdminMemberController {
     public JsonObject getMember(@PathVariable("seq") Long seq) {
         JsonObject jsonObject = new JsonObject();
         Member member = memberService.findMemberById(seq);
-        String memberJson = new Gson().toJson(member);
-        // 역직렬화 오류 TODO
-        jsonObject.add("member",new Gson().toJsonTree(member).getAsJsonObject());
+        JsonParser jsonParser = new JsonParser();
+
+        jsonObject.add("member",jsonParser.parse(member.toString()).getAsJsonObject());
         return jsonObject;
     }
 
