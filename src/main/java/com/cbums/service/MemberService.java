@@ -28,6 +28,8 @@ public class MemberService implements UserDetailsService {
 
     public Member joinForWriteForm(Member member) {
         memberRepository.save(member);
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("form-writer-email", member.getEmail());
         return member;
     }
 

@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -33,31 +34,33 @@ public class FormController {
         jsonObject.add("formList", jsonArr);
         return jsonObject;
     }
+
     @GetMapping("/{seq}")
     public JsonObject getForm(@PathVariable("seq") Long seq) {
         JsonObject jsonObject = new JsonObject();
         Form form = formService.findFormById(seq);
         JsonParser jsonParser = new JsonParser();
-        jsonObject.add("form",jsonParser.parse(form.toString()).getAsJsonObject());
+        jsonObject.add("form", jsonParser.parse(form.toString()).getAsJsonObject());
         return jsonObject;
     }
 
     @GetMapping("/{seq}/question")
-    public JsonObject getFormContentQuestionList(@PathVariable("seq") Long seq){
+    public JsonObject getFormContentQuestionList(@PathVariable("seq") Long seq) {
         JsonObject jsonObject = new JsonObject();
         List<FormQuestion> formQuestionList =
                 formContentService.findFormContentQuestionListByFormId(seq);
         JsonArray jsonArr = new Gson().
                 toJsonTree(formQuestionList).getAsJsonArray();
-        jsonObject.add("formQuestionList",jsonArr);
+        jsonObject.add("formQuestionList", jsonArr);
 
         return jsonObject;
     }
 
+    //이것에 과연 필요한 코드인가?
     @GetMapping("/{formSeq}/question/{questionSeq}")
     public JsonObject getFormContentQuestion(
             @PathVariable("formSeq") Long formSeq,
-            @PathVariable("questionSeq") Long questionSeq ) {
+            @PathVariable("questionSeq") Long questionSeq) {
         JsonObject jsonObject = new JsonObject();
         JsonParser jsonParser = new JsonParser();
         Form form = formService.findFormById(formSeq);
@@ -67,6 +70,15 @@ public class FormController {
         jsonObject.add("formQuestion", jsonParser.parse(formQuestion.toString()).getAsJsonObject());
 
         return jsonObject;
+    }
+
+    //작성자 정보
+    @PostMapping(value = "/{formSeq}/answer}",  produces = "application/json; charset=utf8")
+    public String postFormAnswer(@PathVariable("formSeq") Long formSeq,
+                @RequestBody Map<Long, String> answer) {
+
+
+        return "redirect:/";
     }
 
 
