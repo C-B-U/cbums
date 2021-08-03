@@ -90,5 +90,18 @@ public class AdminFormController {
 
         return jsonObject;
     }
-    // 각 개인별로 조회 TODO
+
+    @GetMapping("/content/{formSeq}/answer/{memberSeq}")
+    public JsonObject getFormAnswer(
+            @PathVariable("formSeq") Long formSeq,
+            @PathVariable("memberSeq") Long memberSeq) {
+        JsonObject jsonObject = new JsonObject();
+        FormAnswer formAnswer =
+                formAnswerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq);
+        JsonParser jsonParser = new JsonParser();
+        jsonObject.add("formAnswer",jsonParser.parse(formAnswer.toString()).getAsJsonObject());
+        return jsonObject;
+    }
+
+
 }
