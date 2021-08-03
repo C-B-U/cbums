@@ -41,7 +41,6 @@ public class AdminFormController {
         Long saveFormId = formService.createForm(form);
         return "redirect:/form/" + saveFormId;
     }
-
     @PostMapping("/question")
     public String postFormQuestion(CreateFormQuestionParameter createFormQuestionParameter) {
         FormQuestion formQuestion = new FormQuestion();
@@ -71,13 +70,10 @@ public class AdminFormController {
         return jsonObject;
     }
 
-    @PostMapping("/content")
-    public String setFormContent(CreateFormContentParameter createFormContentParameter) {
-        Long savedFormContentId = formContentService.createFormContent(
-                createFormContentParameter.getFormId(),
-                createFormContentParameter.getFormQuestionId());
-
-        return "redirect:/form/content/"+savedFormContentId;
+    @PostMapping("/content/{formSeq}")
+    public String setFormContent(@PathVariable("formSeq") Long formSeq, List<Long> FormQuestionId) {
+        formContentService.createFormContent(formSeq, FormQuestionId);
+        return "redirect:/form/content/"+formSeq;
     }
 
     @GetMapping("/content/{formSeq}/answer")
@@ -90,5 +86,18 @@ public class AdminFormController {
 
         return jsonObject;
     }
-    // 각 개인별로 조회 TODO
+
+    @GetMapping("/content/{formSeq}/answer/{memberSeq}")
+    public JsonObject getFormAnswer(
+            @PathVariable("formSeq") Long formSeq,
+            @PathVariable("memberSeq") Long memberSeq) {
+        JsonObject jsonObject = new JsonObject();
+        FormAnswer formAnswer =
+                formAnswerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq);
+        JsonParser jsonParser = new JsonParser();
+        jsonObject.add("formAnswer",jsonParser.parse(formAnswer.toString()).getAsJsonObject());
+        return jsonObject;
+    }
+
+
 }
