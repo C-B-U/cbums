@@ -18,17 +18,17 @@ public class FormContentService {
     private final FormRepository formRepository;
     private final FormQuestionRepository formQuestionRepository;
 
-    public Long createFormContent(Long formId, Long formQuestionId) {
+    public void createFormContent(Long formId, List<Long> formQuestionIdList) {
 
         FormContent formContent = new FormContent();
         Form form = formRepository.getById(formId);
-        FormQuestion formQuestion = formQuestionRepository.getById(formQuestionId);
-
-        formContent.setForm(form);
-        formContent.setFormQuestion(formQuestion);
-        FormContent savedFormContent =  formContentRepository.save(formContent);
-        return savedFormContent.getFormContentId();
+        FormQuestion formQuestion = null;
+        for(Long k : formQuestionIdList) {
+            formContent.setFormQuestion(formQuestionRepository.getById(k));
+            formContentRepository.save(formContent);
+        }
     }
+
     public List<FormContent> findFormContentListByFormId(Long FormId){
         return formContentRepository.findFormContentListByFormId(FormId);
     }
