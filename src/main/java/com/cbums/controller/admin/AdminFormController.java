@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/form/**")
+@RequestMapping("/admin/form")
 @RequiredArgsConstructor
 public class AdminFormController {
 
