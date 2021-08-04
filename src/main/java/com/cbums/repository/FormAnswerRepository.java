@@ -10,7 +10,9 @@ import java.util.List;
 
 public interface FormAnswerRepository extends JpaRepository<FormAnswer, Long> {
 
-    @Query("SELECT fa from FormAnswer fa where fa.formContent.form.formId = :formId ")
+    @Query("SELECT fa FROM FormAnswer fa WHERE fa.formContent.form.formId = :formId ")
     public List<FormAnswer> findFormAnswerListByFormId(@Param("formId") Long formId);
 
+    @Query("SELECT fa FROM FormAnswer fa WHERE fa.member.memberId = :memberId AND fa.formContent.form.formId = :formId")
+    public FormAnswer findFormAnswerByFormIdAndMemberId(@Param("formId") Long formId, @Param("memberId") Long memberId);
 }

@@ -36,6 +36,11 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
+
+	testImplementation 'org.mockito:mockito-core:2.1.0'
+
+
 }
 /*
 def querydslDir = "$buildDir/generated/querydsl"
