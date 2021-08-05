@@ -49,7 +49,7 @@ public class MemberService implements UserDetailsService {
     }
 
 
-    public void setMemberOtherInfo(SignUpFormParameter signUpFormParameter) {
+    public Long setMemberOtherInfo(SignUpFormParameter signUpFormParameter) {
 
         HttpSession httpSession = request.getSession();
         String email = (String)httpSession.getAttribute("accept-email");
@@ -62,6 +62,7 @@ public class MemberService implements UserDetailsService {
                 signUpFormParameter.getIntroduce(),
                 signUpFormParameter.getImage());
 
+        return member.getMemberId();
     }
 
 
