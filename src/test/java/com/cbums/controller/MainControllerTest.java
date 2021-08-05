@@ -10,12 +10,14 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
@@ -41,7 +43,8 @@ class MainControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/default"));
+                .andExpect(content().string("/default"))
+                .andDo(print());
     }
 
     @Test
@@ -49,15 +52,18 @@ class MainControllerTest {
     public void getLoginPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/login"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/login"));
+                .andExpect(content().string("/login"))
+                .andDo(print());
     }
 
     @Test
-    @DisplayName("로그아웃 페이지 GET")
-    public void getLogoutPage() throws Exception {
+    @WithMockUser
+    @DisplayName("로그아웃 페이지 Post")
+    public void postLogoutPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/logout"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/logout"));
+                .andExpect(content().string("/logout"))
+                .andDo(print());
     }
 
     @Test
@@ -65,7 +71,8 @@ class MainControllerTest {
     public void getDeniedPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/denied"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/denied"));
+                .andExpect(content().string("/denied"))
+                .andDo(print());
     }
 
     @Test
@@ -73,7 +80,8 @@ class MainControllerTest {
     public void getLoginSuccessPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/login-success"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/login-success"));
+                .andExpect(content().string("/login-success"))
+                .andDo(print());
     }
 
     @Test
@@ -81,7 +89,8 @@ class MainControllerTest {
     public void getFormPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/form-page"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/form"));
+                .andExpect(content().string("/form"))
+                .andDo(print());
     }
 
 }
