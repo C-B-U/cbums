@@ -9,6 +9,7 @@ import com.cbums.repository.FormRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,15 +19,19 @@ public class FormContentService {
     private final FormRepository formRepository;
     private final FormQuestionRepository formQuestionRepository;
 
-    public void createFormContent(Long formId, List<Long> formQuestionIdList) {
+    public List<Long> createFormContent(Long formId, List<Long> formQuestionIdList) {
 
-        FormContent formContent = new FormContent();
+        List<Long> formContendId = new ArrayList<>();
+        FormContent formContent = null;
         Form form = formRepository.getById(formId);
-        FormQuestion formQuestion = null;
         for(Long k : formQuestionIdList) {
+            formContent = new FormContent();
+            formContent.setForm(form);
             formContent.setFormQuestion(formQuestionRepository.getById(k));
-            formContentRepository.save(formContent);
+            formContendId.add(formContentRepository.save(formContent).getFormContentId());
         }
+
+        return formContendId;
     }
 
     public List<FormContent> findFormContentListByFormId(Long FormId){
