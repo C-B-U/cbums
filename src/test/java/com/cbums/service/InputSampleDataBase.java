@@ -138,8 +138,12 @@ public class InputSampleDataBase {
         }
     }
 
+    //지원서 답변 테스트 생성 후 제작 TODO
     public void 지원서_답변_생성() {
-
+        HttpSession httpSession = request.getSession();
+        for(int i=25;i<175;i++) {
+            httpSession.setAttribute("form-writer-id", (long)i);
+        }
     }
 
     public Integer getGeneratedInteger() {
