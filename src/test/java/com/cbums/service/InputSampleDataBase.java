@@ -1,6 +1,8 @@
 package com.cbums.service;
 
 import com.cbums.controller.postParameter.SignUpFormParameter;
+import com.cbums.model.Form;
+import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
 import com.cbums.type.UserRoleType;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,7 @@ import org.springframework.test.annotation.Commit;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 @SpringBootTest
@@ -26,11 +29,15 @@ public class InputSampleDataBase {
     @Autowired
     MemberService memberService;
     @Autowired
+    FormService formService;
+    @Autowired
+    FormQuestionService formQuestionService;
+    @Autowired
     HttpServletRequest request;
 
 
     //실행 후 test Annotation 주석처리!
-   //  @Test
+    //  @Test
     public void 맴버생성() {
         HttpSession httpSession = request.getSession();
         //VISITED
@@ -80,11 +87,58 @@ public class InputSampleDataBase {
         memberService.joinForWriteForm(member);
     }
 
+    //실행 후 test Annotation 주석처리!
+    //@Test
+    public void 지원서_생성() {
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("login-user", 175l);
+
+        for (int i = 0; i < 50; i++) {
+            Form form = new Form();
+            form.setTitle(getGeneratedString());
+            form.setIntroduce(getGeneratedString());
+            form.setRegisterNumber(getGeneratedInteger());
+            form.setOpenDateTime(LocalDateTime.now());
+            form.setCloseDateTime(LocalDateTime.now());
+            formService.createForm(form);
+        }
+    }
+
+    //실행 후 test Annotation 주석처리!
+    //@Test
+    public void 문항_생성() {
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("login-user", 175l);
+
+        for (int i = 0; i < 150; i++) {
+            FormQuestion formQuestion = new FormQuestion();
+            formQuestion.setContent(getGeneratedString());
+            formQuestion.setOpeningDatetime(LocalDateTime.now());
+            formQuestionService.createFormQuestion(formQuestion);
+        }
+    }
+
+    public void 지원서_내용_제작() {
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("login-user", 175l);
+
+    }
+
+    public void 지원서_답변_생성() {
+
+    }
+
+    //FormAnswer
+
     public Integer getGeneratedInteger() {
         Random random = new Random();
         return random.nextInt();
     }
+    public Integer getGeneratedInteger(int max) {
+        Random random = new Random();
 
+        return random.nextInt(max);
+    }
     public String getGeneratedString() {
         Random random = new Random();
         return random.ints(LEFT_LIMIT, RIGHT_LIMIT + 1)
@@ -94,12 +148,4 @@ public class InputSampleDataBase {
                 .toString();
     }
 
-
-    //Form
-
-    //FormQuestion
-
-    //FormContent
-
-    //FormAnswer
 }
