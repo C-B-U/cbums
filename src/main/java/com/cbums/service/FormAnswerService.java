@@ -46,7 +46,7 @@ public class FormAnswerService {
         return formAnswerRepository.findFormAnswerListByFormId(formId);
     }
 
-    public FormAnswer findFormAnswerByFormIdAndMemberId(Long formId, Long memberId) {
+    public List<FormAnswer> findFormAnswerByFormIdAndMemberId(Long formId, Long memberId) {
 
         return formAnswerRepository.findFormAnswerByFormIdAndMemberId(formId, memberId);
     }
