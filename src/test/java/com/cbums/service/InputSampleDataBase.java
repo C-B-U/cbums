@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.Random;
+import java.util.*;
 
 @SpringBootTest
 @Transactional
@@ -32,6 +32,8 @@ public class InputSampleDataBase {
     FormService formService;
     @Autowired
     FormQuestionService formQuestionService;
+    @Autowired
+    FormContentService formContentService;
     @Autowired
     HttpServletRequest request;
 
@@ -118,26 +120,36 @@ public class InputSampleDataBase {
         }
     }
 
-    public void 지원서_내용_제작() {
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("login-user", 175l);
 
+    //실행 후 test Annotation 주석처리!
+   // @Test
+    public void 지원서_내용_제작() {
+        for(int i=13;i<=62;i++) {
+            Set<Long> formQuestions = new HashSet<>();
+            formQuestions.add((long)getGeneratedInteger(32,181));
+            formQuestions.add((long)getGeneratedInteger(32,181));
+            formQuestions.add((long)getGeneratedInteger(32,181));
+            formQuestions.add((long)getGeneratedInteger(32,181));
+            formQuestions.add((long)getGeneratedInteger(32,181));
+            formQuestions.add((long)getGeneratedInteger(32,181));
+            formQuestions.add((long)getGeneratedInteger(32,181));
+
+            formContentService.createFormContent((long)i,new ArrayList<>(formQuestions));
+        }
     }
 
     public void 지원서_답변_생성() {
 
     }
 
-    //FormAnswer
-
     public Integer getGeneratedInteger() {
         Random random = new Random();
         return random.nextInt();
     }
-    public Integer getGeneratedInteger(int max) {
+    public Integer getGeneratedInteger(int min, int max) {
         Random random = new Random();
 
-        return random.nextInt(max);
+        return random.nextInt(max-min) + min;
     }
     public String getGeneratedString() {
         Random random = new Random();

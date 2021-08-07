@@ -56,6 +56,10 @@ public class MemberService implements UserDetailsService {
         httpSession.removeAttribute("accept-email");
 
         Member member = memberRepository.findByEmail(email).get();
+        //암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
+        //암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
+        //암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
+        //암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
         String password = new BCryptPasswordEncoder().encode(signUpFormParameter.getPassword());
         memberRepository.setAcceptMember(member.getMemberId(),
                 password,
