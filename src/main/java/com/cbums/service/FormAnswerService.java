@@ -22,9 +22,11 @@ public class FormAnswerService {
     private final MemberRepository memberRepository;
     private final HttpServletRequest request;
 
-    public void createFormAnswer(Map<Long,String> answer) {
+    public List<Long> createFormAnswer(Map<Long,String> answer) {
+        List<Long> formAnswerIdList = new ArrayList<>();
         HttpSession httpSession = request.getSession();
         Long memberId = (Long)httpSession.getAttribute("form-writer-id");
+        httpSession.removeAttribute("form-writer-id");
         Member member = memberRepository.getById(memberId);
         List<Long> contentKeyList = new ArrayList<>(answer.keySet());
         FormContent formContent = null;
@@ -35,15 +37,16 @@ public class FormAnswerService {
             formAnswer.setMember(member);
             formAnswer.setFormContent(formContent);
             formAnswer.setContent(answer.get(k));
-            formAnswerRepository.save(formAnswer);
+            formAnswerIdList.add(formAnswerRepository.save(formAnswer).getFormAnswerId());
         }
+        return formAnswerIdList;
     }
 
     public List<FormAnswer> findFormAnswerListByFormId(Long formId) {
         return formAnswerRepository.findFormAnswerListByFormId(formId);
     }
 
-    public FormAnswer findFormAnswerByFormIdAndMemberId(Long formId, Long memberId) {
+    public List<FormAnswer> findFormAnswerByFormIdAndMemberId(Long formId, Long memberId) {
 
         return formAnswerRepository.findFormAnswerByFormIdAndMemberId(formId, memberId);
     }

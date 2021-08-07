@@ -82,7 +82,7 @@ public class AdminFormController {
         List<FormAnswer> formAnswerList =
                 formAnswerService.findFormAnswerListByFormId(formSeq);
         JsonArray jsonArr = new Gson().toJsonTree(formAnswerList).getAsJsonArray();
-        jsonObject.add("formAnswerService", jsonArr);
+        jsonObject.add("formAnswerList", jsonArr);
 
         return jsonObject;
     }
@@ -92,10 +92,12 @@ public class AdminFormController {
             @PathVariable("formSeq") Long formSeq,
             @PathVariable("memberSeq") Long memberSeq) {
         JsonObject jsonObject = new JsonObject();
-        FormAnswer formAnswer =
+        List<FormAnswer> formAnswerList =
                 formAnswerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq);
         JsonParser jsonParser = new JsonParser();
-        jsonObject.add("formAnswer",jsonParser.parse(formAnswer.toString()).getAsJsonObject());
+        JsonArray jsonArr = new Gson().toJsonTree(formAnswerList).getAsJsonArray();
+        jsonObject.add("formAnswerList", jsonArr);
+
         return jsonObject;
     }
 

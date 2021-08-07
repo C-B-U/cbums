@@ -14,5 +14,5 @@ public interface FormAnswerRepository extends JpaRepository<FormAnswer, Long> {
     public List<FormAnswer> findFormAnswerListByFormId(@Param("formId") Long formId);
 
     @Query("SELECT fa FROM FormAnswer fa WHERE fa.member.memberId = :memberId AND fa.formContent.form.formId = :formId")
-    public FormAnswer findFormAnswerByFormIdAndMemberId(@Param("formId") Long formId, @Param("memberId") Long memberId);
+    public List<FormAnswer> findFormAnswerByFormIdAndMemberId(@Param("formId") Long formId, @Param("memberId") Long memberId);
 }
