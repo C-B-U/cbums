@@ -2,7 +2,7 @@ package com.cbums.service;
 
 import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
