@@ -60,3 +60,5 @@ CBU Management System
 ##### (21/08/01)
 * spring boot로 프레임워크 변경
 * front 프레임워크로 리엑트 추가
+
+# [TODO LIST](https://yielding-pendulum-134.notion.site/1bdc6046172342af9c5a21c362b2d275?v=34aa52a008dd4073a39b221153a4bd71)
