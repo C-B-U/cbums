@@ -2,10 +2,6 @@ package com.cbums.model;
 
 
 import com.cbums.type.UserRoleType;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,7 +9,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.lang.reflect.Type;
 
 @Entity
 @Getter
