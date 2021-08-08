@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +18,7 @@ public class ProjectService {
     }
 
     public Project findProjectById(Long id) {
-        return projectRepository.getById(id);
+        Optional<Project> byId = projectRepository.findById(id);
+        return byId.get();
     }
 }

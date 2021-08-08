@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +24,8 @@ public class FormService {
     }
 
     public Form findFormById(Long id) {
-        return formRepository.getById(id);
+        Optional<Form> byId = formRepository.findById(id);
+        return byId.get();
     }
 
     public Long createForm(Form form) {

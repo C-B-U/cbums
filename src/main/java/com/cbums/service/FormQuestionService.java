@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +33,7 @@ public class FormQuestionService {
 
 
     public FormQuestion findFormQuestionById(Long id) {
-        return formQuestionRepository.getById(id);
+        Optional<FormQuestion> byId = formQuestionRepository.findById(id);
+        return byId.get();
     }
 }

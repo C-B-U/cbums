@@ -2,19 +2,13 @@ package com.cbums.controller.admin;
 
 import com.cbums.controller.postParameter.CreateFormFormParameter;
 import com.cbums.controller.postParameter.CreateFormQuestionParameter;
-import com.cbums.controller.postParameter.CreateFormContentParameter;
 import com.cbums.model.Form;
 import com.cbums.model.FormAnswer;
-import com.cbums.model.FormContent;
 import com.cbums.model.FormQuestion;
 import com.cbums.service.FormAnswerService;
 import com.cbums.service.FormContentService;
 import com.cbums.service.FormQuestionService;
 import com.cbums.service.FormService;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,23 +45,19 @@ public class AdminFormController {
     }
 
     @GetMapping("/question")
-    public JsonObject getFormQuestionList() {
-        JsonObject jsonObject = new JsonObject();
-        List<FormQuestion> formQuestionList = formQuestionService.findFormQuestions();
-        JsonArray jsonArr = new Gson().toJsonTree(formQuestionList).getAsJsonArray();
-        jsonObject.add("formQuestionList", jsonArr);
+    public  List<FormQuestion> getFormQuestionList() {
 
-        return jsonObject;
+        List<FormQuestion> formQuestionList = formQuestionService.findFormQuestions();
+
+        return formQuestionList;
     }
 
     @GetMapping("/question/{seq}")
-    public JsonObject getFormQuestion(@PathVariable("seq") Long seq) {
-        JsonObject jsonObject = new JsonObject();
-        FormQuestion formQuestion = formQuestionService.findFormQuestionById(seq);
-        JsonParser jsonParser = new JsonParser();
+    public FormQuestion getFormQuestion(@PathVariable("seq") Long seq) {
 
-        jsonObject.add("formQuestion", jsonParser.parse(formQuestion.toString()).getAsJsonObject());
-        return jsonObject;
+        FormQuestion formQuestion = formQuestionService.findFormQuestionById(seq);
+
+        return formQuestion;
     }
 
     @PostMapping("/content/{formSeq}")
@@ -77,28 +67,23 @@ public class AdminFormController {
     }
 
     @GetMapping("/content/{formSeq}/answer")
-    public JsonObject getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
-        JsonObject jsonObject = new JsonObject();
+    public  List<FormAnswer> getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
+
         List<FormAnswer> formAnswerList =
                 formAnswerService.findFormAnswerListByFormId(formSeq);
-        JsonArray jsonArr = new Gson().toJsonTree(formAnswerList).getAsJsonArray();
-        jsonObject.add("formAnswerList", jsonArr);
 
-        return jsonObject;
+        return formAnswerList;
     }
 
     @GetMapping("/content/{formSeq}/answer/{memberSeq}")
-    public JsonObject getFormAnswer(
+    public List<FormAnswer> getFormAnswer(
             @PathVariable("formSeq") Long formSeq,
             @PathVariable("memberSeq") Long memberSeq) {
-        JsonObject jsonObject = new JsonObject();
+
         List<FormAnswer> formAnswerList =
                 formAnswerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq);
-        JsonParser jsonParser = new JsonParser();
-        JsonArray jsonArr = new Gson().toJsonTree(formAnswerList).getAsJsonArray();
-        jsonObject.add("formAnswerList", jsonArr);
 
-        return jsonObject;
+        return formAnswerList;
     }
 
 
