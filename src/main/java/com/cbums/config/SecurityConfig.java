@@ -47,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 // 페이지 권한 설정
-                .antMatchers("/admin/**").hasRole(UserRoleType.ADMIN.name())
-                .antMatchers("/study/**").hasRole(UserRoleType.MEMBER.name())
+                //잠시 테스트 때문에   .antMatchers("/admin/**").hasRole(UserRoleType.ADMIN.name())
+                //잠시 테스트 때문에   .antMatchers("/study/**").hasRole(UserRoleType.MEMBER.name())
                 .antMatchers("/**").permitAll()
                 .anyRequest().permitAll()
 

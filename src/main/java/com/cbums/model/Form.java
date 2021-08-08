@@ -1,5 +1,6 @@
 package com.cbums.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -28,6 +29,7 @@ public class Form {
     private Integer registerNumber; // 비모집 지워서인 경우 null
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name="member_id", nullable = false)
     private Member producer;
 
