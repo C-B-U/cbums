@@ -30,7 +30,7 @@ public class NaverMailSendService {
     public void sendEmail(String receiverEmail, String title, String content) throws MessagingException {
         MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(mailSender.getId()));
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress("ktko@ktko.com"));
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiverEmail));
         message.setSubject(title);
         message.setText(content);
 
