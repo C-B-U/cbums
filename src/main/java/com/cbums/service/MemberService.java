@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.*;
@@ -25,6 +26,7 @@ import java.util.*;
 public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
     private final HttpServletRequest request;
+    private final NaverMailSendService naverMailSendService;
 
     public Member joinForWriteForm(Member member) {
         Member savedMember = memberRepository.save(member);
@@ -44,8 +46,29 @@ public class MemberService implements UserDetailsService {
         }
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("accept-email", email);
-        //세션으로 넘길 때 암호화를 해야하나...? 일단 보류 TODO
 
+    }
+
+    public void sendMailCertificationCode() throws MessagingException {
+        HttpSession httpSession = request.getSession();
+        Random random = new Random();
+        Integer key = random.nextInt(99999999);
+        httpSession.setAttribute("certify-key", key);
+        naverMailSendService.sendEmail(
+                (String)httpSession.getAttribute("accept-email"),
+                "씨부엉: 메일 인증 코드입니다",
+                key.toString()
+        );
+    }
+
+    public boolean compareMailCertificationCode(Integer inputCode) {
+        HttpSession httpSession = request.getSession();
+        if(inputCode == httpSession.getAttribute("certify-key")) {
+            httpSession.removeAttribute("certify-key");
+            return true;
+        }else {
+            return false;
+        }
     }
 
 
