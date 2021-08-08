@@ -76,7 +76,9 @@ public class MemberService implements UserDetailsService {
     }
 
     public Member findMemberById(Long id) {
-        return memberRepository.getById(id);
+        Optional<Member> byId = memberRepository.findById(id);
+        //null값 예외처리 TODO
+        return byId.get();
     }
 
     @Override
