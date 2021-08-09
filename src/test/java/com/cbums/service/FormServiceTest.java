@@ -30,7 +30,7 @@ class FormServiceTest {
     HttpServletRequest request;
 
     @Test
-    public void Form_생성() throws NotLoginedException {
+    public void Form_생성() throws NotLoginedException  {
         //given
         HttpSession httpSession = request.getSession();
         Member 작성자 = new Member();
