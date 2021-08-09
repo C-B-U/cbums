@@ -9,6 +9,7 @@ import com.cbums.service.FormAnswerService;
 import com.cbums.service.FormContentService;
 import com.cbums.service.FormQuestionService;
 import com.cbums.service.FormService;
+import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class AdminFormController {
     private final FormAnswerService formAnswerService;
 
     @PostMapping("/")
-    public String postForm(CreateFormFormParameter createFormFormParameter) {
+    public String postForm(CreateFormFormParameter createFormFormParameter) throws NotLoginedException {
         Form form = new Form();
         form.setIntroduce(createFormFormParameter.getIntroduce());
         form.setOpenDateTime(createFormFormParameter.getOpenDateTime());
@@ -36,7 +37,7 @@ public class AdminFormController {
         return "redirect:/form/" + saveFormId;
     }
     @PatchMapping("/{seq}")
-    public String updateForm(@PathVariable("seq") Long seq, CreateFormFormParameter createFormFormParameter) {
+    public String updateForm(@PathVariable("seq") Long seq, CreateFormFormParameter createFormFormParameter) throws NotLoginedException {
         Form form = new Form();
         form.setIntroduce(createFormFormParameter.getIntroduce());
         form.setOpenDateTime(createFormFormParameter.getOpenDateTime());
@@ -49,7 +50,7 @@ public class AdminFormController {
     }
 
     @PostMapping("/question")
-    public String postFormQuestion(CreateFormQuestionParameter createFormQuestionParameter) {
+    public String postFormQuestion(CreateFormQuestionParameter createFormQuestionParameter) throws NotLoginedException {
         FormQuestion formQuestion = new FormQuestion();
         formQuestion.setContent(createFormQuestionParameter.getContent());
         formQuestion.setOpeningDatetime(createFormQuestionParameter.getOpeningDatetime());

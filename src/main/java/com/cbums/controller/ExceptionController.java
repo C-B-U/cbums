@@ -1,6 +1,7 @@
 package com.cbums.controller;
 
 import com.cbums.service.exception.NotAcceptMemberException;
+import com.cbums.service.exception.NotLoginedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -29,4 +30,10 @@ public class ExceptionController {
     public String getMessagingExceptionPage(MessagingException e) {
         return e.getMessage();
     }
+
+    @ExceptionHandler(NotLoginedException.class)
+    public String getNotLoginedExceptionPage(NotLoginedException e) {
+        return e.getMessage();
+    }
+
 }

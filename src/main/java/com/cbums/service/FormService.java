@@ -4,6 +4,7 @@ import com.cbums.model.Form;
 import com.cbums.model.Member;
 import com.cbums.repository.FormRepository;
 import com.cbums.repository.MemberRepository;
+import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,9 +31,10 @@ public class FormService {
        return formRepository.findById(id).orElseThrow(NullPointerException::new);
     }
 
-    public Long createForm(Form form) {
+    public Long createForm(Form form) throws NotLoginedException {
         //입력길이 초과시 exception TODO
         HttpSession httpSession = request.getSession();
+        if(httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
         Long producerId = (Long) httpSession.getAttribute("login-user");
         Member producer = memberRepository.getById(producerId);
         form.setProducer(producer);

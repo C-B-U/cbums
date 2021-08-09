@@ -2,6 +2,7 @@ package com.cbums.controller;
 
 
 import com.cbums.service.MemberService;
+import com.cbums.service.exception.NotLoginedException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class MainController {
     }
 
     @PostMapping("/logout")
-    public String logoutPage() {
+    public String logoutPage() throws NotLoginedException {
         memberService.logout();
         return "/logout";
     }

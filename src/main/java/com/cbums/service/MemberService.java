@@ -5,6 +5,7 @@ import com.cbums.model.Member;
 import com.cbums.model.SecurityUser;
 import com.cbums.repository.MemberRepository;
 import com.cbums.service.exception.NotAcceptMemberException;
+import com.cbums.service.exception.NotLoginedException;
 import com.cbums.type.UserRoleType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,6 +35,7 @@ public class MemberService implements UserDetailsService {
         Member savedMember = memberRepository.save(member);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("form-writer-id", savedMember.getMemberId());
+        //만약에 중간에 나간 후에 다시 접속한다면...? TODO
         return member;
     }
 
@@ -131,9 +133,9 @@ public class MemberService implements UserDetailsService {
         return securityUser;
     }
 
-    public void logout(){
+    public void logout() throws NotLoginedException {
         HttpSession httpSession = request.getSession();
-        if(httpSession.getAttribute("login-user") == null) throw new NullPointerException();
+        if(httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
         httpSession.removeAttribute("login-user");
     }
 
