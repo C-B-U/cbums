@@ -6,6 +6,7 @@ import com.cbums.service.FormAnswerService;
 import com.cbums.service.FormContentService;
 import com.cbums.service.FormQuestionService;
 import com.cbums.service.FormService;
+import com.cbums.service.exception.ListEmptyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,15 +25,13 @@ public class FormController {
     private final FormAnswerService formAnswerService;
 
     @GetMapping("")
-    public List<Form> getFormList() {
-
-        List<Form> formList = formService.findForms();
-
+    public List<Form> getFormList() throws ListEmptyException {
+        List<Form> formList = formService.findFormList();
         return formList;
     }
 
     @GetMapping("/{seq}")
-    public Form getForm(@PathVariable("seq") Long seq) {
+    public Form getForm(@PathVariable("seq") Long seq) throws NullPointerException {
 
         Form form = formService.findFormById(seq);
 

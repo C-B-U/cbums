@@ -35,6 +35,19 @@ public class AdminFormController {
         Long saveFormId = formService.createForm(form);
         return "redirect:/form/" + saveFormId;
     }
+    @PatchMapping("/{seq}")
+    public String updateForm(@PathVariable("seq") Long seq, CreateFormFormParameter createFormFormParameter) {
+        Form form = new Form();
+        form.setIntroduce(createFormFormParameter.getIntroduce());
+        form.setOpenDateTime(createFormFormParameter.getOpenDateTime());
+        form.setCloseDateTime(createFormFormParameter.getCloseDateTime());
+        form.setTitle(createFormFormParameter.getTitle());
+        form.setRegisterNumber(createFormFormParameter.getRegisterNumber());
+        form.setFormId(seq);
+        formService.createForm(form);
+        return "redirect:/form/" + seq;
+    }
+
     @PostMapping("/question")
     public String postFormQuestion(CreateFormQuestionParameter createFormQuestionParameter) {
         FormQuestion formQuestion = new FormQuestion();
