@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -43,11 +44,14 @@ public class FormAnswerService {
     }
 
     public List<FormAnswer> findFormAnswerListByFormId(Long formId) {
-        return formAnswerRepository.findFormAnswerListByFormId(formId);
+        List<FormAnswer> formAnswerList = formAnswerRepository.findFormAnswerListByFormId(formId);
+        if(formAnswerList.isEmpty()) throw new NoSuchElementException();
+        return formAnswerList;
     }
 
     public List<FormAnswer> findFormAnswerByFormIdAndMemberId(Long formId, Long memberId) {
-
-        return formAnswerRepository.findFormAnswerByFormIdAndMemberId(formId, memberId);
+        List<FormAnswer> formAnswerList = formAnswerRepository.findFormAnswerByFormIdAndMemberId(formId, memberId);
+        if(formAnswerList.isEmpty()) throw new NoSuchElementException();
+        return formAnswerList;
     }
 }

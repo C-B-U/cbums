@@ -3,10 +3,10 @@ package com.cbums.service;
 import com.cbums.controller.postParameter.SignUpFormParameter;
 import com.cbums.model.Member;
 import com.cbums.model.SecurityUser;
-import com.cbums.repository.FormRepository;
-import com.cbums.service.exception.NotAcceptMemberException;
-import com.cbums.type.UserRoleType;
 import com.cbums.repository.MemberRepository;
+import com.cbums.service.exception.NotAcceptMemberException;
+import com.cbums.service.exception.NotLoginedException;
+import com.cbums.type.UserRoleType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,7 +19,10 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -32,15 +35,14 @@ public class MemberService implements UserDetailsService {
         Member savedMember = memberRepository.save(member);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("form-writer-id", savedMember.getMemberId());
+        //만약에 중간에 나간 후에 다시 접속한다면...? TODO
         return member;
     }
 
     public void checkAcceptMember(String email) throws NotAcceptMemberException {
 
-        Optional<Member> member = memberRepository.findByEmail(email);
-        member.orElseThrow(NullPointerException::new);
-        // 함수형 프로그래밍으로 변환 TODO
-        if (member.get().getUserRoleType() == UserRoleType.VISITANT) {
+        Member member = memberRepository.findByEmail(email).orElseThrow(NullPointerException::new);
+        if (member.getUserRoleType() == UserRoleType.VISITANT) {
             // throw
             throw new NotAcceptMemberException();
         }
@@ -94,14 +96,16 @@ public class MemberService implements UserDetailsService {
 
 
 
-    public List<Member> findMemberList() {
+    public List<Member> findMemberList() throws NoSuchElementException {
+        List<Member> memberList = memberRepository.findAll();
+        if(memberList.isEmpty()) throw new NoSuchElementException();
         return memberRepository.findAll();
     }
 
     public Member findMemberById(Long id) {
-        Optional<Member> byId = memberRepository.findById(id);
-        //null값 예외처리 TODO
-        return byId.get();
+
+        return  memberRepository.findById(id).orElseThrow(NullPointerException::new);
+
     }
 
     @Override
@@ -129,8 +133,9 @@ public class MemberService implements UserDetailsService {
         return securityUser;
     }
 
-    public void logout(){
+    public void logout() throws NotLoginedException {
         HttpSession httpSession = request.getSession();
+        if(httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
         httpSession.removeAttribute("login-user");
     }
 

@@ -4,14 +4,14 @@ import com.cbums.model.Form;
 import com.cbums.model.Member;
 import com.cbums.repository.FormRepository;
 import com.cbums.repository.MemberRepository;
-import com.cbums.service.exception.ListEmptyException;
+import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -20,11 +20,9 @@ public class FormService {
     private final MemberRepository memberRepository;
     private final HttpServletRequest request;
 
-    public List<Form> findFormList() throws ListEmptyException {
+    public List<Form> findFormList() throws NoSuchElementException {
         List <Form> formList = formRepository.findAll();
-        if(formList.isEmpty()) {
-            throw new ListEmptyException();
-        }
+        if(formList.isEmpty()) throw new NoSuchElementException();
         return formList;
     }
 
@@ -33,9 +31,10 @@ public class FormService {
        return formRepository.findById(id).orElseThrow(NullPointerException::new);
     }
 
-    public Long createForm(Form form) {
+    public Long createForm(Form form) throws NotLoginedException {
         //입력길이 초과시 exception TODO
         HttpSession httpSession = request.getSession();
+        if(httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
         Long producerId = (Long) httpSession.getAttribute("login-user");
         Member producer = memberRepository.getById(producerId);
         form.setProducer(producer);

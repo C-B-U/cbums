@@ -4,6 +4,7 @@ import com.cbums.controller.postParameter.SignUpFormParameter;
 import com.cbums.model.Form;
 import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
+import com.cbums.service.exception.NotLoginedException;
 import com.cbums.type.UserRoleType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +92,7 @@ public class InputSampleDataBase {
 
     //실행 후 test Annotation 주석처리!
     //@Test
-    public void 지원서_생성() {
+    public void 지원서_생성() throws NotLoginedException {
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("login-user", 175l);
 
@@ -108,7 +109,7 @@ public class InputSampleDataBase {
 
     //실행 후 test Annotation 주석처리!
     //@Test
-    public void 문항_생성() {
+    public void 문항_생성() throws NotLoginedException {
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("login-user", 175l);
 

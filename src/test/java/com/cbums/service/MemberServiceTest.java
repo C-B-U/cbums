@@ -3,6 +3,7 @@ package com.cbums.service;
 import com.cbums.controller.postParameter.SignUpFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotAcceptMemberException;
+import com.cbums.service.exception.NotLoginedException;
 import com.cbums.type.UserRoleType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -128,7 +129,7 @@ class MemberServiceTest {
     }
 
     @Test
-    public void 로그아웃() {
+    public void 로그아웃() throws NotLoginedException {
         //given
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("login-user", "test");

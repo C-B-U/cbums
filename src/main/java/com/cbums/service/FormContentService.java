@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +36,8 @@ public class FormContentService {
     }
 
     public List<FormContent> findFormContentListByFormId(Long FormId){
-        return formContentRepository.findFormContentListByFormId(FormId);
+        List<FormContent> formContentList = formContentRepository.findFormContentListByFormId(FormId);
+        if(formContentList.isEmpty()) throw new NoSuchElementException();
+        return formContentList;
     }
 }
