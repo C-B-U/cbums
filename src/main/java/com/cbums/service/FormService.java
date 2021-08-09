@@ -30,11 +30,12 @@ public class FormService {
 
     public Long createForm(Form form) {
         HttpSession httpSession = request.getSession();
-        Long producerId = (Long)httpSession.getAttribute("login-user");
+        Long producerId = (Long) httpSession.getAttribute("login-user");
         Member producer = memberRepository.getById(producerId);
         form.setProducer(producer);
         Form savedForm = formRepository.save(form);
 
         return savedForm.getFormId();
     }
+    //수정 시에 createForm에 id만 부여하면 되는 것 아닐까???
 }
