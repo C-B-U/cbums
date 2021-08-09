@@ -1,8 +1,11 @@
 package com.cbums.controller;
 
-import com.cbums.service.exception.ListEmptyException;
+import com.cbums.service.exception.NotAcceptMemberException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.mail.MessagingException;
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class ExceptionController {
@@ -12,8 +15,18 @@ public class ExceptionController {
         return e.getMessage();
     }
 
-    @ExceptionHandler(ListEmptyException.class)
-    public String getListEmptyExceptionPage(ListEmptyException e) {
+    @ExceptionHandler(NoSuchElementException.class)
+    public String getListEmptyExceptionPage(NoSuchElementException e) {
+        return e.getMessage();
+    }
+
+    @ExceptionHandler(NotAcceptMemberException.class)
+    public String getLNotAcceptMemberExceptionPage(NotAcceptMemberException e) {
+        return e.getMessage();
+    }
+
+    @ExceptionHandler(MessagingException.class)
+    public String getMessagingExceptionPage(MessagingException e) {
         return e.getMessage();
     }
 }

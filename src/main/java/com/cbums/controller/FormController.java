@@ -6,12 +6,12 @@ import com.cbums.service.FormAnswerService;
 import com.cbums.service.FormContentService;
 import com.cbums.service.FormQuestionService;
 import com.cbums.service.FormService;
-import com.cbums.service.exception.ListEmptyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 
 @RestController
@@ -25,7 +25,7 @@ public class FormController {
     private final FormAnswerService formAnswerService;
 
     @GetMapping("")
-    public List<Form> getFormList() throws ListEmptyException {
+    public List<Form> getFormList() throws NoSuchElementException {
         List<Form> formList = formService.findFormList();
         return formList;
     }

@@ -4,14 +4,13 @@ import com.cbums.model.Form;
 import com.cbums.model.Member;
 import com.cbums.repository.FormRepository;
 import com.cbums.repository.MemberRepository;
-import com.cbums.service.exception.ListEmptyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -20,11 +19,9 @@ public class FormService {
     private final MemberRepository memberRepository;
     private final HttpServletRequest request;
 
-    public List<Form> findFormList() throws ListEmptyException {
+    public List<Form> findFormList() throws NoSuchElementException {
         List <Form> formList = formRepository.findAll();
-        if(formList.isEmpty()) {
-            throw new ListEmptyException();
-        }
+        if(formList.isEmpty()) throw new NoSuchElementException();
         return formList;
     }
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -29,11 +30,14 @@ public class FormQuestionService {
         return savedFormQuestion.getFormQuestionId();
     }
 
-    public List<FormQuestion> findFormQuestions() { return formQuestionRepository.findAll();}
+    public List<FormQuestion> findFormQuestions() {
+        List<FormQuestion> formQuestionList = formQuestionRepository.findAll();
+        if(formQuestionList.isEmpty()) throw new NoSuchElementException();
+        return formQuestionList;
+    }
 
 
     public FormQuestion findFormQuestionById(Long id) {
-        Optional<FormQuestion> byId = formQuestionRepository.findById(id);
-        return byId.get();
+        return  formQuestionRepository.findById(id).orElseThrow(NullPointerException::new);
     }
 }
