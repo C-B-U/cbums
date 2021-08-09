@@ -2,6 +2,7 @@ package com.cbums.service;
 
 import com.cbums.model.Form;
 import com.cbums.model.Member;
+import com.cbums.service.exception.NotLoginedException;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +30,7 @@ class FormServiceTest {
     HttpServletRequest request;
 
     @Test
-    public void Form_생성(){
+    public void Form_생성() throws NotLoginedException  {
         //given
         HttpSession httpSession = request.getSession();
         Member 작성자 = new Member();
