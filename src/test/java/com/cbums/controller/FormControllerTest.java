@@ -42,7 +42,6 @@ class FormControllerTest {
                         .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .alwaysDo(print())
                 .build();
-
     }
 
     @Test
