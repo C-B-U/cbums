@@ -3,7 +3,7 @@ package com.cbums.service;
 import com.cbums.model.FormAnswer;
 import com.cbums.model.FormContent;
 import com.cbums.model.Member;
-import com.cbums.repository.*;
+import com.cbums.repository.FormAnswerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +18,9 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class FormAnswerService {
     private final FormAnswerRepository formAnswerRepository;
-    private final FormContentRepository formContentRepository;
-    //MemberService를 받아야 하나 Repo를 받아야하나... TODO
-    private final MemberRepository memberRepository;
+
+    private final FormContentService formContentService;
+    private final MemberService memberService;
     private final HttpServletRequest request;
 
     public List<Long> createFormAnswer(Map<Long,String> answer) {
@@ -28,12 +28,12 @@ public class FormAnswerService {
         HttpSession httpSession = request.getSession();
         Long memberId = (Long)httpSession.getAttribute("form-writer-id");
         httpSession.removeAttribute("form-writer-id");
-        Member member = memberRepository.getById(memberId);
+        Member member = memberService.findMemberById(memberId);
         List<Long> contentKeyList = new ArrayList<>(answer.keySet());
-        FormContent formContent = null;
-        FormAnswer formAnswer = null;
+        FormContent formContent;
+        FormAnswer formAnswer;
         for(Long k : contentKeyList) {
-            formContent = formContentRepository.getById(k);
+            formContent = formContentService.findFormContentById(k);
             formAnswer = new FormAnswer();
             formAnswer.setMember(member);
             formAnswer.setFormContent(formContent);

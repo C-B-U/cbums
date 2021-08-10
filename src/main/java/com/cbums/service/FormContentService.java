@@ -2,10 +2,7 @@ package com.cbums.service;
 
 import com.cbums.model.Form;
 import com.cbums.model.FormContent;
-import com.cbums.model.FormQuestion;
 import com.cbums.repository.FormContentRepository;
-import com.cbums.repository.FormQuestionRepository;
-import com.cbums.repository.FormRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,26 +14,30 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class FormContentService {
     private final FormContentRepository formContentRepository;
-    private final FormRepository formRepository;
-    private final FormQuestionRepository formQuestionRepository;
+    private final FormService formService;
+    private final FormQuestionService formQuestionService;
 
     public List<Long> createFormContent(Long formId, List<Long> formQuestionIdList) {
 
         List<Long> formContendId = new ArrayList<>();
-        FormContent formContent = null;
-        Form form = formRepository.getById(formId);
+        FormContent formContent;
+        Form form = formService.findFormById(formId);
         for(Long k : formQuestionIdList) {
             formContent = new FormContent();
             formContent.setForm(form);
-            formContent.setFormQuestion(formQuestionRepository.getById(k));
+            formContent.setFormQuestion(formQuestionService.findFormQuestionById(k));
             formContendId.add(formContentRepository.save(formContent).getFormContentId());
         }
 
         return formContendId;
     }
 
-    public List<FormContent> findFormContentListByFormId(Long FormId){
-        List<FormContent> formContentList = formContentRepository.findFormContentListByFormId(FormId);
+    public FormContent findFormContentById(Long formContentId) {
+        return formContentRepository.findById(formContentId).orElseThrow(NullPointerException::new);
+    }
+
+    public List<FormContent> findFormContentListByFormId(Long formId){
+        List<FormContent> formContentList = formContentRepository.findFormContentListByFormId(formId);
         if(formContentList.isEmpty()) throw new NoSuchElementException();
         return formContentList;
     }
