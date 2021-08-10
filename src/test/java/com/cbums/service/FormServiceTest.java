@@ -63,7 +63,7 @@ class FormServiceTest {
     }
 
     @Test
-    public void FORM_생성_후_객체_값_변경_시_DB저장_값도_바뀌는_지_여부() {
+    public void FORM_생성_후_객체_값_변경_시_DB저장_값도_바뀌는_지_여부() throws NotLoginedException {
         //given
         HttpSession httpSession = request.getSession();
         Member 작성자 = new Member();

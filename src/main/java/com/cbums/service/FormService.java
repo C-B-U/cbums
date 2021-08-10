@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class FormService {
     private final FormRepository formRepository;
-    private final MemberRepository memberRepository;
+    private final MemberService memberService;
     private final HttpServletRequest request;
 
     public List<Form> findFormList() throws NoSuchElementException {
@@ -36,7 +36,7 @@ public class FormService {
         HttpSession httpSession = request.getSession();
         if(httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
         Long producerId = (Long) httpSession.getAttribute("login-user");
-        Member producer = memberRepository.getById(producerId);
+        Member producer = memberService.findMemberById(producerId);
         form.setProducer(producer);
         Form savedForm = formRepository.save(form);
 
