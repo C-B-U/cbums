@@ -13,7 +13,10 @@ import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/admin/form")
@@ -25,6 +28,12 @@ public class AdminFormController {
     private final FormContentService formContentService;
     private final FormAnswerService formAnswerService;
 
+    @GetMapping("")
+    public List<Form> getFormList() throws NoSuchElementException {
+        List<Form> formList = formService.findFormList();
+        return formList;
+    }
+
     @PostMapping("/")
     public String postForm(CreateFormFormParameter createFormFormParameter) throws NotLoginedException {
         Form form = new Form();
@@ -34,8 +43,17 @@ public class AdminFormController {
         form.setTitle(createFormFormParameter.getTitle());
         form.setRegisterNumber(createFormFormParameter.getRegisterNumber());
         Long saveFormId = formService.createForm(form);
-        return "redirect:/form/" + saveFormId;
+        return "redirect:/admin/form/" + saveFormId;
     }
+
+    @GetMapping("/{seq}")
+    public Form getForm(@PathVariable("seq") Long seq) throws NullPointerException {
+
+        Form form = formService.findFormById(seq);
+
+        return form;
+    }
+
     @PatchMapping("/{seq}")
     public String updateForm(@PathVariable("seq") Long seq, CreateFormFormParameter createFormFormParameter) throws NotLoginedException {
         Form form = new Form();
@@ -46,7 +64,15 @@ public class AdminFormController {
         form.setRegisterNumber(createFormFormParameter.getRegisterNumber());
         form.setFormId(seq);
         formService.createForm(form);
-        return "redirect:/form/" + seq;
+        return "redirect:/admin/form/" + seq;
+    }
+
+    @DeleteMapping("/{seq}")
+    public void deleteForm(HttpServletResponse response, @PathVariable("seq") Long seq)
+            throws NotLoginedException, IOException {
+        formService.deleteForm(seq);
+        String uri = "/admin/form";
+        response.sendRedirect(uri);
     }
 
     @PostMapping("/question")

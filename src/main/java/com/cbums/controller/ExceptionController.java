@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 
 @RestControllerAdvice
@@ -35,5 +36,11 @@ public class ExceptionController {
     public String getNotLoginedExceptionPage(NotLoginedException e) {
         return e.getMessage();
     }
+
+    @ExceptionHandler(IOException.class)
+    public String getNotIOExceptionPage(IOException e) {
+        return e.getMessage();
+    }
+
 
 }
