@@ -91,6 +91,26 @@ class AdminFormControllerTest {
     }
 
     //update Form TODO
+    @Test
+    @DisplayName("지원서 수정_PATCH")
+    public void patchForm() throws Exception {
+        // post로 전송되는 데이터 생성
+        CreateFormFormParameter createFormFormParameter =
+                new CreateFormFormParameter();
+        createFormFormParameter.setTitle("제목입니당");
+        createFormFormParameter.setIntroduce("지원서에 대한 소개입니당");
+        createFormFormParameter.setRegisterNumber(3);
+        createFormFormParameter.setOpenDateTime(LocalDateTime.now());
+        createFormFormParameter.setCloseDateTime(LocalDateTime.now());
+
+        String content = objectMapper.writeValueAsString(createFormFormParameter);
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/admin/form/8")
+                        .content(content)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 
     @Test
     @DisplayName("질문 리스트_GET")
