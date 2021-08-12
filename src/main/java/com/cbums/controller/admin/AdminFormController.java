@@ -13,6 +13,8 @@ import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -63,6 +65,14 @@ public class AdminFormController {
         form.setFormId(seq);
         formService.createForm(form);
         return "redirect:/admin/form/" + seq;
+    }
+
+    @DeleteMapping("/{seq}")
+    public void deleteForm(HttpServletResponse response, @PathVariable("seq") Long seq)
+            throws NotLoginedException, IOException {
+        formService.deleteForm(seq);
+        String uri = "/admin/form";
+        response.sendRedirect(uri);
     }
 
     @PostMapping("/question")
