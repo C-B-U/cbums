@@ -1,6 +1,8 @@
 package com.cbums.service;
 
 import com.cbums.model.Form;
+import com.cbums.model.FormContent;
+import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.type.UserRoleType;
@@ -16,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,10 +33,14 @@ class FormServiceTest {
     @Autowired
     MemberService memberService;
     @Autowired
+    FormQuestionService formQuestionService;
+    @Autowired
+    FormContentService formContentService;
+    @Autowired
     HttpServletRequest request;
 
     @Test
-    public void Form_생성() throws NotLoginedException  {
+    public void Form_생성() throws NotLoginedException {
         //given
         HttpSession httpSession = request.getSession();
         Member 작성자 = new Member();
@@ -43,7 +51,7 @@ class FormServiceTest {
         작성자.setNickName("루핑투핑");
         Long memberId = memberService.joinForWriteForm(작성자).getMemberId();
 
-        httpSession.setAttribute("login-user",memberId);
+        httpSession.setAttribute("login-user", memberId);
 
         Form form = new Form();
         form.setIntroduce("내애요용");
@@ -76,7 +84,7 @@ class FormServiceTest {
         작성자.setNickName("루핑투핑");
         Long memberId = memberService.joinForWriteForm(작성자).getMemberId();
 
-        httpSession.setAttribute("login-user",memberId);
+        httpSession.setAttribute("login-user", memberId);
 
         Form form = new Form();
         form.setIntroduce("내애요용");
@@ -91,7 +99,7 @@ class FormServiceTest {
         //then
         assertEquals(form.getTitle(),
                 formService.findFormById(savedFormId).getTitle());
-        logger.info("저장된 제목 값: "+  formService.findFormById(savedFormId).getTitle());
+        logger.info("저장된 제목 값: " + formService.findFormById(savedFormId).getTitle());
         httpSession.removeAttribute("login-user");
 
 
@@ -113,14 +121,14 @@ class FormServiceTest {
         HttpSession httpSession = request.getSession();
         httpSession.removeAttribute("form-writer-id");
         //처음 form 값 입력
-       httpSession.setAttribute("login-user", member.getMemberId());
-       Form form = new Form();
-       form.setTitle("수정전");
-       form.setIntroduce("수정전입니당");
-       form.setRegisterNumber(4);
-       form.setOpenDateTime(LocalDateTime.now());
-       form.setCloseDateTime(LocalDateTime.now());
-       Long formId = formService.createForm(form);
+        httpSession.setAttribute("login-user", member.getMemberId());
+        Form form = new Form();
+        form.setTitle("수정전");
+        form.setIntroduce("수정전입니당");
+        form.setRegisterNumber(4);
+        form.setOpenDateTime(LocalDateTime.now());
+        form.setCloseDateTime(LocalDateTime.now());
+        Long formId = formService.createForm(form);
         //수정값 생성
         Form form2 = new Form();
         form2.setFormId(formId);
@@ -135,6 +143,83 @@ class FormServiceTest {
         assertEquals(form2.getTitle(), formService.findFormById(formId).getTitle());
         assertEquals(form2.getIntroduce(), formService.findFormById(formId).getIntroduce());
         assertEquals(form2.getRegisterNumber(), formService.findFormById(formId).getRegisterNumber());
+    }
+
+    @Test
+    public void FORM_삭제() throws Exception, NotLoginedException {
+        //given
+        //admin계정으로 member 생성
+        Member member = new Member();
+        member.setClassNumber(123);
+        member.setDepartment("test");
+        member.setEmail("add");
+        member.setRegisterNumber(1);
+        member.setUserRoleType(UserRoleType.ADMIN);
+        member.setName("adsf");
+        member.setNickName("asdf");
+        member = memberService.joinForWriteForm(member);
+        HttpSession httpSession = request.getSession();
+        httpSession.removeAttribute("form-writer-id");
+        //처음 form 값 입력
+        httpSession.setAttribute("login-user", member.getMemberId());
+        Form form = new Form();
+        form.setTitle("수정전");
+        form.setIntroduce("수정전입니당");
+        form.setRegisterNumber(4);
+        form.setOpenDateTime(LocalDateTime.now());
+        form.setCloseDateTime(LocalDateTime.now());
+        Long formId = formService.createForm(form);
+
+        //when
+        formService.deleteForm(formId);
+
+        //then
+        assertThrows(NullPointerException.class , () -> formService.findFormById(formId));
+    }
+
+    @Test
+    public void FORM_Content_생성된_form_삭제() throws NotLoginedException {
+        //given
+        //admin계정으로 member 생성
+        Member member = new Member();
+        member.setClassNumber(123);
+        member.setDepartment("test");
+        member.setEmail("add");
+        member.setRegisterNumber(1);
+        member.setUserRoleType(UserRoleType.ADMIN);
+        member.setName("adsf");
+        member.setNickName("asdf");
+        member = memberService.joinForWriteForm(member);
+        HttpSession httpSession = request.getSession();
+        httpSession.removeAttribute("form-writer-id");
+        //처음 form 값 입력
+        httpSession.setAttribute("login-user", member.getMemberId());
+        Form form = new Form();
+        form.setTitle("수정전");
+        form.setIntroduce("수정전입니당");
+        form.setRegisterNumber(4);
+        form.setOpenDateTime(LocalDateTime.now());
+        form.setCloseDateTime(LocalDateTime.now());
+        Long formId = formService.createForm(form);
+
+        FormQuestion formQuestion = new FormQuestion();
+        formQuestion.setProducer(member);
+        formQuestion.setContent("123");
+        formQuestion.setOpeningDatetime(LocalDateTime.now());
+        formQuestionService.createFormQuestion(formQuestion);
+        List<Long> formQuestionList = new ArrayList<>();
+        formQuestionList.add(formQuestion.getFormQuestionId());
+
+        FormContent formContent = new FormContent();
+        formContent.setForm(form);
+        formContent.setFormQuestion(formQuestion);
+        formContentService.createFormContent(formId, formQuestionList);
+
+        //when
+        formService.deleteForm(formId);
+
+        //then
+        assertThrows(NullPointerException.class , () -> formService.findFormById(formId));
     }
 
 }

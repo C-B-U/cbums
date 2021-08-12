@@ -43,4 +43,10 @@ public class FormService {
         return savedForm.getFormId();
     }
     //수정 시에 createForm에 id만 부여하면 되는 것 아닐까???
+
+    public void deleteForm(Long formId) throws NotLoginedException {
+        HttpSession httpSession = request.getSession();
+        if(httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
+        formRepository.deleteById(formId);
+    }
 }
