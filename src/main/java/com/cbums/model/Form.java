@@ -8,6 +8,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,6 +34,9 @@ public class Form {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name="member_id", nullable = false)
     private Member producer;
+
+    @OneToMany(mappedBy = "form", cascade = CascadeType.REMOVE)
+    private List<FormContent> formContentList = new ArrayList<FormContent>();
 
     @Override
     public String toString() {
