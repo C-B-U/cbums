@@ -3,6 +3,8 @@ package com.cbums.service;
 import com.cbums.model.Form;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotLoginedException;
+import com.cbums.type.UserRoleType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,6 +95,46 @@ class FormServiceTest {
         httpSession.removeAttribute("login-user");
 
 
+    }
+
+    @Test
+    public void Form_수정() throws Exception, NotLoginedException {
+        //given
+        //admin계정으로 member 생성
+        Member member = new Member();
+        member.setClassNumber(123);
+        member.setDepartment("test");
+        member.setEmail("add");
+        member.setRegisterNumber(1);
+        member.setUserRoleType(UserRoleType.ADMIN);
+        member.setName("adsf");
+        member.setNickName("asdf");
+        member = memberService.joinForWriteForm(member);
+        HttpSession httpSession = request.getSession();
+        httpSession.removeAttribute("form-writer-id");
+        //처음 form 값 입력
+       httpSession.setAttribute("login-user", member.getMemberId());
+       Form form = new Form();
+       form.setTitle("수정전");
+       form.setIntroduce("수정전입니당");
+       form.setRegisterNumber(4);
+       form.setOpenDateTime(LocalDateTime.now());
+       form.setCloseDateTime(LocalDateTime.now());
+       Long formId = formService.createForm(form);
+        //수정값 생성
+        Form form2 = new Form();
+        form2.setFormId(formId);
+        form2.setTitle("수정후");
+        form2.setIntroduce("수정후입니당");
+        form2.setRegisterNumber(5);
+        form2.setOpenDateTime(LocalDateTime.now());
+        form2.setCloseDateTime(LocalDateTime.now());
+        //when
+        formId = formService.createForm(form2);
+        //then
+        assertEquals(form2.getTitle(), formService.findFormById(formId).getTitle());
+        assertEquals(form2.getIntroduce(), formService.findFormById(formId).getIntroduce());
+        assertEquals(form2.getRegisterNumber(), formService.findFormById(formId).getRegisterNumber());
     }
 
 }
