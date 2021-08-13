@@ -18,8 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -60,9 +59,10 @@ class MainControllerTest {
     @WithMockUser
     @DisplayName("로그아웃 페이지 Post")
     public void postLogoutPage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/logout"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("/logout"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/logout")
+                        .sessionAttr("login-user", 10))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/logout"))
                 .andDo(print());
     }
 

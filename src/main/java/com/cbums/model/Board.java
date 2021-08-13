@@ -20,7 +20,6 @@ public class Board {
     @JoinColumn(name="member_id", nullable = false)
     private Member producer;
 
-   // @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private LocalDateTime openingDatetime;
 
