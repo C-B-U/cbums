@@ -50,7 +50,7 @@ class FormControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/form"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/member/sign-up"));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
 
     }
 
