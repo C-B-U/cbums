@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -18,8 +19,10 @@ import java.io.IOException;
 public class MemberController {
     private final MemberService memberService;
 
-    @PostMapping("/join-for-write-form")
-    public void joinForWriteForm(HttpServletResponse response, JoinForWriteFormParameter joinForWriteFormParameter) throws IOException {
+    @PostMapping("/")
+    public void registerMember(HttpServletResponse response,
+                               @CookieValue(value = "form-id", required = false) Cookie formCookie,
+                               @RequestBody JoinForWriteFormParameter joinForWriteFormParameter) throws IOException {
         Member member = new Member();
         member.setName(joinForWriteFormParameter.getName());
         member.setNickName(joinForWriteFormParameter.getNickName());
@@ -27,23 +30,61 @@ public class MemberController {
         member.setDepartment(joinForWriteFormParameter.getDepartment());
         member.setClassNumber(joinForWriteFormParameter.getClassNumber());
         memberService.joinForWriteForm(member);
-        response.sendRedirect("/default");
+
+        if(formCookie != null) {
+            String formId = formCookie.getValue();
+            formCookie.setPath("/");
+            formCookie.setMaxAge(0);
+            response.addCookie(formCookie);
+
+            response.sendRedirect("/form/"+formId);
+        }else {
+            response.sendRedirect("/");
+        }
+
     }
 
-    @PostMapping("/check-accept-sign-up")
-    public void checkAcceptSignUp(HttpServletResponse response, String email) throws NotAcceptMemberException, IOException {
+    @PostMapping("/register/check")
+    public void checkAcceptMember(HttpServletResponse response, String email) throws NotAcceptMemberException, IOException {
         memberService.checkAcceptMember(email);
         response.sendRedirect("/member/sign-up-form");
     }
 
-    @GetMapping("/sign-up")
-    public String signUpPage() {
 
-        return "/member/sign-up";
+    //patch를 여러개로 분할 //TODO
+
+    //가입승인자 정보 추가 페이지
+    @GetMapping("/detail")
+    public String detailPage() {
+        return "/member/detail";
+    }
+    @PatchMapping("/detail")
+    public void addMemberDetail() {
+
+    }
+    // 아이디 & 비밀번호 찾기 페이지
+    @GetMapping("/forgot")
+    public String forgotPage() {
+        return "/member/forgot";
+    }
+    //정보 수정 페이지
+    @GetMapping("/update")
+    public String updatePage() {
+        return "/member/update";
+    }
+    public void updateMember() {
+
     }
 
-    @GetMapping("/sign-up-form")
-    public String signUpFormPage(){
+
+    @GetMapping("/register")
+    public String registerPage() {
+
+        return "/register";
+    }
+
+    @GetMapping("/register")
+    public String signUpFormPage() {
         return "/member/sign-up-form";
     }
 
