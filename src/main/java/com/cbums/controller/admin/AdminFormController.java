@@ -71,8 +71,8 @@ public class AdminFormController {
     public void deleteForm(HttpServletResponse response, @PathVariable("seq") Long seq)
             throws NotLoginedException, IOException {
         formService.deleteForm(seq);
-        String uri = "/admin/form";
-        response.sendRedirect(uri);
+
+        response.sendRedirect("/admin/form");
     }
 
     @PostMapping("/question")

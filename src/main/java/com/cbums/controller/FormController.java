@@ -9,6 +9,8 @@ import com.cbums.service.FormService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -49,9 +51,10 @@ public class FormController {
 
     //작성자 정보
     @PostMapping(value = "/content/answer",  produces = "application/json; charset=utf8")
-    public String postFormAnswer(@RequestBody Map<Long, String> answer) {
+    public void postFormAnswer(HttpServletResponse response, @RequestBody Map<Long, String> answer) throws IOException {
         formAnswerService.createFormAnswer(answer);
-        return "redirect:/";
+
+        response.sendRedirect("/");
     }
 
 
