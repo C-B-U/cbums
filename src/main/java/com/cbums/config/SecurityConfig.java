@@ -22,22 +22,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final MemberService memberService;
     private final EncryptionService encryptionService;
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        // static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 )
+        // static 디렉터리의 하위 파일 항상통과
         web.ignoring().antMatchers("/scripts/**", "/styles/**" , "/img/**" , "/lib/**" );
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception { // 9
         auth.userDetailsService(memberService)
-                // 해당 서비스(userService)에서는 UserDetailsService를 implements해서
-                // loadUserByUsername() 구현해야함 (서비스 참고)
                 .passwordEncoder(encryptionService);
         super.configure(auth);
     }
