@@ -1,12 +1,11 @@
 package com.cbums.controller;
 
 import com.cbums.controller.postParameter.JoinForWriteFormParameter;
-import com.cbums.controller.postParameter.SignUpFormParameter;
+import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.MemberService;
 import com.cbums.service.exception.NotAcceptMemberException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -27,9 +26,10 @@ public class MemberController {
         member.setName(joinForWriteFormParameter.getName());
         member.setNickName(joinForWriteFormParameter.getNickName());
         member.setEmail(joinForWriteFormParameter.getEmail());
+        member.setPhoneNumber(joinForWriteFormParameter.getPhoneNumber());
         member.setDepartment(joinForWriteFormParameter.getDepartment());
         member.setClassNumber(joinForWriteFormParameter.getClassNumber());
-        memberService.joinForWriteForm(member);
+        memberService.registerMember(member);
 
         if (formCookie != null) {
             String formId = formCookie.getValue();
@@ -67,7 +67,7 @@ public class MemberController {
 
     @PatchMapping("/detail")
     public void addMemberDetail(HttpServletResponse response,
-                                @RequestBody SignUpFormParameter signUpFormParameter) throws IOException {
+                                @RequestBody MemberDetailFormParameter signUpFormParameter) throws IOException {
         memberService.setMemberDetail(signUpFormParameter);
         response.sendRedirect("/");
     }
@@ -103,8 +103,4 @@ public class MemberController {
         return "/register";
     }
 
-    @GetMapping("/register")
-    public String signUpFormPage() {
-        return "/member/sign-up-form";
-    }
 }

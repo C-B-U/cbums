@@ -1,6 +1,6 @@
 package com.cbums.service;
 
-import com.cbums.controller.postParameter.SignUpFormParameter;
+import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Form;
 import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
@@ -40,112 +40,115 @@ public class InputSampleDataBase {
 
 
     //실행 후 test Annotation 주석처리!
-   // @Test
-    public void 맴버생성() {
+    @Test
+    public void 데이터_샘플_생성() throws NotLoginedException {
         HttpSession httpSession = request.getSession();
-        //VISITED
+        //맴버 생성
+        //최초 생성자
+        final Long FIRST_MEMBER_ID = memberService
+                .registerMember(createMemberSample(UserRoleType.VISITANT))
+                .getMemberId();
+        httpSession.removeAttribute("form-writer-id");
+        //vieited 생성
         for (int i = 0; i < 50; i++) {
-            Member member = new Member();
-            member.setName(getGeneratedString());
-            member.setDepartment(getGeneratedString());
-            member.setEmail(getGeneratedString() + "@" + getGeneratedString());
-            member.setClassNumber(getGeneratedInteger());
-            member.setNickName(getGeneratedString());
-            memberService.joinForWriteForm(member);
-
+            memberService.registerMember(createMemberSample(UserRoleType.VISITANT));
             httpSession.removeAttribute("form-writer-id");
         }
-        //MEMBER
+        //member 생성
         for (int i = 0; i < 100; i++) {
-            Member member = new Member();
-            member.setName(getGeneratedString());
-            member.setDepartment(getGeneratedString());
-            member.setEmail(getGeneratedString() + "@" + getGeneratedString());
-            member.setClassNumber(getGeneratedInteger());
-            member.setNickName(getGeneratedString());
-            member.setUserRoleType(UserRoleType.MEMBER);
-            memberService.joinForWriteForm(member);
-
+            Member member = memberService.registerMember(createMemberSample(UserRoleType.MEMBER));
+            httpSession.removeAttribute("form-writer-id");
             httpSession.setAttribute("accept-email", member.getEmail());
-            SignUpFormParameter signUpFormParameter = new SignUpFormParameter();
-            signUpFormParameter.setIntroduce(getGeneratedString());
-            signUpFormParameter.setPassword("0000");
-            signUpFormParameter.setPasswordCheck("0000");
-            signUpFormParameter.setImage(getGeneratedString() + ".jpg");
-            memberService.setMemberOtherInfo(signUpFormParameter);
+            memberService.setMemberDetail(createMemberDetatailFormParameter());
         }
+        final Long LAST_MEMBER_ID = memberService.registerMember(createMemberSample(UserRoleType.ADMIN)).getMemberId();
+        httpSession.removeAttribute("form-writer-id");
+        httpSession.setAttribute("accept-email", "admin");
+        memberService.setMemberDetail(createMemberDetatailFormParameter());
 
-        //ADMIN
-        Member member = new Member();
-        member.setName("admin");
-        member.setDepartment("admin");
-        member.setEmail("admin");
-        member.setNickName("admin");
-        member.setClassNumber(1);
-        member.setRegisterNumber(1);
-        member.setIntroduce("admin");
-        member.setProfileImage("admin.png");
-        member.setPassword(new BCryptPasswordEncoder().encode("0000"));
-        member.setUserRoleType(UserRoleType.ADMIN);
-        memberService.joinForWriteForm(member);
-    }
+        //form 생성
+        httpSession.setAttribute("login-user", LAST_MEMBER_ID);
 
-    //실행 후 test Annotation 주석처리!
-    //@Test
-    public void 지원서_생성() throws NotLoginedException {
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("login-user", 151l);
-
+        final Long FIRST_FORM_ID = formService.createForm(createFormSample());
         for (int i = 0; i < 50; i++) {
-            Form form = new Form();
-            form.setTitle(getGeneratedString());
-            form.setIntroduce(getGeneratedString());
-            form.setRegisterNumber(getGeneratedInteger());
-            form.setOpenDateTime(LocalDateTime.now());
-            form.setCloseDateTime(LocalDateTime.now());
-            formService.createForm(form);
+            formService.createForm(createFormSample());
         }
-    }
+        final Long LAST_FORM_ID = formService.createForm(createFormSample());
 
-    //실행 후 test Annotation 주석처리!
-    //@Test
-    public void 문항_생성() throws NotLoginedException {
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("login-user", 151l);
-
-        for (int i = 0; i < 150; i++) {
-            FormQuestion formQuestion = new FormQuestion();
-            formQuestion.setContent(getGeneratedString());
-            formQuestion.setOpeningDatetime(LocalDateTime.now());
-            formQuestionService.createFormQuestion(formQuestion);
+        //form Question 생성
+        final Long FIRST_FORM_QUESTION_ID = formQuestionService.createFormQuestion(createFormQuestionSample());
+        for (int i = 0; i < 100; i++) {
+            formQuestionService.createFormQuestion(createFormQuestionSample());
         }
-    }
+        final Long LAST_FORM_QUESTION_ID = formQuestionService.createFormQuestion(createFormQuestionSample());
 
 
-    //실행 후 test Annotation 주석처리!
-    //@Test
-    public void 지원서_내용_제작() {
-        for(int i=6;i<=55;i++) {
+        //form content 생성
+        for (long i = FIRST_FORM_ID; i <= LAST_FORM_ID; i++) {
             Set<Long> formQuestions = new HashSet<>();
-            formQuestions.add((long)getGeneratedInteger(1,150));
-            formQuestions.add((long)getGeneratedInteger(1,150));
-            formQuestions.add((long)getGeneratedInteger(1,150));
-            formQuestions.add((long)getGeneratedInteger(1,150));
-            formQuestions.add((long)getGeneratedInteger(1,150));
-            formQuestions.add((long)getGeneratedInteger(1,150));
-            formQuestions.add((long)getGeneratedInteger(1,150));
-            formQuestions.add((long)getGeneratedInteger(1,150));
-            formQuestions.add((long)getGeneratedInteger(1,150));
+            for (int j = 0; j < 9; j++) {
+                formQuestions.add((long) getGeneratedInteger(FIRST_FORM_QUESTION_ID.intValue(),
+                        LAST_FORM_QUESTION_ID.intValue()));
+            }
 
-            formContentService.createFormContent((long)i,new ArrayList<>(formQuestions));
+            formContentService.createFormContent(i, new ArrayList<>(formQuestions));
         }
+
+
+    }
+
+    public Member createMemberSample(UserRoleType userRoleType) {
+
+        Member member = new Member();
+        member.setName(getGeneratedString());
+        member.setDepartment(getGeneratedString());
+
+        member.setClassNumber(getGeneratedInteger());
+        member.setNickName(getGeneratedString());
+        member.setPhoneNumber(getGeneratedInteger(10000000, 99999999).toString());
+        member.setUserRoleType(userRoleType);
+
+        if (userRoleType == UserRoleType.ADMIN) {
+            member.setEmail("admin");
+        } else {
+            member.setEmail(getGeneratedString() + "@" + getGeneratedString());
+        }
+
+        return member;
+    }
+
+    public MemberDetailFormParameter createMemberDetatailFormParameter() {
+        MemberDetailFormParameter memberDetailFormParameter
+                = new MemberDetailFormParameter();
+        memberDetailFormParameter.setIntroduce(getGeneratedString());
+        memberDetailFormParameter.setPassword("0000");
+        memberDetailFormParameter.setPasswordCheck("0000");
+        memberDetailFormParameter.setImage(getGeneratedString() + ".jpg");
+        return memberDetailFormParameter;
+    }
+
+    public Form createFormSample() {
+        Form form = new Form();
+        form.setTitle(getGeneratedString());
+        form.setIntroduce(getGeneratedString());
+        form.setRegisterNumber(getGeneratedInteger());
+        form.setOpenDateTime(LocalDateTime.now());
+        form.setCloseDateTime(LocalDateTime.now());
+        return form;
+    }
+
+    public FormQuestion createFormQuestionSample() {
+        FormQuestion formQuestion = new FormQuestion();
+        formQuestion.setContent(getGeneratedString());
+        formQuestion.setOpeningDatetime(LocalDateTime.now());
+        return formQuestion;
     }
 
     //지원서 답변 테스트 생성 후 제작 TODO
     public void 지원서_답변_생성() {
         HttpSession httpSession = request.getSession();
-        for(int i=25;i<50;i++) {
-            httpSession.setAttribute("form-writer-id", (long)i);
+        for (int i = 25; i < 50; i++) {
+            httpSession.setAttribute("form-writer-id", (long) i);
 
         }
     }
@@ -154,11 +157,13 @@ public class InputSampleDataBase {
         Random random = new Random();
         return random.nextInt();
     }
+
     public Integer getGeneratedInteger(int min, int max) {
         Random random = new Random();
 
-        return random.nextInt(max-min) + min;
+        return random.nextInt(max - min) + min;
     }
+
     public String getGeneratedString() {
         Random random = new Random();
         return random.ints(LEFT_LIMIT, RIGHT_LIMIT + 1)

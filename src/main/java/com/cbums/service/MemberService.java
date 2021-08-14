@@ -1,6 +1,6 @@
 package com.cbums.service;
 
-import com.cbums.controller.postParameter.SignUpFormParameter;
+import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.model.SecurityUser;
 import com.cbums.repository.MemberRepository;
@@ -31,7 +31,7 @@ public class MemberService implements UserDetailsService {
     private final HttpServletRequest request;
     private final NaverMailSendService naverMailSendService;
 
-    public Member joinForWriteForm(Member member) {
+    public Member registerMember(Member member) {
         Member savedMember = memberRepository.save(member);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("form-writer-id", savedMember.getMemberId());
@@ -92,7 +92,7 @@ public class MemberService implements UserDetailsService {
     }
 
 
-    public Long setMemberDetail(SignUpFormParameter signUpFormParameter) {
+    public Long setMemberDetail(MemberDetailFormParameter signUpFormParameter) {
 
         HttpSession httpSession = request.getSession();
         String email = (String) httpSession.getAttribute("accept-email");

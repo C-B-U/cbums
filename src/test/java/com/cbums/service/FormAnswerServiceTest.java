@@ -17,7 +17,6 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -50,9 +49,10 @@ class FormAnswerServiceTest {
         작성자.setDepartment("작성자학과, 작성자공학과 복수전공");
         작성자.setEmail("작성자@kpu.ac.kr");
         작성자.setClassNumber(2018314014);
+        작성자.setPhoneNumber("01028349999");
         작성자.setNickName("작성자닉네임");
 
-        Member 저장된_맴버 =  memberService.joinForWriteForm(작성자);
+        Member 저장된_맴버 =  memberService.registerMember(작성자);
         httpSession.removeAttribute("form-writer-id");
         Member FORM_작성자 = new Member();
         FORM_작성자.setName("홍길동");
@@ -60,7 +60,8 @@ class FormAnswerServiceTest {
         FORM_작성자.setEmail("phjppo0918@kpu.ac.kr");
         FORM_작성자.setClassNumber(2018314014);
         FORM_작성자.setNickName("루핑투핑");
-        Long memberId = memberService.joinForWriteForm(FORM_작성자).getMemberId();
+        FORM_작성자.setPhoneNumber("01028349999");
+        Long memberId = memberService.registerMember(FORM_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
         httpSession.removeAttribute("form-writer-id");
         Form 지원서 = new Form();
@@ -78,7 +79,8 @@ class FormAnswerServiceTest {
         QUESTION_작성자.setEmail("phhjkhkjhkjhj8@kpu.ac.kr");
         QUESTION_작성자.setClassNumber(2021114014);
         QUESTION_작성자.setNickName("질문질문");
-        memberId = memberService.joinForWriteForm(QUESTION_작성자).getMemberId();
+        QUESTION_작성자.setPhoneNumber("456776786");
+        memberId = memberService.registerMember(QUESTION_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
         httpSession.removeAttribute("form-writer-id");
         FormQuestion 질문1 = new FormQuestion();
@@ -142,8 +144,9 @@ class FormAnswerServiceTest {
         작성자.setEmail("작성자@kpu.ac.kr");
         작성자.setClassNumber(2018314014);
         작성자.setNickName("작성자닉네임");
+        작성자.setPhoneNumber("01023495969");
 
-        Member 저장된_맴버 =  memberService.joinForWriteForm(작성자);
+        Member 저장된_맴버 =  memberService.registerMember(작성자);
         httpSession.removeAttribute("form-writer-id");
         Member FORM_작성자 = new Member();
         FORM_작성자.setName("홍길동");
@@ -151,7 +154,8 @@ class FormAnswerServiceTest {
         FORM_작성자.setEmail("phjppo0918@kpu.ac.kr");
         FORM_작성자.setClassNumber(2018314014);
         FORM_작성자.setNickName("루핑투핑");
-        Long memberId = memberService.joinForWriteForm(FORM_작성자).getMemberId();
+        FORM_작성자.setPhoneNumber("12346447");
+        Long memberId = memberService.registerMember(FORM_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
         httpSession.removeAttribute("form-writer-id");
         Form 지원서 = new Form();
@@ -169,7 +173,8 @@ class FormAnswerServiceTest {
         QUESTION_작성자.setEmail("phhjkhkjhkjhj8@kpu.ac.kr");
         QUESTION_작성자.setClassNumber(2021114014);
         QUESTION_작성자.setNickName("질문질문");
-        memberId = memberService.joinForWriteForm(QUESTION_작성자).getMemberId();
+        QUESTION_작성자.setPhoneNumber("17987647");
+        memberId = memberService.registerMember(QUESTION_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
         httpSession.removeAttribute("form-writer-id");
         FormQuestion 질문1 = new FormQuestion();
@@ -224,8 +229,9 @@ class FormAnswerServiceTest {
         작성자.setEmail("작성자@kpu.ac.kr");
         작성자.setClassNumber(2018314014);
         작성자.setNickName("작성자닉네임");
+        작성자.setPhoneNumber("17987647");
 
-        Member 저장된_맴버 =  memberService.joinForWriteForm(작성자);
+        Member 저장된_맴버 =  memberService.registerMember(작성자);
         httpSession.removeAttribute("form-writer-id");
         Member FORM_작성자 = new Member();
         FORM_작성자.setName("홍길동");
@@ -233,7 +239,8 @@ class FormAnswerServiceTest {
         FORM_작성자.setEmail("phjppo0918@kpu.ac.kr");
         FORM_작성자.setClassNumber(2018314014);
         FORM_작성자.setNickName("루핑투핑");
-        Long memberId = memberService.joinForWriteForm(FORM_작성자).getMemberId();
+        FORM_작성자.setPhoneNumber("57685755");
+        Long memberId = memberService.registerMember(FORM_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
         httpSession.removeAttribute("form-writer-id");
         Form 지원서 = new Form();
@@ -251,7 +258,8 @@ class FormAnswerServiceTest {
         QUESTION_작성자.setEmail("phhjkhkjhkjhj8@kpu.ac.kr");
         QUESTION_작성자.setClassNumber(2021114014);
         QUESTION_작성자.setNickName("질문질문");
-        memberId = memberService.joinForWriteForm(QUESTION_작성자).getMemberId();
+        QUESTION_작성자.setPhoneNumber("66666666");
+        memberId = memberService.registerMember(QUESTION_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
         httpSession.removeAttribute("form-writer-id");
         FormQuestion 질문1 = new FormQuestion();
@@ -292,7 +300,8 @@ class FormAnswerServiceTest {
         작성자2.setEmail("작성자2@kpu.ac.kr");
         작성자2.setClassNumber(2018314014);
         작성자2.setNickName("작성자닉네임");
-        작성자2 = memberService.joinForWriteForm(작성자2);
+        작성자2.setPhoneNumber("68796879");
+        작성자2 = memberService.registerMember(작성자2);
         Map<Long, String> answer2 = new HashMap<>();
 
         answer2.put(지원서내용ID.get(0), "답변1");

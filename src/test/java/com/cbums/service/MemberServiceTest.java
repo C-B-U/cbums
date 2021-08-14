@@ -1,6 +1,6 @@
 package com.cbums.service;
 
-import com.cbums.controller.postParameter.SignUpFormParameter;
+import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.NotLoginedException;
@@ -44,6 +44,7 @@ class MemberServiceTest {
         작성자.setEmail("phjppo0918@kpu.ac.kr");
         작성자.setClassNumber(2018314014);
         작성자.setNickName("루핑투핑");
+        작성자.setPhoneNumber("65745665");
     }
 
     @Test
@@ -53,7 +54,7 @@ class MemberServiceTest {
         작성자_생성();
 
         //when
-        Member 저장된_맴버 =  memberService.joinForWriteForm(작성자);
+        Member 저장된_맴버 =  memberService.registerMember(작성자);
 
         //then
         assertEquals(작성자.getEmail(), 저장된_맴버.getEmail());
@@ -69,7 +70,7 @@ class MemberServiceTest {
         //given
         작성자_생성();
         작성자.setUserRoleType(UserRoleType.MEMBER);
-        memberService.joinForWriteForm(작성자);
+        memberService.registerMember(작성자);
 
         HttpSession httpSession = request.getSession();
         //when
@@ -85,7 +86,7 @@ class MemberServiceTest {
     @Test
     public void 가입비승인자_예외처리() {
         작성자_생성();
-        memberService.joinForWriteForm(작성자);
+        memberService.registerMember(작성자);
         //when & then
         assertThrows(NotAcceptMemberException.class, () ->
                 memberService.checkAcceptMember(작성자.getEmail()));
@@ -99,14 +100,14 @@ class MemberServiceTest {
         //given
         작성자_생성();
         작성자.setUserRoleType(UserRoleType.MEMBER);
-        memberService.joinForWriteForm(작성자);
+        memberService.registerMember(작성자);
         try{
             memberService.checkAcceptMember(작성자.getEmail());
         }catch (NotAcceptMemberException e){
             assertTrue(false);
         }
 
-        SignUpFormParameter 회원가입정보FORM = new SignUpFormParameter();
+        MemberDetailFormParameter 회원가입정보FORM = new MemberDetailFormParameter();
         회원가입정보FORM.setImage("이미지.jpg");
         //만약 이미지가 지정된 형식이 아니라면...? TODO
         회원가입정보FORM.setIntroduce("자기소개 자기소개");
@@ -116,7 +117,7 @@ class MemberServiceTest {
         // 만약 password와 체크값이 다르다면? TODO
         //when
 
-        Long 가입자ID = memberService.setMemberOtherInfo(회원가입정보FORM);
+        Long 가입자ID = memberService.setMemberDetail(회원가입정보FORM);
 
         //then
         HttpSession httpSession = request.getSession();
