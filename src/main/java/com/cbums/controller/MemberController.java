@@ -43,7 +43,7 @@ public class MemberController {
         }
 
     }
-
+    //메일 인증 TODO
     @PostMapping("/register/check")
     public void checkAcceptMember(HttpServletResponse response, String email) throws NotAcceptMemberException, IOException {
         memberService.checkAcceptMember(email);
@@ -59,23 +59,34 @@ public class MemberController {
         return "/member/detail";
     }
     @PatchMapping("/detail")
-    public void addMemberDetail() {
-
+    public void addMemberDetail(
+            HttpServletResponse response,
+            @RequestBody SignUpFormParameter signUpFormParameter) throws IOException {
+        memberService.setMemberDetail(signUpFormParameter);
+        response.sendRedirect("/");
     }
     // 아이디 & 비밀번호 찾기 페이지
     @GetMapping("/forgot")
     public String forgotPage() {
         return "/member/forgot";
     }
+
+    @GetMapping("member/forgot/email")
+    public String forgotEmail() {
+
+
+    }
+
+    @GetMapping("member/forgot/password")
+    public String forgotPassword() {
+
+    }
+
     //정보 수정 페이지
     @GetMapping("/update")
     public String updatePage() {
         return "/member/update";
     }
-    public void updateMember() {
-
-    }
-
 
     @GetMapping("/register")
     public String registerPage() {
