@@ -31,23 +31,29 @@ public class MemberController {
         member.setClassNumber(joinForWriteFormParameter.getClassNumber());
         memberService.joinForWriteForm(member);
 
-        if(formCookie != null) {
+        if (formCookie != null) {
             String formId = formCookie.getValue();
             formCookie.setPath("/");
             formCookie.setMaxAge(0);
             response.addCookie(formCookie);
 
-            response.sendRedirect("/form/"+formId);
-        }else {
+            response.sendRedirect("/form/" + formId);
+        } else {
             response.sendRedirect("/");
         }
 
     }
-    //메일 인증 TODO
+
+    @GetMapping("/register/check")
+    public String checkAcceptMemberPage() {
+        return "/member/check";
+    }
+
     @PostMapping("/register/check")
-    public void checkAcceptMember(HttpServletResponse response, String email) throws NotAcceptMemberException, IOException {
+    public void checkAcceptMember(HttpServletResponse response,
+                                  @RequestParam String email) throws NotAcceptMemberException, IOException {
         memberService.checkAcceptMember(email);
-        response.sendRedirect("/member/sign-up-form");
+        response.sendRedirect("/member/detail");
     }
 
 
@@ -58,13 +64,14 @@ public class MemberController {
     public String detailPage() {
         return "/member/detail";
     }
+
     @PatchMapping("/detail")
-    public void addMemberDetail(
-            HttpServletResponse response,
-            @RequestBody SignUpFormParameter signUpFormParameter) throws IOException {
+    public void addMemberDetail(HttpServletResponse response,
+                                @RequestBody SignUpFormParameter signUpFormParameter) throws IOException {
         memberService.setMemberDetail(signUpFormParameter);
         response.sendRedirect("/");
     }
+
     // 아이디 & 비밀번호 찾기 페이지
     @GetMapping("/forgot")
     public String forgotPage() {
@@ -72,14 +79,16 @@ public class MemberController {
     }
 
     @GetMapping("member/forgot/email")
-    public String forgotEmail() {
-
-
+    public String forgotEmail(HttpServletResponse response,
+                              @RequestParam Integer classNumber) {
+        return memberService.getBlindMemberEmail(classNumber);
     }
 
     @GetMapping("member/forgot/password")
-    public String forgotPassword() {
+    public String forgotPassword(@RequestParam String email) {
+        memberService.setTemporaryPassword(email);
 
+        return "/member/forgot/password";
     }
 
     //정보 수정 페이지
@@ -97,12 +106,5 @@ public class MemberController {
     @GetMapping("/register")
     public String signUpFormPage() {
         return "/member/sign-up-form";
-    }
-
-    @PostMapping("/sign-up-form")
-    public void signUpForm(HttpServletResponse response, SignUpFormParameter signUpFormParameter) throws IOException {
-
-        memberService.setMemberOtherInfo(signUpFormParameter);
-        response.sendRedirect("/default");
     }
 }
