@@ -4,6 +4,7 @@ import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.NotLoginedException;
+import com.cbums.service.exception.OverlapDataException;
 import com.cbums.type.UserRoleType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -48,7 +49,7 @@ class MemberServiceTest {
     }
 
     @Test
-    public void 지원자_작성() {
+    public void 지원자_작성() throws OverlapDataException {
         //given
         logger.info("작성자 입력");
         작성자_생성();
@@ -65,7 +66,7 @@ class MemberServiceTest {
 
 
     @Test
-    public void 가입승인자_확인() throws NotAcceptMemberException{
+    public void 가입승인자_확인() throws NotAcceptMemberException, OverlapDataException {
 
         //given
         작성자_생성();
@@ -84,7 +85,7 @@ class MemberServiceTest {
     }
 
     @Test
-    public void 가입비승인자_예외처리() {
+    public void 가입비승인자_예외처리() throws OverlapDataException {
         작성자_생성();
         memberService.registerMember(작성자);
         //when & then
@@ -96,7 +97,7 @@ class MemberServiceTest {
     // getMembers test TODO
 
     @Test
-    public void 가입승인자_회원가입정보_설정() {
+    public void 가입승인자_회원가입정보_설정() throws OverlapDataException {
         //given
         작성자_생성();
         작성자.setUserRoleType(UserRoleType.MEMBER);

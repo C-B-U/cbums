@@ -6,6 +6,7 @@ import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
 import com.cbums.repository.FormContentRepository;
 import com.cbums.service.exception.NotLoginedException;
+import com.cbums.service.exception.OverlapDataException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,7 +40,7 @@ class FormContentServiceTest {
     HttpServletRequest request;
 
     @Test
-    public void FORM_내용_구성() throws NotLoginedException {
+    public void FORM_내용_구성() throws NotLoginedException, OverlapDataException {
         //given
         HttpSession httpSession = request.getSession();
         Member FORM_작성자 = new Member();
@@ -113,7 +114,7 @@ class FormContentServiceTest {
     }
 
     @Test
-    public void FORM_하나_선택해서_문항보기() throws NotLoginedException {
+    public void FORM_하나_선택해서_문항보기() throws NotLoginedException, OverlapDataException {
         //given
         HttpSession httpSession = request.getSession();
         Member FORM_작성자 = new Member();

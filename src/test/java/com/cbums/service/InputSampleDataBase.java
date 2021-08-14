@@ -5,6 +5,7 @@ import com.cbums.model.Form;
 import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotLoginedException;
+import com.cbums.service.exception.OverlapDataException;
 import com.cbums.type.UserRoleType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class InputSampleDataBase {
 
     //실행 후 test Annotation 주석처리!
     @Test
-    public void 데이터_샘플_생성() throws NotLoginedException {
+    public void 데이터_샘플_생성() throws NotLoginedException, OverlapDataException {
         HttpSession httpSession = request.getSession();
         //맴버 생성
         //최초 생성자

@@ -6,6 +6,7 @@ import com.cbums.model.SecurityUser;
 import com.cbums.repository.MemberRepository;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.NotLoginedException;
+import com.cbums.service.exception.OverlapDataException;
 import com.cbums.type.UserRoleType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,7 +33,11 @@ public class MemberService implements UserDetailsService {
     private final NaverMailSendService naverMailSendService;
     private final EncryptionService encryptionService;
 
-    public Member registerMember(Member member) {
+    public Member registerMember(Member member) throws OverlapDataException {
+        if(memberRepository.findByEmail(member.getEmail()).isPresent()
+        || memberRepository.findByClassNumber(member.getClassNumber()).isPresent()) {
+            throw new OverlapDataException();
+        }
         Member savedMember = memberRepository.save(member);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("form-writer-id", savedMember.getMemberId());
@@ -122,7 +127,7 @@ public class MemberService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Member member = memberRepository.findByEmail(email).get();
+        Member member = memberRepository.findByEmail(email).orElseThrow(NullPointerException::new);
         SecurityUser securityUser = new SecurityUser();
         securityUser.setUsername(member.getEmail());
         securityUser.setPassword(member.getPassword());
