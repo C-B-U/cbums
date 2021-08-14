@@ -5,6 +5,7 @@ import com.cbums.model.FormContent;
 import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotLoginedException;
+import com.cbums.service.exception.OverlapDataException;
 import com.cbums.type.UserRoleType;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -39,7 +40,7 @@ class FormServiceTest {
     HttpServletRequest request;
 
     @Test
-    public void Form_생성() throws NotLoginedException {
+    public void Form_생성() throws NotLoginedException, OverlapDataException {
         //given
         HttpSession httpSession = request.getSession();
         Member 작성자 = new Member();
@@ -73,7 +74,7 @@ class FormServiceTest {
     }
 
     @Test
-    public void FORM_생성_후_객체_값_변경_시_DB저장_값도_바뀌는_지_여부() throws NotLoginedException {
+    public void FORM_생성_후_객체_값_변경_시_DB저장_값도_바뀌는_지_여부() throws NotLoginedException, OverlapDataException {
         //given
         HttpSession httpSession = request.getSession();
         Member 작성자 = new Member();
@@ -107,7 +108,7 @@ class FormServiceTest {
     }
 
     @Test
-    public void Form_수정() throws Exception, NotLoginedException {
+    public void Form_수정() throws Exception, NotLoginedException, OverlapDataException {
         //given
         //admin계정으로 member 생성
         Member member = new Member();
@@ -148,7 +149,7 @@ class FormServiceTest {
     }
 
     @Test
-    public void FORM_삭제() throws Exception, NotLoginedException {
+    public void FORM_삭제() throws Exception, NotLoginedException, OverlapDataException {
         //given
         //admin계정으로 member 생성
         Member member = new Member();
@@ -181,7 +182,7 @@ class FormServiceTest {
     }
 
     @Test
-    public void FORM_Content_생성된_form_삭제() throws NotLoginedException {
+    public void FORM_Content_생성된_form_삭제() throws NotLoginedException, OverlapDataException {
         //given
         //admin계정으로 member 생성
         Member member = new Member();

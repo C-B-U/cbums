@@ -5,6 +5,7 @@ import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.MemberService;
 import com.cbums.service.exception.NotAcceptMemberException;
+import com.cbums.service.exception.OverlapDataException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,17 +30,26 @@ public class MemberController {
         member.setPhoneNumber(joinForWriteFormParameter.getPhoneNumber());
         member.setDepartment(joinForWriteFormParameter.getDepartment());
         member.setClassNumber(joinForWriteFormParameter.getClassNumber());
-        memberService.registerMember(member);
+        try {
+            memberService.registerMember(member);
 
-        if (formCookie != null) {
+            if (formCookie != null) {
+                String formId = formCookie.getValue();
+                formCookie.setPath("/");
+                formCookie.setMaxAge(0);
+                response.addCookie(formCookie);
+
+                response.sendRedirect("/form/" + formId);
+            } else {
+                response.sendRedirect("/");
+            }
+        }catch (OverlapDataException e) {
+            //중복 회원
             String formId = formCookie.getValue();
             formCookie.setPath("/");
             formCookie.setMaxAge(0);
             response.addCookie(formCookie);
-
-            response.sendRedirect("/form/" + formId);
-        } else {
-            response.sendRedirect("/");
+            response.sendRedirect("/form" + formId);
         }
 
     }
