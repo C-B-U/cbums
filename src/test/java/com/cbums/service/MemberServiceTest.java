@@ -1,6 +1,6 @@
 package com.cbums.service;
 
-import com.cbums.controller.postParameter.SignUpFormParameter;
+import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.NotLoginedException;
@@ -107,7 +107,7 @@ class MemberServiceTest {
             assertTrue(false);
         }
 
-        SignUpFormParameter 회원가입정보FORM = new SignUpFormParameter();
+        MemberDetailFormParameter 회원가입정보FORM = new MemberDetailFormParameter();
         회원가입정보FORM.setImage("이미지.jpg");
         //만약 이미지가 지정된 형식이 아니라면...? TODO
         회원가입정보FORM.setIntroduce("자기소개 자기소개");

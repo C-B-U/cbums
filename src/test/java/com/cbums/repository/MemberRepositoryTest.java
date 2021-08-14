@@ -1,14 +1,12 @@
 package com.cbums.repository;
 
-import com.cbums.controller.postParameter.SignUpFormParameter;
+import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
-import com.cbums.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.transaction.Transactional;
 
@@ -57,7 +55,7 @@ class MemberRepositoryTest {
         memberRepository.save(작성자);
 
         logger.info("세부사항입력양식 생성");
-        SignUpFormParameter 세부사항입력양식 = new SignUpFormParameter();
+        MemberDetailFormParameter 세부사항입력양식 = new MemberDetailFormParameter();
         세부사항입력양식.setPassword("0000");
         세부사항입력양식.setImage("이미지.jpg");
         세부사항입력양식.setIntroduce("안녕하세요! 저는 아아아아어어어어오오오오우우우우");
