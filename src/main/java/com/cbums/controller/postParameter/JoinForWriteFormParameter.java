@@ -9,6 +9,7 @@ public class JoinForWriteFormParameter {
     private String name;
     private String department;
     private String email;
+    private String phoneNumber;
     private int classNumber;
     private String nickName;
 }

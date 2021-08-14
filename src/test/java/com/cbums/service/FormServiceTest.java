@@ -49,6 +49,7 @@ class FormServiceTest {
         작성자.setEmail("phjppo0918@kpu.ac.kr");
         작성자.setClassNumber(2018314014);
         작성자.setNickName("루핑투핑");
+        작성자.setPhoneNumber("65745665");
         Long memberId = memberService.joinForWriteForm(작성자).getMemberId();
 
         httpSession.setAttribute("login-user", memberId);
@@ -82,6 +83,7 @@ class FormServiceTest {
         작성자.setEmail("phjppo0918@kpu.ac.kr");
         작성자.setClassNumber(2018314014);
         작성자.setNickName("루핑투핑");
+        작성자.setPhoneNumber("65745665");
         Long memberId = memberService.joinForWriteForm(작성자).getMemberId();
 
         httpSession.setAttribute("login-user", memberId);
@@ -117,6 +119,7 @@ class FormServiceTest {
         member.setUserRoleType(UserRoleType.ADMIN);
         member.setName("adsf");
         member.setNickName("asdf");
+        member.setPhoneNumber("65745665");
         member = memberService.joinForWriteForm(member);
         HttpSession httpSession = request.getSession();
         httpSession.removeAttribute("form-writer-id");
@@ -157,6 +160,7 @@ class FormServiceTest {
         member.setUserRoleType(UserRoleType.ADMIN);
         member.setName("adsf");
         member.setNickName("asdf");
+        member.setPhoneNumber("65745665");
         member = memberService.joinForWriteForm(member);
         HttpSession httpSession = request.getSession();
         httpSession.removeAttribute("form-writer-id");
@@ -189,6 +193,7 @@ class FormServiceTest {
         member.setUserRoleType(UserRoleType.ADMIN);
         member.setName("adsf");
         member.setNickName("asdf");
+        member.setPhoneNumber("65745665");
         member = memberService.joinForWriteForm(member);
         HttpSession httpSession = request.getSession();
         httpSession.removeAttribute("form-writer-id");

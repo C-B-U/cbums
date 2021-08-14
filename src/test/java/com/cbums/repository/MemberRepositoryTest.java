@@ -30,6 +30,7 @@ class MemberRepositoryTest {
         작성자.setEmail("phjppo0918@kpu.ac.kr");
         작성자.setClassNumber(2018314014);
         작성자.setNickName("루핑투핑");
+        작성자.setPhoneNumber("01028349999");
     }
     @Test
     public void 지원서_작성_시_작성자_정보_입력() {

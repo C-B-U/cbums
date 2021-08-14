@@ -27,6 +27,7 @@ public class MemberController {
         member.setName(joinForWriteFormParameter.getName());
         member.setNickName(joinForWriteFormParameter.getNickName());
         member.setEmail(joinForWriteFormParameter.getEmail());
+        member.setPhoneNumber(joinForWriteFormParameter.getPhoneNumber());
         member.setDepartment(joinForWriteFormParameter.getDepartment());
         member.setClassNumber(joinForWriteFormParameter.getClassNumber());
         memberService.joinForWriteForm(member);
@@ -103,8 +104,4 @@ public class MemberController {
         return "/register";
     }
 
-    @GetMapping("/register")
-    public String signUpFormPage() {
-        return "/member/sign-up-form";
-    }
 }

@@ -49,6 +49,7 @@ class FormContentServiceTest {
         FORM_작성자.setEmail("phjppo0918@kpu.ac.kr");
         FORM_작성자.setClassNumber(2018314014);
         FORM_작성자.setNickName("루핑투핑");
+        FORM_작성자.setPhoneNumber("65745665");
 
         Long memberId = memberService.joinForWriteForm(FORM_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
@@ -68,6 +69,7 @@ class FormContentServiceTest {
         QUESTION_작성자.setEmail("phhjkhkjhkjhj8@kpu.ac.kr");
         QUESTION_작성자.setClassNumber(2021114014);
         QUESTION_작성자.setNickName("질문질문");
+        QUESTION_작성자.setPhoneNumber("65745665");
         memberId = memberService.joinForWriteForm(QUESTION_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
 
@@ -121,6 +123,7 @@ class FormContentServiceTest {
         FORM_작성자.setEmail("phjppo0918@kpu.ac.kr");
         FORM_작성자.setClassNumber(2018314014);
         FORM_작성자.setNickName("루핑투핑");
+        FORM_작성자.setPhoneNumber("65745665");
 
         Long memberId = memberService.joinForWriteForm(FORM_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
@@ -140,6 +143,7 @@ class FormContentServiceTest {
         QUESTION_작성자.setEmail("phhjkhkjhkjhj8@kpu.ac.kr");
         QUESTION_작성자.setClassNumber(2021114014);
         QUESTION_작성자.setNickName("질문질문");
+        QUESTION_작성자.setPhoneNumber("65745665");
         memberId = memberService.joinForWriteForm(QUESTION_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
 

@@ -51,6 +51,7 @@ public class InputSampleDataBase {
             member.setEmail(getGeneratedString() + "@" + getGeneratedString());
             member.setClassNumber(getGeneratedInteger());
             member.setNickName(getGeneratedString());
+            member.setPhoneNumber("65745665");
             memberService.joinForWriteForm(member);
 
             httpSession.removeAttribute("form-writer-id");
@@ -64,6 +65,7 @@ public class InputSampleDataBase {
             member.setClassNumber(getGeneratedInteger());
             member.setNickName(getGeneratedString());
             member.setUserRoleType(UserRoleType.MEMBER);
+            member.setPhoneNumber("65745665");
             memberService.joinForWriteForm(member);
 
             httpSession.setAttribute("accept-email", member.getEmail());
@@ -72,7 +74,7 @@ public class InputSampleDataBase {
             signUpFormParameter.setPassword("0000");
             signUpFormParameter.setPasswordCheck("0000");
             signUpFormParameter.setImage(getGeneratedString() + ".jpg");
-            memberService.setMemberOtherInfo(signUpFormParameter);
+            memberService.setMemberDetail(signUpFormParameter);
         }
 
         //ADMIN
@@ -85,6 +87,7 @@ public class InputSampleDataBase {
         member.setRegisterNumber(1);
         member.setIntroduce("admin");
         member.setProfileImage("admin.png");
+        member.setPhoneNumber("65745665");
         member.setPassword(new BCryptPasswordEncoder().encode("0000"));
         member.setUserRoleType(UserRoleType.ADMIN);
         memberService.joinForWriteForm(member);

@@ -44,6 +44,7 @@ class MemberServiceTest {
         작성자.setEmail("phjppo0918@kpu.ac.kr");
         작성자.setClassNumber(2018314014);
         작성자.setNickName("루핑투핑");
+        작성자.setPhoneNumber("65745665");
     }
 
     @Test
@@ -116,7 +117,7 @@ class MemberServiceTest {
         // 만약 password와 체크값이 다르다면? TODO
         //when
 
-        Long 가입자ID = memberService.setMemberOtherInfo(회원가입정보FORM);
+        Long 가입자ID = memberService.setMemberDetail(회원가입정보FORM);
 
         //then
         HttpSession httpSession = request.getSession();
