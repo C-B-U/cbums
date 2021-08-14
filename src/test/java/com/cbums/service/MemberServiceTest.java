@@ -54,7 +54,7 @@ class MemberServiceTest {
         작성자_생성();
 
         //when
-        Member 저장된_맴버 =  memberService.joinForWriteForm(작성자);
+        Member 저장된_맴버 =  memberService.registerMember(작성자);
 
         //then
         assertEquals(작성자.getEmail(), 저장된_맴버.getEmail());
@@ -70,7 +70,7 @@ class MemberServiceTest {
         //given
         작성자_생성();
         작성자.setUserRoleType(UserRoleType.MEMBER);
-        memberService.joinForWriteForm(작성자);
+        memberService.registerMember(작성자);
 
         HttpSession httpSession = request.getSession();
         //when
@@ -86,7 +86,7 @@ class MemberServiceTest {
     @Test
     public void 가입비승인자_예외처리() {
         작성자_생성();
-        memberService.joinForWriteForm(작성자);
+        memberService.registerMember(작성자);
         //when & then
         assertThrows(NotAcceptMemberException.class, () ->
                 memberService.checkAcceptMember(작성자.getEmail()));
@@ -100,7 +100,7 @@ class MemberServiceTest {
         //given
         작성자_생성();
         작성자.setUserRoleType(UserRoleType.MEMBER);
-        memberService.joinForWriteForm(작성자);
+        memberService.registerMember(작성자);
         try{
             memberService.checkAcceptMember(작성자.getEmail());
         }catch (NotAcceptMemberException e){

@@ -31,7 +31,7 @@ public class MemberService implements UserDetailsService {
     private final HttpServletRequest request;
     private final NaverMailSendService naverMailSendService;
 
-    public Member joinForWriteForm(Member member) {
+    public Member registerMember(Member member) {
         Member savedMember = memberRepository.save(member);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("form-writer-id", savedMember.getMemberId());

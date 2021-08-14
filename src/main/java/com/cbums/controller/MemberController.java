@@ -6,7 +6,6 @@ import com.cbums.model.Member;
 import com.cbums.service.MemberService;
 import com.cbums.service.exception.NotAcceptMemberException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -30,7 +29,7 @@ public class MemberController {
         member.setPhoneNumber(joinForWriteFormParameter.getPhoneNumber());
         member.setDepartment(joinForWriteFormParameter.getDepartment());
         member.setClassNumber(joinForWriteFormParameter.getClassNumber());
-        memberService.joinForWriteForm(member);
+        memberService.registerMember(member);
 
         if (formCookie != null) {
             String formId = formCookie.getValue();

@@ -37,7 +37,7 @@ class FormQuestionServiceTest {
         작성자.setClassNumber(2018314014);
         작성자.setNickName("루핑투핑");
         작성자.setPhoneNumber("65745665");
-        Long memberId = memberService.joinForWriteForm(작성자).getMemberId();
+        Long memberId = memberService.registerMember(작성자).getMemberId();
         httpSession.setAttribute("login-user",memberId);
 
         FormQuestion formQuestion = new FormQuestion();

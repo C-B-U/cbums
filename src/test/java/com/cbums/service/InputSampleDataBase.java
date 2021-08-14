@@ -6,7 +6,6 @@ import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.type.UserRoleType;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -52,7 +51,7 @@ public class InputSampleDataBase {
             member.setClassNumber(getGeneratedInteger());
             member.setNickName(getGeneratedString());
             member.setPhoneNumber("65745665");
-            memberService.joinForWriteForm(member);
+            memberService.registerMember(member);
 
             httpSession.removeAttribute("form-writer-id");
         }
@@ -66,7 +65,7 @@ public class InputSampleDataBase {
             member.setNickName(getGeneratedString());
             member.setUserRoleType(UserRoleType.MEMBER);
             member.setPhoneNumber("65745665");
-            memberService.joinForWriteForm(member);
+            memberService.registerMember(member);
 
             httpSession.setAttribute("accept-email", member.getEmail());
             SignUpFormParameter signUpFormParameter = new SignUpFormParameter();
@@ -90,7 +89,7 @@ public class InputSampleDataBase {
         member.setPhoneNumber("65745665");
         member.setPassword(new BCryptPasswordEncoder().encode("0000"));
         member.setUserRoleType(UserRoleType.ADMIN);
-        memberService.joinForWriteForm(member);
+        memberService.registerMember(member);
     }
 
     //실행 후 test Annotation 주석처리!

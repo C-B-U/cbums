@@ -6,7 +6,6 @@ import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.type.UserRoleType;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +49,7 @@ class FormServiceTest {
         작성자.setClassNumber(2018314014);
         작성자.setNickName("루핑투핑");
         작성자.setPhoneNumber("65745665");
-        Long memberId = memberService.joinForWriteForm(작성자).getMemberId();
+        Long memberId = memberService.registerMember(작성자).getMemberId();
 
         httpSession.setAttribute("login-user", memberId);
 
@@ -84,7 +83,7 @@ class FormServiceTest {
         작성자.setClassNumber(2018314014);
         작성자.setNickName("루핑투핑");
         작성자.setPhoneNumber("65745665");
-        Long memberId = memberService.joinForWriteForm(작성자).getMemberId();
+        Long memberId = memberService.registerMember(작성자).getMemberId();
 
         httpSession.setAttribute("login-user", memberId);
 
@@ -120,7 +119,7 @@ class FormServiceTest {
         member.setName("adsf");
         member.setNickName("asdf");
         member.setPhoneNumber("65745665");
-        member = memberService.joinForWriteForm(member);
+        member = memberService.registerMember(member);
         HttpSession httpSession = request.getSession();
         httpSession.removeAttribute("form-writer-id");
         //처음 form 값 입력
@@ -161,7 +160,7 @@ class FormServiceTest {
         member.setName("adsf");
         member.setNickName("asdf");
         member.setPhoneNumber("65745665");
-        member = memberService.joinForWriteForm(member);
+        member = memberService.registerMember(member);
         HttpSession httpSession = request.getSession();
         httpSession.removeAttribute("form-writer-id");
         //처음 form 값 입력
@@ -194,7 +193,7 @@ class FormServiceTest {
         member.setName("adsf");
         member.setNickName("asdf");
         member.setPhoneNumber("65745665");
-        member = memberService.joinForWriteForm(member);
+        member = memberService.registerMember(member);
         HttpSession httpSession = request.getSession();
         httpSession.removeAttribute("form-writer-id");
         //처음 form 값 입력

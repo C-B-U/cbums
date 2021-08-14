@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -51,7 +50,7 @@ class FormContentServiceTest {
         FORM_작성자.setNickName("루핑투핑");
         FORM_작성자.setPhoneNumber("65745665");
 
-        Long memberId = memberService.joinForWriteForm(FORM_작성자).getMemberId();
+        Long memberId = memberService.registerMember(FORM_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
 
         Form 지원서 = new Form();
@@ -70,7 +69,7 @@ class FormContentServiceTest {
         QUESTION_작성자.setClassNumber(2021114014);
         QUESTION_작성자.setNickName("질문질문");
         QUESTION_작성자.setPhoneNumber("65745665");
-        memberId = memberService.joinForWriteForm(QUESTION_작성자).getMemberId();
+        memberId = memberService.registerMember(QUESTION_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
 
         FormQuestion 질문1 = new FormQuestion();
@@ -125,7 +124,7 @@ class FormContentServiceTest {
         FORM_작성자.setNickName("루핑투핑");
         FORM_작성자.setPhoneNumber("65745665");
 
-        Long memberId = memberService.joinForWriteForm(FORM_작성자).getMemberId();
+        Long memberId = memberService.registerMember(FORM_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
 
         Form 지원서 = new Form();
@@ -144,7 +143,7 @@ class FormContentServiceTest {
         QUESTION_작성자.setClassNumber(2021114014);
         QUESTION_작성자.setNickName("질문질문");
         QUESTION_작성자.setPhoneNumber("65745665");
-        memberId = memberService.joinForWriteForm(QUESTION_작성자).getMemberId();
+        memberId = memberService.registerMember(QUESTION_작성자).getMemberId();
         httpSession.setAttribute("login-user", memberId);
 
         FormQuestion 질문1 = new FormQuestion();
