@@ -19,7 +19,7 @@ public class AdminController {
     @GetMapping("")
     public String adminPage() {
 
-        return "/admin/admin-menu";
+        return "/admin";
     }
 
 }

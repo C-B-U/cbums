@@ -35,8 +35,8 @@ public class AdminFormController {
     }
 
     @PostMapping("/")
-    public void postForm(HttpServletResponse response,
-                         @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException, IOException {
+    public void createForm(HttpServletResponse response,
+                           @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException, IOException {
         Form form = new Form();
         form.setIntroduce(createFormFormParameter.getIntroduce());
         form.setOpenDateTime(createFormFormParameter.getOpenDateTime());
@@ -78,6 +78,14 @@ public class AdminFormController {
         response.sendRedirect("/admin/form");
     }
 
+    @GetMapping("/question")
+    public List<FormQuestion> getFormQuestionList() {
+
+        List<FormQuestion> formQuestionList = formQuestionService.findFormQuestions();
+
+        return formQuestionList;
+    }
+
     @PostMapping("/question")
     public void postFormQuestion(HttpServletResponse response,
                                  CreateFormQuestionParameter createFormQuestionParameter) throws NotLoginedException, IOException {
@@ -88,14 +96,7 @@ public class AdminFormController {
         response.sendRedirect("redirect:/admin/form/question/" + saveFormQuestionId);
     }
 
-    @GetMapping("/question")
-    public List<FormQuestion> getFormQuestionList() {
-
-        List<FormQuestion> formQuestionList = formQuestionService.findFormQuestions();
-
-        return formQuestionList;
-    }
-
+    //필요할까?
     @GetMapping("/question/{seq}")
     public FormQuestion getFormQuestion(@PathVariable("seq") Long seq) {
 
