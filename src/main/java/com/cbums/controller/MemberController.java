@@ -39,7 +39,7 @@ public class MemberController {
                 formCookie.setMaxAge(0);
                 response.addCookie(formCookie);
 
-                response.sendRedirect("/form/" + formId);
+                response.sendRedirect("/content/" + formId);
             } else {
                 response.sendRedirect("/");
             }

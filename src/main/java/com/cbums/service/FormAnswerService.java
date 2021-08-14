@@ -26,8 +26,13 @@ public class FormAnswerService {
     public List<Long> createFormAnswer(Map<Long,String> answer) {
         List<Long> formAnswerIdList = new ArrayList<>();
         HttpSession httpSession = request.getSession();
-        Long memberId = (Long)httpSession.getAttribute("form-writer-id");
-        httpSession.removeAttribute("form-writer-id");
+        Long memberId;
+        if(httpSession.getAttribute("login-user") != null) {
+            memberId = (Long)httpSession.getAttribute("login-user");
+        }else {
+            memberId = (Long)httpSession.getAttribute("form-writer-id");
+            httpSession.removeAttribute("form-writer-id");
+        }
         Member member = memberService.findMemberById(memberId);
         List<Long> contentKeyList = new ArrayList<>(answer.keySet());
         FormContent formContent;
