@@ -51,9 +51,15 @@ public class MemberController {
 
     @PostMapping("/register/check")
     public void checkAcceptMember(HttpServletResponse response,
-                                  @RequestParam String email) throws NotAcceptMemberException, IOException {
-        memberService.checkAcceptMember(email);
-        response.sendRedirect("/member/detail");
+                                  @RequestParam String email) throws IOException {
+        try{
+            memberService.checkAcceptMember(email);
+            response.sendRedirect("/member/detail");
+        }catch (NotAcceptMemberException e) {
+            //ajax에서 구현...?
+            response.sendRedirect("/register/check");
+        }
+
     }
 
 
@@ -91,12 +97,24 @@ public class MemberController {
         return "/member/forgot/password";
     }
 
-    //정보 수정 페이지
-    @GetMapping("/update")
-    public String updatePage() {
+    //회원 상세 페이지
+    @GetMapping("/{memberId}")
+    public Member memberDetail(@PathVariable("memberId") Long memberId) {
+        return memberService.findMemberById(memberId);
+    }
+
+
+    //정보 수정 페이지 TODO
+    @PatchMapping("/{memberId}")
+    public String updateMember(@PathVariable("memberId") Long memberId,
+                               HttpServletResponse response
+                              // @RequestBody
+                                ) {
+
         return "/member/update";
     }
 
+    //이 친구 필요할까...?
     @GetMapping("/register")
     public String registerPage() {
 

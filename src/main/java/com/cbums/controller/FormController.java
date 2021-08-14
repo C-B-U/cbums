@@ -23,7 +23,6 @@ import java.util.NoSuchElementException;
 public class FormController {
 
     private final FormService formService;
-    private final FormQuestionService formQuestionService;
     private final FormContentService formContentService;
     private final FormAnswerService formAnswerService;
 
@@ -61,7 +60,7 @@ public class FormController {
     public void postFormAnswer(HttpServletResponse response, @RequestBody Map<Long, String> answer) throws IOException {
         formAnswerService.createFormAnswer(answer);
 
-        response.sendRedirect("/");
+        response.sendRedirect("/form/submitted");
     }
 
 

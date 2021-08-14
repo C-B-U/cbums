@@ -30,6 +30,7 @@ public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
     private final HttpServletRequest request;
     private final NaverMailSendService naverMailSendService;
+    private final EncryptionService encryptionService;
 
     public Member registerMember(Member member) {
         Member savedMember = memberRepository.save(member);
@@ -91,7 +92,6 @@ public class MemberService implements UserDetailsService {
         }
     }
 
-
     public Long setMemberDetail(MemberDetailFormParameter signUpFormParameter) {
 
         HttpSession httpSession = request.getSession();
@@ -99,11 +99,7 @@ public class MemberService implements UserDetailsService {
         httpSession.removeAttribute("accept-email");
 
         Member member = memberRepository.findByEmail(email).get();
-        //암호화 클래스 분할, 암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
-        //암호화 클래스 분할, 암호화 hash화 여러번 + 솔팅 , github 업로드 금지...!
-        //암호화 클래스 분할, 암호화 hash화 여러번 + 솔팅 , github 업로드 금지...!
-        //암호화 클래스 분할, 암호화 hash화 여러번 + 솔팅 , github 업로드 금지...!
-        String password = new BCryptPasswordEncoder().encode(signUpFormParameter.getPassword());
+        String password = encryptionService.encode(signUpFormParameter.getPassword());
         memberRepository.setAcceptMember(member.getMemberId(),
                 password,
                 signUpFormParameter.getIntroduce(),
@@ -111,7 +107,6 @@ public class MemberService implements UserDetailsService {
 
         return member.getMemberId();
     }
-
 
     public List<Member> findMemberList() throws NoSuchElementException {
         List<Member> memberList = memberRepository.findAll();

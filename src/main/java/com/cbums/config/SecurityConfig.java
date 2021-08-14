@@ -1,5 +1,6 @@
 package com.cbums.config;
 
+import com.cbums.service.EncryptionService;
 import com.cbums.type.UserRoleType;
 import com.cbums.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -20,23 +21,19 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final MemberService memberService;
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    private final EncryptionService encryptionService;
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        // static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 )
+        // static 디렉터리의 하위 파일 항상통과
         web.ignoring().antMatchers("/scripts/**", "/styles/**" , "/img/**" , "/lib/**" );
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception { // 9
         auth.userDetailsService(memberService)
-                // 해당 서비스(userService)에서는 UserDetailsService를 implements해서
-                // loadUserByUsername() 구현해야함 (서비스 참고)
-                .passwordEncoder(new BCryptPasswordEncoder());
+                .passwordEncoder(encryptionService);
         super.configure(auth);
     }
 
@@ -57,13 +54,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/login-success")
+                .defaultSuccessUrl("/")
                 .permitAll()
         //로그아웃 설정
 
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/logout")
+                .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
         //403 예외처리
                 .and().exceptionHandling()
