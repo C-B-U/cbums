@@ -14,7 +14,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -105,7 +104,7 @@ public class MemberService implements UserDetailsService {
 
         Member member = memberRepository.findByEmail(email).get();
         String password = encryptionService.encode(signUpFormParameter.getPassword());
-        memberRepository.setAcceptMember(member.getMemberId(),
+        memberRepository.updateMemberDetail(member.getMemberId(),
                 password,
                 signUpFormParameter.getIntroduce(),
                 signUpFormParameter.getImage());
@@ -122,6 +121,14 @@ public class MemberService implements UserDetailsService {
     public Member findMemberById(Long id) {
 
         return memberRepository.findById(id).orElseThrow(NullPointerException::new);
+
+    }
+
+    public void deleteMember(Long id) {
+        memberRepository.deleteById(id);
+    }
+
+    public void acceptMember(Long id) {
 
     }
 
