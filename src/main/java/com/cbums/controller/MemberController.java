@@ -91,9 +91,20 @@ public class MemberController {
         return "/member/forgot/password";
     }
 
-    //정보 수정 페이지
-    @GetMapping("/update")
-    public String updatePage() {
+    //회원 상세 페이지
+    @GetMapping("/{memberId}")
+    public Member memberDetail(@PathVariable("memberId") Long memberId) {
+        return memberService.findMemberById(memberId);
+    }
+
+
+    //정보 수정 페이지 TODO
+    @PatchMapping("/{memberId}")
+    public String updateMember(@PathVariable("memberId") Long memberId,
+                               HttpServletResponse response
+                              // @RequestBody
+                                ) {
+
         return "/member/update";
     }
 
