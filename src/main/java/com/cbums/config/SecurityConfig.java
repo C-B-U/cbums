@@ -1,5 +1,6 @@
 package com.cbums.config;
 
+import com.cbums.service.EncryptionService;
 import com.cbums.type.UserRoleType;
 import com.cbums.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final MemberService memberService;
+    private final EncryptionService encryptionService;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -36,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(memberService)
                 // 해당 서비스(userService)에서는 UserDetailsService를 implements해서
                 // loadUserByUsername() 구현해야함 (서비스 참고)
-                .passwordEncoder(new BCryptPasswordEncoder());
+                .passwordEncoder(encryptionService);
         super.configure(auth);
     }
 
