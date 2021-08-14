@@ -57,34 +57,52 @@ public class MemberService implements UserDetailsService {
         Integer key = random.nextInt(99999999);
         httpSession.setAttribute("certify-key", key);
         naverMailSendService.sendEmail(
-                (String)httpSession.getAttribute("accept-email"),
+                (String) httpSession.getAttribute("accept-email"),
                 "씨부엉: 메일 인증 코드입니다",
                 key.toString()
         );
     }
 
+    public String getBlindMemberEmail(Integer classNumber) {
+        char[] memberEmail = memberRepository
+                .findByClassNumber(classNumber)
+                .orElseThrow(NullPointerException::new)
+                .getEmail()
+                .toCharArray();
+
+        for (int i = 1; i < memberEmail.length; i += 2) {
+            memberEmail[i] = '*';
+        }
+
+        return memberEmail.toString();
+    }
+
+    public void setTemporaryPassword(String email) {
+        //임시 비밀번호 생성 후 email로 전송 TODO
+    }
+
     public boolean compareMailCertificationCode(Integer inputCode) {
         HttpSession httpSession = request.getSession();
-        if(inputCode == httpSession.getAttribute("certify-key")) {
+        if (inputCode == httpSession.getAttribute("certify-key")) {
             httpSession.removeAttribute("certify-key");
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
 
-    public Long setMemberOtherInfo(SignUpFormParameter signUpFormParameter) {
+    public Long setMemberDetail(SignUpFormParameter signUpFormParameter) {
 
         HttpSession httpSession = request.getSession();
-        String email = (String)httpSession.getAttribute("accept-email");
+        String email = (String) httpSession.getAttribute("accept-email");
         httpSession.removeAttribute("accept-email");
 
         Member member = memberRepository.findByEmail(email).get();
-        //암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
-        //암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
-        //암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
-        //암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
+        //암호화 클래스 분할, 암호화 hash화 여러번 + 솔팅 , github 업로드 금지...! TODO
+        //암호화 클래스 분할, 암호화 hash화 여러번 + 솔팅 , github 업로드 금지...!
+        //암호화 클래스 분할, 암호화 hash화 여러번 + 솔팅 , github 업로드 금지...!
+        //암호화 클래스 분할, 암호화 hash화 여러번 + 솔팅 , github 업로드 금지...!
         String password = new BCryptPasswordEncoder().encode(signUpFormParameter.getPassword());
         memberRepository.setAcceptMember(member.getMemberId(),
                 password,
@@ -95,16 +113,15 @@ public class MemberService implements UserDetailsService {
     }
 
 
-
     public List<Member> findMemberList() throws NoSuchElementException {
         List<Member> memberList = memberRepository.findAll();
-        if(memberList.isEmpty()) throw new NoSuchElementException();
+        if (memberList.isEmpty()) throw new NoSuchElementException();
         return memberRepository.findAll();
     }
 
     public Member findMemberById(Long id) {
 
-        return  memberRepository.findById(id).orElseThrow(NullPointerException::new);
+        return memberRepository.findById(id).orElseThrow(NullPointerException::new);
 
     }
 
@@ -135,7 +152,7 @@ public class MemberService implements UserDetailsService {
 
     public void logout() throws NotLoginedException {
         HttpSession httpSession = request.getSession();
-        if(httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
+        if (httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
         httpSession.removeAttribute("login-user");
     }
 

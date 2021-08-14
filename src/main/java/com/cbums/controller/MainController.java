@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 @RestController
 @RequiredArgsConstructor
 public class MainController {
@@ -28,9 +31,10 @@ public class MainController {
     }
 
     @PostMapping("/logout")
-    public String logoutPage() throws NotLoginedException {
+    public void logoutPage(HttpServletResponse response) throws NotLoginedException, IOException {
         memberService.logout();
-        return "/logout";
+
+        response.sendRedirect("/logout");
     }
 
     @GetMapping("/denied")

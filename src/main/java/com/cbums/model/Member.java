@@ -30,6 +30,9 @@ public class Member implements Serializable {
     @Column(nullable = false)
     private String nickName;
 
+    @Column(nullable = false)
+    private String phoneNumber;
+
     private Integer registerNumber;
 
     @Column(nullable = false)

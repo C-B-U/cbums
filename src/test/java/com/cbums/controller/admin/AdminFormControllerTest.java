@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @RequiredArgsConstructor
 class AdminFormControllerTest {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -78,8 +83,9 @@ class AdminFormControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.post("/admin/form/")
                         .content(content)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .sessionAttr("login-user", 30l))
+                .andExpect(status().is3xxRedirection())
                 .andDo(print());
 
     }
@@ -97,7 +103,6 @@ class AdminFormControllerTest {
     @Test
     @DisplayName("지원서 수정_PATCH")
     public void patchForm() throws Exception {
-        // post로 전송되는 데이터 생성
         CreateFormFormParameter createFormFormParameter =
                 new CreateFormFormParameter();
         createFormFormParameter.setTitle("제목입니당");
@@ -105,13 +110,17 @@ class AdminFormControllerTest {
         createFormFormParameter.setRegisterNumber(3);
         createFormFormParameter.setOpenDateTime(LocalDateTime.now());
         createFormFormParameter.setCloseDateTime(LocalDateTime.now());
+        logger.info("cffp closeDateTime 생성");
 
         String content = objectMapper.writeValueAsString(createFormFormParameter);
+        logger.info(content);
 
         mockMvc.perform(MockMvcRequestBuilders.patch("/admin/form/8")
+                        .sessionAttr("login-user", 30l)
                         .content(content)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/admin/form/" + 8))
                 .andDo(print());
     }
 
@@ -119,7 +128,7 @@ class AdminFormControllerTest {
     @DisplayName("form 삭제")
     public void deleteForm() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/admin/form/29")
-                        .sessionAttr("login-user", 30))
+                        .sessionAttr("login-user", 30l))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/admin/form"))
                 .andDo(print());
