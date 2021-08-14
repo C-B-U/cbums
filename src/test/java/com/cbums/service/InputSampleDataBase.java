@@ -40,7 +40,7 @@ public class InputSampleDataBase {
 
 
     //실행 후 test Annotation 주석처리!
-    //@Test
+   // @Test
     public void 맴버생성() {
         HttpSession httpSession = request.getSession();
         //VISITED
@@ -94,7 +94,7 @@ public class InputSampleDataBase {
     //@Test
     public void 지원서_생성() throws NotLoginedException {
         HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("login-user", 165l);
+        httpSession.setAttribute("login-user", 151l);
 
         for (int i = 0; i < 50; i++) {
             Form form = new Form();
@@ -111,7 +111,7 @@ public class InputSampleDataBase {
     //@Test
     public void 문항_생성() throws NotLoginedException {
         HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("login-user", 165l);
+        httpSession.setAttribute("login-user", 151l);
 
         for (int i = 0; i < 150; i++) {
             FormQuestion formQuestion = new FormQuestion();
@@ -127,14 +127,15 @@ public class InputSampleDataBase {
     public void 지원서_내용_제작() {
         for(int i=6;i<=55;i++) {
             Set<Long> formQuestions = new HashSet<>();
-            formQuestions.add((long)getGeneratedInteger(11,160));
-            formQuestions.add((long)getGeneratedInteger(11,160));
-            formQuestions.add((long)getGeneratedInteger(11,160));
-            formQuestions.add((long)getGeneratedInteger(11,160));
-            formQuestions.add((long)getGeneratedInteger(11,160));
-            formQuestions.add((long)getGeneratedInteger(11,160));
-            formQuestions.add((long)getGeneratedInteger(11,160));
-            formQuestions.add((long)getGeneratedInteger(11,160));
+            formQuestions.add((long)getGeneratedInteger(1,150));
+            formQuestions.add((long)getGeneratedInteger(1,150));
+            formQuestions.add((long)getGeneratedInteger(1,150));
+            formQuestions.add((long)getGeneratedInteger(1,150));
+            formQuestions.add((long)getGeneratedInteger(1,150));
+            formQuestions.add((long)getGeneratedInteger(1,150));
+            formQuestions.add((long)getGeneratedInteger(1,150));
+            formQuestions.add((long)getGeneratedInteger(1,150));
+            formQuestions.add((long)getGeneratedInteger(1,150));
 
             formContentService.createFormContent((long)i,new ArrayList<>(formQuestions));
         }

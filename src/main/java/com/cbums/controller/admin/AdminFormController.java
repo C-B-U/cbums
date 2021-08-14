@@ -35,7 +35,8 @@ public class AdminFormController {
     }
 
     @PostMapping("/")
-    public String postForm(CreateFormFormParameter createFormFormParameter) throws NotLoginedException {
+    public void postForm(HttpServletResponse response,
+                         @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException, IOException {
         Form form = new Form();
         form.setIntroduce(createFormFormParameter.getIntroduce());
         form.setOpenDateTime(createFormFormParameter.getOpenDateTime());
@@ -43,7 +44,7 @@ public class AdminFormController {
         form.setTitle(createFormFormParameter.getTitle());
         form.setRegisterNumber(createFormFormParameter.getRegisterNumber());
         Long saveFormId = formService.createForm(form);
-        return "redirect:/admin/form/" + saveFormId;
+        response.sendRedirect("/admin/form/" + saveFormId);
     }
 
     @GetMapping("/{seq}")
@@ -55,7 +56,9 @@ public class AdminFormController {
     }
 
     @PatchMapping("/{seq}")
-    public String updateForm(@PathVariable("seq") Long seq, CreateFormFormParameter createFormFormParameter) throws NotLoginedException {
+    public void updateForm(HttpServletResponse response,
+                           @PathVariable("seq") Long seq,
+                           @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException, IOException {
         Form form = new Form();
         form.setIntroduce(createFormFormParameter.getIntroduce());
         form.setOpenDateTime(createFormFormParameter.getOpenDateTime());
@@ -64,28 +67,29 @@ public class AdminFormController {
         form.setRegisterNumber(createFormFormParameter.getRegisterNumber());
         form.setFormId(seq);
         formService.createForm(form);
-        return "redirect:/admin/form/" + seq;
+        response.sendRedirect("/admin/form/" + seq);
     }
 
     @DeleteMapping("/{seq}")
     public void deleteForm(HttpServletResponse response, @PathVariable("seq") Long seq)
             throws NotLoginedException, IOException {
         formService.deleteForm(seq);
-        String uri = "/admin/form";
-        response.sendRedirect(uri);
+
+        response.sendRedirect("/admin/form");
     }
 
     @PostMapping("/question")
-    public String postFormQuestion(CreateFormQuestionParameter createFormQuestionParameter) throws NotLoginedException {
+    public void postFormQuestion(HttpServletResponse response,
+                                 CreateFormQuestionParameter createFormQuestionParameter) throws NotLoginedException, IOException {
         FormQuestion formQuestion = new FormQuestion();
         formQuestion.setContent(createFormQuestionParameter.getContent());
         formQuestion.setOpeningDatetime(createFormQuestionParameter.getOpeningDatetime());
         Long saveFormQuestionId = formQuestionService.createFormQuestion(formQuestion);
-        return "redirect:/admin/form/question/" + saveFormQuestionId;
+        response.sendRedirect("redirect:/admin/form/question/" + saveFormQuestionId);
     }
 
     @GetMapping("/question")
-    public  List<FormQuestion> getFormQuestionList() {
+    public List<FormQuestion> getFormQuestionList() {
 
         List<FormQuestion> formQuestionList = formQuestionService.findFormQuestions();
 
@@ -101,13 +105,15 @@ public class AdminFormController {
     }
 
     @PostMapping("/content/{formSeq}")
-    public String setFormContent(@PathVariable("formSeq") Long formSeq, List<Long> FormQuestionId) {
+    public void setFormContent(HttpServletResponse response,
+                               @PathVariable("formSeq") Long formSeq,
+                               List<Long> FormQuestionId) throws IOException {
         formContentService.createFormContent(formSeq, FormQuestionId);
-        return "redirect:/form/content/"+formSeq;
+        response.sendRedirect("redirect:/form/content/" + formSeq);
     }
 
     @GetMapping("/content/{formSeq}/answer")
-    public  List<FormAnswer> getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
+    public List<FormAnswer> getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
 
         List<FormAnswer> formAnswerList =
                 formAnswerService.findFormAnswerListByFormId(formSeq);
