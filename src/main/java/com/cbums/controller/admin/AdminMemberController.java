@@ -4,10 +4,10 @@ import com.cbums.model.Member;
 import com.cbums.service.MemberService;
 import com.cbums.type.UserRoleType;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -18,31 +18,27 @@ public class AdminMemberController {
     private final MemberService memberService;
 
     @GetMapping("")
-    public List<Member> getMemberList() {
-
-        List<Member> memberList = memberService.findMemberList();
-        return memberList;
+    public ResponseEntity<List<Member>> getMemberList() {
+        return ResponseEntity.ok(memberService.findMemberList());
     }
 
     @GetMapping("/{seq}")
-    public Member getMember(@PathVariable("seq") Long seq) {
+    public ResponseEntity<Member> getMember(@PathVariable("seq") Long seq) {
 
-        Member member = memberService.findMemberById(seq);
-        return member;
+        return ResponseEntity.ok(memberService.findMemberById(seq));
+
     }
 
     @DeleteMapping("/{seq}")
-    public void deleteMember(HttpServletResponse response, @PathVariable("seq") Long seq) throws IOException {
+    public ResponseEntity<Void> deleteMember( @PathVariable("seq") Long seq) {
         memberService.deleteMember(seq);
-        response.sendRedirect("/admin/member");
+        return ResponseEntity.created(URI.create("/admin/member")).build();
     }
 
-    //member, admin 바뀌도록, updateRoleType
     @PatchMapping("/{seq}/userRoleType")
-    public void updateMemberRoleType(HttpServletResponse response,
-                                     @PathVariable("seq") Long seq,
-                                     @RequestParam UserRoleType userRoleType) throws IOException {
+    public ResponseEntity<Void> updateMemberRoleType(@PathVariable("seq") Long seq,
+                                     @RequestParam UserRoleType userRoleType) {
         memberService.updateMemberRoleType(seq, userRoleType);
-        response.sendRedirect("/admin/member");
+        return ResponseEntity.created(URI.create("/admin/member")).build();
     }
 }

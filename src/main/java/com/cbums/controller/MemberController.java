@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.net.URI;
 
 @RestController
@@ -67,8 +66,7 @@ public class MemberController {
     }
 
     @PostMapping("/register/check")
-    public ResponseEntity<Void> checkAcceptMember(HttpServletResponse response,
-                                  @RequestParam String email) throws IOException, MessagingException {
+    public ResponseEntity<Void> checkAcceptMember(@RequestParam String email) throws MessagingException {
         try {
             memberService.checkAcceptMember(email);
             return ResponseEntity.created(URI.create("/member/register/check/mail-code")).build();
@@ -104,8 +102,7 @@ public class MemberController {
     }
 
     @PatchMapping("/detail")
-    public ResponseEntity<Void> addMemberDetail(HttpServletResponse response,
-                                @RequestBody MemberDetailFormParameter signUpFormParameter) throws IOException {
+    public ResponseEntity<Void> addMemberDetail(@RequestBody MemberDetailFormParameter signUpFormParameter) {
         Long memberId = memberService.setMemberDetail(signUpFormParameter);
         return ResponseEntity.created(URI.create("/member/" + memberId)).build();
 
