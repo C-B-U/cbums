@@ -97,6 +97,7 @@ public class MemberService implements UserDetailsService {
         }
     }
 
+    //param을 그대로 사용하는 것이 맞는 것일까...? TODO
     public Long setMemberDetail(MemberDetailFormParameter signUpFormParameter) {
 
         HttpSession httpSession = request.getSession();

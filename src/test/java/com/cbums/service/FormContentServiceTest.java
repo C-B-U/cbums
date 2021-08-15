@@ -8,6 +8,7 @@ import com.cbums.model.Member;
 import com.cbums.repository.FormContentRepository;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,6 +40,13 @@ class FormContentServiceTest {
 
     @Autowired
     HttpServletRequest request;
+
+    @BeforeEach
+    public void Session_초기화() {
+        HttpSession httpSession = request.getSession();
+        httpSession.removeAttribute("form-writer-id");
+        httpSession.removeAttribute("login-user");
+    }
 
     @Test
     public void FORM_내용_구성() throws NotLoginedException, OverlapDataException {
