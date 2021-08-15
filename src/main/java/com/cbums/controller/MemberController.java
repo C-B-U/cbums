@@ -8,12 +8,14 @@ import com.cbums.service.exception.CheckCodeNotEqualsException;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.OverlapDataException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URI;
 
 @RestController
 @RequestMapping("/member")
@@ -22,9 +24,9 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/")
-    public void registerMember(HttpServletResponse response,
-                               @CookieValue(value = "form-id", required = false) Cookie formCookie,
-                               @RequestBody JoinForWriteFormParameter joinForWriteFormParameter) throws IOException {
+    public ResponseEntity<Void> registerMember(HttpServletResponse response,
+                                               @CookieValue(value = "form-id", required = false) Cookie formCookie,
+                                               @RequestBody JoinForWriteFormParameter joinForWriteFormParameter) {
         Member member = Member.builder()
                 .name(joinForWriteFormParameter.getName())
                 .nickName(joinForWriteFormParameter.getNickName())
@@ -43,17 +45,18 @@ public class MemberController {
                 formCookie.setMaxAge(0);
                 response.addCookie(formCookie);
 
-                response.sendRedirect("/content/" + formId);
+                return ResponseEntity.created(URI.create("/content/" + formId)).build();
             } else {
-                response.sendRedirect("/");
+                return ResponseEntity.created(URI.create("/")).build();
+
             }
-        }catch (OverlapDataException e) {
+        } catch (OverlapDataException e) {
             //중복 회원
             String formId = formCookie.getValue();
             formCookie.setPath("/");
             formCookie.setMaxAge(0);
             response.addCookie(formCookie);
-            response.sendRedirect("/form" + formId);
+            return ResponseEntity.created(URI.create("/form/" + formId)).build();
         }
 
     }
@@ -64,14 +67,14 @@ public class MemberController {
     }
 
     @PostMapping("/register/check")
-    public void checkAcceptMember(HttpServletResponse response,
+    public ResponseEntity<Void> checkAcceptMember(HttpServletResponse response,
                                   @RequestParam String email) throws IOException, MessagingException {
-        try{
+        try {
             memberService.checkAcceptMember(email);
-            response.sendRedirect("/member/register/check/mail-code");
-        }catch (NotAcceptMemberException e) {
+            return ResponseEntity.created(URI.create("/member/register/check/mail-code")).build();
+        } catch (NotAcceptMemberException e) {
             //ajax에서 구현...?
-            response.sendRedirect("/member/register/check");
+            return ResponseEntity.created(URI.create("/member/register/check")).build();
         }
     }
 
@@ -81,18 +84,16 @@ public class MemberController {
     }
 
     @PostMapping("/register/check/mail-code")
-    public void checkMailCode(HttpServletResponse response,
-                              @RequestParam String emailCode) throws IOException {
+    public ResponseEntity<Void> checkMailCode(@RequestParam String emailCode) {
 
         try {
             memberService.checkMailCode(emailCode);
-            response.sendRedirect("/member/detail");
-        }catch (CheckCodeNotEqualsException e) {
+            return ResponseEntity.created(URI.create("/member/detail")).build();
+        } catch (CheckCodeNotEqualsException e) {
             //일치하지 않다고 알림
+            return ResponseEntity.created(URI.create("/register/check/mail-code")).build();
         }
-
     }
-
 
     //patch를 여러개로 분할 //TODO
 
@@ -103,10 +104,11 @@ public class MemberController {
     }
 
     @PatchMapping("/detail")
-    public void addMemberDetail(HttpServletResponse response,
+    public ResponseEntity<Void> addMemberDetail(HttpServletResponse response,
                                 @RequestBody MemberDetailFormParameter signUpFormParameter) throws IOException {
-        memberService.setMemberDetail(signUpFormParameter);
-        response.sendRedirect("/");
+        Long memberId = memberService.setMemberDetail(signUpFormParameter);
+        return ResponseEntity.created(URI.create("/member/" + memberId)).build();
+
     }
 
     // 아이디 & 비밀번호 찾기 페이지
@@ -116,8 +118,7 @@ public class MemberController {
     }
 
     @GetMapping("member/forgot/email")
-    public String forgotEmail(HttpServletResponse response,
-                              @RequestParam Integer classNumber) {
+    public String forgotEmail(@RequestParam Integer classNumber) {
         return memberService.getBlindMemberEmail(classNumber);
     }
 
@@ -139,17 +140,10 @@ public class MemberController {
     @PatchMapping("/{memberId}")
     public String updateMember(@PathVariable("memberId") Long memberId,
                                HttpServletResponse response
-                              // @RequestBody
-                                ) {
+                               // @RequestBody
+    ) {
 
         return "/member/update";
-    }
-
-    //이 친구 필요할까...?
-    @GetMapping("/register")
-    public String registerPage() {
-
-        return "/register";
     }
 
 }
