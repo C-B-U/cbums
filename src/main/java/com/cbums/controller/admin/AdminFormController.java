@@ -11,12 +11,13 @@ import com.cbums.service.FormQuestionService;
 import com.cbums.service.FormService;
 import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URI;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/admin/form")
@@ -29,14 +30,12 @@ public class AdminFormController {
     private final FormAnswerService formAnswerService;
 
     @GetMapping("")
-    public List<Form> getFormList() throws NoSuchElementException {
-        List<Form> formList = formService.findFormList();
-        return formList;
+    public ResponseEntity<List<Form>> getFormList() {
+        return ResponseEntity.ok(formService.findFormList());
     }
 
     @PostMapping("/")
-    public void createForm(HttpServletResponse response,
-                           @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException, IOException {
+    public ResponseEntity<Void> createForm(@RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException {
         Form form = Form.builder()
                 .introduce(createFormFormParameter.getIntroduce())
                 .openDateTime(createFormFormParameter.getOpenDateTime())
@@ -46,21 +45,19 @@ public class AdminFormController {
                 .build();
 
         Long saveFormId = formService.createForm(form);
-        response.sendRedirect("/admin/form/" + saveFormId);
+        return ResponseEntity.created(URI.create("/admin/form/" + saveFormId)).build();
+
     }
 
     @GetMapping("/{seq}")
-    public Form getForm(@PathVariable("seq") Long seq) throws NullPointerException {
-
-        Form form = formService.findFormById(seq);
-
-        return form;
+    public ResponseEntity<Form> getForm(@PathVariable("seq") Long seq) {
+        return ResponseEntity.ok(formService.findFormById(seq));
     }
 
     @PatchMapping("/{seq}")
-    public void updateForm(HttpServletResponse response,
-                           @PathVariable("seq") Long seq,
-                           @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException, IOException {
+    public ResponseEntity<Void> updateForm(@PathVariable("seq") Long seq,
+                                           @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException {
+
         Form form = Form.builder()
                 .formId(seq)
                 .introduce(createFormFormParameter.getIntroduce())
@@ -69,24 +66,24 @@ public class AdminFormController {
                 .title(createFormFormParameter.getTitle())
                 .registerNumber(createFormFormParameter.getRegisterNumber())
                 .build();
+
         formService.createForm(form);
-        response.sendRedirect("/admin/form/" + seq);
+
+        return ResponseEntity.created(URI.create("/admin/form/" + seq)).build();
     }
 
     @DeleteMapping("/{seq}")
-    public void deleteForm(HttpServletResponse response, @PathVariable("seq") Long seq)
-            throws NotLoginedException, IOException {
+    public ResponseEntity<Void> deleteForm(@PathVariable("seq") Long seq) throws NotLoginedException {
+
         formService.deleteForm(seq);
 
-        response.sendRedirect("/admin/form");
+        return ResponseEntity.created(URI.create("/admin/form")).build();
+
     }
 
     @GetMapping("/question")
-    public List<FormQuestion> getFormQuestionList() {
-
-        List<FormQuestion> formQuestionList = formQuestionService.findFormQuestions();
-
-        return formQuestionList;
+    public ResponseEntity<List<FormQuestion>> getFormQuestionList() {
+        return ResponseEntity.ok(formQuestionService.findFormQuestions());
     }
 
     @PostMapping("/question")
@@ -111,31 +108,24 @@ public class AdminFormController {
     }
 
     @PostMapping("/content/{formSeq}")
-    public void setFormContent(HttpServletResponse response,
-                               @PathVariable("formSeq") Long formSeq,
-                               List<Long> FormQuestionId) throws IOException {
+    public ResponseEntity<Void> setFormContent(@PathVariable("formSeq") Long formSeq,
+                                               List<Long> FormQuestionId) {
+
         formContentService.createFormContent(formSeq, FormQuestionId);
-        response.sendRedirect("redirect:/form/content/" + formSeq);
+
+        return ResponseEntity.created(URI.create("/form/content/" + formSeq)).build();
     }
 
     @GetMapping("/content/{formSeq}/answer")
-    public List<FormAnswer> getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
-
-        List<FormAnswer> formAnswerList =
-                formAnswerService.findFormAnswerListByFormId(formSeq);
-
-        return formAnswerList;
+    public ResponseEntity<List<FormAnswer>> getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
+        return ResponseEntity.ok(formAnswerService.findFormAnswerListByFormId(formSeq));
     }
 
     @GetMapping("/content/{formSeq}/answer/{memberSeq}")
-    public List<FormAnswer> getFormAnswer(
+    public ResponseEntity<List<FormAnswer>> getFormAnswer(
             @PathVariable("formSeq") Long formSeq,
             @PathVariable("memberSeq") Long memberSeq) {
-
-        List<FormAnswer> formAnswerList =
-                formAnswerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq);
-
-        return formAnswerList;
+        return ResponseEntity.ok(formAnswerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq));
     }
 
 
