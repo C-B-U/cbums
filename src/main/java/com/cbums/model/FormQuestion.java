@@ -26,7 +26,6 @@ public class FormQuestion {
     private Member producer;
 
     @Column(nullable = false)
-    @CreatedDate
     private LocalDateTime openingDatetime;
 
     @Override

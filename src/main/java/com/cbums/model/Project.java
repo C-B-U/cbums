@@ -22,7 +22,6 @@ public class Project {
     @Column(nullable = false)
     private String name;
 
-    @CreatedDate
     @Column(nullable = false)
     private LocalDateTime registerDatetime;
 

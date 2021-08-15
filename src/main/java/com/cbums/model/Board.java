@@ -24,7 +24,6 @@ public class Board {
     private Member producer;
 
     @Column(nullable = false)
-    @CreatedDate
     private LocalDateTime openingDatetime;
 
 }
