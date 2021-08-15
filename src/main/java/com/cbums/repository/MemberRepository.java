@@ -13,14 +13,22 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<Member, Long> {
     public Optional<Member> findByEmail(String email);
     public Optional<Member> findByClassNumber(Integer classNumber);
-
     @Modifying(clearAutomatically = true)
     @Transactional
     @Query("UPDATE Member m SET" +
             " m.password = :password, m.introduce = :introduce, m.profileImage = :image " +
             "WHERE m.memberId = :memberId")
-    public void setAcceptMember(@Param("memberId") Long memberId,
-                                @Param("password") String password,
-                                @Param("introduce") String introduce,
-                                @Param("image") String image);
+    public void updateMemberDetail(@Param("memberId") Long memberId,
+                                   @Param("password") String password,
+                                   @Param("introduce") String introduce,
+                                   @Param("image") String image);
+
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query("UPDATE Member m SET" +
+            " m.userRoleType = :userRoleType " +
+            "WHERE m.memberId = :memberId")
+    public void updateMemberRoleType(@Param("memberId") Long memberId,
+                               @Param("userRoleType") UserRoleType userRoleType);
+
 }

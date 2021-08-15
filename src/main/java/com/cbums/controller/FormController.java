@@ -32,7 +32,7 @@ public class FormController {
         return formList;
     }
 
-
+    //기존 회원 & 신규 회원 나누어야 TODO
     @GetMapping("/{seq}")
     public Form getForm(HttpServletResponse response,
                         @PathVariable("seq") Long seq) throws NullPointerException {

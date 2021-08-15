@@ -57,12 +57,12 @@ class MainControllerTest {
 
     @Test
     @WithMockUser
-    @DisplayName("로그아웃 페이지 Post")
+    @DisplayName("로그아웃 페이지 POST")
     public void postLogoutPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/logout")
-                        .sessionAttr("login-user", 10))
+                        .sessionAttr("login-user", 10l))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/logout"))
+                .andExpect(redirectedUrl("/"))
                 .andDo(print());
     }
 
@@ -72,24 +72,6 @@ class MainControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/denied"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("/denied"))
-                .andDo(print());
-    }
-
-    @Test
-    @DisplayName("로그인 성공 페이지 GET")
-    public void getLoginSuccessPage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/login-success"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("/login-success"))
-                .andDo(print());
-    }
-
-    @Test
-    @DisplayName("지원서 페이지 GET")
-    public void getFormPage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/form-page"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("/form"))
                 .andDo(print());
     }
 

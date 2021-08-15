@@ -23,13 +23,15 @@ public class MemberController {
     public void registerMember(HttpServletResponse response,
                                @CookieValue(value = "form-id", required = false) Cookie formCookie,
                                @RequestBody JoinForWriteFormParameter joinForWriteFormParameter) throws IOException {
-        Member member = new Member();
-        member.setName(joinForWriteFormParameter.getName());
-        member.setNickName(joinForWriteFormParameter.getNickName());
-        member.setEmail(joinForWriteFormParameter.getEmail());
-        member.setPhoneNumber(joinForWriteFormParameter.getPhoneNumber());
-        member.setDepartment(joinForWriteFormParameter.getDepartment());
-        member.setClassNumber(joinForWriteFormParameter.getClassNumber());
+        Member member = Member.builder()
+                .name(joinForWriteFormParameter.getName())
+                .nickName(joinForWriteFormParameter.getNickName())
+                .email(joinForWriteFormParameter.getEmail())
+                .phoneNumber(joinForWriteFormParameter.getPhoneNumber())
+                .department(joinForWriteFormParameter.getDepartment())
+                .classNumber(joinForWriteFormParameter.getClassNumber())
+                .build();
+
         try {
             memberService.registerMember(member);
 
@@ -39,7 +41,7 @@ public class MemberController {
                 formCookie.setMaxAge(0);
                 response.addCookie(formCookie);
 
-                response.sendRedirect("/form/" + formId);
+                response.sendRedirect("/content/" + formId);
             } else {
                 response.sendRedirect("/");
             }
@@ -56,7 +58,7 @@ public class MemberController {
 
     @GetMapping("/register/check")
     public String checkAcceptMemberPage() {
-        return "/member/check";
+        return "/member/register/check";
     }
 
     @PostMapping("/register/check")
@@ -67,7 +69,7 @@ public class MemberController {
             response.sendRedirect("/member/detail");
         }catch (NotAcceptMemberException e) {
             //ajax에서 구현...?
-            response.sendRedirect("/register/check");
+            response.sendRedirect("/member/register/check");
         }
 
     }

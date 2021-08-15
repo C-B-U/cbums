@@ -1,9 +1,11 @@
 package com.cbums.service;
 
+import com.cbums.RandomValue;
 import com.cbums.model.FormQuestion;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +16,7 @@ import javax.transaction.Transactional;
 
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
@@ -27,30 +29,34 @@ class FormQuestionServiceTest {
     @Autowired
     HttpServletRequest request;
 
+    @BeforeEach
+    public void Session_초기화() {
+        HttpSession httpSession = request.getSession();
+        httpSession.removeAttribute("form-writer-id");
+        httpSession.removeAttribute("login-user");
+    }
+
     @Test
     public void FORM_질문_생성() throws NotLoginedException, OverlapDataException {
         //given
         HttpSession httpSession = request.getSession();
-        Member 작성자 = new Member();
-        작성자.setName("홍길동");
-        작성자.setDepartment("IT경영학과, 컴퓨터공학과 복수전공");
-        작성자.setEmail("phjppo0918@kpu.ac.kr");
-        작성자.setClassNumber(2018314014);
-        작성자.setNickName("루핑투핑");
-        작성자.setPhoneNumber("65745665");
+        Member 작성자 = RandomValue.getMember();
         Long memberId = memberService.registerMember(작성자).getMemberId();
         httpSession.setAttribute("login-user",memberId);
 
-        FormQuestion formQuestion = new FormQuestion();
-        formQuestion.setContent("질문 내용 입니당~");
-        formQuestion.setOpeningDatetime(LocalDateTime.now());
+        FormQuestion formQuestion = RandomValue.getFormQuestion();
         //when
         Long savedFormQuestion = formQuestionService.createFormQuestion(formQuestion);
         //then
-        assertEquals(formQuestion.getContent(),
-                formQuestionService.findFormQuestionById(savedFormQuestion).getContent());
-        assertEquals(작성자.getEmail(),
-                formQuestionService.findFormQuestionById(savedFormQuestion).getProducer().getEmail());
-        httpSession.removeAttribute("login-user");
+        assertThat(formQuestion.getContent())
+                .isEqualTo(formQuestionService
+                        .findFormQuestionById(savedFormQuestion)
+                        .getContent());
+
+        assertThat(작성자.getEmail())
+                .isEqualTo(formQuestionService
+                        .findFormQuestionById(savedFormQuestion)
+                        .getProducer()
+                        .getEmail());
     }
 }

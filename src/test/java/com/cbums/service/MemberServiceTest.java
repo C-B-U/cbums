@@ -1,5 +1,6 @@
 package com.cbums.service;
 
+import com.cbums.RandomValue;
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.exception.NotAcceptMemberException;
@@ -18,7 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @Transactional
@@ -31,36 +33,26 @@ class MemberServiceTest {
     @Autowired
     HttpServletRequest request;
 
-    Member 작성자 = null;
-
     @BeforeEach
-    private void 테스트_시작_전_작성자_초기화 (){
-        작성자 = null;
-    }
-    @DisplayName("작성자 생성")
-    private void 작성자_생성() {
-        작성자 = new Member();
-        작성자.setName("홍길동");
-        작성자.setDepartment("IT경영학과, 컴퓨터공학과 복수전공");
-        작성자.setEmail("phjppo0918@kpu.ac.kr");
-        작성자.setClassNumber(2018314014);
-        작성자.setNickName("루핑투핑");
-        작성자.setPhoneNumber("65745665");
+    public void Session_초기화() {
+        HttpSession httpSession = request.getSession();
+        httpSession.removeAttribute("form-writer-id");
+        httpSession.removeAttribute("login-user");
     }
 
     @Test
     public void 지원자_작성() throws OverlapDataException {
         //given
         logger.info("작성자 입력");
-        작성자_생성();
+        Member 작성자 = RandomValue.getMember();
 
         //when
         Member 저장된_맴버 =  memberService.registerMember(작성자);
 
         //then
-        assertEquals(작성자.getEmail(), 저장된_맴버.getEmail());
-        assertEquals(작성자.getDepartment(), 저장된_맴버.getDepartment());
-        assertEquals(작성자.getClassNumber(), 저장된_맴버.getClassNumber());
+        assertThat(작성자.getEmail()).isEqualTo(저장된_맴버.getEmail());
+        assertThat(작성자.getDepartment()).isEqualTo(저장된_맴버.getDepartment());
+        assertThat(작성자.getClassNumber()).isEqualTo(저장된_맴버.getClassNumber());
     }
 
 
@@ -69,7 +61,7 @@ class MemberServiceTest {
     public void 가입승인자_확인() throws NotAcceptMemberException, OverlapDataException {
 
         //given
-        작성자_생성();
+        Member 작성자 = RandomValue.getMember();
         작성자.setUserRoleType(UserRoleType.MEMBER);
         memberService.registerMember(작성자);
 
@@ -78,35 +70,32 @@ class MemberServiceTest {
         memberService.checkAcceptMember(작성자.getEmail());
 
         // then
-        assertEquals(
-                httpSession.getAttribute("accept-email"),
-                작성자.getEmail());
+        assertThat(httpSession.getAttribute("accept-email"))
+                .isEqualTo(작성자.getEmail());
 
     }
 
     @Test
     public void 가입비승인자_예외처리() throws OverlapDataException {
-        작성자_생성();
+        Member 작성자 = RandomValue.getMember();
+        작성자.setUserRoleType(UserRoleType.VISITANT);
         memberService.registerMember(작성자);
+
         //when & then
-        assertThrows(NotAcceptMemberException.class, () ->
-                memberService.checkAcceptMember(작성자.getEmail()));
+        assertThrows(NotAcceptMemberException.class, () -> memberService.checkAcceptMember(작성자.getEmail()));
     }
 
     //만약 가입자가 존재하지 않다면?? TODO
     // getMembers test TODO
 
     @Test
-    public void 가입승인자_회원가입정보_설정() throws OverlapDataException {
+    public void 가입승인자_회원가입정보_설정() throws OverlapDataException, NotAcceptMemberException {
         //given
-        작성자_생성();
+        Member 작성자 = RandomValue.getMember();
         작성자.setUserRoleType(UserRoleType.MEMBER);
         memberService.registerMember(작성자);
-        try{
-            memberService.checkAcceptMember(작성자.getEmail());
-        }catch (NotAcceptMemberException e){
-            assertTrue(false);
-        }
+
+        memberService.checkAcceptMember(작성자.getEmail());
 
         MemberDetailFormParameter 회원가입정보FORM = new MemberDetailFormParameter();
         회원가입정보FORM.setImage("이미지.jpg");
@@ -122,11 +111,9 @@ class MemberServiceTest {
 
         //then
         HttpSession httpSession = request.getSession();
-        assertNull(httpSession.getAttribute("accept-email"));
-        assertEquals(작성자.getEmail(),
-                memberService.findMemberById(가입자ID).getEmail());
-        assertEquals(회원가입정보FORM.getImage(),
-                memberService.findMemberById(가입자ID).getProfileImage());
+        assertThat(httpSession.getAttribute("accept-email")).isNull();
+        assertThat(작성자.getEmail()).isEqualTo(memberService.findMemberById(가입자ID).getEmail());
+        assertThat(회원가입정보FORM.getImage()).isEqualTo(memberService.findMemberById(가입자ID).getProfileImage());
 
     }
 
@@ -139,7 +126,7 @@ class MemberServiceTest {
         //when
         memberService.logout();
         //then
-        assertNull(httpSession.getAttribute("login-user"));
+        assertThat(httpSession.getAttribute("login-user")).isNull();
 
     }
 

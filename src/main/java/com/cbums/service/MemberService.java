@@ -14,7 +14,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -61,6 +60,7 @@ public class MemberService implements UserDetailsService {
         HttpSession httpSession = request.getSession();
         Random random = new Random();
         Integer key = random.nextInt(99999999);
+        //key 암호화 안해도 되나...? TODO
         httpSession.setAttribute("certify-key", key);
         naverMailSendService.sendEmail(
                 (String) httpSession.getAttribute("accept-email"),
@@ -97,6 +97,7 @@ public class MemberService implements UserDetailsService {
         }
     }
 
+    //param을 그대로 사용하는 것이 맞는 것일까...? TODO
     public Long setMemberDetail(MemberDetailFormParameter signUpFormParameter) {
 
         HttpSession httpSession = request.getSession();
@@ -105,7 +106,7 @@ public class MemberService implements UserDetailsService {
 
         Member member = memberRepository.findByEmail(email).get();
         String password = encryptionService.encode(signUpFormParameter.getPassword());
-        memberRepository.setAcceptMember(member.getMemberId(),
+        memberRepository.updateMemberDetail(member.getMemberId(),
                 password,
                 signUpFormParameter.getIntroduce(),
                 signUpFormParameter.getImage());
@@ -123,6 +124,14 @@ public class MemberService implements UserDetailsService {
 
         return memberRepository.findById(id).orElseThrow(NullPointerException::new);
 
+    }
+
+    public void deleteMember(Long id) {
+        memberRepository.deleteById(id);
+    }
+
+    public void updateMemberRoleType(Long id, UserRoleType userRoleType) {
+        memberRepository.updateMemberRoleType(id,userRoleType);
     }
 
     @Override

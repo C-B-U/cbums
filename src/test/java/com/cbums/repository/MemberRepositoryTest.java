@@ -64,7 +64,7 @@ class MemberRepositoryTest {
         logger.info("세부사항 업데이트");
 
 
-        memberRepository.setAcceptMember(세부사항_추가_사용자.getMemberId(),
+        memberRepository.updateMemberDetail(세부사항_추가_사용자.getMemberId(),
                 세부사항입력양식.getPassword(),
                 세부사항입력양식.getIntroduce(),
                 세부사항입력양식.getImage());

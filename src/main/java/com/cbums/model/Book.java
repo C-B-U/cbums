@@ -1,7 +1,6 @@
 package com.cbums.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,6 +8,9 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Book{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

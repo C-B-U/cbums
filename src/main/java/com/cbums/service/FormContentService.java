@@ -20,12 +20,14 @@ public class FormContentService {
     public List<Long> createFormContent(Long formId, List<Long> formQuestionIdList) {
 
         List<Long> formContendId = new ArrayList<>();
-        FormContent formContent;
+
         Form form = formService.findFormById(formId);
         for(Long k : formQuestionIdList) {
-            formContent = new FormContent();
-            formContent.setForm(form);
-            formContent.setFormQuestion(formQuestionService.findFormQuestionById(k));
+            //새로운 객체로 생성되나...? 아니면 기존꺼 덮어쓰기가 되나
+            FormContent formContent = FormContent.builder()
+                    .form(form)
+                    .formQuestion(formQuestionService.findFormQuestionById(k))
+                    .build();
             formContendId.add(formContentRepository.save(formContent).getFormContentId());
         }
 
