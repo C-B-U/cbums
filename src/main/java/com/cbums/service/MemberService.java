@@ -60,6 +60,7 @@ public class MemberService implements UserDetailsService {
         HttpSession httpSession = request.getSession();
         Random random = new Random();
         Integer key = random.nextInt(99999999);
+        //key 암호화 안해도 되나...? TODO
         httpSession.setAttribute("certify-key", key);
         naverMailSendService.sendEmail(
                 (String) httpSession.getAttribute("accept-email"),

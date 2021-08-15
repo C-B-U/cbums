@@ -39,10 +39,11 @@ public class FormAnswerService {
         FormAnswer formAnswer;
         for(Long k : contentKeyList) {
             formContent = formContentService.findFormContentById(k);
-            formAnswer = new FormAnswer();
-            formAnswer.setMember(member);
-            formAnswer.setFormContent(formContent);
-            formAnswer.setContent(answer.get(k));
+            formAnswer = FormAnswer.builder()
+                    .member(member)
+                    .formContent(formContent)
+                    .content(answer.get(k))
+                    .build();
             formAnswerIdList.add(formAnswerRepository.save(formAnswer).getFormAnswerId());
         }
         return formAnswerIdList;

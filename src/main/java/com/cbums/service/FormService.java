@@ -37,7 +37,9 @@ public class FormService {
         if(httpSession.getAttribute("login-user") == null) throw new NotLoginedException();
         Long producerId = (Long) httpSession.getAttribute("login-user");
         Member producer = memberService.findMemberById(producerId);
-        form.setProducer(producer);
+        form.builder()
+                .producer(producer)
+                .build();
         Form savedForm = formRepository.save(form);
 
         return savedForm.getFormId();
