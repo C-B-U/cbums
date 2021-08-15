@@ -128,8 +128,8 @@ public class MemberService implements UserDetailsService {
         memberRepository.deleteById(id);
     }
 
-    public void acceptMember(Long id) {
-
+    public void updateMemberRoleType(Long id, UserRoleType userRoleType) {
+        memberRepository.updateMemberRoleType(id,userRoleType);
     }
 
     @Override

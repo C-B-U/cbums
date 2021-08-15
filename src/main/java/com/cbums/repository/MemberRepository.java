@@ -26,8 +26,9 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Modifying(clearAutomatically = true)
     @Transactional
     @Query("UPDATE Member m SET" +
-            " m.userRoleType = " +
+            " m.userRoleType = :userRoleType " +
             "WHERE m.memberId = :memberId")
-    public void updateRoleType(@Param("memberId") Long memberId);
+    public void updateMemberRoleType(@Param("memberId") Long memberId,
+                               @Param("userRoleType") UserRoleType userRoleType);
 
 }

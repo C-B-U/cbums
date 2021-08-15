@@ -2,6 +2,7 @@ package com.cbums.controller.admin;
 
 import com.cbums.model.Member;
 import com.cbums.service.MemberService;
+import com.cbums.type.UserRoleType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,14 +37,12 @@ public class AdminMemberController {
         response.sendRedirect("/admin/member");
     }
 
-    //member, admin 바뀌도록, updateRoletype
-    @PostMapping("/{seq}/accept")
-    public void acceptMember(@PathVariable("seq") Long seq) {
-
-    }
-
-    @PostMapping("/{seq}/reject")
-    public void rejectMember(@PathVariable("seq") Long seq) {
-
+    //member, admin 바뀌도록, updateRoleType
+    @PatchMapping("/{seq}/userRoleType")
+    public void updateMemberRoleType(HttpServletResponse response,
+                                     @PathVariable("seq") Long seq,
+                                     @RequestParam UserRoleType userRoleType) throws IOException {
+        memberService.updateMemberRoleType(seq, userRoleType);
+        response.sendRedirect("/admin/member");
     }
 }
