@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -58,7 +59,7 @@ class MemberServiceTest {
 
 
     @Test
-    public void 가입승인자_확인() throws NotAcceptMemberException, OverlapDataException {
+    public void 가입승인자_확인() throws NotAcceptMemberException, OverlapDataException, MessagingException {
 
         //given
         Member 작성자 = RandomValue.getMember();
@@ -89,7 +90,7 @@ class MemberServiceTest {
     // getMembers test TODO
 
     @Test
-    public void 가입승인자_회원가입정보_설정() throws OverlapDataException, NotAcceptMemberException {
+    public void 가입승인자_회원가입정보_설정() throws OverlapDataException, NotAcceptMemberException, MessagingException {
         //given
         Member 작성자 = RandomValue.getMember();
         작성자.setUserRoleType(UserRoleType.MEMBER);

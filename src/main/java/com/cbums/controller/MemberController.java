@@ -4,11 +4,13 @@ import com.cbums.controller.postParameter.JoinForWriteFormParameter;
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.service.MemberService;
+import com.cbums.service.exception.CheckCodeNotEqualsException;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.OverlapDataException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -63,13 +65,30 @@ public class MemberController {
 
     @PostMapping("/register/check")
     public void checkAcceptMember(HttpServletResponse response,
-                                  @RequestParam String email) throws IOException {
+                                  @RequestParam String email) throws IOException, MessagingException {
         try{
             memberService.checkAcceptMember(email);
-            response.sendRedirect("/member/detail");
+            response.sendRedirect("/member/register/check/mail-code");
         }catch (NotAcceptMemberException e) {
             //ajax에서 구현...?
             response.sendRedirect("/member/register/check");
+        }
+    }
+
+    @GetMapping("/register/check/mail-code")
+    public String checkMailCode() {
+        return "/register/check/mail-code";
+    }
+
+    @PostMapping("/register/check/mail-code")
+    public void checkMailCode(HttpServletResponse response,
+                              @RequestParam String emailCode) throws IOException {
+
+        try {
+            memberService.checkMailCode(emailCode);
+            response.sendRedirect("/member/detail");
+        }catch (CheckCodeNotEqualsException e) {
+            //일치하지 않다고 알림
         }
 
     }

@@ -4,6 +4,7 @@ import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Member;
 import com.cbums.model.SecurityUser;
 import com.cbums.repository.MemberRepository;
+import com.cbums.service.exception.CheckCodeNotEqualsException;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
@@ -44,7 +45,7 @@ public class MemberService implements UserDetailsService {
         return member;
     }
 
-    public void checkAcceptMember(String email) throws NotAcceptMemberException {
+    public void checkAcceptMember(String email) throws NotAcceptMemberException, MessagingException {
 
         Member member = memberRepository.findByEmail(email).orElseThrow(NullPointerException::new);
         if (member.getUserRoleType() == UserRoleType.VISITANT) {
@@ -53,6 +54,7 @@ public class MemberService implements UserDetailsService {
         }
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("accept-email", email);
+        sendMailCertificationCode();
 
     }
 
@@ -61,13 +63,23 @@ public class MemberService implements UserDetailsService {
         Random random = new Random();
         Integer key = random.nextInt(99999999);
         //key 암호화 안해도 되나...? TODO
-        httpSession.setAttribute("certify-key", key);
+        httpSession.setAttribute("certify-key", key.toString());
         naverMailSendService.sendEmail(
-                (String) httpSession.getAttribute("accept-email"),
+                (String)httpSession.getAttribute("accept-email"),
                 "씨부엉: 메일 인증 코드입니다",
                 key.toString()
         );
     }
+
+    public void checkMailCode(String code) throws CheckCodeNotEqualsException {
+        HttpSession httpSession = request.getSession();
+        if(code.equals(httpSession.getAttribute("accept-email"))) {
+            httpSession.removeAttribute("accept-email");
+        }else {
+            throw new CheckCodeNotEqualsException();
+        }
+    }
+
 
     public String getBlindMemberEmail(Integer classNumber) {
         char[] memberEmail = memberRepository
