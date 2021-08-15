@@ -27,6 +27,5 @@ public class BoardSubscription {
     private Member member;
 
     @Column(nullable = false)
-    @CreatedDate
     private LocalDateTime subscriptionDatetime;
 }

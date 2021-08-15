@@ -28,7 +28,6 @@ public class Post {
     private String image;
 
     @Column(nullable = false)
-    @CreatedDate
     private LocalDateTime registerDatetime;
 
     @ManyToOne(fetch = FetchType.LAZY)

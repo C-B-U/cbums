@@ -32,7 +32,6 @@ public class ProjectMember {
     private ProjectRoleType projectRoleType;
 
     @Column(nullable = false)
-    @CreatedDate
     private LocalDateTime signUpDatetime;
 
     @Enumerated(EnumType.STRING)
