@@ -39,18 +39,18 @@ class MemberControllerTest {
     @DisplayName("회원가입 승인여부 확인 페이지_GET")
     public void getSignUpPage() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/member/sign-up"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/member/register/check"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/member/sign-up"))
+                .andExpect(content().string("/member/register/check"))
                 .andDo(print());
     }
 
     @Test
     @DisplayName("회원가입 진행 form 페이지_GET")
     public void getSignUpFormPage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/member/sign-up-form"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/member/detail"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("/member/sign-up-form"))
+                .andExpect(content().string("/member/detail"))
                 .andDo(print());
     }
 

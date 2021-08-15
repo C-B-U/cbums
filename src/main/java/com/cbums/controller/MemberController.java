@@ -56,7 +56,7 @@ public class MemberController {
 
     @GetMapping("/register/check")
     public String checkAcceptMemberPage() {
-        return "/member/check";
+        return "/member/register/check";
     }
 
     @PostMapping("/register/check")
@@ -67,7 +67,7 @@ public class MemberController {
             response.sendRedirect("/member/detail");
         }catch (NotAcceptMemberException e) {
             //ajax에서 구현...?
-            response.sendRedirect("/register/check");
+            response.sendRedirect("/member/register/check");
         }
 
     }
