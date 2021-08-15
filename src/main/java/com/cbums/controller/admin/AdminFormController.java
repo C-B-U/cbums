@@ -37,12 +37,14 @@ public class AdminFormController {
     @PostMapping("/")
     public void createForm(HttpServletResponse response,
                            @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException, IOException {
-        Form form = new Form();
-        form.setIntroduce(createFormFormParameter.getIntroduce());
-        form.setOpenDateTime(createFormFormParameter.getOpenDateTime());
-        form.setCloseDateTime(createFormFormParameter.getCloseDateTime());
-        form.setTitle(createFormFormParameter.getTitle());
-        form.setRegisterNumber(createFormFormParameter.getRegisterNumber());
+        Form form = Form.builder()
+                .introduce(createFormFormParameter.getIntroduce())
+                .openDateTime(createFormFormParameter.getOpenDateTime())
+                .closeDateTime(createFormFormParameter.getCloseDateTime())
+                .title(createFormFormParameter.getTitle())
+                .registerNumber(createFormFormParameter.getRegisterNumber())
+                .build();
+
         Long saveFormId = formService.createForm(form);
         response.sendRedirect("/admin/form/" + saveFormId);
     }
@@ -59,13 +61,14 @@ public class AdminFormController {
     public void updateForm(HttpServletResponse response,
                            @PathVariable("seq") Long seq,
                            @RequestBody CreateFormFormParameter createFormFormParameter) throws NotLoginedException, IOException {
-        Form form = new Form();
-        form.setIntroduce(createFormFormParameter.getIntroduce());
-        form.setOpenDateTime(createFormFormParameter.getOpenDateTime());
-        form.setCloseDateTime(createFormFormParameter.getCloseDateTime());
-        form.setTitle(createFormFormParameter.getTitle());
-        form.setRegisterNumber(createFormFormParameter.getRegisterNumber());
-        form.setFormId(seq);
+        Form form = Form.builder()
+                .formId(seq)
+                .introduce(createFormFormParameter.getIntroduce())
+                .openDateTime(createFormFormParameter.getOpenDateTime())
+                .closeDateTime(createFormFormParameter.getCloseDateTime())
+                .title(createFormFormParameter.getTitle())
+                .registerNumber(createFormFormParameter.getRegisterNumber())
+                .build();
         formService.createForm(form);
         response.sendRedirect("/admin/form/" + seq);
     }
@@ -89,9 +92,11 @@ public class AdminFormController {
     @PostMapping("/question")
     public void postFormQuestion(HttpServletResponse response,
                                  CreateFormQuestionParameter createFormQuestionParameter) throws NotLoginedException, IOException {
-        FormQuestion formQuestion = new FormQuestion();
-        formQuestion.setContent(createFormQuestionParameter.getContent());
-        formQuestion.setOpeningDatetime(createFormQuestionParameter.getOpeningDatetime());
+        FormQuestion formQuestion = FormQuestion.builder()
+                .content(createFormQuestionParameter.getContent())
+                .openingDatetime(createFormQuestionParameter.getOpeningDatetime())
+                .build();
+
         Long saveFormQuestionId = formQuestionService.createFormQuestion(formQuestion);
         response.sendRedirect("redirect:/admin/form/question/" + saveFormQuestionId);
     }

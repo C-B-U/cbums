@@ -23,13 +23,15 @@ public class MemberController {
     public void registerMember(HttpServletResponse response,
                                @CookieValue(value = "form-id", required = false) Cookie formCookie,
                                @RequestBody JoinForWriteFormParameter joinForWriteFormParameter) throws IOException {
-        Member member = new Member();
-        member.setName(joinForWriteFormParameter.getName());
-        member.setNickName(joinForWriteFormParameter.getNickName());
-        member.setEmail(joinForWriteFormParameter.getEmail());
-        member.setPhoneNumber(joinForWriteFormParameter.getPhoneNumber());
-        member.setDepartment(joinForWriteFormParameter.getDepartment());
-        member.setClassNumber(joinForWriteFormParameter.getClassNumber());
+        Member member = Member.builder()
+                .name(joinForWriteFormParameter.getName())
+                .nickName(joinForWriteFormParameter.getNickName())
+                .email(joinForWriteFormParameter.getEmail())
+                .phoneNumber(joinForWriteFormParameter.getPhoneNumber())
+                .department(joinForWriteFormParameter.getDepartment())
+                .classNumber(joinForWriteFormParameter.getClassNumber())
+                .build();
+
         try {
             memberService.registerMember(member);
 
