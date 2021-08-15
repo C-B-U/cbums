@@ -1,9 +1,9 @@
 package com.cbums.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 @Entity
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class FormQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +26,7 @@ public class FormQuestion {
     private Member producer;
 
     @Column(nullable = false)
+    @CreatedDate
     private LocalDateTime openingDatetime;
 
     @Override

@@ -1,9 +1,9 @@
 package com.cbums.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +22,7 @@ public class Project {
     @Column(nullable = false)
     private String name;
 
-   // @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
     @Column(nullable = false)
     private LocalDateTime registerDatetime;
 

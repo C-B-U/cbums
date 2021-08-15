@@ -1,7 +1,7 @@
 package com.cbums.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,6 +9,9 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +28,7 @@ public class Post {
     private String image;
 
     @Column(nullable = false)
+    @CreatedDate
     private LocalDateTime registerDatetime;
 
     @ManyToOne(fetch = FetchType.LAZY)

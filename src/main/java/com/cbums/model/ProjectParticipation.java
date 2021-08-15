@@ -2,14 +2,16 @@ package com.cbums.model;
 
 import com.cbums.type.AttendType;
 import com.cbums.type.HomeworkSubmitType;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ProjectParticipation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

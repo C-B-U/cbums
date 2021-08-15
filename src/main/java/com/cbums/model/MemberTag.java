@@ -1,13 +1,15 @@
 package com.cbums.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class MemberTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
