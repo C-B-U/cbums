@@ -19,7 +19,7 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
@@ -97,8 +97,8 @@ class FormAnswerServiceTest {
                 formAnswerRepository.getById(formAnswerIdList.get(2)).getContent()};
         Arrays.sort(answer1);
         Arrays.sort(answer2);
-        Assertions.assertThat(answer1).isEqualTo(answer2);
-        Assertions.assertThat(QUESTION_작성자.getEmail())
+        assertThat(answer1).isEqualTo(answer2);
+        assertThat(QUESTION_작성자.getEmail())
                 .isEqualTo(formAnswerRepository
                         .getById(formAnswerIdList.get(0))
                         .getFormContent()
@@ -106,14 +106,14 @@ class FormAnswerServiceTest {
                         .getProducer()
                         .getEmail());
 
-        Assertions.assertThat(지원서.getTitle())
+        assertThat(지원서.getTitle())
                 .isEqualTo(formAnswerRepository
                         .getById(formAnswerIdList.get(1))
                         .getFormContent()
                         .getForm()
                         .getTitle());
 
-        Assertions.assertThat(작성자.getNickName())
+        assertThat(작성자.getNickName())
                 .isEqualTo(formAnswerRepository
                         .getById(formAnswerIdList.get(1))
                         .getMember()
@@ -177,7 +177,7 @@ class FormAnswerServiceTest {
         formAnswerService.createFormAnswer(answer);
 
         //then
-        Assertions.assertThat(9)
+        assertThat(9)
                 .isEqualTo(formAnswerRepository.findFormAnswerListByFormId(지원서ID).size());
     }
 
@@ -205,7 +205,7 @@ class FormAnswerServiceTest {
         FormQuestion 질문2 = RandomValue.getFormQuestion();
         Long 질문ID2 = formQuestionService.createFormQuestion(질문2);
 
-        FormQuestion 질문3 =  RandomValue.getFormQuestion();
+        FormQuestion 질문3 = RandomValue.getFormQuestion();
         Long 질문ID3 = formQuestionService.createFormQuestion(질문3);
 
         List<Long> 질문리스트 = new ArrayList<>();
@@ -239,9 +239,9 @@ class FormAnswerServiceTest {
 
         //then
 
-        Assertions.assertThat(formAnswerRepository
+        assertThat(3)
+                .isEqualTo(formAnswerRepository
                         .findFormAnswerByFormIdAndMemberId(지원서ID, 작성자2.getMemberId())
-                        .size())
-                .isEqualTo(3);
+                        .size());
     }
 }
