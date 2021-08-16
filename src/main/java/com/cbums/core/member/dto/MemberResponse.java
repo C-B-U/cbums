@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
@@ -27,5 +30,11 @@ public class MemberResponse {
                 member.getDepartment(),
                 member.getProfileImage(),
                 member.getIntroduce());
+    }
+
+    public static List<MemberResponse> listOf(List<Member> members) {
+        return members.stream()
+                .map(MemberResponse::of)
+                .collect(Collectors.toList());
     }
 }

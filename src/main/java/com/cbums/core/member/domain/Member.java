@@ -41,6 +41,8 @@ public class Member {
 
     private String introduce;
 
+    private Boolean resign = false;
+
     @Enumerated(EnumType.STRING)
     private UserRoleType userRoleType = UserRoleType.VISITANT;
 
