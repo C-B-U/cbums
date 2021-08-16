@@ -1,4 +1,4 @@
-package com.cbums.type;
+package com.cbums.core.member.domain;
 
 public enum UserRoleType {
     ADMIN, MEMBER, VISITANT

@@ -2,7 +2,7 @@ package com.cbums.controller;
 
 import com.cbums.controller.postParameter.JoinForWriteFormParameter;
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.service.MemberService;
 import com.cbums.service.exception.CheckCodeNotEqualsException;
 import com.cbums.service.exception.NotAcceptMemberException;

@@ -4,10 +4,10 @@ import com.cbums.RandomValue;
 import com.cbums.model.Form;
 import com.cbums.model.FormContent;
 import com.cbums.model.FormQuestion;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
-import com.cbums.type.UserRoleType;
+import com.cbums.core.member.domain.UserRoleType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

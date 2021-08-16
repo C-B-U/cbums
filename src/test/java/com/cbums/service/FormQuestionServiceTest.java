@@ -2,7 +2,7 @@ package com.cbums.service;
 
 import com.cbums.RandomValue;
 import com.cbums.model.FormQuestion;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-
-import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

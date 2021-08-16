@@ -1,9 +1,8 @@
 package com.cbums.service;
 
 import com.cbums.model.Form;
-import com.cbums.model.Member;
-import com.cbums.repository.FormRepository;
-import com.cbums.repository.MemberRepository;
+import com.cbums.core.member.domain.Member;
+import com.cbums.core.form.domain.FormRepository;
 import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,21 +1,15 @@
-package com.cbums.model;
+package com.cbums.core.member.domain;
 
 
-import com.cbums.type.UserRoleType;
 import lombok.*;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class Member implements Serializable {
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +32,7 @@ public class Member implements Serializable {
     private Integer registerNumber;
 
     @Column(nullable = false)
-    private Integer classNumber;
+    private String classNumber;
 
     @Column(nullable = false)
     private String department;
@@ -50,9 +44,13 @@ public class Member implements Serializable {
     @Enumerated(EnumType.STRING)
     private UserRoleType userRoleType = UserRoleType.VISITANT;
 
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    @Builder
+    public Member(String email, String name, String nickName, String phoneNumber, String classNumber, String department) {
+        this.email = email;
+        this.name = name;
+        this.nickName = nickName;
+        this.phoneNumber = phoneNumber;
+        this.classNumber = classNumber;
+        this.department = department;
     }
-
 }

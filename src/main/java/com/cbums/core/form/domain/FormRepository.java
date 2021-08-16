@@ -1,4 +1,4 @@
-package com.cbums.repository;
+package com.cbums.core.form.domain;
 
 import com.cbums.model.Form;
 import org.springframework.data.jpa.repository.JpaRepository;

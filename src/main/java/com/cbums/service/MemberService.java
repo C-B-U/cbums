@@ -1,14 +1,14 @@
 package com.cbums.service;
 
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.model.SecurityUser;
-import com.cbums.repository.MemberRepository;
+import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.service.exception.CheckCodeNotEqualsException;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
-import com.cbums.type.UserRoleType;
+import com.cbums.core.member.domain.UserRoleType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -2,8 +2,8 @@ package com.cbums;
 
 import com.cbums.model.Form;
 import com.cbums.model.FormQuestion;
-import com.cbums.model.Member;
-import com.cbums.type.UserRoleType;
+import com.cbums.core.member.domain.Member;
+import com.cbums.core.member.domain.UserRoleType;
 
 import java.time.LocalDateTime;
 import java.util.Random;

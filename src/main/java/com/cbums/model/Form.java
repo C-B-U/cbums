@@ -1,5 +1,6 @@
 package com.cbums.model;
 
+import com.cbums.core.member.domain.Member;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
