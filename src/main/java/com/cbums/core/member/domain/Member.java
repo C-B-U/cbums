@@ -47,10 +47,9 @@ public class Member {
     private UserRoleType userRoleType = UserRoleType.VISITANT;
 
     @Builder
-    public Member(String email, String name, String nickName, String phoneNumber, String classNumber, String department) {
+    public Member(String email, String name, String phoneNumber, String classNumber, String department) {
         this.email = email;
         this.name = name;
-        this.nickName = nickName;
         this.phoneNumber = phoneNumber;
         this.classNumber = classNumber;
         this.department = department;

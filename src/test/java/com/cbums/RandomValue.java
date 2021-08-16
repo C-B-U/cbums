@@ -19,10 +19,8 @@ public class RandomValue {
                 .name(getGeneratedString())
                 .department(getGeneratedString())
                 .email(getGeneratedString())
-                .classNumber(getGeneratedInteger())
-                .userRoleType(UserRoleType.VISITANT)
+                .classNumber(getGeneratedInteger().toString())
                 .phoneNumber(getGeneratedInteger(10000000,99999999).toString())
-                .nickName(getGeneratedString())
                 .build();
 
         return member;
