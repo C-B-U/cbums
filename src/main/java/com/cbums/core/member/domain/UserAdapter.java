@@ -1,4 +1,4 @@
-package com.cbums.model;
+package com.cbums.core.member.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 @Setter
-public class SecurityUser implements UserDetails {
+public class UserAdapter implements UserDetails {
+
     private Collection<? extends GrantedAuthority> authorities;
     private String username;
     private String password;
@@ -49,7 +50,5 @@ public class SecurityUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-
 }
 

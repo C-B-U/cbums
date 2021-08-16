@@ -8,7 +8,7 @@ import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.member.dto.*;
-import com.cbums.model.SecurityUser;
+import com.cbums.core.member.domain.UserAdapter;
 import com.cbums.service.EncryptionService;
 import com.cbums.common.util.NaverMailSendService;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,6 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
-    private final HttpServletRequest request;
     private final NaverMailSendService naverMailSendService;
     private final EncryptionService encryptionService;
 
@@ -43,9 +42,6 @@ public class MemberService implements UserDetailsService {
 
         Member member = buildMember(signUpRequest);
         Member result = memberRepository.save(member);
-        //Session 역할을 Controll로 위임해야 TODO
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("form-writer-id", result.getMemberId());
         return result.getMemberId();
     }
 
@@ -80,6 +76,19 @@ public class MemberService implements UserDetailsService {
         memberRepository.save(member);
     }
 
+    @Transactional(readOnly = true)
+    public Long checkAdmission(String email) {
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다. email: " + email));
+
+        if(member.getUserRoleType() == UserRoleType.VISITANT) {
+            throw new AuthException(ErrorCode.NOT_ADMISSION);
+        }
+        // 메일 보냄 ~ 로그인창 이동 TODO
+
+        return member.getMemberId();
+    }
+
     @Transactional
     public void resign(Member member) {
         member.setResign(true);
@@ -111,9 +120,9 @@ public class MemberService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다. email: " + email));
-        SecurityUser securityUser = new SecurityUser();
-        securityUser.setUsername(member.getEmail());
-        securityUser.setPassword(member.getPassword());
+        UserAdapter userAdapter = new UserAdapter();
+        userAdapter.setUsername(member.getEmail());
+        userAdapter.setPassword(member.getPassword());
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         switch (member.getUserRoleType().name()) {
@@ -126,8 +135,8 @@ public class MemberService implements UserDetailsService {
                 break;
         }
 
-        securityUser.setAuthorities(grantedAuthorities);
-        return securityUser;
+        userAdapter.setAuthorities(grantedAuthorities);
+        return userAdapter;
     }
 
     @Transactional
