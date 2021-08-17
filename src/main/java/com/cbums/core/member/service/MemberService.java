@@ -64,6 +64,7 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
+    //안쓸거같은데?
     @Transactional
     public void addDetails(Member member, MemberAddDetailRequest memberAddDetailRequest) {
 
@@ -77,14 +78,18 @@ public class MemberService implements UserDetailsService {
     }
 
     @Transactional(readOnly = true)
-    public Long checkAdmission(String email) {
+    public Long checkAdmission(String email) throws MessagingException {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다. email: " + email));
+
+        if(member.getPassword() != null) {
+            throw new AuthException(ErrorCode.ALREADY_CHECK_ADMISSION);
+        }
 
         if(member.getUserRoleType() == UserRoleType.VISITANT) {
             throw new AuthException(ErrorCode.NOT_ADMISSION);
         }
-        // 메일 보냄 ~ 로그인창 이동 TODO
+        setTemporaryPassword(email);
 
         return member.getMemberId();
     }
@@ -102,8 +107,11 @@ public class MemberService implements UserDetailsService {
     }
 
     @Transactional
-    public void UpdateMember(Member member, UpdateMemberRequest updateMemberRequest) {
+    public Long updateMember(String email, UpdateMemberRequest updateMemberRequest) {
         checkDuplicatedNickName(updateMemberRequest.getNickName());
+
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다. email: " + email));
 
         if (updateMemberRequest.getPassword() != null) {
             member.setPassword(encryptionService.encode(updateMemberRequest.getPassword()));
@@ -114,6 +122,8 @@ public class MemberService implements UserDetailsService {
         member.setIntroduce(updateMemberRequest.getIntroduce());
         member.setPhoneNumber(updateMemberRequest.getPhoneNumber());
         memberRepository.save(member);
+
+        return member.getMemberId();
     }
 
     @Override
@@ -199,7 +209,7 @@ public class MemberService implements UserDetailsService {
         return MemberResponse.of(member);
     }
 
-    private Member findById(Long memberId) {
+    public Member findById(Long memberId) {
         return memberRepository.findById(memberId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }

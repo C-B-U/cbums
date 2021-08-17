@@ -4,6 +4,7 @@ import com.cbums.controller.postParameter.JoinForWriteFormParameter;
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.dto.SignUpRequest;
+import com.cbums.core.member.dto.UpdateMemberRequest;
 import com.cbums.core.member.service.MemberService;
 import com.cbums.service.exception.CheckCodeNotEqualsException;
 import com.cbums.service.exception.NotAcceptMemberException;
@@ -17,6 +18,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.net.URI;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/member")
@@ -38,24 +40,20 @@ public class MemberController {
         return ResponseEntity.created(URI.create("/content/" + formId)).build();
     }
 
-    @PostMapping("/register/check")
-    public ResponseEntity<Void> checkAcceptMember(@RequestParam String email) {
+    @PostMapping("/register-check")
+    public ResponseEntity<Void> checkAcceptMember(@RequestParam String email) throws MessagingException {
         memberService.checkAdmission(email);
-        return ResponseEntity.created(URI.create("/member/register/check/finish")).build();
+        return ResponseEntity.created(URI.create("/member/register-check-finish")).build();
     }
 
-    //patch를 여러개로 분할 //TODO
+    @PatchMapping("/")
+    public ResponseEntity<Void> updateMember(Principal principal,
+                               @Valid @RequestBody UpdateMemberRequest updateMemberRequest) {
 
-    //가입승인자 정보 추가 페이지
-    @GetMapping("/detail")
-    public String detailPage() {
-        return "/member/detail";
-    }
+        Long result = memberService
+                .updateMember(principal.getName(), updateMemberRequest);
 
-    @PatchMapping("/detail")
-    public ResponseEntity<Void> addMemberDetail(@RequestBody MemberDetailFormParameter signUpFormParameter) {
-        Long memberId = memberService.setMemberDetail(signUpFormParameter);
-        return ResponseEntity.created(URI.create("/member/" + memberId)).build();
+        return ResponseEntity.created(URI.create("/member/"+result)).build();
 
     }
 
@@ -66,12 +64,12 @@ public class MemberController {
     }
 
     @GetMapping("member/forgot/email")
-    public String forgotEmail(@RequestParam Integer classNumber) {
+    public String forgotEmail(@RequestParam String classNumber) {
         return memberService.getBlindMemberEmail(classNumber);
     }
 
     @GetMapping("member/forgot/password")
-    public String forgotPassword(@RequestParam String email) {
+    public String forgotPassword(@RequestParam String email) throws MessagingException {
         memberService.setTemporaryPassword(email);
 
         return "/member/forgot/password";
@@ -80,18 +78,9 @@ public class MemberController {
     //회원 상세 페이지
     @GetMapping("/{memberId}")
     public Member memberDetail(@PathVariable("memberId") Long memberId) {
-        return memberService.findMemberById(memberId);
+        return memberService.findById(memberId);
     }
 
 
-    //정보 수정 페이지 TODO
-    @PatchMapping("/{memberId}")
-    public String updateMember(@PathVariable("memberId") Long memberId,
-                               HttpServletResponse response
-                               // @RequestBody
-    ) {
-
-        return "/member/update";
-    }
 
 }
