@@ -3,14 +3,13 @@ package com.cbums.service;
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
 import com.cbums.model.Form;
 import com.cbums.model.FormQuestion;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
-import com.cbums.type.UserRoleType;
+import com.cbums.core.member.domain.UserRoleType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
 import javax.servlet.http.HttpServletRequest;

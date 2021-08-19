@@ -1,8 +1,8 @@
 package com.cbums.controller.admin;
 
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.service.MemberService;
-import com.cbums.type.UserRoleType;
+import com.cbums.core.member.domain.UserRoleType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

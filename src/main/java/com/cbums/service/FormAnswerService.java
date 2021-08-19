@@ -2,7 +2,7 @@ package com.cbums.service;
 
 import com.cbums.model.FormAnswer;
 import com.cbums.model.FormContent;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.repository.FormAnswerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

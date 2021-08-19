@@ -2,13 +2,12 @@ package com.cbums.service;
 
 import com.cbums.RandomValue;
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.service.exception.NotAcceptMemberException;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
-import com.cbums.type.UserRoleType;
+import com.cbums.core.member.domain.UserRoleType;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

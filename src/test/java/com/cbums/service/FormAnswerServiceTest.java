@@ -3,11 +3,10 @@ package com.cbums.service;
 import com.cbums.RandomValue;
 import com.cbums.model.Form;
 import com.cbums.model.FormQuestion;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.repository.FormAnswerRepository;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;

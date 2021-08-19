@@ -2,8 +2,8 @@ package com.cbums;
 
 import com.cbums.model.Form;
 import com.cbums.model.FormQuestion;
-import com.cbums.model.Member;
-import com.cbums.type.UserRoleType;
+import com.cbums.core.member.domain.Member;
+import com.cbums.core.member.domain.UserRoleType;
 
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -19,10 +19,8 @@ public class RandomValue {
                 .name(getGeneratedString())
                 .department(getGeneratedString())
                 .email(getGeneratedString())
-                .classNumber(getGeneratedInteger())
-                .userRoleType(UserRoleType.VISITANT)
+                .classNumber(getGeneratedInteger().toString())
                 .phoneNumber(getGeneratedInteger(10000000,99999999).toString())
-                .nickName(getGeneratedString())
                 .build();
 
         return member;

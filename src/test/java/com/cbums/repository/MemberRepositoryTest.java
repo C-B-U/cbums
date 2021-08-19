@@ -1,7 +1,8 @@
 package com.cbums.repository;
 
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
+import com.cbums.core.member.domain.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

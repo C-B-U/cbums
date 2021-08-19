@@ -1,7 +1,7 @@
 package com.cbums.service;
 
 import com.cbums.model.FormQuestion;
-import com.cbums.model.Member;
+import com.cbums.core.member.domain.Member;
 import com.cbums.repository.FormQuestionRepository;
 import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;

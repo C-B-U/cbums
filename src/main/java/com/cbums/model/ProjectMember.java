@@ -1,9 +1,9 @@
 package com.cbums.model;
 
+import com.cbums.core.member.domain.Member;
 import com.cbums.type.ProjectRoleType;
 import com.cbums.type.ProjectSignUpType;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
