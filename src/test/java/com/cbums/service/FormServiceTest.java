@@ -1,9 +1,10 @@
 package com.cbums.service;
 
 import com.cbums.RandomValue;
-import com.cbums.model.Form;
-import com.cbums.model.FormContent;
-import com.cbums.model.FormQuestion;
+import com.cbums.core.form.domain.Form;
+import com.cbums.core.form.domain.Question;
+import com.cbums.core.form.service.FormQuestionService;
+import com.cbums.core.form.service.FormService;
 import com.cbums.core.member.domain.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
@@ -151,14 +152,14 @@ class FormServiceTest {
         Form form = RandomValue.getForm();
         Long formId = formService.createForm(form);
 
-        FormQuestion formQuestion = RandomValue.getFormQuestion();
-        formQuestionService.createFormQuestion(formQuestion);
+        Question question = RandomValue.getFormQuestion();
+        formQuestionService.createFormQuestion(question);
         List<Long> formQuestionList = new ArrayList<>();
-        formQuestionList.add(formQuestion.getFormQuestionId());
+        formQuestionList.add(question.getFormQuestionId());
 
-        FormContent formContent = new FormContent();
-        formContent.setForm(form);
-        formContent.setFormQuestion(formQuestion);
+        FormQuestion formItem = new FormQuestion();
+        formItem.setForm(form);
+        formItem.setQuestion(question);
         formContentService.createFormContent(formId, formQuestionList);
 
         //when

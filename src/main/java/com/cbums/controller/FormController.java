@@ -1,10 +1,8 @@
 package com.cbums.controller;
 
-import com.cbums.model.Form;
-import com.cbums.model.FormContent;
-import com.cbums.service.FormAnswerService;
-import com.cbums.service.FormContentService;
-import com.cbums.service.FormService;
+import com.cbums.core.form.domain.Form;
+import com.cbums.core.form.service.FormAnswerService;
+import com.cbums.core.form.service.FormService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +44,7 @@ public class FormController {
     }
 
     @GetMapping("/content/{formId}")
-    public ResponseEntity<List<FormContent>> getFormContentQuestionList(@PathVariable("formId") Long formId) {
+    public ResponseEntity<List<FormQuestion>> getFormContentQuestionList(@PathVariable("formId") Long formId) {
 
         return ResponseEntity.ok(formContentService.findFormContentListByFormId(formId));
     }

@@ -20,7 +20,6 @@ dependencies {
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-test'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation 'org.hibernate:hibernate-java8:5.5.4.Final'
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 	implementation 'javax.mail:mail:1.4.7'

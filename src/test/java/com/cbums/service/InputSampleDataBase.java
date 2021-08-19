@@ -1,8 +1,10 @@
 package com.cbums.service;
 
 import com.cbums.controller.postParameter.MemberDetailFormParameter;
-import com.cbums.model.Form;
-import com.cbums.model.FormQuestion;
+import com.cbums.core.form.domain.Form;
+import com.cbums.core.form.domain.Question;
+import com.cbums.core.form.service.FormQuestionService;
+import com.cbums.core.form.service.FormService;
 import com.cbums.core.member.domain.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
@@ -137,11 +139,11 @@ public class InputSampleDataBase {
         return form;
     }
 
-    public FormQuestion createFormQuestionSample() {
-        FormQuestion formQuestion = new FormQuestion();
-        formQuestion.setContent(getGeneratedString());
-        formQuestion.setOpeningDatetime(LocalDateTime.now());
-        return formQuestion;
+    public Question createFormQuestionSample() {
+        Question question = new Question();
+        question.setContent(getGeneratedString());
+        question.setOpeningDatetime(LocalDateTime.now());
+        return question;
     }
 
     //지원서 답변 테스트 생성 후 제작 TODO

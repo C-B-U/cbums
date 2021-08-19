@@ -2,13 +2,12 @@ package com.cbums.api;
 
 import com.cbums.common.exceptions.AuthException;
 import com.cbums.common.exceptions.ErrorCode;
-import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.dto.MemberAddDetailRequest;
 import com.cbums.core.member.dto.MemberResponse;
 import com.cbums.core.member.dto.SignUpRequest;
 import com.cbums.core.member.dto.UpdateMemberRequest;
 import com.cbums.core.member.service.MemberService;
-import com.cbums.service.EncryptionService;
+import com.cbums.common.security.EncryptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
