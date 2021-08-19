@@ -7,6 +7,7 @@ public enum ErrorCode {
     BAD_LOGIN(400, "AU_004", "잘못된 아이디 또는 패스워드입니다."),
     NOT_ADMISSION(400, "AU_005", "가입이 승인되지 않았습니다"),
     ALREADY_CHECK_ADMISSION(400, "AU_006", "이미 가입승인을 받았습니다."),
+    NOT_MATCH_AUTHCODE(400, "AU_007", "인증코드가 일치하지 않습니다"),
 
     USER_UNAUTHORIZED(400,"AC_001","접근 권한이 없습니다"),
 

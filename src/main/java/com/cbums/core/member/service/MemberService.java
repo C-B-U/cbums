@@ -23,10 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -64,10 +61,10 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
-    //안쓸거같은데?
     @Transactional
-    public void addDetails(Member member, MemberAddDetailRequest memberAddDetailRequest) {
+    public void addDetails(Long memberId, MemberAddDetailRequest memberAddDetailRequest) {
 
+        Member member = findById(memberId);
         checkDuplicatedNickName(memberAddDetailRequest.getNickName());
 
         member.setPassword(encryptionService.encode(memberAddDetailRequest.getPassword()));
@@ -78,7 +75,7 @@ public class MemberService implements UserDetailsService {
     }
 
     @Transactional(readOnly = true)
-    public Long checkAdmission(String email) throws MessagingException {
+    public Map<Long, String> checkAdmission(String email) throws MessagingException {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다. email: " + email));
 
@@ -89,10 +86,22 @@ public class MemberService implements UserDetailsService {
         if(member.getUserRoleType() == UserRoleType.VISITANT) {
             throw new AuthException(ErrorCode.NOT_ADMISSION);
         }
-        setTemporaryPassword(email);
+        String randomStr = getRandomStr();
+        naverMailSendService.sendEmail(
+                member.getEmail(),
+                "프로그래밍 동아리 씨부엉 메일 인증 코드입니다",
+                "안녕하세요"+member.getName()+"님! 씨부엉에 가입하신 것을 환영합니다!!" +
+                        " 인증코드는 [ " + randomStr + " ] 입니다!"
+        );
 
-        return member.getMemberId();
+        Map<Long, String> result = new HashMap<>();
+
+        result.put(member.getMemberId(), encryptionService.encode(randomStr));
+        return result;
     }
+
+
+
 
     @Transactional
     public void resign(Member member) {
@@ -166,6 +175,7 @@ public class MemberService implements UserDetailsService {
                 "임시 비밀번호는 " + temporaryPassword + " 입니다."
         );
 
+         member.setPassword(encryptionService.encode(temporaryPassword));
     }
 
     private String getRandomStr() {
@@ -209,7 +219,7 @@ public class MemberService implements UserDetailsService {
         return MemberResponse.of(member);
     }
 
-    public Member findById(Long memberId) {
+    private Member findById(Long memberId) {
         return memberRepository.findById(memberId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }
