@@ -1,7 +1,7 @@
 package com.cbums.service;
 
 import com.cbums.RandomValue;
-import com.cbums.model.FormQuestion;
+import com.cbums.core.form.domain.Question;
 import com.cbums.core.member.domain.Member;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
@@ -42,11 +42,11 @@ class FormQuestionServiceTest {
         Long memberId = memberService.registerMember(작성자).getMemberId();
         httpSession.setAttribute("login-user",memberId);
 
-        FormQuestion formQuestion = RandomValue.getFormQuestion();
+        Question question = RandomValue.getFormQuestion();
         //when
-        Long savedFormQuestion = formQuestionService.createFormQuestion(formQuestion);
+        Long savedFormQuestion = formQuestionService.createFormQuestion(question);
         //then
-        assertThat(formQuestion.getContent())
+        assertThat(question.getContent())
                 .isEqualTo(formQuestionService
                         .findFormQuestionById(savedFormQuestion)
                         .getContent());

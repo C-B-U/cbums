@@ -1,7 +1,7 @@
 package com.cbums.config;
 
 import com.cbums.core.member.service.MemberService;
-import com.cbums.service.EncryptionService;
+import com.cbums.common.security.EncryptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

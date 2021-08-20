@@ -9,7 +9,7 @@ import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.member.dto.*;
 import com.cbums.core.member.domain.UserAdapter;
-import com.cbums.service.EncryptionService;
+import com.cbums.common.security.EncryptionService;
 import com.cbums.common.util.NaverMailSendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,8 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Service
@@ -172,7 +170,7 @@ public class MemberService implements UserDetailsService {
          naverMailSendService.sendEmail(
                member.getEmail(),
                 "프로그래밍 동아리 씨부엉 임시 비밀번호입니다",
-                "임시 비밀번호는 " + temporaryPassword + " 입니다."
+                "임시 비밀번호는 [ " + temporaryPassword + " ] 입니다."
         );
 
          member.setPassword(encryptionService.encode(temporaryPassword));
@@ -221,6 +219,10 @@ public class MemberService implements UserDetailsService {
 
     private Member findById(Long memberId) {
         return memberRepository.findById(memberId)
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
+    }
+    public Member findByEmail(String email) {
+        return memberRepository.findByEmail(email)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }
 

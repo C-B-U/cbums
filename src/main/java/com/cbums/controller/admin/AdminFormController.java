@@ -2,13 +2,11 @@ package com.cbums.controller.admin;
 
 import com.cbums.controller.postParameter.CreateFormFormParameter;
 import com.cbums.controller.postParameter.CreateFormQuestionParameter;
-import com.cbums.model.Form;
-import com.cbums.model.FormAnswer;
-import com.cbums.model.FormQuestion;
-import com.cbums.service.FormAnswerService;
-import com.cbums.service.FormContentService;
-import com.cbums.service.FormQuestionService;
-import com.cbums.service.FormService;
+import com.cbums.core.form.domain.Form;
+import com.cbums.core.form.domain.Answer;
+import com.cbums.core.form.domain.Question;
+import com.cbums.core.form.service.FormAnswerService;
+import com.cbums.core.form.service.FormService;
 import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -82,29 +80,29 @@ public class AdminFormController {
     }
 
     @GetMapping("/question")
-    public ResponseEntity<List<FormQuestion>> getFormQuestionList() {
+    public ResponseEntity<List<Question>> getFormQuestionList() {
         return ResponseEntity.ok(formQuestionService.findFormQuestions());
     }
 
     @PostMapping("/question")
     public void postFormQuestion(HttpServletResponse response,
                                  CreateFormQuestionParameter createFormQuestionParameter) throws NotLoginedException, IOException {
-        FormQuestion formQuestion = FormQuestion.builder()
+        Question question = Question.builder()
                 .content(createFormQuestionParameter.getContent())
                 .openingDatetime(createFormQuestionParameter.getOpeningDatetime())
                 .build();
 
-        Long saveFormQuestionId = formQuestionService.createFormQuestion(formQuestion);
+        Long saveFormQuestionId = formQuestionService.createFormQuestion(question);
         response.sendRedirect("redirect:/admin/form/question/" + saveFormQuestionId);
     }
 
     //필요할까?
     @GetMapping("/question/{seq}")
-    public FormQuestion getFormQuestion(@PathVariable("seq") Long seq) {
+    public Question getFormQuestion(@PathVariable("seq") Long seq) {
 
-        FormQuestion formQuestion = formQuestionService.findFormQuestionById(seq);
+        Question question = formQuestionService.findFormQuestionById(seq);
 
-        return formQuestion;
+        return question;
     }
 
     @PostMapping("/content/{formSeq}")
@@ -117,12 +115,12 @@ public class AdminFormController {
     }
 
     @GetMapping("/content/{formSeq}/answer")
-    public ResponseEntity<List<FormAnswer>> getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
+    public ResponseEntity<List<Answer>> getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
         return ResponseEntity.ok(formAnswerService.findFormAnswerListByFormId(formSeq));
     }
 
     @GetMapping("/content/{formSeq}/answer/{memberSeq}")
-    public ResponseEntity<List<FormAnswer>> getFormAnswer(
+    public ResponseEntity<List<Answer>> getFormAnswer(
             @PathVariable("formSeq") Long formSeq,
             @PathVariable("memberSeq") Long memberSeq) {
         return ResponseEntity.ok(formAnswerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq));

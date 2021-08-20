@@ -1,9 +1,8 @@
 package com.cbums;
 
-import com.cbums.model.Form;
-import com.cbums.model.FormQuestion;
+import com.cbums.core.form.domain.Form;
+import com.cbums.core.form.domain.Question;
 import com.cbums.core.member.domain.Member;
-import com.cbums.core.member.domain.UserRoleType;
 
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -39,13 +38,13 @@ public class RandomValue {
     }
 
 
-    public static FormQuestion getFormQuestion() {
-        FormQuestion formQuestion = FormQuestion.builder()
+    public static Question getFormQuestion() {
+        Question question = Question.builder()
                 .content(getGeneratedString())
                 .openingDatetime(LocalDateTime.now())
                 .build();
 
-        return formQuestion;
+        return question;
     }
 
 
