@@ -170,7 +170,7 @@ public class MemberService implements UserDetailsService {
          naverMailSendService.sendEmail(
                member.getEmail(),
                 "프로그래밍 동아리 씨부엉 임시 비밀번호입니다",
-                "임시 비밀번호는 " + temporaryPassword + " 입니다."
+                "임시 비밀번호는 [ " + temporaryPassword + " ] 입니다."
         );
 
          member.setPassword(encryptionService.encode(temporaryPassword));

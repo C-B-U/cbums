@@ -9,11 +9,9 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class CreateQuestionRequest {
+public class QuestionRequest {
 
     @NotBlank
     private String content;
 
-    @NotBlank
-    private Form form;
 }

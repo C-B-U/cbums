@@ -1,5 +1,6 @@
 package com.cbums.core.form.dto;
 
+import com.cbums.core.form.domain.Question;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -26,6 +27,6 @@ public class UpdateFormRequest {
 
     private Integer registerNumber;
 
-    private List<FormQuestion> formQuestionList = new ArrayList<>();
+    private List<Question> formQuestionList = new ArrayList<>();
 
 }

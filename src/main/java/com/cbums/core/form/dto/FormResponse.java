@@ -1,7 +1,6 @@
 package com.cbums.core.form.dto;
 
 import com.cbums.core.form.domain.Form;
-import com.cbums.core.form.domain.Question;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +21,7 @@ public class FormResponse {
     private LocalDateTime closeDateTime;
     private Integer registerNumber;
 
-    private List<Question> formQuestionList;
+    private List<QuestionResponse> formQuestionList;
 
     public static FormResponse of(Form form) {
         return new FormResponse(form.getTitle(),
@@ -30,7 +29,7 @@ public class FormResponse {
                 form.getOpenDateTime(),
                 form.getCloseDateTime(),
                 form.getRegisterNumber(),
-                form.getQuestionList());
+                QuestionResponse.listOf(form.getQuestionList()));
     }
 
     public static List<FormResponse> listOf(List<Form> forms) {
