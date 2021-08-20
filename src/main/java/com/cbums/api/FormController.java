@@ -1,8 +1,7 @@
 package com.cbums.api;
 
-import com.cbums.core.form.domain.Form;
 import com.cbums.core.form.dto.FormResponse;
-import com.cbums.core.form.service.FormAnswerService;
+import com.cbums.core.answer.service.AnswerService;
 import com.cbums.core.form.service.FormService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ import java.util.Map;
 public class FormController {
 
     private final FormService formService;
-    private final FormAnswerService formAnswerService;
+    private final AnswerService answerService;
 
     @GetMapping("")
     public ResponseEntity<List<FormResponse>> getFormList() {
@@ -46,7 +45,7 @@ public class FormController {
     //작성자 정보
     @PostMapping(value = "/content/answer", produces = "application/json; charset=utf8")
     public ResponseEntity<Void> postFormAnswer(@RequestBody Map<Long, String> answer) {
-        formAnswerService.createFormAnswer(answer);
+        answerService.createFormAnswer(answer);
         return ResponseEntity.created(URI.create("/form/submitted")).build();
     }
 

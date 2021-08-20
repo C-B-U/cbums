@@ -1,9 +1,9 @@
 package com.cbums.core.form.dto;
 
-import com.cbums.core.form.domain.Question;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -12,17 +12,17 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class CreateFormRequest {
+public class FormRequest {
 
     @NotBlank
     private String title;
 
     private String introduce;
 
-    @NotBlank
+    @NotNull
     private LocalDateTime openDateTime;
 
-    @NotBlank
+    @NotNull
     private LocalDateTime closeDateTime;
 
     private Integer registerNumber;

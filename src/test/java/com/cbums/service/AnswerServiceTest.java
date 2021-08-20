@@ -3,10 +3,10 @@ package com.cbums.service;
 import com.cbums.RandomValue;
 import com.cbums.core.form.domain.Form;
 import com.cbums.core.form.domain.Question;
-import com.cbums.core.form.service.FormAnswerService;
+import com.cbums.core.answer.service.AnswerService;
 import com.cbums.core.form.service.FormService;
 import com.cbums.core.member.domain.Member;
-import com.cbums.core.form.domain.AnswerRepository;
+import com.cbums.core.answer.domain.AnswerRepository;
 import com.cbums.service.exception.NotLoginedException;
 import com.cbums.service.exception.OverlapDataException;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class AnswerServiceTest {
 
     @Autowired
-    FormAnswerService formAnswerService;
+    AnswerService answerService;
     @Autowired
     MemberService memberService;
     @Autowired
@@ -96,7 +96,7 @@ class AnswerServiceTest {
         httpSession.removeAttribute("login-user");
         httpSession.setAttribute("form-writer-id", 저장된_맴버.getMemberId());
         //when
-        List<Long> formAnswerIdList = formAnswerService.createFormAnswer(answer);
+        List<Long> formAnswerIdList = answerService.createFormAnswer(answer);
 
         //then
         String answer1[] = {"답변1", "답변2", "답변3"};
@@ -178,11 +178,11 @@ class AnswerServiceTest {
         httpSession.removeAttribute("login-user");
 
         httpSession.setAttribute("form-writer-id", 저장된_맴버.getMemberId());
-        formAnswerService.createFormAnswer(answer);
+        answerService.createFormAnswer(answer);
         httpSession.setAttribute("form-writer-id", 저장된_맴버.getMemberId());
-        formAnswerService.createFormAnswer(answer);
+        answerService.createFormAnswer(answer);
         httpSession.setAttribute("form-writer-id", 저장된_맴버.getMemberId());
-        formAnswerService.createFormAnswer(answer);
+        answerService.createFormAnswer(answer);
 
         //then
         assertThat(9)
@@ -234,7 +234,7 @@ class AnswerServiceTest {
         answer.put(지원서내용ID.get(1), "답변2");
         answer.put(지원서내용ID.get(2), "답변3");
 
-        formAnswerService.createFormAnswer(answer);
+        answerService.createFormAnswer(answer);
 
         Member 작성자2 = RandomValue.getMember();
         Member 저장된_맴버2 = memberService.registerMember(작성자2);
@@ -243,7 +243,7 @@ class AnswerServiceTest {
         answer2.put(지원서내용ID.get(1), "답변2");
         answer2.put(지원서내용ID.get(2), "답변3");
 
-        formAnswerService.createFormAnswer(answer2);
+        answerService.createFormAnswer(answer2);
 
         //then
 

@@ -3,9 +3,9 @@ package com.cbums.controller.admin;
 import com.cbums.controller.postParameter.CreateFormFormParameter;
 import com.cbums.controller.postParameter.CreateFormQuestionParameter;
 import com.cbums.core.form.domain.Form;
-import com.cbums.core.form.domain.Answer;
+import com.cbums.core.answer.domain.Answer;
 import com.cbums.core.form.domain.Question;
-import com.cbums.core.form.service.FormAnswerService;
+import com.cbums.core.answer.service.AnswerService;
 import com.cbums.core.form.service.FormService;
 import com.cbums.service.exception.NotLoginedException;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class AdminFormController {
     private final FormService formService;
     private final FormQuestionService formQuestionService;
     private final FormContentService formContentService;
-    private final FormAnswerService formAnswerService;
+    private final AnswerService answerService;
 
     @GetMapping("")
     public ResponseEntity<List<Form>> getFormList() {
@@ -116,14 +116,14 @@ public class AdminFormController {
 
     @GetMapping("/content/{formSeq}/answer")
     public ResponseEntity<List<Answer>> getFormAnswerList(@PathVariable("formSeq") Long formSeq) {
-        return ResponseEntity.ok(formAnswerService.findFormAnswerListByFormId(formSeq));
+        return ResponseEntity.ok(answerService.findFormAnswerListByFormId(formSeq));
     }
 
     @GetMapping("/content/{formSeq}/answer/{memberSeq}")
     public ResponseEntity<List<Answer>> getFormAnswer(
             @PathVariable("formSeq") Long formSeq,
             @PathVariable("memberSeq") Long memberSeq) {
-        return ResponseEntity.ok(formAnswerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq));
+        return ResponseEntity.ok(answerService.findFormAnswerByFormIdAndMemberId(formSeq, memberSeq));
     }
 
 

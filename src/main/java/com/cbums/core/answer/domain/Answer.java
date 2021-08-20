@@ -1,5 +1,6 @@
-package com.cbums.core.form.domain;
+package com.cbums.core.answer.domain;
 
+import com.cbums.core.form.domain.Question;
 import com.cbums.core.member.domain.Member;
 import lombok.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -12,7 +13,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Answer {
 
     @Id
@@ -20,8 +20,8 @@ public class Answer {
     private Long answerId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "form_question_id",nullable = false)
-    private FormQuestion formItem;
+    @JoinColumn(name = "question_id",nullable = false)
+    private Question question;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id",nullable = false)
@@ -29,10 +29,12 @@ public class Answer {
 
     private String content;
 
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    @Builder
+    public Answer(Question question, String content) {
+        this.question = question;
+        this.content = content;
     }
+
 }
 
 
