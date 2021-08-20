@@ -1,0 +1,541 @@
+
+main{
+    background-color: #EFECE8;
+}
+.main_wrap{
+    width: 52.08%;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 15px 0px 20px -5px rgba(190,190,190,1), -15px 0px 20px -5px rgba(190,190,190,1);
+}
+
+.main__title{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 4em 2.7em 4em;
+ 
+}
+.main__search-wrap{
+    display: flex;
+    height: 30px;                 
+    border: solid 2px #c1c1c1;
+}
+.main__title-top{
+    display: flex;
+}
+.main__title-top > h2{
+    margin: 0;
+    color: #424043;
+    padding-bottom: 0.1em;
+    border-bottom:solid 2px #424043; 
+}
+.main__search{
+    display: flex;
+ 
+}
+select{
+    border: 0;
+}
+
+input{
+    border: none;
+    width: 10em;
+}
+
+.main__serach-button{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.main__serach-button > i{
+    color: #c1c1c1;
+    font-size: 1.2em;
+}
+
+
+.main__tab-wrap{
+    width: 73%;
+    height: 450px;
+    margin: 0 auto;
+}
+.main__tab-menu ul{
+    overflow: hidden;
+    background-color: #c8c8c8;
+    padding: 0;
+    margin: 0;
+}
+
+.main__tab-menu li{
+    float: left;
+   
+}
+
+.main__tab-menu li a{
+    display: block;
+    color: white;
+     display: block;
+    padding: 1em 2em; 
+    font-weight: bold;
+    font-size: 1.1em;
+    
+}
+
+.main__tab-menu li a:hover{
+    color:  #424043;
+    
+}
+
+.main__tab-menu li.active .btn{
+  color: #424043;
+  background-color: white;
+}
+
+.main__tab-content-concern-container {
+  width: 100%; 
+  background: #fff; 
+  box-sizing: border-box;
+}
+
+.main__tab-content-concern{
+  display: none
+}
+
+.main__tab-content-concern.target {
+  padding: 0;
+  display: block;
+}
+
+.main__tab-content-thread > a{
+    display: flex;
+    padding: 0.5em 2em;
+    border-bottom: 1px solid lightgray;
+    color: black;
+}
+
+.tabcontent-item{
+    display: flex;
+    justify-content: space-between;
+  
+}
+
+.tabcontent-item.sequence{
+    font-size: 0.7em;
+    margin-top: 0.3em;
+    margin-right: 3em;
+}
+
+.tabcontent-item.study-name{
+    width: 11em;
+    font-size: 0.9em;
+    margin-top: 0.1em;
+    font-weight: 600;
+}
+.tabcontent-item.study-name:hover{
+    color: lightsalmon;
+ }
+.tabcontent-item.concern1{
+    width:5em;
+    font-size: 0.8em;
+    margin-top: 0.2em;
+    margin-right: 0em;
+}
+.tabcontent-item.concern2{
+    display: block;
+    width:5em;
+    font-size: 0.8em;
+    margin-top: 0.2em;
+    
+}
+
+.tabcontent-item.concern-etc{
+    display: block;
+    width:4em;
+    font-size: 0.8em;
+    margin-top: 0.2em;
+    color: coral;
+}
+
+.tabcontent-item.current-number{
+    margin-top: 0.2em;
+     font-size: 0.8em;
+}
+.tabcontent-item.maximum-number{
+    width:2em;
+    margin-right: 2em;
+    margin-top: 0.2em;
+     font-size: 0.8em;
+}
+.tabcontent-item.recruit-status{
+    width:5em;
+    margin-top: 0.2em;
+    font-size: 0.8em;
+    color: red;
+    font-weight: 600;
+}
+
+.tabcontent-item.recruit-status-complete{    
+         
+    width:5em;
+    margin-top: 0.2em;
+    font-size: 0.8em;
+    color: darkgrey;
+    font-weight: 600;
+}
+
+.null{
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    
+}
+h3{
+    margin: 1em;
+    margin-top: 2em;
+}
+
+
+.main__tab-make-wrap{
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5em 1em;
+}
+
+.main__tab-make-mylist > a{
+    display: block;
+    border-bottom: solid 1px lightgray;
+    padding: 0.1em;
+    color: grey;
+    font-size: 0.9em;
+}
+.main__tab-make-mylist > a:hover{
+    color: lightgray;
+   
+}
+.main__tab-make{
+    background-color: #EFECE8;
+    border-radius: 3em;
+    padding: 0.2em 0.5em;
+}
+.main__tab-make > a{
+    display: block;
+    padding: 0.2em 0.8em;
+    color: black;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+.main__tab-make:hover{
+     background-color:#f3f3f3;
+}
+
+
+.main__tab-list{
+    display: flex;
+    justify-content: center;
+}
+.main__tab-list > a{
+    color: red;
+}
+h3{
+    font-size: 1.1em;
+}
+
+
+@media all and (min-width:768px) and (max-width:1023px){
+
+    .main_wrap{
+        width: 60%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 15px 0px 20px -5px rgba(190,190,190,1), -15px 0px 20px -5px rgba(190,190,190,1);
+    }
+    .main__title{
+        display: flex;
+        justify-content: space-between;
+        padding: 2em 3em 2.7em 3em;
+    }
+    .main__title-top > h2{
+        margin: 0;
+        color: #424043;
+        padding-bottom: 0.1em;
+        border-bottom:solid 2px #424043; 
+        font-size: 1.3em;
+    }
+    .main__search{
+        display: flex;
+        
+    }
+    input{
+        border: none;
+        width: 8em;
+    }
+
+    .main__serach-button{
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .main__serach-button > i{
+        color: #c1c1c1;
+        font-size: 1.2em;
+    }
+    .main__tab-wrap{
+        width: 85%;
+        height: 450px;
+        margin: 0 auto;
+    }
+    .main__tab-menu li a{
+        color: white;
+        display: block;
+        padding: 1em 1.2em; 
+        font-weight: bold;
+        font-size: 1em;
+    }
+    .tabcontent-item.sequence{
+        font-size: 0.5em;
+        margin-top: 0.2em;
+        margin-right: 3em;
+    }
+    
+    .tabcontent-item.study-name{
+        width: 13em;
+        font-size: 0.7em;
+        margin-top: 0.1em;
+        font-weight: 600;
+    }
+    .tabcontent-item.study-name:hover{
+        color: lightsalmon;
+     }
+    .tabcontent-item.concern1{
+        width: 6em;
+        font-size: 0.6em;
+        margin-top: 0.2em;
+        margin-right: 0em;
+    }
+    .tabcontent-item.concern2{
+        display: block;
+        width:6em;
+        font-size: 0.6em;
+        margin-top: 0.2em;
+        
+    }
+    
+    .tabcontent-item.concern-etc{
+        display: block;
+        width:4em;
+        font-size: 0.6em;
+        margin-top: 0.2em;
+        color: coral;
+    }
+    
+    .tabcontent-item.current-number{
+        margin-top: 0.2em;
+         font-size: 0.6em;
+    }
+    .tabcontent-item.maximum-number{
+        width:2em;
+        margin-right: 2em;
+        margin-top: 0.2em;
+         font-size: 0.6em;
+    }
+    .tabcontent-item.recruit-status{
+        width:6em;
+        margin-top: 0.2em;
+        font-size: 0.6em;
+        color: red;
+        font-weight: 600;
+    }
+    
+    .tabcontent-item.recruit-status-complete{
+        width:6em;
+        margin-top: 0.2em;
+        font-size: 0.6em;
+        color: darkgrey;
+        font-weight: 600;
+    }
+   
+    .main__tab-make-wrap{
+        display: flex;
+        justify-content: space-between;
+        margin: 1.3em 1em;
+    }
+    
+    .main__tab-make-mylist > a{
+        display: block;
+        border-bottom: solid 1px lightgray;
+        padding: 0.1em;
+        color: grey;
+        font-size: 0.7em;
+    }
+    .main__tab-make{
+        background-color: #EFECE8;
+        border-radius: 3em;
+        padding: 0.2em 0.7em;
+    }
+    .main__tab-make > a{
+        display: block;
+        padding: 0.2em 0.8em;
+        color: black;
+        font-weight: 500;
+        font-size: 0.7em;
+    }
+    .main__tab-list > a{
+        color: red;
+        font-size: 0.7em;
+    }
+    h3{
+        font-size: 0.9em;
+    }
+}
+
+
+@media all and (max-width:767px){
+    .main_wrap{
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 1px 0px 2px -5px rgba(190,190,190,1), -1px 0px 15px -5px rgba(190,190,190,1);
+    }
+    .main__title{
+        display: flex;
+        justify-content: space-between;
+        padding: 2em 2em 2.7em 2em;
+    }
+    .main__title-top > h2{
+        margin: 0;
+        color: #424043;
+        padding-bottom: 0.1em;
+        border-bottom:solid 2px #424043; 
+        font-size: 1.3em;
+    }
+    .main__search{
+        display: flex;
+        
+    }
+    
+    input{
+        border: none;
+        width: 8em;
+    }
+
+    .main__serach-button{
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .main__serach-button > i{
+        color: #c1c1c1;
+        font-size: 1.2em;
+    }
+    .main__tab-wrap{
+        width: 89%;
+        height: 450px;
+        margin: 0 auto;
+    }
+
+    .main__tab-menu li a{
+        color: white;
+        display: block;
+        padding: 1em 1.2em; 
+        font-weight: bold;
+        font-size: 0.9em;
+    }
+    
+    .tabcontent-item.sequence{
+        font-size: 0.5em;
+        margin-top: 0.2em;
+        margin-right: 3em;
+    }
+    
+    .tabcontent-item.study-name{
+        width: 14em;
+        font-size: 0.7em;
+        margin-top: 0.1em;
+        font-weight: 600;
+    }
+    .tabcontent-item.study-name:hover{
+        color: lightsalmon;
+     }
+    .tabcontent-item.concern1{
+        width: 6em;
+        font-size: 0.6em;
+        margin-top: 0.2em;
+        margin-right: 0em;
+    }
+    .tabcontent-item.concern2{
+        display: block;
+        width:6em;
+        font-size: 0.6em;
+        margin-top: 0.2em;
+        
+    }
+    
+    .tabcontent-item.concern-etc{
+        display: block;
+        width:4em;
+        font-size: 0.6em;
+        margin-top: 0.2em;
+        color: coral;
+    }
+    
+    .tabcontent-item.current-number{
+        margin-top: 0.2em;
+         font-size: 0.6em;
+    }
+    .tabcontent-item.maximum-number{
+        width:2em;
+        margin-right: 2em;
+        margin-top: 0.2em;
+         font-size: 0.6em;
+    }
+    .tabcontent-item.recruit-status{
+        width:6em;
+        margin-top: 0.2em;
+        font-size: 0.6em;
+        color: red;
+        font-weight: 600;
+    }
+    
+    .tabcontent-item.recruit-status-complete{
+        width:6em;
+        margin-top: 0.2em;
+        font-size: 0.6em;
+        color: darkgrey;
+        font-weight: 600;
+    }
+   
+    .main__tab-make-wrap{
+        display: flex;
+        justify-content: space-between;
+        margin: 1.6em 1em;
+    }
+    
+    .main__tab-make-mylist > a{
+        display: block;
+        border-bottom: solid 1px lightgray;
+        padding: 0.1em;
+        color: grey;
+        font-size: 0.7em;
+    }
+    .main__tab-make{
+        background-color: #EFECE8;
+        border-radius: 3em;
+        padding: 0.2em 0.7em;
+    }
+    .main__tab-make > a{
+        display: block;
+        padding: 0.2em 0.8em;
+        color: black;
+        font-weight: 500;
+        font-size: 0.7em;
+    }
+    .main__tab-list > a{
+        color: red;
+        font-size: 0.7em;
+    }
+    h3{
+        font-size: 0.9em;
+    }
+}

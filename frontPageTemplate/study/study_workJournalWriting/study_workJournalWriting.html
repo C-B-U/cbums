@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>활동일지 글쓰기</title>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../styles/elementSetting.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="../../styles/study/study_workJournalWriting/study_workJournalWriting.css">
+
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="header-wrap">
+                <div class="header-wrap__logo">
+                   <a href="../../default/default.html"><img id="logo_img" src="../../images/default/logo.png" alt="씨부엉 상단 로고" height="36"></a>
+               </div>
+                <nav>
+                    <ul class="nav-wrap">
+                        <li><a href="../../default/default.html">home</a></li>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">스터디</a></li>
+                        <li><a href="#">컨텐츠</a></li>
+                        <li><a href="#">회원 관리</a></li>
+                    </ul>
+                        <div id="mysidenav" class="nav-wrap-sidenav mobile">
+                         <a href="#" class="closebtn" onclick='closeNav()'>x</a>
+                        <a href="#">카테고리1</a>
+                        <a href="#">카테고리2</a>
+                        <a href="#">카테고리3</a>
+                        <a href="#">카테고리4</a>
+                        <a href="#">카테고리5</a>
+                        </div>
+                          <div class="new-wrap mobile">
+                           <div class="nav-wrap-mobile mobile" onclick='openNav()'>
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <div class="header-wrap__logo-mobile mobile">
+                            <a href="../../default/default.html"><img src="../../images/default/mobileLogo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="main_wrap">
+                <div class="main__title-wrap">
+                    <div class="main__title">
+                        <h2>스터디1</h2>   <!--스터디명-->
+                    </div>  
+                </div>
+                <div class="main__writing-wrap">
+                    <form class="main__writing-form">
+                        <table class="main__writing-table">  <!--활동일지 글쓰기-->
+                            <tr>
+                                <th id="title">제목</th>   
+                                <td><input type="text" name="study-title" autocomplete="off" style="width: 95%;"></td>  <!--제목-->
+                            </tr>
+                            <tr>
+                                <th>참여인원</th> <!--팀원들 출석/결석/지각 여부-->
+                                <td>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox">
+                                                <div class="main__writing-table-button" onclick="switchValue(this, 0)">결석</div>
+                                                <input class="main__writing-table-attend" type="hidden" name="mem1" value="0" > <!--value 결석:0, 지각:1, 출석:2-->
+                                                6기 김부엉
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox">
+                                                <div class="main__writing-table-button" onclick="switchValue(this, 1)">결석</div>
+                                                <input class="main__writing-table-attend" type="hidden" name="mem2" value="0">
+                                                7기 김부엉
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox">
+                                                <div class="main__writing-table-button" onclick="switchValue(this, 2)">결석</div>
+                                                <input class="main__writing-table-attend" type="hidden" name="mem3" value="0">
+                                                8기 김부엉
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox">
+                                                <div class="main__writing-table-button" onclick="switchValue(this, 3)">결석</div>
+                                                <input class="main__writing-table-attend" type="hidden"  name="mem4" value="0">
+                                                9기 김부엉
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>진행날짜</th>
+                                <td><input type="date" name="study-duration"></td>
+                            </tr>
+                            <tr>
+                                <th>세부내용</th>
+                                <td><textarea name="study-explanation" style="resize: none; width: 95%; height: 130px;" required wrap="hard"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th>활동사진</th>
+                                <td><input type="file" name="study-image" id="study-image" multiple><div id="image_container"></div></td>
+                            </tr>
+                            <tr>
+                                <th>숙제여부</th> 
+                                <td>
+                                    <ul class="main__writing-table-checkbox-ul"> <!--팀원들의 숙제 여부-->
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox">9기 김김김</label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox">5기 김김김</label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                    <ul class="main__writing-table-checkbox-ul">
+                                        <li>
+                                            <label class="main__writing-table-checkbox"><input type="checkbox" name="homework-checkbox"></label>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="main__writing-button-wrap">
+                            <button type="button" class="main__writing-button-cancel">취소</button>
+                            <button type="button" class="main__writing-button-write">등록</button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-wrap">
+                   <div class="footer__info">
+                      <div class="footer__info-wrap">
+                       <div class="footer__info-CBU">
+                           <div class="footer_info-mobile">한국산업기술대학교</div>
+                           <div class="footer_info-mobile">프로그래밍 동아리</div>
+                           <div class="footer_mobile">씨부엉</div>
+                           <div class="footer_mobile" >http://www.abcdefgh.ac.kr</div>
+                       </div>
+                       <div class="footer__info-staffs">
+                          <div class="footer__info-staffs-mobile mobile">
+                              <div class="footer_info-mobile">회장 김김김</div>
+                              <div class="footer_info-mobile">010-1010-1010</div>
+                          </div>
+                           <ul class="footer__info-staffA footer_mobile">
+                               <li>회장 김김김</li>
+                               <li>010-1010-1010</li>
+                               <li >naver@naver.com</li>
+                           </ul>
+                           <ul class="footer__info-staffB footer_mobile">
+                               <li>부회장 박박박</li>
+                               <li>010-1010-1010</li>
+                               <li>naver@naver.com</li>
+                           </ul>
+                       </div>
+                       <div class="footer__info-logo mobile">
+                           <img src="../../images/default/mobileLogo.png" alt="씨부엉 하단 로고" width="120">
+                       </div>
+                     </div>
+                     
+                    </div>
+                   
+               </div>
+        </footer>
+    </div>
+    <script src="../../scripts/sidebar.js"></script>
+    <script src="../../scripts/study/study_workJournalWriting/study_workJournalWriting.js"></script>
+</body>
+</html>

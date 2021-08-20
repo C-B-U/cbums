@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스터디</title>
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../styles/elementSetting.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="../../styles/study/study_recruit/study_recruit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+<body>
+    <div class="wrap">
+     <header>
+            <div class="header-wrap">
+               <div class="header-wrap__logo">
+                   <a href="../../default/default.html"><img id="logo_img" src="../../images/default/logo.png" alt="씨부엉 상단 로고" height="36"></a>
+               </div>
+                <nav>
+                    <ul class="nav-wrap">
+                        <li><a href="../../default/default.html">home</a></li>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">스터디</a></li>
+                        <li><a href="#">컨텐츠</a></li>
+                        <li><a href="#">회원 관리</a></li>
+                    </ul>
+                        <div id="mysidenav" class="nav-wrap-sidenav mobile">
+                         <a href="#" class="closebtn" onclick='closeNav()'>x</a>
+                        <a href="#">카테고리1</a>
+                        <a href="#">카테고리2</a>
+                        <a href="#">카테고리3</a>
+                        <a href="#">카테고리4</a>
+                        <a href="#">카테고리5</a>
+                        </div>
+                          <div class="new-wrap mobile">
+                           <div class="nav-wrap-mobile mobile" onclick='openNav()'>
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <div class="header-wrap__logo-mobile mobile">
+                           <a href="../../default/default.html"><img src="../../images/default/mobileLogo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
+                       </div>
+                   </div>
+                 </nav>
+              </div>
+         </header>
+         <main>
+            <div class="main_wrap">
+              <div class="main__title">
+               <div class="main__title-top">
+                    <h2>스터디 목록</h2>
+                </div>
+                <div class="main__search-wrap">
+                 <div class="main__search">
+                      <table width="200">
+                         <tr>
+                          <td>
+                           <select name="keyField">
+                            <option value="subject">스터디명</option>
+                            <option value="writer">개설자명</option>
+                            </select>
+                           </td>
+                           <td>
+                           <input id="search" type="search" name="search">
+                           </td>
+                           <td>
+                               <button class="main__serach-button" type="submit" name="click" value=""><i class="fa fa-search"></i></button>
+                           </td> 
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                </div>
+                <div class="main__tab-wrap">
+                    <div class="main__tab-menu">
+                        <ul>
+                            <li class="main__tab-menu-item active" data-tab="tab1"><a href="#" class="btn">JAVA</a></li>
+                            <li class="main__tab-menu-item" data-tab="tab2"><a href="#" class="btn">Python</a></li>
+                            <li class="main__tab-menu-item" data-tab="tab3"><a href="#" class="btn">알고리즘</a></li>
+                            <li class="main__tab-menu-item" data-tab="tab4"><a href="#" class="btn">자료구조</a></li>
+                        </ul>
+                    </div>
+                    <div class="main__tab-content-concern-container">
+                        <div id="tab1" class="main__tab-content-concern target">
+                           <div class="main__tab-content-thread">
+                                <a href="#"><div class="tabcontent-item sequence">1</div>
+                                <div class="tabcontent-item study-name">JAVA 스터디</div>
+                                <div class="tabcontent-item concern1">#JAVA</div>
+                                <div class="tabcontent-item concern2">#스터디</div>
+                                <div class="tabcontent-item concern-etc">+2</div>
+                                <div class="tabcontent-item current-number">0</div>
+                                <div class="tabcontent-item maximum-number">/6</div>
+                                <div class="tabcontent-item recruit-status">모집중</div>
+                             </a>
+                            </div>
+                             <div class="main__tab-content-thread">
+                                <a href="#"><div class="tabcontent-item sequence">2</div>
+                                <div class="tabcontent-item study-name">자바!</div>
+                                <div class="tabcontent-item concern1">#JAVA</div>
+                                <div class="tabcontent-item concern2">#스터디</div>
+                                <div class="tabcontent-item concern-etc"></div>
+                                <div class="tabcontent-item current-number">1</div>
+                                <div class="tabcontent-item maximum-number">/6</div>
+                                <div class="tabcontent-item recruit-status">모집중</div>
+                                 </a>
+                            </div>
+                        </div>
+                        
+                        <div id="tab2" class="main__tab-content-concern">
+                           <div class="main__tab-content-thread">
+                                 <a href="#"><div class="tabcontent-item sequence">1</div>
+                                <div class="tabcontent-item study-name">Python 스터디</div>
+                                <div class="tabcontent-item concern1">#Python</div>
+                                <div class="tabcontent-item concern2">#스터디</div>
+                                 <div class="tabcontent-item concern-etc"></div>
+                                <div class="tabcontent-item current-number">1</div>
+                                <div class="tabcontent-item maximum-number">/6</div>
+                                <div class="tabcontent-item recruit-status">모집중</div>
+                               </a>
+                            </div>
+                        </div>
+                         <div id="tab3" class="main__tab-content-concern">
+                           <div class="main__tab-content-thread">
+                                <div class="null">스터디가 존재하지 않습니다.</div>
+                           </div>
+                        </div>
+                         <div id="tab4" class="main__tab-content-concern">
+                           <div class="main__tab-content-thread">
+                              <div class="null">스터디가 존재하지 않습니다.</div>
+                            </div>
+                        </div>  
+                     </div>
+                     <div class="main__tab-content-etc-container">
+                         <div class="main__tab-content-etc">
+                            <h3>이외</h3>
+                             <div class="main__tab-content-thread">
+                                <a href="#"><div class="tabcontent-item sequence">1</div>
+                                <div class="tabcontent-item study-name">CBUMS</div>
+                                <div class="tabcontent-item concern1">#web</div>
+                                <div class="tabcontent-item concern2">#프로젝트</div>
+                                <div class="tabcontent-item concern-etc"></div>
+                                <div class="tabcontent-item current-number">6</div>
+                                <div class="tabcontent-item maximum-number">/6</div>
+                                <div class="tabcontent-item recruit-status-complete">모집완료</div>
+                                 </a>
+                            </div>
+                         </div>
+                     </div>
+                    <div class="main__tab-make-wrap">
+                        <div class="main__tab-make-mylist">
+                            <a href="#">내가 개설한 스터디</a>
+                        </div>
+                        <div class="main__tab-make">
+                            <a href="../study_make/study_make.html">개설하기</a>
+                        </div>
+                        
+                    </div>
+                     <div class="main__tab-list">
+                            <a href="#">1</a>
+                        </div>
+                </div>
+            </div>
+        </main>
+      <footer>
+          <div class="footer-wrap">
+                 <div class="footer__info">
+                    <div class="footer__info-wrap">
+                     <div class="footer__info-CBU">
+                         <div class="footer_info-mobile">한국산업기술대학교</div>
+                         <div class="footer_info-mobile">프로그래밍 동아리</div>
+                         <div class="footer_mobile">씨부엉</div>
+                         <div class="footer_mobile" >http://www.abcdefgh.ac.kr</div>
+                     </div>
+                     <div class="footer__info-staffs">
+                        <div class="footer__info-staffs-mobile mobile">
+                            <div class="footer_info-mobile">회장 김김김</div>
+                            <div class="footer_info-mobile">010-1010-1010</div>
+                        </div>
+                         <ul class="footer__info-staffA footer_mobile">
+                             <li>회장 김김김</li>
+                             <li>010-1010-1010</li>
+                             <li >naver@naver.com</li>
+                         </ul>
+                         <ul class="footer__info-staffB footer_mobile">
+                             <li>부회장 박박박</li>
+                             <li>010-1010-1010</li>
+                             <li>naver@naver.com</li>
+                         </ul>
+                     </div>
+                     <div class="footer__info-logo mobile">
+                         <img src="../../images/default/mobileLogo.png" alt="씨부엉 하단 로고" width="120">
+                     </div>
+                   </div>
+ 
+                 </div>
+                 
+             </div>
+      </footer>
+    </div>
+    <script src="../../scripts/study/study_recruit/study_recruit.js"></script>
+    <script src="../../scripts/sidebar.js"></script>
+ </body>
+ </html>

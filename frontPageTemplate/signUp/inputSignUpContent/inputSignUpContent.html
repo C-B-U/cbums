@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <link rel="stylesheet" href="../../styles/signUp/inputSignUpContent/inputSignUpContent.css">
+    <link rel="stylesheet" href="../../styles/elementSetting.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <title>inputSignUpContent</title>
+</head>
+<body class="wrap">
+    <header>
+        <div class="header-wrap">
+
+            <div class="header-wrap__logo">
+                <a href="#"><img id="logo_img" src="../../images/signUp/inputSignUpContent/logo.png" alt="씨부엉 상단 로고" height="36"></a>
+            </div>
+
+            <nav>
+                <ul class="nav-wrap">
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">스터디</a></li>
+                    <li><a href="#">컨텐츠</a></li>
+                    <li><a href="#">회원 관리</a></li>
+                </ul>
+                <div id="mysidenav" class="nav-wrap-sidenav mobile">
+                    <a href="#" class="closebtn" onclick='closeNav()'>x</a>
+                    <a href="#">카테고리1</a>
+                    <a href="#">카테고리2</a>
+                    <a href="#">카테고리3</a>
+                    <a href="#">카테고리4</a>
+                    <a href="#">카테고리5</a>
+                </div>
+                <div class="new-wrap mobile">
+                    <div class="nav-wrap-mobile mobile" onclick='openNav()'>
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="header-wrap__logo-mobile mobile">
+                        <a href="#"><img src="../../images/signUp/inputSignUpContent/mobileLogo.png" alt="씨부엉 상단 로고 모바일" height="36"></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <article class="article">
+        <div class="article__inner">
+            <div><img src="../../images/signUp/inputSignUpContent/boxDeco.png" alt="boxDeco" class="article__boxDeco"></div>
+            <h1 class="article__boxTitle">회원가입</h1>
+            <div class="article__boxList">
+                <form action="#" method="POST">
+                    <ul class="boxList__infor">
+                        <li>
+                            <label>이름</label>
+                            <input type="text" placeholder="이름 입력" name="name">
+                        </li>
+                        <li>
+                            <label>학번</label>
+                            <input type="number" placeholder="학번 입력" name="schoolNumber">
+                        </li>
+                        <li>
+                            <label>아이디</label>
+                            <input type="number" placeholder="학번 입력" name="signUpId">
+                        </li>
+                        <li>
+                            <label>닉네임</label>
+                            <input type="text" placeholder="닉네임 입력" name="nickname">
+                        </li>
+                        <li>
+                            <label>비밀번호</label>
+                            <input type="password" placeholder="비밀번호 입력" name="signUpPassword">
+                        </li>
+                        <li>
+                            <label>비밀번호 확인</label>
+                            <input type="password" placeholder="비밀번호 확인" name="checkPassword">
+                        </li>
+                        <li>
+                            <input type="submit" style="cursor:pointer" class="boxList__infor--submit">
+                        </li>
+                    </ul>
+                </form>
+                <p class="boxList__controls">
+                    <span class="prev"><i class="fas fa-arrow-left"></i></span>
+                    <span class="next"><i class="fas fa-arrow-right"></i></span>
+                </p>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <div class="footer-wrap">
+            <div class="footer__info">
+                <div class="footer__info-wrap">
+                    <div class="footer__info-CBU">
+                        <div class="footer_info-mobile">한국산업기술대학교</div>
+                        <div class="footer_info-mobile">프로그래밍 동아리</div>
+                        <div class="footer_mobile">씨부엉</div>
+                        <div class="footer_mobile">http://www.abcdefgh.ac.kr</div>
+                    </div>
+                    <div class="footer__info-staffs">
+                        <div class="footer__info-staffs-mobile mobile">
+                            <div class="footer_info-mobile">회장 김김김</div>
+                            <div class="footer_info-mobile">010-1010-1010</div>
+                        </div>
+                        <ul class="footer__info-staffA footer_mobile">
+                            <li>회장 김김김</li>
+                            <li>010-1010-1010</li>
+                            <li>naver@naver.com</li>
+                        </ul>
+                        <ul class="footer__info-staffB footer_mobile">
+                            <li>부회장 박박박</li>
+                            <li>010-1010-1010</li>
+                            <li>naver@naver.com</li>
+                        </ul>
+                    </div>
+                    <div class="footer__info-logo mobile">
+                        <img src="../../images/signUp/inputSignUpContent/mobileLogo.png" alt="씨부엉 하단 로고" width="120">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../../scripts/signUp/inputSignUpContent/inputSignUpContent.js"></script>
+</body>
+</html>
