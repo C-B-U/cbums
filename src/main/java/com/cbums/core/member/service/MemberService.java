@@ -55,6 +55,7 @@ public class MemberService implements UserDetailsService {
                 .name(signUpRequest.getName())
                 .email(signUpRequest.getEmail())
                 .department(signUpRequest.getDepartment())
+                .classNumber(signUpRequest.getClassNumber())
                 .phoneNumber(signUpRequest.getPhoneNumber())
                 .build();
     }
@@ -63,6 +64,10 @@ public class MemberService implements UserDetailsService {
     public void addDetails(Long memberId, MemberAddDetailRequest memberAddDetailRequest) {
 
         Member member = findById(memberId);
+
+        if(member.getUserRoleType() == UserRoleType.VISITANT) {
+            throw new AuthException(ErrorCode.NOT_ADMISSION);
+        }
         checkDuplicatedNickName(memberAddDetailRequest.getNickName());
 
         member.setPassword(encryptionService.encode(memberAddDetailRequest.getPassword()));

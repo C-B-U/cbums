@@ -15,7 +15,7 @@ public class UpdateMemberRequest {
     private String password;
 
     private String department;
-
+    @NotBlank
     private String nickName;
 
     private String profileImage;
