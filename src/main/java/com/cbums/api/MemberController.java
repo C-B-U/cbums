@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.net.URI;
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -102,9 +103,8 @@ public class MemberController {
 
     //회원 상세 페이지
     @GetMapping("/{memberId}")
-    public ResponseEntity<MemberResponse> memberDetail(@PathVariable("memberId") Long memberId) {
+    public ResponseEntity<MemberResponse> getMember(@PathVariable("memberId") Long memberId) {
         return  ResponseEntity.ok(memberService.findMember(memberId));
     }
-
 
 }
