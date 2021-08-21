@@ -9,13 +9,14 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 @AllArgsConstructor
 public class UpdateMemberRequest {
 
     private String password;
 
     private String department;
-    @NotBlank
+
     private String nickName;
 
     private String profileImage;

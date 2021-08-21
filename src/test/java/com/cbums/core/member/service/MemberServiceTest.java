@@ -1,12 +1,15 @@
 package com.cbums.core.member.service;
 
 import com.cbums.common.exceptions.AuthException;
+import com.cbums.common.exceptions.EntityNotFoundException;
 import com.cbums.common.security.EncryptionService;
 import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.member.dto.MemberAddDetailRequest;
 import com.cbums.core.member.dto.SignUpRequest;
+import com.cbums.core.member.dto.UpdateMemberRequest;
+import com.cbums.core.member.dto.UpdateRoleTypeRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,10 +36,11 @@ class MemberServiceTest {
 
     private SignUpRequest signUpRequest;
     private MemberAddDetailRequest memberAddDetailRequest;
+    private UpdateMemberRequest updateMemberRequest;
+    private UpdateRoleTypeRequest updateRoleTypeRequest;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
 
         signUpRequest = SignUpRequest.builder()
                 .email("test@test.com")
@@ -52,6 +56,17 @@ class MemberServiceTest {
                 .password("0000")
                 .profileImage("kkk.jpg")
                 .build();
+
+        updateMemberRequest = UpdateMemberRequest.builder()
+                .password("1111")
+                .department("산업경영")
+                .nickName("별명 바꾸기")
+                .profileImage("new.png")
+                .introduce("새로운 자기소개입니당")
+                .phoneNumber("010-2222-3333")
+                .build();
+
+        updateRoleTypeRequest = new UpdateRoleTypeRequest(UserRoleType.MEMBER);
     }
 
     @DisplayName("회원 등록")
@@ -118,9 +133,65 @@ class MemberServiceTest {
         assertThat(result.getIntroduce()).isEqualTo(memberAddDetailRequest.getIntroduce());
     }
 
-    //updateMember TODO
-    //find TODO
-    //delete TODO
+    @DisplayName("사용자 정보 변경")
+    @Test
+    public void updateMember() {
+        //given
+        Long sampleId = memberService.registerMember(signUpRequest);
+        Member sample = memberRepository.getById(sampleId);
+        sample.setUserRoleType(UserRoleType.MEMBER);
+        memberRepository.save(sample);
 
+        //when
+        memberService.updateMember(sample.getEmail(), updateMemberRequest);
+        Member result = memberRepository.getById(sampleId);
+        //then
+        assertThat(true)
+                .isEqualTo(encryptionService.matches(updateMemberRequest.getPassword(), result.getPassword()));
+        assertThat(result.getNickName()).isEqualTo(updateMemberRequest.getNickName());
+        assertThat(result.getProfileImage()).isEqualTo(updateMemberRequest.getProfileImage());
+        assertThat(result.getIntroduce()).isEqualTo(updateMemberRequest.getIntroduce());
+        assertThat(result.getPhoneNumber()).isEqualTo(updateMemberRequest.getPhoneNumber());
+        assertThat(result.getDepartment()).isEqualTo(updateMemberRequest.getDepartment());
+
+
+    }
+    //find TODO
+
+    @DisplayName("사용자 탈퇴")
+    @Test
+    public void resign() {
+        //given
+        Long sampleId = memberService.registerMember(signUpRequest);
+        //when
+        memberService.resign(sampleId);
+        Member result = memberRepository.getById(sampleId);
+        //then
+        assertThat(result.getResign()).isEqualTo(true);
+    }
+
+    @DisplayName("사용자 데이터 삭제")
+    @Test
+    public void delete() {
+        //given
+        Long sampleId = memberService.registerMember(signUpRequest);
+        //when
+        memberService.delete(sampleId);
+        //then
+        assertThrows(EntityNotFoundException.class,
+                () -> memberService.findMember(sampleId));
+    }
+
+    @DisplayName("사용자 권한 변경")
+    @Test
+    public void updateRole() {
+        //given
+        Long sampleId = memberService.registerMember(signUpRequest);
+        //when
+        memberService.updateRole(sampleId, updateRoleTypeRequest);
+        Member result = memberRepository.getById(sampleId);
+        //then
+        assertThat(result.getUserRoleType()).isEqualTo(updateRoleTypeRequest.getUserRoleType());
+    }
 
 }

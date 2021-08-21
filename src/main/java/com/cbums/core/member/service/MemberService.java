@@ -107,7 +107,8 @@ public class MemberService implements UserDetailsService {
 
 
     @Transactional
-    public void resign(Member member) {
+    public void resign(Long memberId) {
+        Member member = findById(memberId);
         member.setResign(true);
         memberRepository.save(member);
     }
