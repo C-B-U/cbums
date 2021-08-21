@@ -5,7 +5,7 @@ import com.cbums.common.exceptions.ErrorCode;
 import com.cbums.core.form.domain.Form;
 import com.cbums.core.form.domain.Question;
 import com.cbums.core.form.domain.QuestionRepository;
-import com.cbums.core.form.dto.CreateFormRequest;
+import com.cbums.core.form.dto.FormRequest;
 import com.cbums.core.form.dto.FormResponse;
 import com.cbums.core.form.dto.QuestionRequest;
 import com.cbums.core.form.dto.QuestionResponse;
@@ -27,23 +27,33 @@ public class FormService {
     private final MemberService memberService;
 
     @Transactional
-    public Long createForm(CreateFormRequest createFormRequest, String producer) {
-        Form form = buildForm(createFormRequest);
+    public Long createForm(FormRequest formRequest, String producer) {
+        Form form = buildForm(formRequest);
         Member creator = memberService.findByEmail(producer);
         form.setProducer(creator);
         Form result = formRepository.save(form);
-        buildQuestion(result, createFormRequest.getQuestionRequests());
+        buildQuestion(result, formRequest.getQuestionRequests());
         return result.getFormId();
     }
 
 
-    private Form buildForm(CreateFormRequest createFormRequest) {
+    private Form buildForm(FormRequest formRequest) {
         return new Form().builder()
-                .title(createFormRequest.getTitle())
-                .introduce(createFormRequest.getIntroduce())
-                .openDateTime(createFormRequest.getOpenDateTime())
-                .closeDateTime(createFormRequest.getCloseDateTime())
-                .registerNumber(createFormRequest.getRegisterNumber())
+                .title(formRequest.getTitle())
+                .introduce(formRequest.getIntroduce())
+                .openDateTime(formRequest.getOpenDateTime())
+                .closeDateTime(formRequest.getCloseDateTime())
+                .registerNumber(formRequest.getRegisterNumber())
+                .build();
+    }
+
+    private Form buildForm(Form form, FormRequest formRequest) {
+        return form.builder()
+                .title(formRequest.getTitle())
+                .introduce(formRequest.getIntroduce())
+                .openDateTime(formRequest.getOpenDateTime())
+                .closeDateTime(formRequest.getCloseDateTime())
+                .registerNumber(formRequest.getRegisterNumber())
                 .build();
     }
 
@@ -75,10 +85,23 @@ public class FormService {
         return FormResponse.of(form);
     }
 
+    @Transactional(readOnly = true)
+    public Question findQuestionById(Long questionId) {
+        return questionRepository.findById(questionId)
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
+    }
+
     private Form findById(Long formId) {
         return formRepository.findById(formId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }
+    @Transactional
+    public void updateForm(Long formId, FormRequest formRequest, String updater) {
+        Member member = memberService.findByEmail(updater);
+        Form form = buildForm(findById(formId), formRequest);
+        formRepository.save(form);
+    }
+
     @Transactional
     public void deleteForm(Long formId) {
         formRepository.deleteById(formId);

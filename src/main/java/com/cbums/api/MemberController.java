@@ -30,16 +30,11 @@ public class MemberController {
     private final MemberService memberService;
     private final EncryptionService encryptionService;
 
+    //getRegisterMapping에서 form id model 가져와야 TODO
     @PostMapping("/")
-    public ResponseEntity<Void> registerMember(HttpServletResponse response,
-                                               @CookieValue(value = "form-id", required = false) Cookie formCookie,
+    public ResponseEntity<Void> registerMember(@ModelAttribute("form")Long formId,
                                                @Valid @RequestBody SignUpRequest signUpRequest) {
         memberService.registerMember(signUpRequest);
-
-        String formId = formCookie.getValue();
-        formCookie.setPath("/");
-        formCookie.setMaxAge(0);
-        response.addCookie(formCookie);
 
         return ResponseEntity.created(URI.create("/content/" + formId)).build();
     }
