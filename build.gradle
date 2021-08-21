@@ -34,7 +34,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
 
-	testImplementation 'org.mockito:mockito-core:2.1.0'
+	testImplementation 'org.mockito:mockito-core:3.12.1'
 
 
 }
