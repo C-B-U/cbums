@@ -19,13 +19,13 @@ public class AdminAnswerController {
 
     private final AnswerService answerService;
 
-    @GetMapping("/")
-    public ResponseEntity<AnswerResponseByMember> getFormAnswerList(@RequestParam("form-id") Long formId) {
+    @GetMapping("/{form-id}")
+    public ResponseEntity<AnswerResponseByMember> getFormAnswerList(@PathVariable("form-id") Long formId) {
         return ResponseEntity.ok(answerService.findAnswersByFormId(formId));
     }
 
-    @GetMapping("/")
-    public ResponseEntity<List<AnswerResponse>> getFormAnswer(@RequestParam("form-id") Long formId,
+    @GetMapping("/{form-id}/member/{member-class-num}")
+    public ResponseEntity<List<AnswerResponse>> getFormAnswer(@PathVariable("form-id") Long formId,
                                                               @PathVariable("member-class-num") String memberClassNum) {
         return ResponseEntity.ok(answerService.findFormAnswerByFormIdAndMemberId(memberClassNum, formId));
     }
