@@ -232,7 +232,8 @@ public class MemberService implements UserDetailsService {
     }
 
     @Transactional
-    public void updateRole(Member member, UpdateRoleTypeRequest updateRoleTypeRequest) {
+    public void updateRole(Long memberId, UpdateRoleTypeRequest updateRoleTypeRequest) {
+        Member member = findById(memberId);
         member.setUserRoleType(updateRoleTypeRequest.getUserRoleType());
         memberRepository.save(member);
     }

@@ -47,6 +47,16 @@ public class FormService {
                 .build();
     }
 
+    private Form buildForm(Form form, FormRequest formRequest) {
+        return form.builder()
+                .title(formRequest.getTitle())
+                .introduce(formRequest.getIntroduce())
+                .openDateTime(formRequest.getOpenDateTime())
+                .closeDateTime(formRequest.getCloseDateTime())
+                .registerNumber(formRequest.getRegisterNumber())
+                .build();
+    }
+
     private void buildQuestion(Form form, List<QuestionRequest> questionRequests) {
         for (QuestionRequest q : questionRequests) {
             Question question = new Question().builder()
@@ -75,6 +85,7 @@ public class FormService {
         return FormResponse.of(form);
     }
 
+    @Transactional(readOnly = true)
     public Question findQuestionById(Long questionId) {
         return questionRepository.findById(questionId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
@@ -84,6 +95,13 @@ public class FormService {
         return formRepository.findById(formId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }
+    @Transactional
+    public void updateForm(Long formId, FormRequest formRequest, String updater) {
+        Member member = memberService.findByEmail(updater);
+        Form form = buildForm(findById(formId), formRequest);
+        formRepository.save(form);
+    }
+
     @Transactional
     public void deleteForm(Long formId) {
         formRepository.deleteById(formId);
