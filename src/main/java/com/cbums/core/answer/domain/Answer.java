@@ -30,9 +30,10 @@ public class Answer {
     private String content;
 
     @Builder
-    public Answer(Question question, String content) {
+    public Answer(Question question, String content, Member member) {
         this.question = question;
         this.content = content;
+        this.member = member;
     }
 
 }

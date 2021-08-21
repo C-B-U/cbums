@@ -75,6 +75,11 @@ public class FormService {
         return FormResponse.of(form);
     }
 
+    public Question findQuestionById(Long questionId) {
+        return questionRepository.findById(questionId)
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
+    }
+
     private Form findById(Long formId) {
         return formRepository.findById(formId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
