@@ -37,6 +37,7 @@ dependencies {
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 	implementation 'javax.mail:mail:1.4.7'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:2.4.2'
+	implementation 'org.springframework.session:spring-session-jdbc:2.5.1'
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	compileOnly 'org.projectlombok:lombok:1.18.20'
