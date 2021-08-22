@@ -13,12 +13,11 @@ public class MemberDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    private Long memberDetailId;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    private String password;
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @Column(nullable = false)
     private String name;
@@ -36,18 +35,13 @@ public class MemberDetail {
     @Column(nullable = false)
     private String department;
 
-    private String profileImage;
-
     private String introduce;
 
     private Boolean resign = false;
 
-    @Enumerated(EnumType.STRING)
-    private UserRoleType userRoleType = UserRoleType.VISITANT;
-
     @Builder
-    public MemberDetail(String email, String name, String phoneNumber, String classNumber, String department) {
-        this.email = email;
+    public MemberDetail(Member member, String name, String phoneNumber, String classNumber, String department) {
+        this.member = member;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.classNumber = classNumber;
