@@ -11,14 +11,14 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 public class MemberAddDetailRequest {
-    @NotBlank
-    String password;
 
     @NotBlank
-    @Length(min = 1)
-    String nickName;
+    String name;
 
-    String profileImage;
+    @NotBlank
+    String phoneNumber;
 
-    String introduce;
+    @NotBlank
+    String department;
+
 }
