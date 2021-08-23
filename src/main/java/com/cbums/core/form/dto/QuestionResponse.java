@@ -14,11 +14,13 @@ import java.util.stream.Collectors;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class QuestionResponse {
+    private Long questionId;
     private String content;
     private Form form;
 
     public static QuestionResponse of(Question question) {
         return new QuestionResponse(
+                question.getQuestionId(),
                 question.getContent(),
                 question.getForm());
     }

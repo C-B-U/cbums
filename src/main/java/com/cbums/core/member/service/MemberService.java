@@ -94,7 +94,7 @@ public class MemberService {
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }
 
-    private Member findByName(String name) {
+    public Member findByName(String name) {
         return memberRepository.findByName(name)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }

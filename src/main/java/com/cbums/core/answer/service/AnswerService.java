@@ -1,5 +1,6 @@
 package com.cbums.core.answer.service;
 
+import com.cbums.config.auth.dto.SessionUser;
 import com.cbums.core.answer.domain.Answer;
 import com.cbums.core.answer.domain.AnswerRepository;
 import com.cbums.core.answer.dto.AnswerRequest;
@@ -24,8 +25,8 @@ public class AnswerService {
     private final MemberService memberService;
 
 
-    public void createAnswer(List<AnswerRequest> answerRequests, String email){
-        Member member = memberService.findByEmail(email);
+    public void createAnswer(SessionUser user, List<AnswerRequest> answerRequests){
+        Member member = memberService.findByName(user.getName());
         for(AnswerRequest ar : answerRequests) {
             Question question = formService.findQuestionById(ar.getQuestionId());
             ar.getQuestionId();
