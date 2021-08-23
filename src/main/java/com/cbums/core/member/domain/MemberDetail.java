@@ -22,7 +22,7 @@ public class MemberDetail {
     @Column(nullable = false)
     private String name;
 
-    private String nickName = "닉네임 미정"+(memberDetailId+714);
+    private String nickName;
 
     @Column(nullable = false, unique = true)
     private String phoneNumber;

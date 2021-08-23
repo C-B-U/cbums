@@ -25,15 +25,10 @@ public class FormController {
         return ResponseEntity.ok(formService.findAll());
     }
 
-    //기존 회원 & 신규 회원 나누어야 TODO
     @GetMapping("/{formId}")
-    public ResponseEntity<FormResponse> getForm(Model model,
-                                                @PathVariable("formId") Long formId) {
+    public ResponseEntity<FormResponse> getForm(@PathVariable("formId") Long formId) {
 
         FormResponse formResponse = formService.findForm(formId);
-
-        //중복으로 넣어도 되려나...? TODO
-        model.addAttribute("form", formId);
         return ResponseEntity.ok(formResponse);
     }
 
