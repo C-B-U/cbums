@@ -27,15 +27,15 @@ public class MemberController {
         return ResponseEntity.created(URI.create("/member/detail-success")).build();
     }
 
-    @PatchMapping("/")
+    @PatchMapping("/nick-name/")
     public ResponseEntity<Void> updateNickName(@LoginUser SessionUser user,
                                              @Valid @RequestBody UpdateNickNameRequest updateMemberRequest) {
         memberService.updateNickName(user, updateMemberRequest);
         return ResponseEntity.created(URI.create("/member/my-page")).build();
     }
 
-    @PatchMapping("/")
-    public ResponseEntity<Void> updateNickName(@LoginUser SessionUser user,
+    @PatchMapping("/introduce/")
+    public ResponseEntity<Void> updateIntroduce(@LoginUser SessionUser user,
                                                @Valid @RequestBody  UpdateIntroduceRequest updateIntroduceRequest) {
         memberService.updateIntroduce(user, updateIntroduceRequest);
         return ResponseEntity.created(URI.create("/member/my-page")).build();
