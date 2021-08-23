@@ -10,30 +10,40 @@ import java.util.stream.Collectors;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class MemberResponse {
+public class MemberResponseForAdmin {
 
     private Long memberId;
+    private String email;
+    private String role;
+    private String provider;
     private String name;
     private String nickName;
+    private String phoneNumber;
     private Integer registerNumber;
     private String department;
     private String picture;
     private String introduce;
+    private Boolean resign;
 
-    public static MemberResponse of(MemberDetail member) {
-             return new MemberResponse(
+    public static MemberResponseForAdmin of(MemberDetail member) {
+        return new MemberResponseForAdmin(
                 member.getMember().getMemberId(),
+                member.getMember().getEmail(),
+                member.getMember().getRole().getTitle(),
+                member.getMember().getProvider().name(),
                 member.getName(),
                 member.getNickName(),
+                member.getPhoneNumber(),
                 member.getRegisterNumber(),
                 member.getDepartment(),
                 member.getMember().getPicture(),
-                member.getIntroduce());
+                member.getIntroduce(),
+                member.getResign());
     }
 
-    public static List<MemberResponse> listOf(List<MemberDetail> members) {
+    public static List<MemberResponseForAdmin> listOf(List<MemberDetail> members) {
         return members.stream()
-                .map(MemberResponse::of)
+                .map(MemberResponseForAdmin::of)
                 .collect(Collectors.toList());
     }
 }

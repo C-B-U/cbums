@@ -22,20 +22,17 @@ public class MemberDetail {
     @Column(nullable = false)
     private String name;
 
-    private String nickName;
+    private String nickName = "닉네임 미정"+(memberDetailId+714);
 
     @Column(nullable = false, unique = true)
     private String phoneNumber;
 
     private Integer registerNumber;
 
-    @Column(nullable = false, unique = true)
-    private String classNumber;
-
     @Column(nullable = false)
     private String department;
 
-    private String introduce;
+    private String introduce = "자기소개글을 입력하세요!";
 
     private Boolean resign = false;
 
@@ -44,7 +41,6 @@ public class MemberDetail {
         this.member = member;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.classNumber = classNumber;
         this.department = department;
     }
 }
