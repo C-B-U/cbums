@@ -7,8 +7,7 @@ import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.member.dto.MemberAddDetailRequest;
-import com.cbums.core.member.dto.SignUpRequest;
-import com.cbums.core.member.dto.UpdateMemberRequest;
+import com.cbums.core.member.dto.UpdateNickNameRequest;
 import com.cbums.core.member.dto.UpdateRoleTypeRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -35,7 +34,7 @@ class MemberServiceTest {
 
     private SignUpRequest signUpRequest;
     private MemberAddDetailRequest memberAddDetailRequest;
-    private UpdateMemberRequest updateMemberRequest;
+    private UpdateNickNameRequest updateMemberRequest;
     private UpdateRoleTypeRequest updateRoleTypeRequest;
 
     @BeforeEach
@@ -56,7 +55,7 @@ class MemberServiceTest {
                 .profileImage("kkk.jpg")
                 .build();
 
-        updateMemberRequest = UpdateMemberRequest.builder()
+        updateMemberRequest = UpdateNickNameRequest.builder()
                 .password("1111")
                 .department("산업경영")
                 .nickName("별명 바꾸기")

@@ -1,25 +1,20 @@
 package com.cbums.core.member.service;
 
-import com.cbums.common.exceptions.AccessException;
 import com.cbums.common.exceptions.AuthException;
 import com.cbums.common.exceptions.EntityNotFoundException;
 import com.cbums.common.exceptions.ErrorCode;
 import com.cbums.config.auth.dto.SessionUser;
-import com.cbums.core.member.domain.*;
+import com.cbums.core.member.domain.Member;
+import com.cbums.core.member.domain.MemberDetail;
+import com.cbums.core.member.domain.MemberDetailRepository;
+import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.dto.*;
-import com.cbums.common.security.EncryptionService;
-import com.cbums.common.util.NaverMailSendService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.mail.MessagingException;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -45,36 +40,55 @@ public class MemberService {
 
     @Transactional
     public void resign(SessionUser user) {
-        Member member = findByName(user.getName());
-        MemberDetail memberDetail =
-                memberDetailRepository.findAnswersByFormId(member.getMemberId())
-                        .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
-
+        MemberDetail memberDetail = findByMemberName(user.getName());
         memberDetail.setResign(true);
         memberDetailRepository.save(memberDetail);
     }
 
+
+    public void updateNickName(SessionUser user, UpdateNickNameRequest updateNickNameRequest) {
+        checkDuplicatedNickName(updateNickNameRequest.getNickName());
+        MemberDetail memberDetail = findByMemberName(user.getName());
+        memberDetail.setNickName(updateNickNameRequest.getNickName());
+        memberDetailRepository.save(memberDetail);
+    }
+    public void updateIntroduce(SessionUser user, UpdateIntroduceRequest updateIntroduceRequest) {
+        MemberDetail memberDetail = findByMemberName(user.getName());
+        memberDetail.setNickName(updateIntroduceRequest.getIntroduce());
+        memberDetailRepository.save(memberDetail);
+    }
     private void checkDuplicatedNickName(String nickName) {
         if (memberDetailRepository.existsByNickName(nickName)) {
             throw new AuthException(ErrorCode.DUPLICATED_NICK_NAME);
         }
     }
 
-    //update TODO
-
     @Transactional(readOnly = true)
     public List<MemberResponse> findAll() {
-        List<Member> members = memberRepository.findAll();
+        List<MemberDetail> members = memberDetailRepository.findAll();
         return Collections.unmodifiableList(MemberResponse.listOf(members));
     }
 
     @Transactional(readOnly = true)
+    public List<MemberResponseForAdmin> findAllForAdmin() {
+        List<MemberDetail> members = memberDetailRepository.findAll();
+        return Collections.unmodifiableList(MemberResponseForAdmin.listOf(members));
+    }
+
+    @Transactional(readOnly = true)
     public MemberResponse findMember(Long memberId) {
-        Member member = findById(memberId);
+        MemberDetail member = findByMemberId(memberId);
         return MemberResponse.of(member);
     }
 
-    //member 조회 response 변경 TODO
+    @Transactional(readOnly = true)
+    public MemberResponseForAdmin findMemberForAdmin(Long memberId) {
+        MemberDetail member = findByMemberId(memberId);
+        return MemberResponseForAdmin.of(member);
+    }
+
+
+
     private Member findById(Long memberId) {
         return memberRepository.findById(memberId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
@@ -82,6 +96,18 @@ public class MemberService {
 
     private Member findByName(String name) {
         return memberRepository.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
+    }
+
+    private MemberDetail findByMemberId(Long memberId) {
+        Member member = findById(memberId);
+        return memberDetailRepository.findMemberDetailsByMemberId(member.getMemberId())
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
+    }
+
+    private MemberDetail findByMemberName(String memberName) {
+        Member member = findByName(memberName);
+        return memberDetailRepository.findMemberDetailsByMemberId(member.getMemberId())
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }
 
