@@ -1,12 +1,10 @@
 package com.cbums.core.member.service;
 
-import com.cbums.common.exceptions.AuthException;
 import com.cbums.common.exceptions.EntityNotFoundException;
-import com.cbums.common.security.EncryptionService;
-import com.cbums.core.member.domain.Member;
-import com.cbums.core.member.domain.MemberRepository;
-import com.cbums.core.member.domain.UserRoleType;
+import com.cbums.config.auth.dto.SessionUser;
+import com.cbums.core.member.domain.*;
 import com.cbums.core.member.dto.MemberAddDetailRequest;
+import com.cbums.core.member.dto.UpdateIntroduceRequest;
 import com.cbums.core.member.dto.UpdateNickNameRequest;
 import com.cbums.core.member.dto.UpdateRoleTypeRequest;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,144 +24,109 @@ class MemberServiceTest {
 
     @Autowired
     private MemberRepository memberRepository;
+    @Autowired
+    private MemberDetailRepository memberDetailRepository;
 
     @Autowired
     private MemberService memberService;
-    @Autowired
-    private EncryptionService encryptionService;
 
-    private SignUpRequest signUpRequest;
+
+    private Member member;
+    private MemberDetail memberDetail;
     private MemberAddDetailRequest memberAddDetailRequest;
-    private UpdateNickNameRequest updateMemberRequest;
+    private UpdateNickNameRequest updateNickNameRequest;
+    private UpdateIntroduceRequest updateIntroduceRequest;
     private UpdateRoleTypeRequest updateRoleTypeRequest;
+
 
     @BeforeEach
     void setUp() {
 
-        signUpRequest = SignUpRequest.builder()
-                .email("test@test.com")
+        member = Member.builder()
                 .name("테스트이름")
-                .phoneNumber("010-0000-0000")
-                .classNumber("2018314014")
-                .department("IT경영학과")
+                .email("test@test.com")
+                .picture("kkk.jpg")
+                .role(UserRoleType.GUEST)
+                .provider(AuthProvider.KAKAO)
                 .build();
 
         memberAddDetailRequest = MemberAddDetailRequest.builder()
-                .introduce("자기소개입니다아아아")
-                .nickName("내 별명은 뭘까")
-                .password("0000")
-                .profileImage("kkk.jpg")
+                .name("찐이름")
+                .phoneNumber("010-2222-3333")
+                .department("IT경영")
                 .build();
 
-        updateMemberRequest = UpdateNickNameRequest.builder()
-                .password("1111")
-                .department("산업경영")
+        updateNickNameRequest = UpdateNickNameRequest.builder()
                 .nickName("별명 바꾸기")
-                .profileImage("new.png")
-                .introduce("새로운 자기소개입니당")
-                .phoneNumber("010-2222-3333")
+                .build();
+
+        updateIntroduceRequest = UpdateIntroduceRequest.builder()
+                .introduce("자기소개입니당~")
                 .build();
 
         updateRoleTypeRequest = new UpdateRoleTypeRequest(UserRoleType.MEMBER);
-    }
-
-    @DisplayName("회원 등록")
-    @Test
-    public void registerMember() {
-        //when
-        Long resultId = memberService.registerMember(signUpRequest);
-        Member result = memberRepository.getById(resultId);
-        //then
-        assertThat(result.getEmail()).isEqualTo(signUpRequest.getEmail());
-        assertThat(result.getName()).isEqualTo(signUpRequest.getName());
-        assertThat(result.getPhoneNumber()).isEqualTo(signUpRequest.getPhoneNumber());
-        assertThat(result.getClassNumber()).isEqualTo(signUpRequest.getClassNumber());
-        assertThat(result.getDepartment()).isEqualTo(signUpRequest.getDepartment());
-
-    }
-
-    @DisplayName("이중회원가입")
-    @Test
-    public void checkExistMember(){
-        //given
-        memberService.registerMember(signUpRequest);
-        //when & then
-        assertThrows(AuthException.class,
-                () ->memberService.registerMember(signUpRequest));
-
-    }
-
-    @DisplayName("미승인자 가입신청")
-    @Test
-    public void checkAdmission() {
-        //given
-        Long sampleId = memberService.registerMember(signUpRequest);
-        Member sample = memberRepository.getById(sampleId);
-        //when & then
-        assertThrows(AuthException.class,
-                () ->memberService.checkAdmission(sample.getEmail()));
-        assertThrows(AuthException.class,
-                () -> memberService.addDetails(sampleId,memberAddDetailRequest));
     }
 
     @DisplayName("승인자 추가정보 설정")
     @Test
     public void addDetails() {
         //given
-        Long sampleId = memberService.registerMember(signUpRequest);
-        Member sample = memberRepository.getById(sampleId);
-        sample.setUserRoleType(UserRoleType.MEMBER);
-        memberRepository.save(sample);
+        Member sample = memberRepository.save(member);
+        SessionUser sessionUser = new SessionUser(sample);
         //when
-        memberService.addDetails(sampleId, memberAddDetailRequest);
-        Member result =  memberRepository.getById(sampleId);
+        Long resultId = memberService.addDetails(sessionUser, memberAddDetailRequest);
+        MemberDetail result = memberDetailRepository.getById(resultId);
         //then
-        assertThat(result.getEmail()).isEqualTo(signUpRequest.getEmail());
-        assertThat(result.getName()).isEqualTo(signUpRequest.getName());
-        assertThat(result.getPhoneNumber()).isEqualTo(signUpRequest.getPhoneNumber());
-        assertThat(result.getClassNumber()).isEqualTo(signUpRequest.getClassNumber());
-        assertThat(result.getDepartment()).isEqualTo(signUpRequest.getDepartment());
-
-        assertThat(true)
-                .isEqualTo(encryptionService.matches(memberAddDetailRequest.getPassword(), result.getPassword()));
-        assertThat(result.getNickName()).isEqualTo(memberAddDetailRequest.getNickName());
-        assertThat(result.getProfileImage()).isEqualTo(memberAddDetailRequest.getProfileImage());
-        assertThat(result.getIntroduce()).isEqualTo(memberAddDetailRequest.getIntroduce());
+        assertThat(result.getMember()).isEqualTo(sample);
+        assertThat(result.getName()).isEqualTo(memberAddDetailRequest.getName());
+        assertThat(result.getPhoneNumber()).isEqualTo(memberAddDetailRequest.getPhoneNumber());
+        assertThat(result.getDepartment()).isEqualTo(memberAddDetailRequest.getDepartment());
     }
 
-    @DisplayName("사용자 정보 변경")
+    @DisplayName("사용자 닉네임 변경")
     @Test
-    public void updateMember() {
+    public void updateNickName() {
         //given
-        Long sampleId = memberService.registerMember(signUpRequest);
-        Member sample = memberRepository.getById(sampleId);
-        sample.setUserRoleType(UserRoleType.MEMBER);
-        memberRepository.save(sample);
-
+        Member sample = memberRepository.save(member);
+        SessionUser sessionUser = new SessionUser(sample);
+        Long memberDetailId = memberService.addDetails(sessionUser, memberAddDetailRequest);
         //when
-        memberService.updateMember(sample.getEmail(), updateMemberRequest);
-        Member result = memberRepository.getById(sampleId);
-        //then
-        assertThat(true)
-                .isEqualTo(encryptionService.matches(updateMemberRequest.getPassword(), result.getPassword()));
-        assertThat(result.getNickName()).isEqualTo(updateMemberRequest.getNickName());
-        assertThat(result.getProfileImage()).isEqualTo(updateMemberRequest.getProfileImage());
-        assertThat(result.getIntroduce()).isEqualTo(updateMemberRequest.getIntroduce());
-        assertThat(result.getPhoneNumber()).isEqualTo(updateMemberRequest.getPhoneNumber());
-        assertThat(result.getDepartment()).isEqualTo(updateMemberRequest.getDepartment());
+        memberService.updateNickName(sessionUser, updateNickNameRequest);
+        MemberDetail result = memberDetailRepository.getById(memberDetailId);
 
+        //then
+        assertThat(result.getNickName())
+                .isEqualTo(updateNickNameRequest.getNickName());
 
     }
-    //find TODO
+
+    @DisplayName("사용자 자기소개 변경")
+    @Test
+    public void updateIntroduceName() {
+        //given
+        Member sample = memberRepository.save(member);
+        SessionUser sessionUser = new SessionUser(sample);
+        Long memberDetailId = memberService.addDetails(sessionUser, memberAddDetailRequest);
+        //when
+        memberService.updateIntroduce(sessionUser, updateIntroduceRequest);
+        MemberDetail result = memberDetailRepository.getById(memberDetailId);
+
+        //then
+        assertThat(result.getIntroduce())
+                .isEqualTo(updateIntroduceRequest.getIntroduce());
+
+    }
 
     @DisplayName("사용자 탈퇴")
     @Test
     public void resign() {
         //given
-        Long sampleId = memberService.registerMember(signUpRequest);
+        Member sample = memberRepository.save(member);
+        SessionUser sessionUser = new SessionUser(sample);
+        Long memberDetailId = memberService.addDetails(sessionUser, memberAddDetailRequest);
         //when
-        memberService.resign(sampleId);
-        Member result = memberRepository.getById(sampleId);
+        memberService.resign(sessionUser);
+        MemberDetail result = memberDetailRepository.getById(memberDetailId);
         //then
         assertThat(result.getResign()).isEqualTo(true);
     }
@@ -172,24 +135,26 @@ class MemberServiceTest {
     @Test
     public void delete() {
         //given
-        Long sampleId = memberService.registerMember(signUpRequest);
+        Member sample = memberRepository.save(member);
         //when
-        memberService.delete(sampleId);
+        memberService.delete(sample.getMemberId());
         //then
         assertThrows(EntityNotFoundException.class,
-                () -> memberService.findMember(sampleId));
+                () -> memberService.findByName(sample.getName()));
     }
 
     @DisplayName("사용자 권한 변경")
     @Test
     public void updateRole() {
         //given
-        Long sampleId = memberService.registerMember(signUpRequest);
+        Member sample = memberRepository.save(member);
+        SessionUser sessionUser = new SessionUser(sample);
+        Long memberDetailId = memberService.addDetails(sessionUser, memberAddDetailRequest);
         //when
-        memberService.updateRole(sampleId, updateRoleTypeRequest);
-        Member result = memberRepository.getById(sampleId);
+        memberService.updateRole(sample.getMemberId(), updateRoleTypeRequest);
+        Member result = memberRepository.getById(sample.getMemberId());
         //then
-        assertThat(result.getUserRoleType()).isEqualTo(updateRoleTypeRequest.getUserRoleType());
+        assertThat(result.getRole()).isEqualTo(updateRoleTypeRequest.getUserRoleType());
     }
 
 }
