@@ -1,5 +1,7 @@
 package com.cbums.api.admin;
 
+import com.cbums.config.auth.LoginUser;
+import com.cbums.config.auth.dto.SessionUser;
 import com.cbums.core.form.dto.FormRequest;
 import com.cbums.core.form.dto.FormResponse;
 import com.cbums.core.form.service.FormService;
@@ -25,10 +27,10 @@ public class AdminFormController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Void> createForm(Principal principal,
+    public ResponseEntity<Void> createForm(@LoginUser SessionUser user,
                                            @Valid @RequestBody FormRequest formRequest) {
 
-        Long result = formService.createForm(formRequest, principal.getName());
+        Long result = formService.createForm(user, formRequest);
         return ResponseEntity.created(URI.create("/admin/form/" + result)).build();
 
     }
@@ -39,11 +41,11 @@ public class AdminFormController {
     }
 
     @PatchMapping("/{seq}")
-    public ResponseEntity<Void> updateForm(Principal principal,
+    public ResponseEntity<Void> updateForm(@LoginUser SessionUser user,
                                            @PathVariable("seq") Long seq,
                                            @RequestBody FormRequest formRequest) {
 
-        formService.updateForm(seq, formRequest, principal.getName());
+        formService.updateForm(user, seq, formRequest);
 
         return ResponseEntity.created(URI.create("/admin/form/" + seq)).build();
     }

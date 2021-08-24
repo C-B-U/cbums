@@ -35,16 +35,19 @@ public class Form {
     @JoinColumn(name="member_id", nullable = false)
     private Member producer;
 
+    private String posterImage;
+
     @OneToMany(mappedBy = "form", cascade = CascadeType.REMOVE)
     private List<Question> questionList = new ArrayList<Question>();
 
     @Builder
-    public Form(String title, String introduce, LocalDateTime openDateTime, LocalDateTime closeDateTime, Integer registerNumber) {
+    public Form(String title, String introduce, LocalDateTime openDateTime, LocalDateTime closeDateTime, Integer registerNumber, String posterImage) {
         this.title = title;
         this.introduce = introduce;
         this.openDateTime = openDateTime;
         this.closeDateTime = closeDateTime;
         this.registerNumber = registerNumber;
+        this.posterImage = posterImage;
     }
 
 }

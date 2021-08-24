@@ -11,7 +11,7 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
     @Query("SELECT a FROM Answer a WHERE a.question.form.formId = :formId")
     List<Answer> findAnswersByFormId(@Param("formId")Long formId);
 
-    @Query("SELECT a FROM Answer a WHERE a.member.classNumber = :memberClassNumber AND a.question.form.formId = :formId")
-    List<Answer> findAnswersByMemberClassNumberAndFormId(@Param("memberClassNumber") String memberClassNumber,
+    @Query("SELECT a FROM Answer a WHERE a.member.memberId = :memberId AND a.question.form.formId = :formId")
+    List<Answer> findAnswersByMemberClassNumberAndFormId(@Param("memberId") Long memberId,
                                      @Param("formId")Long formId);
 }

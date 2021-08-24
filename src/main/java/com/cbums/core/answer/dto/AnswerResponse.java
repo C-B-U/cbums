@@ -12,10 +12,16 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnswerResponse {
+    private Long answerId;
+    private Long memberId;
+    private Long questionId;
     private String content;
 
     public static AnswerResponse of(Answer answer) {
         return new AnswerResponse(
+                answer.getAnswerId(),
+                answer.getMember().getMemberId(),
+                answer.getQuestion().getQuestionId(),
                 answer.getContent());
     }
 

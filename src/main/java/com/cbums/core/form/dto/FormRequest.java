@@ -27,5 +27,7 @@ public class FormRequest {
 
     private Integer registerNumber;
 
+    private String posterImage;
+
     private List<QuestionRequest> questionRequests;
 }

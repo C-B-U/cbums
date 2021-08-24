@@ -81,6 +81,7 @@ public class OAuthAttributes {
                 .email((String) kakaoAccount.get("email"))
                 .picture((String) kakaoProfile.get("profile_image_url"))
                 .attributes(attributes)
+                .provider(AuthProvider.KAKAO)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }

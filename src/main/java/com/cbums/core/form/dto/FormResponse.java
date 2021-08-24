@@ -20,8 +20,7 @@ public class FormResponse {
     private LocalDateTime openDateTime;
     private LocalDateTime closeDateTime;
     private Integer registerNumber;
-
-    private List<QuestionResponse> formQuestionList;
+    private String posterImage;
 
     public static FormResponse of(Form form) {
         return new FormResponse(form.getTitle(),
@@ -29,7 +28,7 @@ public class FormResponse {
                 form.getOpenDateTime(),
                 form.getCloseDateTime(),
                 form.getRegisterNumber(),
-                QuestionResponse.listOf(form.getQuestionList()));
+                form.getPosterImage());
     }
 
     public static List<FormResponse> listOf(List<Form> forms) {

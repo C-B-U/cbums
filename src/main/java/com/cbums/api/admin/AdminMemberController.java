@@ -1,8 +1,6 @@
 package com.cbums.api.admin;
 
-import com.cbums.core.member.domain.Member;
-import com.cbums.core.member.domain.UserRoleType;
-import com.cbums.core.member.dto.MemberResponse;
+import com.cbums.core.member.dto.MemberResponseForAdmin;
 import com.cbums.core.member.dto.UpdateRoleTypeRequest;
 import com.cbums.core.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +19,14 @@ public class AdminMemberController {
     private final MemberService memberService;
 
     @GetMapping("")
-    public ResponseEntity<List<MemberResponse>> getMemberList() {
-        return ResponseEntity.ok(memberService.findAll());
+    public ResponseEntity<List<MemberResponseForAdmin>> getMemberList() {
+        return ResponseEntity.ok(memberService.findAllForAdmin());
     }
 
     @GetMapping("/{seq}")
-    public ResponseEntity<MemberResponse> getMember(@PathVariable("seq") Long seq) {
+    public ResponseEntity<MemberResponseForAdmin> getMember(@PathVariable("seq") Long seq) {
 
-        return ResponseEntity.ok(memberService.findMember(seq));
+        return ResponseEntity.ok(memberService.findMemberForAdmin(seq));
 
     }
 

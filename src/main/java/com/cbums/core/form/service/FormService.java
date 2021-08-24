@@ -2,6 +2,7 @@ package com.cbums.core.form.service;
 
 import com.cbums.common.exceptions.EntityNotFoundException;
 import com.cbums.common.exceptions.ErrorCode;
+import com.cbums.config.auth.dto.SessionUser;
 import com.cbums.core.form.domain.Form;
 import com.cbums.core.form.domain.Question;
 import com.cbums.core.form.domain.QuestionRepository;
@@ -27,9 +28,9 @@ public class FormService {
     private final MemberService memberService;
 
     @Transactional
-    public Long createForm(FormRequest formRequest, String producer) {
+    public Long createForm(SessionUser user, FormRequest formRequest) {
         Form form = buildForm(formRequest);
-        Member creator = memberService.findByEmail(producer);
+        Member creator = memberService.findByName(user.getName());
         form.setProducer(creator);
         Form result = formRepository.save(form);
         buildQuestion(result, formRequest.getQuestionRequests());
@@ -43,6 +44,7 @@ public class FormService {
                 .introduce(formRequest.getIntroduce())
                 .openDateTime(formRequest.getOpenDateTime())
                 .closeDateTime(formRequest.getCloseDateTime())
+                .posterImage(formRequest.getPosterImage())
                 .registerNumber(formRequest.getRegisterNumber())
                 .build();
     }
@@ -53,6 +55,7 @@ public class FormService {
                 .introduce(formRequest.getIntroduce())
                 .openDateTime(formRequest.getOpenDateTime())
                 .closeDateTime(formRequest.getCloseDateTime())
+                .posterImage(formRequest.getPosterImage())
                 .registerNumber(formRequest.getRegisterNumber())
                 .build();
     }
@@ -68,14 +71,14 @@ public class FormService {
     }
 
     @Transactional(readOnly = true)
-    public List<QuestionResponse> findQuestionAll() {
-        List <Question> questions = questionRepository.findAll();
+    public List<QuestionResponse> findQuestionsByFormId(Long formId) {
+        List<Question> questions = findById(formId).getQuestionList();
         return Collections.unmodifiableList(QuestionResponse.listOf(questions));
     }
 
     @Transactional(readOnly = true)
     public List<FormResponse> findAll() {
-        List <Form> forms = formRepository.findAll();
+        List<Form> forms = formRepository.findAll();
         return Collections.unmodifiableList(FormResponse.listOf(forms));
     }
 
@@ -95,10 +98,12 @@ public class FormService {
         return formRepository.findById(formId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }
+
     @Transactional
-    public void updateForm(Long formId, FormRequest formRequest, String updater) {
-        Member member = memberService.findByEmail(updater);
+    public void updateForm(SessionUser user, Long formId, FormRequest formRequest) {
+        Member member = memberService.findByName(user.getName());
         Form form = buildForm(findById(formId), formRequest);
+        form.setProducer(member);
         formRepository.save(form);
     }
 
