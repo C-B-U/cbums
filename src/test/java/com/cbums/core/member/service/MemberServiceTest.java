@@ -32,7 +32,6 @@ class MemberServiceTest {
 
 
     private Member member;
-    private MemberDetail memberDetail;
     private MemberAddDetailRequest memberAddDetailRequest;
     private UpdateNickNameRequest updateNickNameRequest;
     private UpdateIntroduceRequest updateIntroduceRequest;

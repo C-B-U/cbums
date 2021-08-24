@@ -54,7 +54,7 @@ public class MemberService {
     }
     public void updateIntroduce(SessionUser user, UpdateIntroduceRequest updateIntroduceRequest) {
         MemberDetail memberDetail = findByMemberName(user.getName());
-        memberDetail.setNickName(updateIntroduceRequest.getIntroduce());
+        memberDetail.setIntroduce(updateIntroduceRequest.getIntroduce());
         memberDetailRepository.save(memberDetail);
     }
     private void checkDuplicatedNickName(String nickName) {
