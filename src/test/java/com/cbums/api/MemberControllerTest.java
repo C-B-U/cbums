@@ -1,9 +1,11 @@
 package com.cbums.api;
 
-import com.cbums.common.security.EncryptionService;
-import com.cbums.core.member.domain.Member;
+import com.cbums.config.auth.CustomOAuth2UserService;
 import com.cbums.core.member.domain.MemberRepository;
+import com.cbums.core.member.dto.MemberAddDetailRequest;
 import com.cbums.core.member.dto.MemberResponse;
+import com.cbums.core.member.dto.UpdateIntroduceRequest;
+import com.cbums.core.member.dto.UpdateNickNameRequest;
 import com.cbums.core.member.service.MemberService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,20 +26,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.*;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.patch;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureRestDocs
 @WebMvcTest(controllers = MemberController.class)
-//@ExtendWith(MockitoExtension.class)
 @ExtendWith(RestDocumentationExtension.class)
 class MemberControllerTest {
 
@@ -51,12 +49,15 @@ class MemberControllerTest {
     MemberRepository memberRepository;
 
     @MockBean
-    EncryptionService encryptionService;
+    CustomOAuth2UserService customOAuth2UserService;
 
-    private Member member;
+    private MemberAddDetailRequest addDetailRequest;
     private MemberResponse memberResponse;
-    private SignUpRequest signUpRequest;
+    private UpdateNickNameRequest updateNickNameRequest;
+    private UpdateIntroduceRequest updateIntroduceRequest;
+
     private ObjectMapper objectMapper;
+
     @BeforeEach
     public void setUp(WebApplicationContext webApplicationContext,
                       RestDocumentationContextProvider restDocumentationContextProvider) {
@@ -64,50 +65,63 @@ class MemberControllerTest {
                 .webAppContextSetup(webApplicationContext)
                 .addFilters(new CharacterEncodingFilter("UTF-8", true))
                 .apply(documentationConfiguration(restDocumentationContextProvider))
-              //  .apply(springSecurity())
-                .build();
-
-        member = new Member();
-       // member.setMemberId(1000l);
-        member.setEmail("test@test.com");
-        member.setPassword(encryptionService.encode("0000"));
-        member.setName("테스트");
-        member.setPhoneNumber("010-0000-0000");
-        member.setClassNumber("2018111111");
-        member.setDepartment("컴공소공아경산경");
-
-        signUpRequest = SignUpRequest.builder()
-                .email("test@test.com")
-                .name("테스트이름")
-                .phoneNumber("010-0000-0000")
-                .classNumber("2018314014")
-                .department("IT경영학과")
+                //  .apply(springSecurity())
                 .build();
 
         memberResponse = MemberResponse.builder()
-                .email("test@test.com")
-                .name("테테테")
-                .nickName("별명임")
+                .memberId(1000L)
+                .department("department")
+                .introduce("introduce")
+                .name("name")
+                .nickName("nickName")
+                .picture("picture")
                 .registerNumber(1)
-                .department("경경경")
-                .profileImage("dkdkdk.jpg")
-                .introduce("하이하이")
+                .build();
+
+        addDetailRequest = MemberAddDetailRequest.builder()
+                .name("이름")
+                .phoneNumber("010-2222-3333")
+                .department("it경영")
+                .build();
+
+        updateNickNameRequest = UpdateNickNameRequest.builder()
+                .nickName("닉네임")
+                .build();
+
+        updateIntroduceRequest = UpdateIntroduceRequest.builder()
+                .introduce("자기소개입니당")
                 .build();
 
         objectMapper = new ObjectMapper();
     }
 
-    @DisplayName("member 등록")
+    @DisplayName("상세정보 입력")
     @Test
-    public void registerMember() throws Exception {
-        given(memberService.registerMember(any())).willReturn(1L);
+    public void addDetail() throws Exception {
+        mockMvc.perform(post("/member/detail")
+                        .content(new ObjectMapper().writeValueAsBytes(addDetailRequest))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andDo(print());
+    }
 
-
-        mockMvc.perform(post("/member")
-                .content(objectMapper.writeValueAsString(signUpRequest))
+    @DisplayName("닉네임 변경")
+    @Test
+    public void updateNickName() throws Exception {
+        mockMvc.perform(patch("/member/nick-name/")
+                .content(objectMapper.writeValueAsString(updateNickNameRequest))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(header().string("Location", "/content/1"))
+                .andDo(print());
+    }
+
+    @DisplayName("자기소개 변경")
+    @Test
+    public void updateIntroduce() throws Exception {
+        mockMvc.perform(patch("/member/introduce/")
+                        .content(objectMapper.writeValueAsString(updateIntroduceRequest))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
                 .andDo(print());
     }
 
@@ -119,10 +133,10 @@ class MemberControllerTest {
 
         //when
         mockMvc.perform(RestDocumentationRequestBuilders.get("/member/{id}", 1000l)
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
-                //.andDo(MemberDocumentation.getMember());
+        //.andDo(MemberDocumentation.getMember());
     }
 
 

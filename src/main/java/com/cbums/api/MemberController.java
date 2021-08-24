@@ -29,8 +29,8 @@ public class MemberController {
 
     @PatchMapping("/nick-name/")
     public ResponseEntity<Void> updateNickName(@LoginUser SessionUser user,
-                                             @Valid @RequestBody UpdateNickNameRequest updateMemberRequest) {
-        memberService.updateNickName(user, updateMemberRequest);
+                                             @Valid @RequestBody UpdateNickNameRequest updateNickNameRequest) {
+        memberService.updateNickName(user, updateNickNameRequest);
         return ResponseEntity.created(URI.create("/member/my-page")).build();
     }
 

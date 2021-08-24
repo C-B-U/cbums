@@ -23,8 +23,8 @@ public class MemberService {
     private final MemberDetailRepository memberDetailRepository;
 
     @Transactional
-    public void addDetails(SessionUser user, MemberAddDetailRequest memberAddDetailRequest) {
-        memberDetailRepository.save(memberDetailBuilder(user, memberAddDetailRequest));
+    public Long addDetails(SessionUser user, MemberAddDetailRequest memberAddDetailRequest) {
+        return memberDetailRepository.save(memberDetailBuilder(user, memberAddDetailRequest)).getMemberDetailId();
     }
 
     private MemberDetail memberDetailBuilder(SessionUser user, MemberAddDetailRequest memberAddDetailRequest) {
@@ -54,7 +54,7 @@ public class MemberService {
     }
     public void updateIntroduce(SessionUser user, UpdateIntroduceRequest updateIntroduceRequest) {
         MemberDetail memberDetail = findByMemberName(user.getName());
-        memberDetail.setNickName(updateIntroduceRequest.getIntroduce());
+        memberDetail.setIntroduce(updateIntroduceRequest.getIntroduce());
         memberDetailRepository.save(memberDetail);
     }
     private void checkDuplicatedNickName(String nickName) {
