@@ -34,11 +34,7 @@ class FormServiceTest {
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
-    private MemberService memberService;
-    @Autowired
     private FormRepository formRepository;
-    @Autowired
-    private QuestionRepository questionRepository;
 
     @Autowired
     private FormService formService;
@@ -46,7 +42,6 @@ class FormServiceTest {
 
     private Member member;
     private FormRequest formRequest;
-    private QuestionRequest questionRequest;
     private List<QuestionRequest> questionRequests;
 
     @BeforeEach
@@ -59,8 +54,6 @@ class FormServiceTest {
                 .role(UserRoleType.GUEST)
                 .provider(AuthProvider.KAKAO)
                 .build();
-
-        questionRequest = new QuestionRequest("question");
 
         questionRequests = new ArrayList<>();
         for(int i=0;i<10;i++) {
