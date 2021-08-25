@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,20 +45,19 @@ public class FormService {
                 .introduce(formRequest.getIntroduce())
                 .openDateTime(formRequest.getOpenDateTime())
                 .closeDateTime(formRequest.getCloseDateTime())
-                .posterImage(formRequest.getPosterImage())
                 .registerNumber(formRequest.getRegisterNumber())
+                .posterImage(formRequest.getPosterImage())
                 .build();
     }
 
     private Form buildForm(Form form, FormRequest formRequest) {
-        return form.builder()
-                .title(formRequest.getTitle())
-                .introduce(formRequest.getIntroduce())
-                .openDateTime(formRequest.getOpenDateTime())
-                .closeDateTime(formRequest.getCloseDateTime())
-                .posterImage(formRequest.getPosterImage())
-                .registerNumber(formRequest.getRegisterNumber())
-                .build();
+        form.setFormId(form.getFormId());
+        form.setIntroduce(formRequest.getIntroduce());
+        form.setTitle(formRequest.getTitle());
+        form.setOpenDateTime(formRequest.getOpenDateTime());
+        form.setRegisterNumber(formRequest.getRegisterNumber());
+        form.setPosterImage(formRequest.getPosterImage());
+        return form;
     }
 
     private void buildQuestion(Form form, List<QuestionRequest> questionRequests) {
@@ -67,6 +67,7 @@ public class FormService {
                     .form(form)
                     .build();
             questionRepository.save(question);
+            form.getQuestionList().add(question);
         }
     }
 
@@ -104,7 +105,13 @@ public class FormService {
         Member member = memberService.findByName(user.getName());
         Form form = buildForm(findById(formId), formRequest);
         form.setProducer(member);
+        form.setQuestionList(new ArrayList<>());
+        deleteQuestionsByFormId(formId);
         formRepository.save(form);
+        buildQuestion(form, formRequest.getQuestionRequests());
+    }
+    private void deleteQuestionsByFormId(Long formId) {
+        questionRepository.deleteByFormId(formId);
     }
 
     @Transactional
