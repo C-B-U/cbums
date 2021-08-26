@@ -38,6 +38,8 @@ dependencies {
 	implementation 'javax.mail:mail:1.4.7'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:2.4.2'
 	implementation 'org.springframework.session:spring-session-jdbc:2.5.1'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.4'
+
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	compileOnly 'org.projectlombok:lombok:1.18.20'

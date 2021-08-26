@@ -1,6 +1,9 @@
 package com.cbums.core.form.domain;
 
 import com.cbums.core.member.domain.Member;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,9 +27,11 @@ public class Form {
     private String introduce;
 
     @Column(nullable = false)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime openDateTime;
 
     @Column(nullable = false)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime closeDateTime;
 
     private Integer registerNumber; // 비모집 지워서인 경우 null
