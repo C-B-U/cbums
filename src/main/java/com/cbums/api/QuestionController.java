@@ -1,6 +1,7 @@
 package com.cbums.api;
 
-import com.cbums.core.form.dto.FormResponse;
+
+import com.cbums.core.form.dto.QuestionResponse;
 import com.cbums.core.form.service.FormService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,25 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/form")
+@RequestMapping("/question")
 @RequiredArgsConstructor
-public class FormController {
+public class QuestionController {
 
     private final FormService formService;
 
-    @GetMapping("")
-    public ResponseEntity<List<FormResponse>> getFormList() {
-        return ResponseEntity.ok(formService.findAll());
-    }
-
     @GetMapping("/{formId}")
-    public ResponseEntity<FormResponse> getForm(@PathVariable("formId") Long formId) {
-
-        FormResponse formResponse = formService.findForm(formId);
-        return ResponseEntity.ok(formResponse);
+    public ResponseEntity<List<QuestionResponse>> getQuestionList(@PathVariable("formId") Long formId) {
+        return ResponseEntity.ok(formService.findQuestionsByFormId(formId));
     }
-
 }
-
