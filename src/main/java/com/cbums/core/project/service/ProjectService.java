@@ -59,5 +59,21 @@ public class ProjectService {
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
     }
 
+    @Transactional
+    public void closeRecruit(Long projectId) {
+        Project project = findById(projectId);
+        project.setRecruit(false);
+        projectRepository.save(project);
+    }
 
+    @Transactional
+    public void updateProject(Long projectId, ProjectRequest projectRequest) {
+        Project project = findById(projectId);
+        project.setName(projectRequest.getName());
+        project.setMaximumMember(projectRequest.getMaximumMember());
+        project.setProducerHidden(projectRequest.isProducerHidden());
+        project.setIcon(projectRequest.getIcon());
+
+        projectRepository.save(project);
+    }
 }
