@@ -90,7 +90,7 @@ class AdminMemberControllerTest {
 
         objectMapper = new ObjectMapper();
 
-        updateRoleTypeRequest = new UpdateRoleTypeRequest(UserRoleType.MEMBER.name());
+        updateRoleTypeRequest = new UpdateRoleTypeRequest("MEMBER");
     }
 
     @DisplayName("맴버 전체 조회")
@@ -127,7 +127,7 @@ class AdminMemberControllerTest {
     @DisplayName("맴버 권한 변경")
     @Test
     public void updateMEmberRoleType() throws Exception {
-        mockMvc.perform(patch("/admin/member/role/{id}",1l)
+        mockMvc.perform(patch("/admin/member/role/{id}",33l)
                         .content(objectMapper.writeValueAsString(updateRoleTypeRequest))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())

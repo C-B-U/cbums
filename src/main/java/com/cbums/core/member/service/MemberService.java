@@ -4,10 +4,7 @@ import com.cbums.common.exceptions.AuthException;
 import com.cbums.common.exceptions.EntityNotFoundException;
 import com.cbums.common.exceptions.ErrorCode;
 import com.cbums.config.auth.dto.SessionUser;
-import com.cbums.core.member.domain.Member;
-import com.cbums.core.member.domain.MemberDetail;
-import com.cbums.core.member.domain.MemberDetailRepository;
-import com.cbums.core.member.domain.MemberRepository;
+import com.cbums.core.member.domain.*;
 import com.cbums.core.member.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -119,7 +116,16 @@ public class MemberService {
     @Transactional
     public void updateRole(Long memberId, UpdateRoleTypeRequest updateRoleTypeRequest) {
         Member member = findById(memberId);
-        member.setRole(updateRoleTypeRequest.getUserRoleType());
+        UserRoleType role = UserRoleType.MEMBER;;
+        switch (updateRoleTypeRequest.getUserRoleType()) {
+            case "GUEST" :
+                role = UserRoleType.GUEST;
+                break;
+            case "ADMIN" :
+                role = UserRoleType.ADMIN;
+                break;
+        }
+        member.setRole(role);
         memberRepository.save(member);
     }
 
