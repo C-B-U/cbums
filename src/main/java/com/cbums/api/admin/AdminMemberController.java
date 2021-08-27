@@ -38,7 +38,7 @@ public class AdminMemberController {
 
     @PatchMapping("/role/{seq}")
     public ResponseEntity<Void> updateMemberRoleType(@PathVariable("seq") Long seq,
-                                                     @Valid @RequestParam UpdateRoleTypeRequest updateRoleTypeRequest) {
+                                                     @Valid @RequestBody UpdateRoleTypeRequest updateRoleTypeRequest) {
         memberService.updateRole(seq, updateRoleTypeRequest);
         return ResponseEntity.created(URI.create("/admin/member")).build();
     }

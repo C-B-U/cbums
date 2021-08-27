@@ -63,7 +63,7 @@ class MemberServiceTest {
                 .introduce("자기소개입니당~")
                 .build();
 
-        updateRoleTypeRequest = new UpdateRoleTypeRequest(UserRoleType.MEMBER);
+        updateRoleTypeRequest = new UpdateRoleTypeRequest("MEMBER");
     }
 
     @DisplayName("승인자 추가정보 설정")
@@ -153,7 +153,7 @@ class MemberServiceTest {
         memberService.updateRole(sample.getMemberId(), updateRoleTypeRequest);
         Member result = memberRepository.getById(sample.getMemberId());
         //then
-        assertThat(result.getRole()).isEqualTo(updateRoleTypeRequest.getUserRoleType());
+        assertThat(result.getRole()).isEqualTo(UserRoleType.MEMBER);
     }
 
 }
