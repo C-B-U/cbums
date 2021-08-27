@@ -1,5 +1,6 @@
 package com.cbums.model;
 
+import com.cbums.core.project.domain.Project;
 import lombok.*;
 
 import javax.persistence.*;

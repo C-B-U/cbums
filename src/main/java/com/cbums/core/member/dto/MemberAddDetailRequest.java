@@ -13,12 +13,12 @@ import javax.validation.constraints.NotBlank;
 public class MemberAddDetailRequest {
 
     @NotBlank
-    String name;
+    private String name;
 
     @NotBlank
-    String phoneNumber;
+    private String phoneNumber;
 
     @NotBlank
-    String department;
+    private String department;
 
 }
