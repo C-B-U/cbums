@@ -40,6 +40,10 @@ public class Project {
     @ColumnDefault("1")
     private Boolean recruit = true;
 
+    @Column
+    @ColumnDefault("0")
+    private Boolean finished = false;
+
     @Builder
     public Project(String name, LocalDateTime registerDatetime, Integer maximumMember, Member producer, Boolean producerHidden, String icon, Integer registerNumber) {
         this.name = name;

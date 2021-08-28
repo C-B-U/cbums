@@ -113,4 +113,14 @@ class ProjectControllerTest {
                 .andDo(print());
     }
 
+    @DisplayName("finish project")
+    @Test
+    public void finishProject() throws Exception {
+        mockMvc.perform(patch("/project/finish/{id}",1l)
+                        .content(objectMapper.writeValueAsString(projectRequest))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andDo(print());
+    }
+
 }

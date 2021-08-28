@@ -57,4 +57,11 @@ public class ProjectController {
         return ResponseEntity.created(URI.create("/project/" + projectId)).build();
     }
 
+    @PatchMapping("/finish/{seq}")
+    public ResponseEntity<Void> finishProject(@LoginUser SessionUser user,
+                                              @PathVariable("seq")Long projectId) {
+        projectService.finishProject(user, projectId);
+        return ResponseEntity.created(URI.create("/project/" + projectId)).build();
+    }
+
 }

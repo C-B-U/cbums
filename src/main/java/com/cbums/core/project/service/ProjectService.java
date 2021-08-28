@@ -86,12 +86,21 @@ public class ProjectService {
         project.setIcon(projectRequest.getIcon());
 
     }
+    public void finishProject(SessionUser user, Long projectId) {
+        Project project = findById(projectId);
+
+        confirmMember(user, project.getProducer());
+
+        project.setFinished(true);
+    }
 
     private void confirmMember(SessionUser user, Member member) {
         if (member.getName() != user.getName()) {
             throw new AccessException(ErrorCode.USER_BAD_ACCESS);
         }
     }
+
+
 
 
 }

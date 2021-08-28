@@ -136,12 +136,26 @@ class ProjectServiceTest {
         assertThat(result.getRecruit()).isEqualTo(false);
 
         //when
-       // projectService.updateRecruit(user,sampleId);
-      //  result = projectRepository.getById(sampleId);
+        projectService.updateRecruit(user,sampleId);
+        result = projectRepository.getById(sampleId);
 
         //then
-      //  assertThat(result.isRecruit()).isEqualTo(true);
-
+        assertThat(result.getRecruit()).isEqualTo(true);
     }
 
-}
+    @DisplayName("스터디 종료")
+    @Test
+    public void finishProject() {
+        //given
+        SessionUser user = new SessionUser(memberRepository.save(member));
+        Long sampleId = projectService.createProject(user, projectRequest);
+
+        //when
+        projectService.finishProject(user, sampleId);
+        Project result = projectRepository.getById(sampleId);
+
+        //then
+        assertThat(result.getFinished()).isEqualTo(true);
+    }
+
+    }
