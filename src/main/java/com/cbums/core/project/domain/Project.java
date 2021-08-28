@@ -30,7 +30,7 @@ public class Project {
     private Member producer;
 
     @Column(nullable = false)
-    private boolean isProducerHidden;
+    private boolean producerHidden;
 
     private String icon;
 
@@ -38,6 +38,6 @@ public class Project {
     private Integer registerNumber;
 
     @Column(nullable = false)
-    private boolean isRecruit = true;
+    private boolean recruit = true;
 
 }

@@ -18,7 +18,7 @@ public class ProjectRequest {
     private Integer maximumMember;
 
     @NotNull
-    private boolean isProducerHidden;
+    private boolean producerHidden;
 
     private String icon;
 

@@ -18,7 +18,7 @@ public class ProjectResponse {
     private LocalDateTime registerDatetime;
     private Integer maximumMember;
     private String producer;
-    private boolean isProducerHidden;
+    private boolean producerHidden;
     private String icon;
     private Integer registerNumber;
     private boolean isRecruit;
