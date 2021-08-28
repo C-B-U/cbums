@@ -2,6 +2,9 @@ package com.cbums.api;
 
 import com.cbums.config.auth.LoginUser;
 import com.cbums.config.auth.dto.SessionUser;
+import com.cbums.core.project.domain.ProjectRoleType;
+import com.cbums.core.project.domain.ProjectSignUpType;
+import com.cbums.core.project.dto.ApplyProjectMemberResponse;
 import com.cbums.core.project.dto.ProjectRequest;
 import com.cbums.core.project.dto.ProjectResponse;
 import com.cbums.core.project.service.ProjectService;
@@ -52,16 +55,58 @@ public class ProjectController {
 
     @PatchMapping("/recruit/{seq}")
     public ResponseEntity<Void> updateRecruit(@LoginUser SessionUser user,
-                                              @PathVariable("seq")Long projectId) {
+                                              @PathVariable("seq") Long projectId) {
         projectService.updateRecruit(user, projectId);
         return ResponseEntity.created(URI.create("/project/" + projectId)).build();
     }
 
     @PatchMapping("/finish/{seq}")
     public ResponseEntity<Void> finishProject(@LoginUser SessionUser user,
-                                              @PathVariable("seq")Long projectId) {
+                                              @PathVariable("seq") Long projectId) {
         projectService.finishProject(user, projectId);
         return ResponseEntity.created(URI.create("/project/" + projectId)).build();
     }
 
+    @PostMapping("/{seq}/apply")
+    public ResponseEntity<Void> applyProject(@LoginUser SessionUser user,
+                                             @PathVariable("seq") Long projectId) {
+
+        projectService.applyProject(user, projectId);
+        return ResponseEntity.created(URI.create("/project/" + projectId)).build();
+    }
+
+    @DeleteMapping("/{seq}/apply")
+    public ResponseEntity<Void> cancelApply(@LoginUser SessionUser user,
+                                            @PathVariable("seq") Long projectId) {
+
+        projectService.cancelApply(user, projectId);
+        return ResponseEntity.created(URI.create("/project/" + projectId)).build();
+    }
+
+    @GetMapping("/{seq}/apply")
+    public ResponseEntity<List<ApplyProjectMemberResponse>> findApplyMember(@LoginUser SessionUser user,
+                                                                            @PathVariable("seq") Long projectId) {
+        List<ApplyProjectMemberResponse> result =
+                projectService.findApplyMember(user, projectId);
+
+        return ResponseEntity.ok(result);
+    }
+
+    @PatchMapping("/apply/{seq}/sign-up")
+    public ResponseEntity<Void> updateSignUpType(@LoginUser SessionUser user,
+                                                 @PathVariable("seq") Long projectMemberId,
+                                                 @RequestBody ProjectSignUpType SignUpType) {
+
+        projectService.updateSignUpType(user,projectMemberId,SignUpType);
+        return ResponseEntity.created(URI.create("/project/")).build();
+    }
+
+    @PatchMapping("/apply/{seq}/role")
+    public ResponseEntity<Void> updateRoleType(@LoginUser SessionUser user,
+                                                 @PathVariable("seq") Long projectMemberId,
+                                                 @RequestBody ProjectRoleType RoleType) {
+
+        projectService.updateRoleType(user,projectMemberId,RoleType);
+        return ResponseEntity.created(URI.create("/project/")).build();
+    }
 }
