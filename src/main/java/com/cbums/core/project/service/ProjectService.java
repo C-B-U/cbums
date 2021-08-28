@@ -1,5 +1,6 @@
 package com.cbums.core.project.service;
 
+import com.cbums.common.exceptions.AccessException;
 import com.cbums.common.exceptions.EntityNotFoundException;
 import com.cbums.common.exceptions.ErrorCode;
 import com.cbums.config.auth.dto.SessionUser;
@@ -37,7 +38,7 @@ public class ProjectService {
 
     private Project buildProject(ProjectRequest projectRequest) {
         return new Project().builder()
-                .isProducerHidden(projectRequest.isProducerHidden())
+                .producerHidden(projectRequest.isProducerHidden())
                 .icon(projectRequest.getIcon())
                 .maximumMember(projectRequest.getMaximumMember())
                 .name(projectRequest.getName())
@@ -50,7 +51,7 @@ public class ProjectService {
     }
 
     @Transactional(readOnly = true)
-    public ProjectResponse findProjectById(Long projectId) {
+    public ProjectResponse findProject(Long projectId) {
         return ProjectResponse.of(findById(projectId));
     }
 
@@ -60,15 +61,25 @@ public class ProjectService {
     }
 
     @Transactional
-    public void closeRecruit(Long projectId) {
+    public void updateRecruit(SessionUser user, Long projectId) {
         Project project = findById(projectId);
-        project.setRecruit(false);
+
+        confirmMember(user, project.getProducer());
+
+        if(project.isRecruit()) {
+            project.setRecruit(false);
+        }else {
+            project.setRecruit(true);
+        }
         projectRepository.save(project);
     }
 
     @Transactional
-    public void updateProject(Long projectId, ProjectRequest projectRequest) {
+    public void updateProject(SessionUser user, Long projectId, ProjectRequest projectRequest) {
         Project project = findById(projectId);
+
+        confirmMember(user, project.getProducer());
+
         project.setName(projectRequest.getName());
         project.setMaximumMember(projectRequest.getMaximumMember());
         project.setProducerHidden(projectRequest.isProducerHidden());
@@ -76,4 +87,12 @@ public class ProjectService {
 
         projectRepository.save(project);
     }
+
+    private void confirmMember(SessionUser user, Member member) {
+        if (member.getName() != user.getName()) {
+            throw new AccessException(ErrorCode.USER_BAD_ACCESS);
+        }
+    }
+
+
 }

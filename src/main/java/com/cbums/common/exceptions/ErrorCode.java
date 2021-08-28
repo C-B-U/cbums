@@ -10,6 +10,7 @@ public enum ErrorCode {
     NOT_MATCH_AUTHCODE(400, "AU_007", "인증코드가 일치하지 않습니다"),
 
     USER_UNAUTHORIZED(400,"AC_001","접근 권한이 없습니다"),
+    USER_BAD_ACCESS(400, "AC_002", "접근 허용된 사용자가 아닙니다"),
 
     NOT_FOUNDED_ID(500, "ER_001", "id에 해당하는 값을 찾지 못했습니다.");
 
