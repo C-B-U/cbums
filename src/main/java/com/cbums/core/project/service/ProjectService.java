@@ -30,6 +30,7 @@ public class ProjectService {
         project.setRegisterDatetime(LocalDateTime.now());
         Member producer = memberService.findByName(user.getName());
         project.setProducer(producer);
+        project.setRecruit(true);
         //현재 기간이 몇 기수인지 자동으로 입력 TODO
         project.setRegisterNumber(10);
 
@@ -66,12 +67,12 @@ public class ProjectService {
 
         confirmMember(user, project.getProducer());
 
-        if(project.isRecruit()) {
+        if(project.getRecruit()) {
             project.setRecruit(false);
         }else {
             project.setRecruit(true);
         }
-        projectRepository.save(project);
+
     }
 
     @Transactional
@@ -85,7 +86,6 @@ public class ProjectService {
         project.setProducerHidden(projectRequest.isProducerHidden());
         project.setIcon(projectRequest.getIcon());
 
-        projectRepository.save(project);
     }
 
     private void confirmMember(SessionUser user, Member member) {

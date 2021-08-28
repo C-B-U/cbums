@@ -2,6 +2,7 @@ package com.cbums.core.project.domain;
 
 import com.cbums.core.member.domain.Member;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,8 +10,8 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Project {
     @Id
@@ -30,14 +31,15 @@ public class Project {
     private Member producer;
 
     @Column(nullable = false)
-    private boolean producerHidden;
+    private Boolean producerHidden;
 
     private String icon;
 
     @Column(nullable = false)
     private Integer registerNumber;
 
-    @Column(nullable = false)
-    private boolean recruit = true;
+    @Column
+    @ColumnDefault("1")
+    private Boolean recruit;
 
 }
