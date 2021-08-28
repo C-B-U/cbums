@@ -25,11 +25,7 @@ public class ProjectMember extends BaseTimeEntity {
     private Member member;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private ProjectRoleType projectRoleType = ProjectRoleType.MEMBER;
-
-    @Column(nullable = false)
-    private LocalDateTime signUpDatetime;
+    private ProjectRoleType projectRoleType;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
