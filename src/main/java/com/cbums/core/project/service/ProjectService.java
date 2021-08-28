@@ -1,13 +1,15 @@
 package com.cbums.core.project.service;
 
 import com.cbums.common.exceptions.AccessException;
+import com.cbums.common.exceptions.ActionException;
 import com.cbums.common.exceptions.EntityNotFoundException;
 import com.cbums.common.exceptions.ErrorCode;
 import com.cbums.config.auth.dto.SessionUser;
 import com.cbums.core.member.domain.Member;
+import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.member.service.MemberService;
-import com.cbums.core.project.domain.Project;
-import com.cbums.core.project.domain.ProjectRepository;
+import com.cbums.core.project.domain.*;
+import com.cbums.core.project.dto.ApplyProjectMemberResponse;
 import com.cbums.core.project.dto.ProjectRequest;
 import com.cbums.core.project.dto.ProjectResponse;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProjectService {
     private final ProjectRepository projectRepository;
+    private final ProjectMemberRepository projectMemberRepository;
     private final MemberService memberService;
 
     @Transactional
@@ -95,11 +98,67 @@ public class ProjectService {
     }
 
     private void confirmMember(SessionUser user, Member member) {
-        if (member.getName() != user.getName()) {
-            throw new AccessException(ErrorCode.USER_BAD_ACCESS);
+        if (member.getName() != user.getName() &&
+                member.getRole() != UserRoleType.ADMIN) {
+                throw new AccessException(ErrorCode.USER_BAD_ACCESS);
         }
     }
 
+    //projectMember
+
+    @Transactional
+    public Long applyProject(SessionUser user, Long projectId) {
+        Member member = memberService.findByName(user.getName());
+        Project project = findById(projectId);
+        if(projectMemberRepository.existsByMemberAndProject(member, project)) {
+            throw new ActionException(ErrorCode.ALREADY_DONE);
+        }
+
+        ProjectMember projectMember = ProjectMember.builder()
+                .member(member)
+                .project(project)
+                .build();
+
+        return projectMemberRepository.save(projectMember).getProjectMemberId();
+    }
+
+    @Transactional
+    public void cancelApply(SessionUser user, Long projectId) {
+        Member member = memberService.findByName(user.getName());
+        Project project = findById(projectId);
+
+        projectMemberRepository.deleteByMemberAndProject(member, project);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ApplyProjectMemberResponse> findApplyMember(SessionUser user, Long projectId) {
+        Project project = findById(projectId);
+        confirmMember(user, project.getProducer());
+        List<ProjectMember> result = projectMemberRepository.findAllByProject(project);
+
+        return ApplyProjectMemberResponse.listof(result);
+    }
+
+    @Transactional
+    public void updateSignUpType(SessionUser user, Long projectMemberId, ProjectSignUpType SignUpType) {
+        ProjectMember projectMember = findProjectMemberById(projectMemberId);
+        confirmMember(user, projectMember.getProject().getProducer());
+
+        projectMember.setSignUpType(SignUpType);
+    }
+
+    @Transactional
+    public void updateRoleType(SessionUser user, Long projectMemberId, ProjectRoleType RoleType) {
+        ProjectMember projectMember = findProjectMemberById(projectMemberId);
+        confirmMember(user, projectMember.getProject().getProducer());
+
+        projectMember.setProjectRoleType(RoleType);
+    }
+
+    private ProjectMember findProjectMemberById(Long projectMemberId){
+        return projectMemberRepository.findById(projectMemberId)
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
+    }
 
 
 
