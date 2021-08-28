@@ -80,6 +80,8 @@ class MemberServiceTest {
         assertThat(result.getName()).isEqualTo(memberAddDetailRequest.getName());
         assertThat(result.getPhoneNumber()).isEqualTo(memberAddDetailRequest.getPhoneNumber());
         assertThat(result.getDepartment()).isEqualTo(memberAddDetailRequest.getDepartment());
+        assertThat(result.getResign()).isEqualTo(false);
+
     }
 
     @DisplayName("사용자 닉네임 변경")

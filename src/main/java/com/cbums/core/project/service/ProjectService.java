@@ -66,12 +66,12 @@ public class ProjectService {
 
         confirmMember(user, project.getProducer());
 
-        if(project.isRecruit()) {
+        if(project.getRecruit()) {
             project.setRecruit(false);
         }else {
             project.setRecruit(true);
         }
-        projectRepository.save(project);
+
     }
 
     @Transactional
@@ -85,7 +85,6 @@ public class ProjectService {
         project.setProducerHidden(projectRequest.isProducerHidden());
         project.setIcon(projectRequest.getIcon());
 
-        projectRepository.save(project);
     }
 
     private void confirmMember(SessionUser user, Member member) {

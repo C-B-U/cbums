@@ -30,10 +30,10 @@ public class ProjectResponse {
                 project.getRegisterDatetime(),
                 project.getMaximumMember(),
                 project.getProducer().getName(),
-                project.isProducerHidden(),
+                project.getProducerHidden(),
                 project.getIcon(),
                 project.getRegisterNumber(),
-                project.isRecruit());
+                project.getRecruit());
     }
 
     public static List<ProjectResponse> listOf(List<Project> projects) {

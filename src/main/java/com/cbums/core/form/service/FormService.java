@@ -107,7 +107,7 @@ public class FormService {
         form.setProducer(member);
         form.setQuestionList(new ArrayList<>());
         deleteQuestionsByFormId(formId);
-        formRepository.save(form);
+
         buildQuestion(form, formRequest.getQuestionRequests());
     }
     private void deleteQuestionsByFormId(Long formId) {
