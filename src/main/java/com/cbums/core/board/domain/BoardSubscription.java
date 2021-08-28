@@ -1,4 +1,4 @@
-package com.cbums.core.project.domain;
+package com.cbums.core.board.domain;
 
 import com.cbums.core.member.domain.Member;
 import lombok.*;
@@ -12,28 +12,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProjectMember {
+public class BoardSubscription {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long projectMemberId;
+    private Long boardSubscriptionId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="project_id", nullable = false)
-    private Project project;
+    @JoinColumn(name="board_id", nullable = false)
+    private Board board;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id", nullable = false)
     private Member member;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ProjectRoleType projectRoleType;
-
-    @Column(nullable = false)
-    private LocalDateTime signUpDatetime;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private ProjectSignUpType signUpType;
-
+    private LocalDateTime subscriptionDatetime;
 }

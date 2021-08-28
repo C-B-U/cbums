@@ -1,7 +1,5 @@
 package com.cbums.core.project.domain;
 
-import com.cbums.type.AttendType;
-import com.cbums.type.HomeworkSubmitType;
 import lombok.*;
 
 import javax.persistence.*;
