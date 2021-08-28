@@ -1,5 +1,6 @@
 package com.cbums.core.project.domain;
 
+import com.cbums.core.common.BaseTimeEntity;
 import com.cbums.core.member.domain.Member;
 import lombok.*;
 
@@ -9,10 +10,8 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class ProjectMember {
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+public class ProjectMember extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectMemberId;
@@ -27,13 +26,18 @@ public class ProjectMember {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ProjectRoleType projectRoleType;
+    private ProjectRoleType projectRoleType = ProjectRoleType.MEMBER;
 
     @Column(nullable = false)
     private LocalDateTime signUpDatetime;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ProjectSignUpType signUpType;
+    private ProjectSignUpType signUpType = ProjectSignUpType.UNDEFINED;
 
+    @Builder
+    public ProjectMember(Project project, Member member) {
+        this.project = project;
+        this.member = member;
+    }
 }
