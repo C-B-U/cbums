@@ -39,7 +39,6 @@ public class MemberService {
     public void resign(SessionUser user) {
         MemberDetail memberDetail = findByMemberName(user.getName());
         memberDetail.setResign(true);
-        memberDetailRepository.save(memberDetail);
     }
 
 
@@ -47,12 +46,10 @@ public class MemberService {
         checkDuplicatedNickName(updateNickNameRequest.getNickName());
         MemberDetail memberDetail = findByMemberName(user.getName());
         memberDetail.setNickName(updateNickNameRequest.getNickName());
-        memberDetailRepository.save(memberDetail);
     }
     public void updateIntroduce(SessionUser user, UpdateIntroduceRequest updateIntroduceRequest) {
         MemberDetail memberDetail = findByMemberName(user.getName());
         memberDetail.setIntroduce(updateIntroduceRequest.getIntroduce());
-        memberDetailRepository.save(memberDetail);
     }
     private void checkDuplicatedNickName(String nickName) {
         if (memberDetailRepository.existsByNickName(nickName)) {
@@ -126,7 +123,6 @@ public class MemberService {
                 break;
         }
         member.setRole(role);
-        memberRepository.save(member);
     }
 
 
