@@ -10,9 +10,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +38,16 @@ public class Project {
 
     @Column
     @ColumnDefault("1")
-    private Boolean recruit;
+    private Boolean recruit = true;
 
+    @Builder
+    public Project(String name, LocalDateTime registerDatetime, Integer maximumMember, Member producer, Boolean producerHidden, String icon, Integer registerNumber) {
+        this.name = name;
+        this.registerDatetime = registerDatetime;
+        this.maximumMember = maximumMember;
+        this.producer = producer;
+        this.producerHidden = producerHidden;
+        this.icon = icon;
+        this.registerNumber = registerNumber;
+    }
 }

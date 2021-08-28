@@ -30,7 +30,6 @@ public class ProjectService {
         project.setRegisterDatetime(LocalDateTime.now());
         Member producer = memberService.findByName(user.getName());
         project.setProducer(producer);
-        project.setRecruit(true);
         //현재 기간이 몇 기수인지 자동으로 입력 TODO
         project.setRegisterNumber(10);
 

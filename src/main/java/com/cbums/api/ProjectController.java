@@ -41,7 +41,7 @@ public class ProjectController {
         return ResponseEntity.created(URI.create("/project/" + result)).build();
     }
 
-    @PatchMapping("{seq}")
+    @PatchMapping("/{seq}")
     public ResponseEntity<Void> updateProject(@LoginUser SessionUser user,
                                               @PathVariable("seq") Long projectId,
                                               @Valid @RequestBody ProjectRequest projectRequest) {
