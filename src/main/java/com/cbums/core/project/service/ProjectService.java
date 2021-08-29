@@ -9,9 +9,7 @@ import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.member.service.MemberService;
 import com.cbums.core.project.domain.*;
-import com.cbums.core.project.dto.ApplyProjectMemberResponse;
-import com.cbums.core.project.dto.ProjectRequest;
-import com.cbums.core.project.dto.ProjectResponse;
+import com.cbums.core.project.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -140,19 +138,39 @@ public class ProjectService {
     }
 
     @Transactional
-    public void updateSignUpType(SessionUser user, Long projectMemberId, ProjectSignUpType SignUpType) {
+    public void updateSignUpType(SessionUser user, Long projectMemberId, ProjectSignUpTypeRequest signUpTypeRequest) {
         ProjectMember projectMember = findProjectMemberById(projectMemberId);
         confirmMember(user, projectMember.getProject().getProducer());
-
-        projectMember.setSignUpType(SignUpType);
+        ProjectSignUpType signUpType = ProjectSignUpType.UNDEFINED;
+        switch (signUpTypeRequest.getProjectSignUpType()) {
+            case "ALLOW":
+                signUpType = ProjectSignUpType.ALLOW;
+                break;
+            case "REFUSE":
+                signUpType = ProjectSignUpType.REFUSE;
+                break;
+        }
+        projectMember.setSignUpType(signUpType);
     }
 
     @Transactional
-    public void updateRoleType(SessionUser user, Long projectMemberId, ProjectRoleType RoleType) {
+    public void updateRoleType(SessionUser user, Long projectMemberId, ProjectRoleTypeRequest roleTypeRequest) {
         ProjectMember projectMember = findProjectMemberById(projectMemberId);
         confirmMember(user, projectMember.getProject().getProducer());
 
-        projectMember.setProjectRoleType(RoleType);
+        ProjectRoleType roleType = ProjectRoleType.MEMBER;
+        switch (roleTypeRequest.getProjectRoleType()) {
+            case "LEADER":
+                roleType = ProjectRoleType.LEADER;
+                break;
+            case "MENTOR":
+                roleType = ProjectRoleType.MENTOR;
+                break;
+            case "CLERK":
+                roleType = ProjectRoleType.CLERK;
+                break;
+        }
+        projectMember.setProjectRoleType(roleType);
     }
 
     private ProjectMember findProjectMemberById(Long projectMemberId){

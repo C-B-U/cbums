@@ -1,11 +1,7 @@
 package com.cbums.core.project.dto;
 
-import com.cbums.core.member.domain.MemberDetail;
-import com.cbums.core.member.dto.MemberResponse;
-import com.cbums.core.member.service.MemberService;
 import com.cbums.core.project.domain.ProjectMember;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +11,6 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class ApplyProjectMemberResponse {
-
-    @Autowired
-    private static MemberService memberService;
 
     private Long projectMemberId;
     private Long memberId;
@@ -29,15 +22,13 @@ public class ApplyProjectMemberResponse {
 
     public static ApplyProjectMemberResponse of(ProjectMember projectMember) {
 
-        MemberResponse md = memberService.findMember(projectMember.getMember().getMemberId());
-
         return new ApplyProjectMemberResponse(
                 projectMember.getProjectMemberId(),
                 projectMember.getMember().getMemberId(),
                 projectMember.getMember().getPicture(),
-                md.getName(),
-                md.getNickName(),
-                md.getRegisterNumber()
+                projectMember.getMember().getMemberDetail().getName(),
+                projectMember.getMember().getMemberDetail().getNickName(),
+                projectMember.getMember().getMemberDetail().getRegisterNumber()
         );
     }
 

@@ -42,6 +42,14 @@ public class Member extends BaseTimeEntity {
         this.provider = provider;
     }
 
+    @OneToOne
+    @JoinColumn(name = "member_detail_id")
+    private MemberDetail memberDetail;
+
+    public void setMemberDetail(MemberDetail memberDetail) {
+        this.memberDetail = memberDetail;
+    }
+
     public Member update(String name, String picture) {
         this.name = name;
         this.picture = picture;
