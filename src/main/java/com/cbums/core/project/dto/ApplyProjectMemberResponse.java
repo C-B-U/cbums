@@ -1,11 +1,7 @@
 package com.cbums.core.project.dto;
 
-import com.cbums.core.member.domain.MemberDetail;
-import com.cbums.core.member.dto.MemberResponse;
-import com.cbums.core.member.service.MemberService;
 import com.cbums.core.project.domain.ProjectMember;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.stream.Collectors;

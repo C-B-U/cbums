@@ -4,9 +4,7 @@ import com.cbums.config.auth.LoginUser;
 import com.cbums.config.auth.dto.SessionUser;
 import com.cbums.core.project.domain.ProjectRoleType;
 import com.cbums.core.project.domain.ProjectSignUpType;
-import com.cbums.core.project.dto.ApplyProjectMemberResponse;
-import com.cbums.core.project.dto.ProjectRequest;
-import com.cbums.core.project.dto.ProjectResponse;
+import com.cbums.core.project.dto.*;
 import com.cbums.core.project.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -95,18 +93,18 @@ public class ProjectController {
     @PatchMapping("/apply/{seq}/sign-up")
     public ResponseEntity<Void> updateSignUpType(@LoginUser SessionUser user,
                                                  @PathVariable("seq") Long projectMemberId,
-                                                 @RequestBody ProjectSignUpType SignUpType) {
+                                                 @RequestBody ProjectSignUpTypeRequest signUpType) {
 
-        projectService.updateSignUpType(user,projectMemberId,SignUpType);
+        projectService.updateSignUpType(user,projectMemberId,signUpType);
         return ResponseEntity.created(URI.create("/project/")).build();
     }
 
     @PatchMapping("/apply/{seq}/role")
     public ResponseEntity<Void> updateRoleType(@LoginUser SessionUser user,
                                                  @PathVariable("seq") Long projectMemberId,
-                                                 @RequestBody ProjectRoleType RoleType) {
+                                                 @RequestBody ProjectRoleTypeRequest roleType) {
 
-        projectService.updateRoleType(user,projectMemberId,RoleType);
+        projectService.updateRoleType(user,projectMemberId,roleType);
         return ResponseEntity.created(URI.create("/project/")).build();
     }
 }
