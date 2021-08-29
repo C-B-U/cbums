@@ -16,9 +16,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class ApplyProjectMemberResponse {
 
-    @Autowired
-    private static MemberService memberService;
-
     private Long projectMemberId;
     private Long memberId;
     private String picture;
@@ -29,15 +26,13 @@ public class ApplyProjectMemberResponse {
 
     public static ApplyProjectMemberResponse of(ProjectMember projectMember) {
 
-        MemberResponse md = memberService.findMember(projectMember.getMember().getMemberId());
-
         return new ApplyProjectMemberResponse(
                 projectMember.getProjectMemberId(),
                 projectMember.getMember().getMemberId(),
                 projectMember.getMember().getPicture(),
-                md.getName(),
-                md.getNickName(),
-                md.getRegisterNumber()
+                projectMember.getMember().getMemberDetail().getName(),
+                projectMember.getMember().getMemberDetail().getNickName(),
+                projectMember.getMember().getMemberDetail().getRegisterNumber()
         );
     }
 

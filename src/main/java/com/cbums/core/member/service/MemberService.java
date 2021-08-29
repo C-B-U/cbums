@@ -21,7 +21,10 @@ public class MemberService {
 
     @Transactional
     public Long addDetails(SessionUser user, MemberAddDetailRequest memberAddDetailRequest) {
-        return memberDetailRepository.save(memberDetailBuilder(user, memberAddDetailRequest)).getMemberDetailId();
+        MemberDetail result = memberDetailBuilder(user, memberAddDetailRequest);
+        memberDetailRepository.save(result);
+        findByName(user.getName()).setMemberDetail(result);
+        return result.getMemberDetailId();
     }
 
     private MemberDetail memberDetailBuilder(SessionUser user, MemberAddDetailRequest memberAddDetailRequest) {
