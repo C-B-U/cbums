@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Default, Mobile } from "../MediaQuery";
 import { FaBars } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 class NavList extends PureComponent {
   constructor(props) {
@@ -20,36 +21,36 @@ class NavList extends PureComponent {
         <Default>
           <ul className="nav-wrap">
             <li>
-              <a href="#">home</a>
+              <Link to="/">home</Link>
             </li>
             <li>
-              <a href="#">공지사항</a>
+              <Link to="/">공지사항</Link>
             </li>
             <li>
-              <a href="#">스터디</a>
+              <Link to="/">스터디</Link>
             </li>
             <li>
-              <a href="#">컨텐츠</a>
+              <Link to="/">컨텐츠</Link>
             </li>
             <li>
-              <a href="#">회원 관리</a>
+              <Link to="/">회원 관리</Link>
             </li>
           </ul>
         </Default>
         <Mobile>
-          <div id="mysidenav" className="nav-wrap-sidenav mobile">
+          <div id="mysidenav" className="nav-wrap-sidenav">
             <a href="#" className="closebtn" onClick={this.closeNav}>
               x
             </a>
-            <a href="#">카테고리1</a>
-            <a href="#">카테고리2</a>
-            <a href="#">카테고리3</a>
-            <a href="#">카테고리4</a> {/* a태그 변경 필요 */}
-            <a href="#">카테고리5</a>
+            <Link to="/">카테고리1</Link>
+            <Link to="/">카테고리2</Link>
+            <Link to="/">카테고리3</Link>
+            <Link to="/">카테고리4</Link> {/* a태그 변경 필요 */}
+            <Link to="/">카테고리5</Link>
           </div>
 
-          <div class="new-wrap mobile">
-            <div class="nav-wrap-mobile mobile" onClick={this.openNav}>
+          <div class="new-wrap">
+            <div class="nav-wrap-mobile" onClick={this.openNav}>
               <FaBars />
             </div>
           </div>
