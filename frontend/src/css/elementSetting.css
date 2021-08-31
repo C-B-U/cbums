@@ -1,0 +1,22 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.mobile {
+  display: none;
+}
+
+@media all and (max-width: 767px) {
+  .mobile {
+    display: block;
+  }
+  .nav-wrap {
+    display: none;
+  }
+}
