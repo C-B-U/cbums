@@ -1,9 +1,20 @@
 import React, { PureComponent } from "react";
-
-// import "../../css/default/default.css";
+import "../../css/default/default.css";
+import Banner from "./Banner";
+import ContainerTitle from "./ContainerTitle";
+import Study from "./Study";
 class DefaultPage extends PureComponent {
   render() {
-    return <React.Fragment></React.Fragment>;
+    return (
+      <React.Fragment>
+        <main>
+          <div class="main-wrap">
+            <Banner />
+            <Study />
+          </div>
+        </main>
+      </React.Fragment>
+    );
   }
 }
 

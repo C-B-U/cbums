@@ -3,65 +3,7 @@
   font-style: normal;
   font-weight: 700;
   src: local("Noto Sans Bold"), local("NotoSans-Bold"),
-    url(/fonts/NotoSans-Bold.eot);
-  src: url(/fonts/NotoSans-Bold.eot?#iefix) format("embedded-opentype"),
-    url(/fonts/NotoSans-Bold.woff2) format("woff2"),
-    url(/fonts/NotoSans-Bold.woff) format("woff");
-}
-
-body {
-  font-family: "Noto Sans KR", sans-serif;
-  margin: 0;
-}
-li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-}
-.mobile {
-  display: none;
-}
-header {
-  background-color: white;
-  display: flex;
-  align-items: center;
-}
-
-.header-wrap {
-  width: 52.08%; /*1000px*/
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-}
-
-.header-wrap__logo {
-  margin: 1em;
-}
-nav {
-  width: 72%; /*720px*/
-}
-.nav-wrap {
-  display: flex;
-  justify-content: space-around;
-  height: 50%;
-  margin: 1em;
-  padding: 0 3%;
-  background-color: #efece8;
-  border-radius: 4em;
-}
-.nav-wrap > li {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 0.8em;
-}
-.nav-wrap > li a {
-  display: block;
-  color: #61605c;
-}
-.nav-wrap > li a:hover {
-  color: #020202;
+    url(../../fonts/NotoSansKR-Bold.eot);
 }
 
 main {
@@ -229,30 +171,6 @@ h2.main__join-h2:after {
 
 .main__etc {
   padding: 10em;
-}
-
-footer {
-  background-color: #c1c1c1;
-  margin: -22px 0;
-}
-
-.footer__info {
-  width: 52.08%;
-  margin: 0 auto;
-  color: white;
-}
-.footer__info-wrap {
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer__info-CBU {
-  margin: 1.5em 0;
-  font-size: 0.82em;
-}
-.footer__info-staffs {
-  margin: 0.5em;
-  font-size: 0.7em;
 }
 
 /*
