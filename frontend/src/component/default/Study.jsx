@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
-import { Default, Mobile } from "../MediaQuery";
 import { Link } from "react-router-dom";
 import ContainerTitle from "./ContainerTitle";
+import Slide from "./Slide";
 
 class Study extends PureComponent {
   render() {
@@ -9,6 +9,7 @@ class Study extends PureComponent {
       <React.Fragment>
         <div class="main__study">
           <ContainerTitle title="Recruiting Study" />
+          <Slide />
         </div>
       </React.Fragment>
     );
