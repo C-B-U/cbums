@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import "../../css/default/default.css";
 import Banner from "./Banner";
-import ContainerTitle from "./ContainerTitle";
 import Study from "./Study";
 class DefaultPage extends PureComponent {
   render() {

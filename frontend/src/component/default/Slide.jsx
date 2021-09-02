@@ -1,7 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import React, { PureComponent } from "react";
-import "swiper/css";
-
 import SlideBox from "./SlideBox";
 import { Link } from "react-router-dom";
 //import SwiperCore, { Navigation } from "swiper";
@@ -27,32 +25,32 @@ class Slide extends PureComponent {
         >
           <Link to="/">
             <SwiperSlide>
-              <SlideBox studyNam="CBUMS" Color="#bab843" />
+              <SlideBox studyName="CBUMS" Color="#bab843" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide>
-              <SlideBox studyNam="Java" Color="#837d75" />
+              <SlideBox studyName="Java" Color="#837d75" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide>
-              <SlideBox studyNam="파이썬" Color="#f4c853" />
+              <SlideBox studyName="파이썬" Color="#f4c853" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide>
-              <SlideBox studyNam="자료구조" Color="#ffb4c6" />
+              <SlideBox studyName="자료구조" Color="#ffb4c6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide>
-              <SlideBox studyNam="C언어" Color="#54d6b6" />
+              <SlideBox studyName="C언어" Color="#54d6b6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide>
-              <SlideBox studyNam="C++" Color="#c3a2f3" />
+              <SlideBox studyName="C++" Color="#c3a2f3" />
             </SwiperSlide>
           </Link>
         </Swiper>

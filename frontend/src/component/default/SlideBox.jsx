@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-
 class SlideBox extends PureComponent {
   render() {
     const studyName = this.props;
