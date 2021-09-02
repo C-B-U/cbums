@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
 import ContainerTitle from "./ContainerTitle";
 import Slide from "./Slide";
 

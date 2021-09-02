@@ -1,17 +1,16 @@
+import { Swiper, SwiperSlide } from "swiper/react";
 import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
-import { Swiper } from "swiper/react/swiper";
-import { SwiperSlide } from "swiper/react/swiper-slide";
-import "swiper/swiper.scss";
+import "swiper/css";
 
 import SlideBox from "./SlideBox";
-SwiperCore.use([Navigation]);
+import { Link } from "react-router-dom";
+//import SwiperCore, { Navigation } from "swiper";
+//SwiperCore.use([Navigation]);
 class Slide extends PureComponent {
   render() {
     return (
       <React.Fragment>
         <Swiper
-          navigation
           slidesPerView={3.1}
           slidesPerGroup={3.1}
           spaceBetween={24}
