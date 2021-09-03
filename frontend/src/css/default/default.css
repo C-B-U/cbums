@@ -27,10 +27,15 @@ h2.main__study-h2:after {
   content: "";
   display: block;
   width: 9.5%;
-  border-bottom: 2px solid #d5ddc5;
+  border-bottom: 2px solid #e2e7d6;
   margin: 1.5% auto;
 }
-
+.main__study {
+  padding-bottom: 3em;
+}
+.main__study-info {
+  padding-top: 0.3em;
+}
 .main__study-wrap {
   position: relative;
   width: 95%;
@@ -46,11 +51,12 @@ h2.main__study-h2:after {
   );
   overflow: hidden;
 }
-
+.swiper-wrapper {
+  display: flex;
+}
 .swiper-container {
   width: 100%;
   overflow: hidden;
-
   -webkit-mask: linear-gradient(
     to right,
     transparent,
@@ -78,22 +84,12 @@ h3 {
   margin: 6% 0;
   font-weight: 500;
   font-size: 0.8em;
+  cursor: pointer;
 }
-h3:hover {
-  font-size: 0.87em;
-}
+
 .main__study-buttons {
   display: flex;
   justify-content: space-around;
-}
-
-.swiper-button-next {
-  color: black;
-  cursor: pointer;
-}
-.swiper-button-prev {
-  color: black;
-  cursor: pointer;
 }
 
 .main__study {
@@ -377,7 +373,10 @@ pc 1920px ~ 1200px
     cursor: pointer;
     float: left;
   }
-
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
   .nav-wrap-sidenav {
     height: 100%;
     width: 0;

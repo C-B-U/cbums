@@ -3,6 +3,7 @@ import Logo from "../default/Logo";
 import Navigation from "../default/Navigation";
 import { Default, Mobile } from "../MediaQuery";
 import "../../css/header.css";
+import Member from "../default/Member";
 class Header extends PureComponent {
   render() {
     return (
@@ -11,6 +12,7 @@ class Header extends PureComponent {
           <div className="header-wrap">
             <Logo logoHeight={36} />
             <Navigation />
+            <Member />
           </div>
         </Default>
         <Mobile>
