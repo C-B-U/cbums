@@ -7,12 +7,12 @@ class Main extends PureComponent {
       <React.Fragment>
         <Default>
           <main>
-            <div class="main-wrap"></div>
+            <div className="main-wrap"></div>
           </main>
         </Default>
         <Mobile>
           <main>
-            <div class="main-wrap"></div>
+            <div className="main-wrap"></div>
           </main>
         </Mobile>
       </React.Fragment>

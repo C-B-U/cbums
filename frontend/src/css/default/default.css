@@ -33,6 +33,9 @@ h2.main__study-h2:after {
 .main__study {
   padding-bottom: 3em;
 }
+.main__Notice {
+  padding-bottom: 3em;
+}
 .main__study-info {
   padding-top: 0.3em;
 }
@@ -312,7 +315,7 @@ pc 1920px ~ 1200px
   .contour {
     width: 90%;
     margin: 0 auto;
-    border-bottom: 3px solid #ded6cf;
+    border-bottom: 2px solid #ded6cf;
   }
 
   .slide-wrap {

@@ -4,13 +4,13 @@ class Member extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div class="main__member-wrap">
-          <div class="main__member">
+        <div className="main__member-wrap">
+          <div className="main__member">
             <Link to="/">
-              <div class="main__member-join">회원가입</div>
+              <div className="main__member-join">회원가입</div>
             </Link>
             <Link to="/">
-              <div class="main__member-login">로그인</div>
+              <div className="main__member-login">로그인</div>
             </Link>
           </div>
         </div>

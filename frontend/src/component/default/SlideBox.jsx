@@ -13,7 +13,10 @@ class SlideBox extends PureComponent {
 
     return (
       <React.Fragment>
-        <div class="main__slide-box" style={{ backgroundColor: Color }}></div>
+        <div
+          className="main__slide-box"
+          style={{ backgroundColor: Color }}
+        ></div>
         <h3>{studyName}　</h3>
       </React.Fragment>
     );

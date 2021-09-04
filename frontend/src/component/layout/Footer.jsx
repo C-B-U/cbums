@@ -10,9 +10,9 @@ class Footer extends PureComponent {
       <React.Fragment>
         <Default>
           <footer>
-            <div class="footer-wrap">
-              <div class="footer__info">
-                <div class="footer__info-wrap">
+            <div className="footer-wrap">
+              <div className="footer__info">
+                <div className="footer__info-wrap">
                   <Information />
                 </div>
               </div>
@@ -21,11 +21,11 @@ class Footer extends PureComponent {
         </Default>
         <Mobile>
           <footer>
-            <div class="footer-wrap">
-              <div class="footer__info">
-                <div class="footer__info-wrap">
+            <div className="footer-wrap">
+              <div className="footer__info">
+                <div className="footer__info-wrap">
                   <Information />
-                  <div class="footer__info-logo">
+                  <div className="footer__info-logo">
                     <Logo logoHeight={32} />
                   </div>
                 </div>

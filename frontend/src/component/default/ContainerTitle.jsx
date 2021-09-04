@@ -12,14 +12,14 @@ class ContainerTitle extends PureComponent {
     return (
       <React.Fragment>
         <Default>
-          <div class="main__study-info">
-            <h2 class="main__study-h2">{title}</h2>
+          <div className="main__study-info">
+            <h2 className="main__study-h2">{title}</h2>
           </div>
         </Default>
         <Mobile>
-          <div class="main__study-info">
-            <h2 class="main__study-h2">{title}</h2>
-            <div class="main__study-detail-mobile">
+          <div className="main__study-info">
+            <h2 className="main__study-h2">{title}</h2>
+            <div className="main__study-detail-mobile">
               <Link to="/">
                 <p>자세히 보기</p>
                 <FaChevronRight style={iconStyle} />

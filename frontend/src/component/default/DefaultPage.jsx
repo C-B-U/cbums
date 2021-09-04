@@ -5,13 +5,14 @@ import Banner from "./Banner";
 import Notice from "./Notice";
 import Study from "./Study";
 import Member from "./Member";
+import Line from "./Line";
 class DefaultPage extends PureComponent {
   render() {
     return (
       <React.Fragment>
         <Default>
           <main>
-            <div class="main-wrap">
+            <div className="main-wrap">
               <Banner />
               <Study />
               <Notice />
@@ -20,10 +21,11 @@ class DefaultPage extends PureComponent {
         </Default>
         <Mobile>
           <main>
-            <div class="main-wrap">
+            <div className="main-wrap">
               <Member />
               <Banner />
               <Study />
+              <Line />
               <Notice />
             </div>
           </main>

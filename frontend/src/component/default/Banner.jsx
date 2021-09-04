@@ -11,7 +11,7 @@ class Banner extends PureComponent {
     return (
       <React.Fragment>
         <Default>
-          <div class="main__CBU-image">
+          <div className="main__CBU-image">
             <Link to="/">
               <img
                 src={DefaultBanner}
@@ -22,7 +22,7 @@ class Banner extends PureComponent {
           </div>
         </Default>
         <Mobile>
-          <div class="main__CBU-image-moible">
+          <div className="main__CBU-image-moible">
             <img
               src={MobileBanner}
               alt="씨부엉 메인 배너 모바일"

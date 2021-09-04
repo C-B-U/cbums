@@ -1,14 +1,14 @@
 import React, { PureComponent } from "react";
 import ContainerTitle from "./ContainerTitle";
-import Slide from "./Slide";
+import StudySlide from "./StudySlide";
 
 class Study extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div class="main__study">
+        <div className="main__study">
           <ContainerTitle title="Recruiting Study" />
-          <Slide />
+          <StudySlide />
         </div>
       </React.Fragment>
     );

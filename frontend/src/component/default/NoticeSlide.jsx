@@ -2,11 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import React, { PureComponent } from "react";
 import SlideBox from "./SlideBox";
 import { Link } from "react-router-dom";
-import SwiperCore, { Navigation } from "swiper";
-import "swiper/components/navigation/navigation.scss";
-SwiperCore.use([Navigation]);
 
-class Slide extends PureComponent {
+class NoticeSlide extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -15,7 +12,6 @@ class Slide extends PureComponent {
           slidesPerView={3.1}
           slidesPerGroup={3.1}
           spaceBetween={24}
-          navigation={true}
           breakpoints={{
             1280: {
               slidesPerView: 5.5,
@@ -31,32 +27,32 @@ class Slide extends PureComponent {
         >
           <Link to="/">
             <SwiperSlide className="swiper-slide">
-              <SlideBox studyName="CBUMS" Color="#bab843" />
+              <SlideBox studyName="진행사항 업로드" Color="#bab843" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className="swiper-slide">
-              <SlideBox studyName="Java" Color="#837d75" />
+              <SlideBox studyName="동아리　 가입방법" Color="#837d75" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className="swiper-slide">
-              <SlideBox studyName="파이썬" Color="#f4c853" />
+              <SlideBox studyName="스터디　 가입방법" Color="#f4c853" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className="swiper-slide">
-              <SlideBox studyName="자료구조" Color="#ffb4c6" />
+              <SlideBox studyName="규칙　　　" Color="#ffb4c6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className="swiper-slide">
-              <SlideBox studyName="C언어" Color="#54d6b6" />
+              <SlideBox studyName="공지사항1" Color="#54d6b6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className="swiper-slide">
-              <SlideBox studyName="C++" Color="#c3a2f3" />
+              <SlideBox studyName="공지사항2" Color="#c3a2f3" />
             </SwiperSlide>
           </Link>
         </Swiper>
@@ -65,4 +61,4 @@ class Slide extends PureComponent {
   }
 }
 
-export default Slide;
+export default NoticeSlide;
