@@ -4,6 +4,7 @@ import "../../css/default/default.css";
 import Banner from "./Banner";
 import Notice from "./Notice";
 import Study from "./Study";
+import StudyMobile from "./StudyMobile";
 import Member from "./Member";
 import Line from "./Line";
 class DefaultPage extends PureComponent {
@@ -24,7 +25,7 @@ class DefaultPage extends PureComponent {
             <div className="main-wrap">
               <Member />
               <Banner />
-              <Study />
+              <StudyMobile />
               <Line />
               <Notice />
             </div>
