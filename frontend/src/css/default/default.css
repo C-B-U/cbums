@@ -3,65 +3,7 @@
   font-style: normal;
   font-weight: 700;
   src: local("Noto Sans Bold"), local("NotoSans-Bold"),
-    url(/fonts/NotoSans-Bold.eot);
-  src: url(/fonts/NotoSans-Bold.eot?#iefix) format("embedded-opentype"),
-    url(/fonts/NotoSans-Bold.woff2) format("woff2"),
-    url(/fonts/NotoSans-Bold.woff) format("woff");
-}
-
-body {
-  font-family: "Noto Sans KR", sans-serif;
-  margin: 0;
-}
-li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-}
-.mobile {
-  display: none;
-}
-header {
-  background-color: white;
-  display: flex;
-  align-items: center;
-}
-
-.header-wrap {
-  width: 52.08%; /*1000px*/
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-}
-
-.header-wrap__logo {
-  margin: 1em;
-}
-nav {
-  width: 72%; /*720px*/
-}
-.nav-wrap {
-  display: flex;
-  justify-content: space-around;
-  height: 50%;
-  margin: 1em;
-  padding: 0 3%;
-  background-color: #efece8;
-  border-radius: 4em;
-}
-.nav-wrap > li {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 0.8em;
-}
-.nav-wrap > li a {
-  display: block;
-  color: #61605c;
-}
-.nav-wrap > li a:hover {
-  color: #020202;
+    url(../../fonts/NotoSansKR-Bold.eot);
 }
 
 main {
@@ -85,10 +27,18 @@ h2.main__study-h2:after {
   content: "";
   display: block;
   width: 9.5%;
-  border-bottom: 2px solid #d5ddc5;
+  border-bottom: 2px solid #e2e7d6;
   margin: 1.5% auto;
 }
-
+.main__study {
+  padding-bottom: 3em;
+}
+.main__Notice {
+  padding-bottom: 3em;
+}
+.main__study-info {
+  padding-top: 0.3em;
+}
 .main__study-wrap {
   position: relative;
   width: 95%;
@@ -104,11 +54,12 @@ h2.main__study-h2:after {
   );
   overflow: hidden;
 }
-
+.swiper-wrapper {
+  display: flex;
+}
 .swiper-container {
   width: 100%;
   overflow: hidden;
-
   -webkit-mask: linear-gradient(
     to right,
     transparent,
@@ -136,22 +87,12 @@ h3 {
   margin: 6% 0;
   font-weight: 500;
   font-size: 0.8em;
+  cursor: pointer;
 }
-h3:hover {
-  font-size: 0.87em;
-}
+
 .main__study-buttons {
   display: flex;
   justify-content: space-around;
-}
-
-.swiper-button-next {
-  color: black;
-  cursor: pointer;
-}
-.swiper-button-prev {
-  color: black;
-  cursor: pointer;
 }
 
 .main__study {
@@ -229,30 +170,6 @@ h2.main__join-h2:after {
 
 .main__etc {
   padding: 10em;
-}
-
-footer {
-  background-color: #c1c1c1;
-  margin: -22px 0;
-}
-
-.footer__info {
-  width: 52.08%;
-  margin: 0 auto;
-  color: white;
-}
-.footer__info-wrap {
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer__info-CBU {
-  margin: 1.5em 0;
-  font-size: 0.82em;
-}
-.footer__info-staffs {
-  margin: 0.5em;
-  font-size: 0.7em;
 }
 
 /*
@@ -398,7 +315,7 @@ pc 1920px ~ 1200px
   .contour {
     width: 90%;
     margin: 0 auto;
-    border-bottom: 3px solid #ded6cf;
+    border-bottom: 2px solid #ded6cf;
   }
 
   .slide-wrap {
@@ -459,7 +376,10 @@ pc 1920px ~ 1200px
     cursor: pointer;
     float: left;
   }
-
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
   .nav-wrap-sidenav {
     height: 100%;
     width: 0;

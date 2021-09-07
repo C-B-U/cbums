@@ -1,91 +1,75 @@
-footer{
-    background-color: #c1c1c1;
-    margin: 0px 0;
+footer {
+  background-color: #c1c1c1;
+  margin: 0px 0;
 }
 
-.footer__info{
-   
-    width: 52.08%; 
+.footer__info {
+  width: 52.08%;
+  margin: 0 auto;
+  color: white;
+}
+.footer__info-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__info-CBU {
+  margin: 1.5em 0;
+  font-size: 0.82em;
+}
+.footer__info-staffs {
+  margin: 0.5em;
+  font-size: 0.7em;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .footer__info {
+    width: 60%;
     margin: 0 auto;
-    color: white;
-    
-}
-.footer__info-wrap{
-     display: flex;
-    justify-content: space-between;
-    
+  }
 }
 
-.footer__info-CBU{
-    margin: 1.5em 0;
-    font-size: 0.82em;
-}
-.footer__info-staffs{
-    margin: 0.5em;
-    font-size: 0.70em;
-}
+@media all and (max-width: 767px) {
+  .footer__info {
+    width: 95%;
+    height: 220px;
+    margin: 0 auto;
+    display: flex;
+  }
+  .footer_mobile {
+    display: none;
+  }
 
+  .footer__info {
+    display: block;
+    margin: 0;
+  }
+  .footer__info-CBU {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    height: 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-top: 30px;
+  }
+  .footer__info-staffs-mobile {
+    display: flex;
+    justify-content: center;
+    font-size: 1.3em;
+    font-weight: 600;
+  }
+  .footer__info-wrap {
+    display: block;
+    padding-top: 50px;
+  }
+  .footer__info-logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
 
-
-
-
-
-@media all and (min-width:768px) and (max-width:1023px){
-    .footer__info{
-        width: 60%; 
-        margin: 0 auto;
-     }
-}
-
-
-
-
-
-
-@media all and (max-width:767px){
-    .footer__info{
-        width: 95%;
-        height: 220px;
-        margin: 0 auto;
-        display: flex;
-    }
-    .footer_mobile{
-        display: none;
-    }
-    
-    .footer__info{
-        display: block;
-        margin: 0;
-        
-        
-    }
-    .footer__info-CBU{
-        display: flex;
-        justify-content: center;
-        margin: 0;
-        height: 15px;
-        font-size: 0.9em;
-        font-weight: 600;
-        margin-top: 30px;
-    }
-    .footer__info-staffs-mobile{
-        display: flex;
-        justify-content: center;
-        font-size: 1.3em;
-        font-weight: 600;
-    }
-    .footer__info-wrap{
-        display: block;
-        padding-top: 50px;
-    }
-    .footer__info-logo{
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    
-    .footer_info-mobile{
-        padding: 0 0.5em;
-    }
-
+  .footer_info-mobile {
+    padding: 0 0.5em;
+  }
 }

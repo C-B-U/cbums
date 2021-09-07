@@ -10,9 +10,9 @@ class Footer extends PureComponent {
       <React.Fragment>
         <Default>
           <footer>
-            <div class="footer-wrap">
-              <div class="footer__info">
-                <div class="footer__info-wrap">
+            <div className="footer-wrap">
+              <div className="footer__info">
+                <div className="footer__info-wrap">
                   <Information />
                 </div>
               </div>
@@ -21,11 +21,11 @@ class Footer extends PureComponent {
         </Default>
         <Mobile>
           <footer>
-            <div class="footer-wrap">
-              <div class="footer__info">
-                <div class="footer__info-wrap">
+            <div className="footer-wrap">
+              <div className="footer__info">
+                <div className="footer__info-wrap">
                   <Information />
-                  <div class="footer__info-logo">
+                  <div className="footer__info-logo">
                     <Logo logoHeight={32} />
                   </div>
                 </div>
@@ -39,31 +39,3 @@ class Footer extends PureComponent {
 }
 
 export default Footer;
-/*
-
-                <div class="footer__info">
-                   <div class="footer__info-wrap">
-                    <div class="footer__info-CBU">
-                        
-                        
-                    </div>
-                    <div class="footer__info-staffs">
-                       
-                        <ul class="footer__info-staffA footer_mobile">
-                            <li>회장 김김김</li>
-                            <li>010-1010-1010</li>
-                            <li >naver@naver.com</li>
-                        </ul>
-                        <ul class="footer__info-staffB footer_mobile">
-                            <li>부회장 박박박</li>
-                            <li>010-1010-1010</li>
-                            <li>naver@naver.com</li>
-                        </ul>
-                    </div>
-                    
-                  </div>
-
-                </div>
-                
-            </div>
-        </footer> */

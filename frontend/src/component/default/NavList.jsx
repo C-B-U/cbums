@@ -45,12 +45,12 @@ class NavList extends PureComponent {
             <Link to="/">카테고리1</Link>
             <Link to="/">카테고리2</Link>
             <Link to="/">카테고리3</Link>
-            <Link to="/">카테고리4</Link> {/* a태그 변경 필요 */}
+            <Link to="/">카테고리4</Link>
             <Link to="/">카테고리5</Link>
           </div>
 
-          <div class="new-wrap">
-            <div class="nav-wrap-mobile" onClick={this.openNav}>
+          <div className="new-wrap">
+            <div className="nav-wrap-mobile" onClick={this.openNav}>
               <FaBars />
             </div>
           </div>

@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "NotoKrB";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Noto Sans Bold"), local("NotoSans-Bold"),
+    url(../fonts/NotoSansKR-Bold.eot);
+}
+
 body {
   font-family: "Noto Sans KR", sans-serif;
   margin: 0;
