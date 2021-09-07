@@ -1,9 +1,3 @@
-header {
-  background-color: white;
-  display: flex;
-  align-items: center;
-}
-
 .header-wrap {
   width: 52.08%; /*1000px*/
   margin: 0 auto;
