@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 import DefaultPage from "../default/DefaultPage";
+import LoginPage from "../login/LoginPage";
 import "../../css/elementSetting.css";
 
 class Layout extends PureComponent {
@@ -12,11 +13,11 @@ class Layout extends PureComponent {
         <Router>
           <Header />
           <Switch>
-            <Route path="/" component={DefaultPage} />
+            <Route exact path="/" component={DefaultPage} />
+            <Route path="/login" component={LoginPage} />
           </Switch>
           <Footer />
         </Router>
-        {/* 폰트 변경 필요 */}
       </React.Fragment>
     );
   }
