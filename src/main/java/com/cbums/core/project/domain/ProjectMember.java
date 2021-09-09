@@ -1,11 +1,10 @@
 package com.cbums.core.project.domain;
 
-import com.cbums.core.common.BaseTimeEntity;
+import com.cbums.core.common.domain.BaseTimeEntity;
 import com.cbums.core.member.domain.Member;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter

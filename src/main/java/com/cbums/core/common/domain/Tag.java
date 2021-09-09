@@ -1,4 +1,4 @@
-package com.cbums.core.common;
+package com.cbums.core.common.domain;
 
 import com.cbums.core.member.domain.Member;
 import lombok.*;

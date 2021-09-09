@@ -1,6 +1,6 @@
 package com.cbums.core.member.domain;
 
-import com.cbums.core.common.BaseTimeEntity;
+import com.cbums.core.common.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.cbums.core.board.domain;
 
-import com.cbums.core.common.Tag;
+import com.cbums.core.common.domain.Tag;
 import lombok.*;
 
 import javax.persistence.*;
