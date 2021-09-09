@@ -1,4 +1,4 @@
-package com.cbums.core.tag.domain;
+package com.cbums.core.member.domain;
 
 import com.cbums.core.member.domain.Member;
 import com.cbums.core.tag.domain.Tag;
@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class MemberTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +24,9 @@ public class MemberTag {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="tag_id", nullable = false)
     private Tag tag;
+
+    public MemberTag(Member member, Tag tag) {
+        this.member = member;
+        this.tag = tag;
+    }
 }

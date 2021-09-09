@@ -6,6 +6,9 @@ import com.cbums.common.exceptions.ErrorCode;
 import com.cbums.config.auth.dto.SessionUser;
 import com.cbums.core.member.domain.*;
 import com.cbums.core.member.dto.*;
+import com.cbums.core.tag.Service.TagService;
+import com.cbums.core.tag.domain.Tag;
+import com.cbums.core.tag.dto.TagApplyRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +21,9 @@ import java.util.List;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final MemberDetailRepository memberDetailRepository;
+    private final MemberTagRepository memberTagRepository;
+
+    private final TagService tagService;
 
     @Transactional
     public Long addDetails(SessionUser user, MemberAddDetailRequest memberAddDetailRequest) {
@@ -126,6 +132,15 @@ public class MemberService {
                 break;
         }
         member.setRole(role);
+    }
+
+    @Transactional
+    public void applyMemberTag(SessionUser user, TagApplyRequest req) {
+        Member member = findByName(user.getName());
+        List<Tag> tags = tagService.getTagsById(req);
+        for(Tag t : tags) {
+            memberTagRepository.save(new MemberTag(member, t));
+        }
     }
 
 

@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Tag {
 
     @Id
@@ -20,4 +19,8 @@ public class Tag {
     @Column(nullable = false)
     private String tagContent;
 
+    @Builder
+    public Tag(String tagContent) {
+        this.tagContent = tagContent;
+    }
 }
