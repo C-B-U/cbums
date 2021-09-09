@@ -1,4 +1,6 @@
 import React, { PureComponent } from "react";
+import { Switch, Route } from "react-router";
+import SignUpButton from "../signUp/SignUpButton";
 import LoginButton from "./LoginButton";
 
 class BoxList extends PureComponent {
@@ -6,7 +8,10 @@ class BoxList extends PureComponent {
     return (
       <React.Fragment>
         <div class="article__boxList">
-          <LoginButton />
+          <Switch>
+            <Route path="/login" component={LoginButton} />
+            <Route path="/signup" component={SignUpButton} />
+          </Switch>
           <div class="boxList__schoolName boxList__schoolName1">
             한국산업기술대학교
           </div>
