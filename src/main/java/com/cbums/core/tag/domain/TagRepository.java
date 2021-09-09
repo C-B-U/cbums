@@ -1,4 +1,4 @@
-package com.cbums.core.common.domain;
+package com.cbums.core.tag.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

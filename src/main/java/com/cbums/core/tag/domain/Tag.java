@@ -1,4 +1,4 @@
-package com.cbums.core.common.domain;
+package com.cbums.core.tag.domain;
 
 import com.cbums.core.member.domain.Member;
 import lombok.*;
@@ -18,11 +18,6 @@ public class Tag {
     private Long tagId;
 
     @Column(nullable = false)
-    private String name;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id")
-    private Member producer;
-
+    private String tagContent;
 
 }
