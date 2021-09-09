@@ -1,4 +1,4 @@
-package com.cbums.core.common;
+package com.cbums.core.tag.domain;
 
 import com.cbums.core.member.domain.Member;
 import lombok.*;
@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Tag {
 
     @Id
@@ -18,11 +17,10 @@ public class Tag {
     private Long tagId;
 
     @Column(nullable = false)
-    private String name;
+    private String tagContent;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id")
-    private Member producer;
-
-
+    @Builder
+    public Tag(String tagContent) {
+        this.tagContent = tagContent;
+    }
 }

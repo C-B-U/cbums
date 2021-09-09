@@ -1,11 +1,15 @@
 package com.cbums.core.member.domain;
 
-import com.cbums.core.common.BaseTimeEntity;
+import com.cbums.core.common.domain.BaseTimeEntity;
+import com.cbums.core.tag.domain.Tag;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -56,6 +60,9 @@ public class Member extends BaseTimeEntity {
 
         return this;
     }
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    public List<MemberTag> memberTags = new ArrayList<>();
 
     public String getRoleKey() {
         return this.role.getKey();

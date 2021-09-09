@@ -19,6 +19,7 @@ public class MemberResponse {
     private String department;
     private String picture;
     private String introduce;
+    private List<MemberTagResponse> tags;
 
     public static MemberResponse of(MemberDetail member) {
              return new MemberResponse(
@@ -28,7 +29,8 @@ public class MemberResponse {
                 member.getRegisterNumber(),
                 member.getDepartment(),
                 member.getMember().getPicture(),
-                member.getIntroduce());
+                member.getIntroduce(),
+                MemberTagResponse.listOf(member.getMember().memberTags));
     }
 
     public static List<MemberResponse> listOf(List<MemberDetail> members) {

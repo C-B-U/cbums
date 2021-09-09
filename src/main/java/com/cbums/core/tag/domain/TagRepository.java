@@ -1,6 +1,5 @@
-package com.cbums.core.common;
+package com.cbums.core.tag.domain;
 
-import com.cbums.core.common.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TagRepository extends JpaRepository<Tag, Long> {
