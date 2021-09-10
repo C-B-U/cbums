@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class ProjectTag {
 
     @Id
@@ -24,4 +23,9 @@ public class ProjectTag {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="tag_id", nullable = false)
     private Tag tag;
+
+    public ProjectTag(Project project, Tag tag) {
+        this.project = project;
+        this.tag = tag;
+    }
 }
