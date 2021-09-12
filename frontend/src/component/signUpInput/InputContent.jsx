@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
+const TOTAL_SLIDE = 3;
 class InputContent extends PureComponent {
   render() {
     return (

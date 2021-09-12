@@ -1,0 +1,14 @@
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  font-size: 2em;
+  color: rgb(29, 11, 2);
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: rgb(77, 77, 77);
+}
