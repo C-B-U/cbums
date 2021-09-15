@@ -63,11 +63,13 @@ class InputContent extends PureComponent {
               </ul>
             </form>
           </Swiper>
-          <div className="swiper-button-prev button">
-            <FaArrowLeft />
-          </div>
-          <div className="swiper-button-next button">
-            <FaArrowRight />
+          <div className="buttons">
+            <div className="swiper-button-prev prev-button">
+              <FaArrowLeft />
+            </div>
+            <div className="swiper-button-next next-button">
+              <FaArrowRight />
+            </div>
           </div>
         </div>
       </React.Fragment>

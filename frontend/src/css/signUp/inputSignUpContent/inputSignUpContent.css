@@ -119,8 +119,17 @@ input:focus::placeholder {
 .fa-arrow-right:hover {
   color: #847d74;
 }
-.button {
-  margin: 3em;
+.buttons {
+  position: relative;
+  bottom: 10px;
+}
+.prev-button {
+  position: absolute;
+  left: -3em !important;
+}
+.next-button {
+  position: absolute;
+  right: -3em !important;
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .article {
@@ -152,10 +161,7 @@ input:focus::placeholder {
   .boxList__infor > li {
     width: 380px;
   }
-  .button {
-    margin: 3em;
-    margin-left: 3em;
-  }
+
   .article__boxList input {
     margin: 2em;
     margin-left: 2em;
@@ -175,6 +181,10 @@ input:focus::placeholder {
     background-color: #9e9e9e;
     font-size: 16px;
     color: white;
+  }
+  .buttons {
+    position: relative;
+    top: 20px;
   }
 }
 
@@ -208,6 +218,7 @@ input:focus::placeholder {
     margin: 0;
     box-shadow: 0 0 20px #9e9e9e;
     background-color: white;
+    z-index: 0;
   }
   .article__boxList input {
     margin: 2em;
@@ -228,5 +239,9 @@ input:focus::placeholder {
     background-color: #9e9e9e;
     font-size: 16px;
     color: white;
+  }
+  .buttons {
+    position: relative;
+    top: 10px;
   }
 }

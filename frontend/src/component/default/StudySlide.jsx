@@ -65,10 +65,10 @@ class StudySlide extends PureComponent {
             </SwiperSlide>
           </Link>
         </Swiper>
-        <div className="swiper-button-prev">
+        <div className="swiper-button-prev button">
           <FaArrowLeft />
         </div>
-        <div className="swiper-button-next">
+        <div className="swiper-button-next button">
           <FaArrowRight />
         </div>
       </React.Fragment>
