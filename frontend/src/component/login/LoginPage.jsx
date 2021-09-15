@@ -5,8 +5,8 @@ class LoginPage extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <article class="article">
-          <div class="article__inner">
+        <article className="article">
+          <div className="article__inner">
             <Box />
           </div>
         </article>

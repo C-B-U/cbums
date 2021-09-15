@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
-import SignUpBox from "./SignUpBox";
-import "../../css/login/login.css";
-class SignUpPage extends PureComponent {
+import "../../css/signUp/inputSignUpContent/inputSignUpContent.css";
+import SignUpBox from "./SignUpInputBox";
+
+class SignUpInputPage extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -15,4 +16,4 @@ class SignUpPage extends PureComponent {
   }
 }
 
-export default SignUpPage;
+export default SignUpInputPage;

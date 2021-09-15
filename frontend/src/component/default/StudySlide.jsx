@@ -3,7 +3,9 @@ import React, { PureComponent } from "react";
 import SlideBox from "./SlideBox";
 import { Link } from "react-router-dom";
 import SwiperCore, { Navigation } from "swiper";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "swiper/components/navigation/navigation.scss";
+import "../../css/slide.css";
 SwiperCore.use([Navigation]);
 
 class StudySlide extends PureComponent {
@@ -15,7 +17,10 @@ class StudySlide extends PureComponent {
           slidesPerView={3.1}
           slidesPerGroup={3.1}
           spaceBetween={24}
-          navigation={true}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
           breakpoints={{
             1280: {
               slidesPerView: 5.5,
@@ -60,6 +65,12 @@ class StudySlide extends PureComponent {
             </SwiperSlide>
           </Link>
         </Swiper>
+        <div className="swiper-button-prev button">
+          <FaArrowLeft />
+        </div>
+        <div className="swiper-button-next button">
+          <FaArrowRight />
+        </div>
       </React.Fragment>
     );
   }
