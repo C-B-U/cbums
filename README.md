@@ -63,3 +63,4 @@ CBU Management System
 
 # [TODO LIST](https://yielding-pendulum-134.notion.site/1bdc6046172342af9c5a21c362b2d275?v=34aa52a008dd4073a39b221153a4bd71)
 # [API Document](https://yielding-pendulum-134.notion.site/c584a0d89e294582beee460347cf7631?v=b0f1487df2f6463a84b4d9c272165260)
+# [FIGMA](https://www.figma.com/files/team/1021427691502625470/cbums?fuid=1018791168404911843)
