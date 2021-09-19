@@ -46,7 +46,7 @@ CBU Management System
 * junit
 * AWS EC2 (예정)
 * AWS RDS (예정)
-* React (예정)
+* React
 * React native (예정)
 
 # 업데이트 내역
