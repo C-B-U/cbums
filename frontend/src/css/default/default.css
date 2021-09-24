@@ -376,8 +376,8 @@ pc 1920px ~ 1200px
     cursor: pointer;
     float: left;
   }
-  .swiper-button-next,
-  .swiper-button-prev {
+
+  .button {
     display: none !important;
   }
   .nav-wrap-sidenav {

@@ -30,6 +30,8 @@ CBU Management System
 * 프로젝트 관리
 * 게시판 관리
 
+#[프로세스 정리](https://www.figma.com/file/9IIfftxOXtaJddjwNjG52V/process?node-id=0%3A1)
+
 # 차후계획
 * 우리 조만간 회식 한번 해요..... 모인지 벌써 6개월인데 밥 한 끼 같이 못먹었네
 # git branch flow
@@ -46,7 +48,7 @@ CBU Management System
 * junit
 * AWS EC2 (예정)
 * AWS RDS (예정)
-* React (예정)
+* React
 * React native (예정)
 
 # 업데이트 내역
