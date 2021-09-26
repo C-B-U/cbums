@@ -7,6 +7,7 @@ import LoginPage from "../login/LoginPage";
 import "../../css/elementSetting.css";
 import SignUpPage from "../signUp/SignUpPage";
 import SignUpInputPage from "../signUpInput/SignUpInputPage.jsx";
+import StudyMakePage from "../study/studyMake/StudyMakePage";
 
 class Layout extends PureComponent {
   render() {
@@ -19,6 +20,7 @@ class Layout extends PureComponent {
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignUpPage} />
             <Route path="/input" component={SignUpInputPage} />
+            <Route path="/studymake" component={StudyMakePage} />
           </Switch>
           <Footer />
         </Router>
