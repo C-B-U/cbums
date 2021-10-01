@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import StudyTitle from "./StudyTitle";
-import "../../../css/study/study_make/study_make.css";
+import style from "../../../css/study/study_make/study_make.module.css";
 import StudySlide from "./StudySlide";
 
 class StudyMakePage extends PureComponent {
@@ -8,7 +8,7 @@ class StudyMakePage extends PureComponent {
     return (
       <React.Fragment>
         <main>
-          <div className="main_wrap">
+          <div className={style.main_wrap}>
             <StudyTitle title="스터디 개설" />
             <StudySlide />
           </div>

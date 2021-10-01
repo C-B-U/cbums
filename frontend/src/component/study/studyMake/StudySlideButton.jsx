@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import style from "../../../css/study/study_make/study_make.module.css";
 
 class StudySlideButton extends PureComponent {
   constructor(props) {
@@ -26,30 +27,30 @@ class StudySlideButton extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className="studymake_buttons">
+        <div className={style.studymake_buttons}>
           <div
-            id="prevButton"
+            id={style['prevButton']}
             onClick={this.buttonPrevClick}
-            className="swiper-button-prev"
+            className='swiper-button-prev'
           >
             <h4>이전</h4>
           </div>
           <div
-            id="nextButton"
+            id={style['nextButton']}
             onClick={this.buttonNextClick}
             className={
               this.state.indexNumber === 2
-                ? "disabled swiper-button-next"
+                ? `${style.disabled} swiper-button-next`
                 : "swiper-button-next"
             }
           >
             <h4>다음</h4>
           </div>
         </div>
-        <div className="main__slide-submit">
+        <div className={style['main__slide-submit']}>
           <button
-            className={this.state.indexNumber === 2 ? "" : "disabled"}
-            id="submitButton"
+            className={this.state.indexNumber === 2 ? "" : style.disabled }
+            id={style['submitButton']}
             type="button"
           >
             <h4>개설</h4>

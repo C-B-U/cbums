@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-
+import style from "../../../css/study/study_make/study_make.module.css";
 class StudySlideTag extends PureComponent {
   constructor(props) {
     super(props);
@@ -33,7 +33,7 @@ class StudySlideTag extends PureComponent {
   render() {
     const tagList = this.state.tags.map((tag, i) => (
       <li
-        className="main__slide-tag-list-item"
+        className={style['main__slide-tag-list-item']}
         key={i}
         onClick={() => this.removeList(i)}
       >
@@ -42,24 +42,25 @@ class StudySlideTag extends PureComponent {
     ));
     return (
       <React.Fragment>
-        <div className="main__slide-tag">
+        <div className={style['main__slide-tag']}>
           태그 <br />
           <form action="#" method="POST" name="study_tag">
             <input
               onChange={this.handleInput}
-              className="studymake_input"
+              className={style.studymake_input}
               name="tag"
               autoComplete="off"
               placeholder="태그 입력 (클릭 시 삭제)"
             />
             <button
               onClick={this.handleCreate}
-              className="main__slide-tag-button"
+              className={style['main__slide-tag-button']}
               type="button"
             >
               <p>+</p>
             </button>
-            <ul className="main__slide-tag-list">{tagList}</ul>
+            <div className={style['tag-wrap']}></div>
+            <ul className={style['main__slide-tag-list']}>{tagList}</ul>
           </form>
         </div>
       </React.Fragment>

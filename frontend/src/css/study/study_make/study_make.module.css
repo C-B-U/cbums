@@ -21,7 +21,7 @@ main {
 
 .slide-wrap {
   width: 88%;
-  height: 383px;
+  height: 390px;
   margin: 0 auto;
 }
 .slide-container {
@@ -29,10 +29,9 @@ main {
   height: 280px;
   padding: 1em !important;
   border: #8f8f8f 2px solid;
+  overflow: hidden;
 }
-.main__studymake-information {
-  width: 670px;
-}
+
 .main__slide-studyname {
   display: flex;
   padding: 1.6em;
@@ -45,6 +44,7 @@ main {
 }
 .main__slide-duration {
   display: flex;
+  width: 100%;
   padding: 1.6em;
   font-weight: 700;
   color: #8f8f8f;
@@ -69,19 +69,22 @@ main {
 
 .main__slide-explanation {
   display: block;
-  width: 600px;
+  width: "90%";
   margin: 1.5em;
   font-weight: 700;
   font-size: 1.1em;
   color: #8f8f8f;
 }
-.main__slide-explanation > textarea {
+.main__slide-explanation-textarea {
   margin: 1.5em 0;
   border: 1px solid #8f8f8f;
+  resize: none;
+  width: 90%;
+  height: 130px;
 }
 
 .main__slide-tag {
-  width: 600px;
+  width: 100%;
   margin: 1.5em;
   font-size: 1.1em;
   font-weight: 700;
@@ -91,7 +94,10 @@ main {
   margin: 1.5em 0;
   border-bottom: 2px solid #8f8f8f;
 }
-
+.main__studymake-information {
+  display: block;
+  flex-direction: row;
+}
 .main__slide-tag-button {
   background-color: #fff8f6;
   border: 1px solid #8f8f8f;
@@ -109,6 +115,7 @@ main {
 
 .main__slide-tag-list {
   display: flex;
+  flex-wrap: wrap;
   position: relative;
   margin: 0.3em;
   right: 14px;
@@ -116,7 +123,8 @@ main {
 }
 .main__slide-tag-list-item {
   display: flex;
-  margin: 0 0.5em;
+  height: 23px;
+  margin: 0.3em 0.5em;
   padding: 0.2em 0.5em 0.3em;
   border: 1px solid rgb(93, 93, 93);
   border-radius: 1em;
@@ -211,6 +219,9 @@ main {
     box-shadow: 15px 0px 20px -5px rgba(190, 190, 190, 1),
       -15px 0px 20px -5px rgba(190, 190, 190, 1);
   }
+  .main__slide-tag{
+    width: 100%;}
+
   .main__slide-duration > input {
     width: 6em;
     margin-left: 1em;
@@ -223,6 +234,9 @@ main {
   .main__slide-explanation {
     width: 410px;
   }
+  .main__slide-explanation-textarea{
+    width: 90%;
+  }
 }
 
 @media all and (max-width: 767px) {
@@ -232,6 +246,9 @@ main {
     background-color: white;
     box-shadow: 1px 0px 2px -5px rgba(190, 190, 190, 1),
       -1px 0px 15px -5px rgba(190, 190, 190, 1);
+  }
+  .main__slide-tag{
+    width: 100%;
   }
   .main__slide-duration > input {
     width: 7em;
@@ -244,5 +261,8 @@ main {
   }
   .main__slide-explanation {
     width: 360px;
+  }
+  .main__slide-explanation-textarea{
+    width: 75%;
   }
 }
