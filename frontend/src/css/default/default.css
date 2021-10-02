@@ -54,10 +54,8 @@ h2.main__study-h2:after {
   );
   overflow: hidden;
 }
-.swiper-wrapper {
-  display: flex;
-}
-.swiper-container {
+
+ .swiper_container {
   width: 100%;
   overflow: hidden;
   -webkit-mask: linear-gradient(
@@ -69,7 +67,16 @@ h2.main__study-h2:after {
   );
 }
 
-.swiper-slide > a {
+.swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+}  
+.swiper_slide > a {
   color: black;
 }
 
@@ -327,7 +334,7 @@ pc 1920px ~ 1200px
     -webkit-mask: none;
   }
 
-  .swiper-container {
+  .swiper_container {
     width: 96%;
     margin-left: 1em;
     overflow: hidden;
@@ -339,7 +346,7 @@ pc 1920px ~ 1200px
     height: 150px;
     border-radius: 1.2em;
   }
-  .swiper-slide {
+  .swiper_slide {
     position: relative;
   }
   h3 {

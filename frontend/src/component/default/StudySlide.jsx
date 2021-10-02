@@ -13,7 +13,7 @@ class StudySlide extends PureComponent {
     return (
       <React.Fragment>
         <Swiper
-          className="swiper-container"
+          className="swiper_container"
           slidesPerView={3.1}
           slidesPerGroup={3.1}
           spaceBetween={24}
@@ -35,32 +35,32 @@ class StudySlide extends PureComponent {
           }}
         >
           <Link to="/">
-            <SwiperSlide className="swiper-slide" key="study_1">
+            <SwiperSlide className="swiper_slide" key="study_1">
               <SlideBox studyName="CBUMS" Color="#bab843" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper-slide" key="study_2">
+            <SwiperSlide className="swiper_slide" key="study_2">
               <SlideBox studyName="Java" Color="#837d75" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper-slide" key="study_3">
+            <SwiperSlide className="swiper_slide" key="study_3">
               <SlideBox studyName="파이썬" Color="#f4c853" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper-slide" key="study_4">
+            <SwiperSlide className="swiper_slide" key="study_4">
               <SlideBox studyName="자료구조" Color="#ffb4c6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper-slide" key="study_5">
+            <SwiperSlide className="swiper_slide" key="study_5">
               <SlideBox studyName="C언어" Color="#54d6b6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper-slide" key="study_6">
+            <SwiperSlide className="swiper_slide" key="study_6">
               <SlideBox studyName="C++" Color="#c3a2f3" />
             </SwiperSlide>
           </Link>
