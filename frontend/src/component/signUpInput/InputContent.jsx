@@ -28,6 +28,7 @@ class InputContent extends PureComponent {
                   <SwiperSlide className="box" key="input_1">
                     <label>이름</label>
                     <input
+                      className="boxList__infor-input"
                       type="text"
                       required
                       placeholder="이름 입력"
@@ -38,6 +39,7 @@ class InputContent extends PureComponent {
                 <SwiperSlide className="box" key="input_2">
                   <label>학과</label>
                   <input
+                    className="boxList__infor-input"
                     type="text"
                     placeholder="학번 입력"
                     name="schoolNumber"
@@ -47,6 +49,7 @@ class InputContent extends PureComponent {
                 <SwiperSlide className="box" key="input_3">
                   <label>전화번호</label>
                   <input
+                    className="boxList__infor-input"
                     type="text"
                     placeholder="전화번호 입력"
                     name="phoneNumber"
