@@ -1,18 +1,21 @@
 import React, { PureComponent } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 import "swiper/components/navigation/navigation.scss";
+import style from "../../css/signUp/inputSignUpContent/inputSignUpContent.module.css";
 import "../../css/slide.css";
+import "swiper/swiper.scss";
+import InputBoxList from "./InputBoxList";
+import InputSlideButton from "./InputSlideButton";
 SwiperCore.use([Navigation]);
 
 class InputContent extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className="article__boxList">
+        <div className={style.article__boxList}>
           <Swiper
-            className="input-container"
+            className={style["input-container"]}
             slidesPerView={1}
             slidesPerGroup={1}
             mousewheel={false}
@@ -23,57 +26,47 @@ class InputContent extends PureComponent {
             }}
           >
             <form action="#" method="POST">
-              <ul className="boxList__infor">
-                <li>
-                  <SwiperSlide className="box" key="input_1">
-                    <label>이름</label>
-                    <input
-                      className="boxList__infor-input"
+              <ul className={style.boxList__infor}>
+                <li className={style.boxList__li}>
+                  <SwiperSlide className={style.box} key="input_1">
+                    <InputBoxList
+                      title="이름"
+                      className={style["boxList__infor-input"]}
                       type="text"
-                      required
                       placeholder="이름 입력"
                       name="name"
                     />
                   </SwiperSlide>
                 </li>
-                <SwiperSlide className="box" key="input_2">
-                  <label>학과</label>
-                  <input
-                    className="boxList__infor-input"
+                <SwiperSlide className={style.box} key="input_2">
+                  <InputBoxList
+                    title="학과"
+                    className={style["boxList__infor-input"]}
                     type="text"
                     placeholder="학번 입력"
                     name="schoolNumber"
-                    required
                   />
                 </SwiperSlide>
-                <SwiperSlide className="box" key="input_3">
-                  <label>전화번호</label>
-                  <input
-                    className="boxList__infor-input"
+                <SwiperSlide className={style.box} key="input_3">
+                  <InputBoxList
+                    title="전화번호"
+                    className={style["boxList__infor-input"]}
                     type="text"
                     placeholder="전화번호 입력"
                     name="phoneNumber"
-                    required
                   />
                 </SwiperSlide>
-                <SwiperSlide className="box" key="input_4">
+                <SwiperSlide className={style.box} key="input_4">
                   <input
                     type="submit"
                     style={{ cursor: "pointer" }}
-                    className="boxList__infor--submit"
+                    className={style["boxList__infor--submit"]}
                   />
                 </SwiperSlide>
               </ul>
             </form>
           </Swiper>
-          <div className="buttons">
-            <div className="swiper-button-prev prev-button">
-              <FaArrowLeft />
-            </div>
-            <div className="swiper-button-next next-button">
-              <FaArrowRight />
-            </div>
-          </div>
+          <InputSlideButton />
         </div>
       </React.Fragment>
     );
