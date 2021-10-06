@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { Default, Mobile } from "../MediaQuery";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import style from "../../css/header.module.css";
 
 class NavList extends PureComponent {
   constructor(props) {
@@ -19,7 +20,7 @@ class NavList extends PureComponent {
     return (
       <React.Fragment>
         <Default>
-          <ul className="nav-wrap">
+          <ul className={style['nav-wrap']}>
             <li>
               <Link to="/">home</Link>
             </li>
@@ -38,8 +39,8 @@ class NavList extends PureComponent {
           </ul>
         </Default>
         <Mobile>
-          <div id="mysidenav" className="nav-wrap-sidenav">
-            <a href="#" className="closebtn" onClick={this.closeNav}>
+          <div id="mysidenav" className={style['nav-wrap-sidenav']}>
+            <a href="#" className={style.closebtn} onClick={this.closeNav}>
               x
             </a>
             <Link to="/">카테고리1</Link>
@@ -49,8 +50,8 @@ class NavList extends PureComponent {
             <Link to="/">카테고리5</Link>
           </div>
 
-          <div className="new-wrap">
-            <div className="nav-wrap-mobile" onClick={this.openNav}>
+          <div className={style['new-wrap']}>
+            <div className={style['nav-wrap-mobile']} onClick={this.openNav}>
               <FaBars />
             </div>
           </div>

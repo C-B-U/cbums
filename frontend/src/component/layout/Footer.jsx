@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { Default, Mobile } from "../MediaQuery";
 import Logo from "../default/Logo";
 import Information from "../default/Information";
-import "../../css/footer.css";
+import style from "../../css/footer.module.css";
 
 class Footer extends PureComponent {
   render() {
@@ -10,9 +10,9 @@ class Footer extends PureComponent {
       <React.Fragment>
         <Default>
           <footer>
-            <div className="footer-wrap">
-              <div className="footer__info">
-                <div className="footer__info-wrap">
+            <div className={style['footer-wrap']}>
+              <div className={style.footer__info}>
+                <div className={style['footer__info-wrap']}>
                   <Information />
                 </div>
               </div>
@@ -21,11 +21,11 @@ class Footer extends PureComponent {
         </Default>
         <Mobile>
           <footer>
-            <div className="footer-wrap">
-              <div className="footer__info">
-                <div className="footer__info-wrap">
+            <div className={style['footer-wrap']}>
+              <div className={style.footer__info}>
+                <div className={style['footer__info-wrap']}>
                   <Information />
-                  <div className="footer__info-logo">
+                  <div className={style['footer__info-logo']}>
                     <Logo logoHeight={32} />
                   </div>
                 </div>

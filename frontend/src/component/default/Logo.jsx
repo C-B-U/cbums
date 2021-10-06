@@ -3,6 +3,7 @@ import { Default, Mobile } from "../MediaQuery";
 import logo from "../../images/default/logo.png";
 import mobileLogo from "../../images/default/mobileLogo.png";
 import { Link } from "react-router-dom";
+import style from "../../css/header.module.css";
 
 class Logo extends PureComponent {
   render() {
@@ -10,10 +11,9 @@ class Logo extends PureComponent {
     return (
       <React.Fragment>
         <Default>
-          <div className="header-wrap__logo">
+          <div className={style['header-wrap__logo']}>
             <Link to="/">
               <img
-                id="logo_img"
                 src={logo}
                 alt="씨부엉 상단 로고"
                 height={logoHeight}
@@ -22,7 +22,7 @@ class Logo extends PureComponent {
           </div>
         </Default>
         <Mobile>
-          <div className="header-wrap__logo-mobile">
+          <div className={style['header-wrap__logo-mobile']}>
             <Link to="/">
               <img
                 src={mobileLogo}
