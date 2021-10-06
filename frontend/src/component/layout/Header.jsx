@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
-import Logo from "../default/Logo";
-import Navigation from "../default/Navigation";
+import Logo from "./Logo";
+import Navigation from "./Navigation";
 import { Default, Mobile } from "../MediaQuery";
 import style from "../../css/header.module.css";
-import Member from "../default/Member";
+import Member from "./Member";
 class Header extends PureComponent {
   render() {
     return (

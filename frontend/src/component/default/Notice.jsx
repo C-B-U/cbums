@@ -4,7 +4,7 @@ import Join2 from "../../images/default/join2.jpg";
 import Join3 from "../../images/default/join3.jpg";
 import ContainerTitle from "./ContainerTitle";
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import Button from "../common/Button";
 import { Default, Mobile } from "../MediaQuery";
 import NoticeSlide from "./NoticeSlide";
 import style from "../../css/default/default.module.css";

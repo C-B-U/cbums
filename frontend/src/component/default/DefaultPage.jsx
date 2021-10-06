@@ -4,7 +4,7 @@ import style from "../../css/default/default.module.css";
 import Banner from "./Banner";
 import Notice from "./Notice";
 import Study from "./Study";
-import Member from "./Member";
+import Member from "../layout/Member";
 import Line from "./Line";
 class DefaultPage extends PureComponent {
   render() {
