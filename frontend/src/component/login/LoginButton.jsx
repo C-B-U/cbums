@@ -3,29 +3,46 @@ import { Link } from "react-router-dom";
 import Kakao from "../../images/login/kakaoLogo.svg";
 import Google from "../../images/login/googleLogo.svg";
 import Naver from "../../images/login/naverLogo.svg";
+import ButtonList from "./ButtonList";
+import style from "../../css/login/login.module.css";
 
 class LoginButton extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className="button_container">
+        <div className={style.button_container}>
           <Link to="/">
-            <div className="loginButton" style={{ backgroundColor: "#03C75A" }}>
-              <img width="20" src={Naver} alt="네이버로고" />
-              <span style={{ color: "#ffffff" }}>네이버 로그인</span>
-            </div>
+            <ButtonList
+              className={style.loginButton}
+              bgStyle={{ backgroundColor: "#03C75A" }}
+              tStyle={{ color: "#ffffff" }}
+              width="20"
+              alt="네이버로고"
+              title="네이버 로그인"
+              src={Naver}
+            />
           </Link>
           <Link to="/">
-            <div className="loginButton" style={{ backgroundColor: "#FEE500" }}>
-              <img width="20" src={Kakao} alt="카카오로고" />
-              <span style={{ color: "#3c1e1e" }}>카카오 로그인</span>
-            </div>
+            <ButtonList
+              className={style.loginButton}
+              bgStyle={{ backgroundColor: "#FEE500" }}
+              tStyle={{ color: "#3c1e1e" }}
+              width="20"
+              alt="카카오로고"
+              title="카카오 로그인"
+              src={Kakao}
+            />
           </Link>
           <Link to="/">
-            <div className="loginButton" style={{ backgroundColor: "#ffffff" }}>
-              <img width="23" src={Google} alt="구글로고" />
-              <span style={{ color: "#757575" }}>구글 로그인</span>
-            </div>
+            <ButtonList
+              className={style.loginButton}
+              bgStyle={{ backgroundColor: "#ffffff" }}
+              tStyle={{ color: "#757575" }}
+              title="구글 로그인"
+              alt="구글로고"
+              src={Google}
+              width="23"
+            />
           </Link>
         </div>
       </React.Fragment>

@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
 import BoxDeco from "../../images/login/boxDeco.png";
+
+
 class BoxTitle extends PureComponent {
   render() {
     const { title } = this.props;

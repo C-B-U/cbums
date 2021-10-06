@@ -3,28 +3,47 @@ import { Link } from "react-router-dom";
 import Kakao from "../../images/login/kakaoLogo.svg";
 import Google from "../../images/login/googleLogo.svg";
 import Naver from "../../images/login/naverLogo.svg";
+import ButtonList from "../login/ButtonList";
+import style from "../../css/login/login.module.css";
+
 class SignUpButton extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className="button_container">
+        <div className={style.button_container}>
           <Link to="/">
-            <div className="loginButton" style={{ backgroundColor: "#03C75A" }}>
-              <img width="20" src={Naver} alt="네이버로고" />
-              <span style={{ color: "#ffffff" }}>네이버로 시작하기</span>
-            </div>
+            <ButtonList
+              className={style.loginButton}
+              bgStyle={{ backgroundColor: "#03C75A" }}
+              tStyle={{ color: "#ffffff" }}
+              title="네이버로 시작하기"
+              width="20"
+              alt="네이버로고"
+              src={Naver}
+            />
           </Link>
           <Link to="/">
-            <div className="loginButton" style={{ backgroundColor: "#FEE500" }}>
-              <img width="20" src={Kakao} alt="카카오로고" />
-              <span style={{ color: "#3c1e1e" }}>카카오로 시작하기</span>
-            </div>
+            <ButtonList
+              className={style.loginButton}
+              bgStyle={{ backgroundColor: "#FEE500" }}
+              tStyle={{ color: "#3c1e1e" }}
+              title="카카오로 시작하기"
+              width="20"
+              alt="카카오로고"
+              src={Kakao}
+            />
           </Link>
           <Link to="/">
-            <div className="loginButton" style={{ backgroundColor: "#ffffff" }}>
-              <img width="23" src={Google} alt="구글로고" />
-              <span style={{ color: "#757575" }}>구글로 시작하기</span>
-            </div>
+            <ButtonList
+              className={style.loginButton}
+              bgStyle={{ backgroundColor: "#ffffff" }}
+              tStyle={{ color: "#757575" }}
+              title="구글로 시작하기"
+              width="23"
+              alt="구글로고"
+              src={Google}
+            />
+          
           </Link>
         </div>
       </React.Fragment>
