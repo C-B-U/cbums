@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/answer")
+@RequestMapping("/api/answer")
 @RequiredArgsConstructor
 public class AnswerController {
 
@@ -25,6 +25,8 @@ public class AnswerController {
     public ResponseEntity<Void> postAnswer(@LoginUser SessionUser user,
             @Valid @RequestBody List<AnswerRequest> answerRequests) {
         answerService.createAnswer(user, answerRequests);
-        return ResponseEntity.created(URI.create("/form/submitted")).build();
+
+        // 추후에 Front에서 원하는 URL로 수정 TODO
+        return ResponseEntity.created(URI.create("/form/")).build();
     }
 }

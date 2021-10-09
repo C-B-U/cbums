@@ -5,11 +5,15 @@ import com.cbums.common.exceptions.ActionException;
 import com.cbums.common.exceptions.EntityNotFoundException;
 import com.cbums.common.exceptions.ErrorCode;
 import com.cbums.config.auth.dto.SessionUser;
+import com.cbums.core.board.domain.ProjectTagRepository;
 import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.member.service.MemberService;
 import com.cbums.core.project.domain.*;
 import com.cbums.core.project.dto.*;
+import com.cbums.core.tag.Service.TagService;
+import com.cbums.core.tag.domain.Tag;
+import com.cbums.core.tag.dto.TagApplyRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +27,10 @@ import java.util.List;
 public class ProjectService {
     private final ProjectRepository projectRepository;
     private final ProjectMemberRepository projectMemberRepository;
+    private final ProjectTagRepository projectTagRepository;
+
     private final MemberService memberService;
+    private final TagService tagService;
 
     @Transactional
     public Long createProject(SessionUser user, ProjectRequest projectRequest) {
@@ -176,6 +183,14 @@ public class ProjectService {
     private ProjectMember findProjectMemberById(Long projectMemberId){
         return projectMemberRepository.findById(projectMemberId)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.NOT_FOUNDED_ID));
+    }
+
+    public void applyProjectTag(Long projectId, TagApplyRequest req) {
+        Project project = findById(projectId);
+        List<Tag> tags = tagService.getTagsById(req);
+        for(Tag t : tags) {
+            projectTagRepository.save(new ProjectTag(project, t));
+        }
     }
 
 

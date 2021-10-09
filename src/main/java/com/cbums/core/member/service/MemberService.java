@@ -29,8 +29,9 @@ public class MemberService {
     public Long addDetails(SessionUser user, MemberAddDetailRequest memberAddDetailRequest) {
         MemberDetail result = memberDetailBuilder(user, memberAddDetailRequest);
         memberDetailRepository.save(result);
-        findByName(user.getName()).setMemberDetail(result);
-        return result.getMemberDetailId();
+        Member member = findByName(user.getName());
+        member.setMemberDetail(result);
+        return member.getMemberId();
     }
 
     private MemberDetail memberDetailBuilder(SessionUser user, MemberAddDetailRequest memberAddDetailRequest) {
