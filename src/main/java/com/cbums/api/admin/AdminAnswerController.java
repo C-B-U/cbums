@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/answer")
+@RequestMapping("/api/admin/answer")
 @RequiredArgsConstructor
 public class AdminAnswerController {
 

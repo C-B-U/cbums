@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/member")
+@RequestMapping("/api/member")
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
@@ -23,22 +23,22 @@ public class MemberController {
     @PostMapping("/detail")
     public ResponseEntity<Void> addDetail(@LoginUser SessionUser user,
                                           @Valid @RequestBody MemberAddDetailRequest memberAddDetailRequest) {
-        memberService.addDetails(user, memberAddDetailRequest);
-        return ResponseEntity.created(URI.create("/member/detail-success")).build();
+        Long result = memberService.addDetails(user, memberAddDetailRequest);
+        return ResponseEntity.created(URI.create("/member/"+result)).build();
     }
 
     @PatchMapping("/nick-name/")
     public ResponseEntity<Void> updateNickName(@LoginUser SessionUser user,
                                              @Valid @RequestBody UpdateNickNameRequest updateNickNameRequest) {
         memberService.updateNickName(user, updateNickNameRequest);
-        return ResponseEntity.created(URI.create("/member/my-page")).build();
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/introduce/")
     public ResponseEntity<Void> updateIntroduce(@LoginUser SessionUser user,
                                                @Valid @RequestBody  UpdateIntroduceRequest updateIntroduceRequest) {
         memberService.updateIntroduce(user, updateIntroduceRequest);
-        return ResponseEntity.created(URI.create("/member/my-page")).build();
+        return ResponseEntity.ok().build();
     }
 
     //회원 상세 페이지

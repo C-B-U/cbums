@@ -31,7 +31,7 @@ public class AdminFormController {
                                            @Valid @RequestBody FormRequest formRequest) {
 
         Long result = formService.createForm(user, formRequest);
-        return ResponseEntity.created(URI.create("/admin/form/" + result)).build();
+        return ResponseEntity.ok().build();
 
     }
 
@@ -47,7 +47,7 @@ public class AdminFormController {
 
         formService.updateForm(user, seq, formRequest);
 
-        return ResponseEntity.created(URI.create("/admin/form/" + seq)).build();
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{seq}")
@@ -55,7 +55,7 @@ public class AdminFormController {
 
         formService.deleteForm(seq);
 
-        return ResponseEntity.created(URI.create("/admin/form")).build();
+        return ResponseEntity.noContent().build();
 
     }
 

@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/api/project")
 @RequiredArgsConstructor
 public class ProjectController {
 
@@ -48,21 +48,21 @@ public class ProjectController {
                                               @Valid @RequestBody ProjectRequest projectRequest) {
 
         projectService.updateProject(user, projectId, projectRequest);
-        return ResponseEntity.created(URI.create("/project/" + projectId)).build();
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/recruit/{seq}")
     public ResponseEntity<Void> updateRecruit(@LoginUser SessionUser user,
                                               @PathVariable("seq") Long projectId) {
         projectService.updateRecruit(user, projectId);
-        return ResponseEntity.created(URI.create("/project/" + projectId)).build();
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/finish/{seq}")
     public ResponseEntity<Void> finishProject(@LoginUser SessionUser user,
                                               @PathVariable("seq") Long projectId) {
         projectService.finishProject(user, projectId);
-        return ResponseEntity.created(URI.create("/project/" + projectId)).build();
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/{seq}/apply")
@@ -78,7 +78,7 @@ public class ProjectController {
                                             @PathVariable("seq") Long projectId) {
 
         projectService.cancelApply(user, projectId);
-        return ResponseEntity.created(URI.create("/project/" + projectId)).build();
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{seq}/apply")

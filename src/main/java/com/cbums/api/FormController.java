@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/form")
+@RequestMapping("/api/form")
 @RequiredArgsConstructor
 public class FormController {
 
