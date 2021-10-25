@@ -4,8 +4,8 @@ import style from "../../css/default/default.module.css";
 import Banner from "./Banner";
 import Notice from "./Notice";
 import Study from "./Study";
-import Member from "../layout/Member";
 import Line from "./Line";
+import NavUserMenu from "../layout/NavUserMenu";
 class DefaultPage extends PureComponent {
   render() {
     return (
@@ -22,7 +22,7 @@ class DefaultPage extends PureComponent {
         <Mobile>
           <main>
             <div className={style['main-wrap']}>
-              <Member />
+              <NavUserMenu />
               <Banner />
               <Study />
               <Line />

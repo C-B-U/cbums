@@ -34,7 +34,9 @@ class Notice extends PureComponent {
             </ul>
             <div className={style["main__join-button-wrap"]}>
               <Link to="/">
-                <Button name="공지사항" className={style['main__join-button']} />
+                <Button className={style["main__join-button"]}>
+                  <h4>공지사항</h4>
+                </Button>
               </Link>
             </div>
           </div>

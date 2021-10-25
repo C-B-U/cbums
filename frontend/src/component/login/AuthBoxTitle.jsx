@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import BoxDeco from "../../images/login/boxDeco.png";
 
 
-class BoxTitle extends PureComponent {
+class AuthBoxTitle extends PureComponent {
   render() {
     const { title } = this.props;
     const { imageClass } = this.props;
@@ -16,4 +16,4 @@ class BoxTitle extends PureComponent {
   }
 }
 
-export default BoxTitle;
+export default AuthBoxTitle;

@@ -1,21 +1,21 @@
 import React, { PureComponent } from "react";
-import BoxList from "./BoxList";
-import BoxTitle from "./BoxTitle";
 import style from "../../css/login/login.module.css";
+import AuthBoxTitle from "./AuthBoxTitle";
+import AuthBoxList from "./AuthBoxList";
 
-class Box extends PureComponent {
+class LoginBox extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <BoxTitle
+        <AuthBoxTitle
           title="로그인"
           titleClass={style.article__boxTitle}
           imageClass={style.article__boxDeco}
         />
-        <BoxList />
+        <AuthBoxList />
       </React.Fragment>
     );
   }
 }
 
-export default Box;
+export default LoginBox;

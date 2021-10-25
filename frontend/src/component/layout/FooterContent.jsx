@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { Default, Mobile } from "../MediaQuery";
 import style from "../../css/footer.module.css";
 
-class Information extends PureComponent {
+class FooterContent extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -51,4 +51,4 @@ class Information extends PureComponent {
   }
 }
 
-export default Information;
+export default FooterContent;

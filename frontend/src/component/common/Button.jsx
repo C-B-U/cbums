@@ -6,7 +6,7 @@ class Button extends PureComponent {
     return (
       <React.Fragment>
         <div className={this.props.className}>
-          <h4>{name}</h4>
+          {this.props.children}
         </div>
       </React.Fragment>
     );
