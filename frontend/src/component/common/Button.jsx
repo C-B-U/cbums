@@ -5,8 +5,8 @@ class Button extends PureComponent {
     const { name } = this.props;
     return (
       <React.Fragment>
-        <div className="main__join-button">
-          <h4>{name}</h4>
+        <div className={this.props.className}>
+          {this.props.children}
         </div>
       </React.Fragment>
     );

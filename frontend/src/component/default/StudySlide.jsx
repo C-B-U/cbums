@@ -6,6 +6,7 @@ import SwiperCore, { Navigation } from "swiper";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "swiper/components/navigation/navigation.scss";
 import "../../css/slide.css";
+import style from "../../css/default/default.module.css";
 SwiperCore.use([Navigation]);
 
 class StudySlide extends PureComponent {
@@ -13,7 +14,7 @@ class StudySlide extends PureComponent {
     return (
       <React.Fragment>
         <Swiper
-          className="swiper_container"
+          className={style["swiper_container"]}
           slidesPerView={3.1}
           slidesPerGroup={3.1}
           spaceBetween={24}
@@ -35,40 +36,40 @@ class StudySlide extends PureComponent {
           }}
         >
           <Link to="/">
-            <SwiperSlide className="swiper_slide" key="study_1">
+            <SwiperSlide className={style.swiper_slide} key="study_1">
               <SlideBox studyName="CBUMS" Color="#bab843" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper_slide" key="study_2">
+            <SwiperSlide className={style.swiper_slide} key="study_2">
               <SlideBox studyName="Java" Color="#837d75" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper_slide" key="study_3">
+            <SwiperSlide className={style.swiper_slide} key="study_3">
               <SlideBox studyName="파이썬" Color="#f4c853" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper_slide" key="study_4">
+            <SwiperSlide className={style.swiper_slide} key="study_4">
               <SlideBox studyName="자료구조" Color="#ffb4c6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper_slide" key="study_5">
+            <SwiperSlide className={style.swiper_slide} key="study_5">
               <SlideBox studyName="C언어" Color="#54d6b6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
-            <SwiperSlide className="swiper_slide" key="study_6">
+            <SwiperSlide className={style.swiper_slide} key="study_6">
               <SlideBox studyName="C++" Color="#c3a2f3" />
             </SwiperSlide>
           </Link>
         </Swiper>
-        <div className="swiper-button-prev button">
+        <div className={`swiper-button-prev ${style["button"]}`}>
           <FaArrowLeft />
         </div>
-        <div className="swiper-button-next button">
+        <div className={`swiper-button-next ${style["button"]}`}>
           <FaArrowRight />
         </div>
       </React.Fragment>

@@ -1,22 +1,22 @@
 import React, { PureComponent } from "react";
-import Logo from "../default/Logo";
-import Navigation from "../default/Navigation";
+import Logo from "./Logo";
+import Navigation from "./Navigation";
 import { Default, Mobile } from "../MediaQuery";
-import "../../css/header.css";
-import Member from "../default/Member";
+import style from "../../css/header.module.css";
+import NavUserMenu from "./NavUserMenu";
 class Header extends PureComponent {
   render() {
     return (
       <React.Fragment>
         <Default>
-          <div className="header-wrap">
+          <div className={style['header-wrap']}>
             <Logo logoHeight={36} />
             <Navigation />
-            <Member />
+            <NavUserMenu />
           </div>
         </Default>
         <Mobile>
-          <div className="header-wrap">
+          <div className={style['header-wrap']}>
             <Navigation />
             <Logo logoHeight={36} />
           </div>

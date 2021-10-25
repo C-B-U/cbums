@@ -107,7 +107,26 @@ nav {
     cursor: pointer;
     float: left;
   }
-
+.main__member {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    left: 45px;
+    top: 25px;
+    font-weight: bold;
+    z-index: 1;
+  }
+  .main__member > a {
+    color: white;
+    font-size: 1.2em;
+  }
+  .main__member-join {
+    border-bottom: 2px solid white;
+  }
+  .main__member-login {
+    border-bottom: 2px solid white;
+  }
   .nav-wrap-sidenav {
     height: 100%;
     width: 0;

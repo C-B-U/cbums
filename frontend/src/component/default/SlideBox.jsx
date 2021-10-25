@@ -1,4 +1,6 @@
 import React, { PureComponent } from "react";
+import style from "../../css/default/default.module.css";
+
 class SlideBox extends PureComponent {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ class SlideBox extends PureComponent {
     return (
       <React.Fragment>
         <div
-          className="main__slide-box"
+          className={style['main__slide-box']}
           style={{ backgroundColor: Color }}
         ></div>
         <h3>{studyName}　</h3>

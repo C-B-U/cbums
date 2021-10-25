@@ -35,6 +35,10 @@ h1 {
   position: relative;
   top: 10px;
 }
+label{
+  font-weight: bold;
+  display: block;
+}
 
 .article__boxTitle {
   display: flex;
@@ -75,14 +79,11 @@ h1 {
   margin: 3em;
   margin-left: 3em;
 }
-.box {
-  margin: 1.5em;
-  padding-right: 1.5em;
-}
+
 
 .boxList__infor--submit {
   position: relative;
-  left: 20px;
+  
   width: 100px;
   height: 40px;
   border-radius: 15px;
@@ -97,7 +98,7 @@ h1 {
   background-color: #c1c1c1;
 }
 
-.boxList__infor > li {
+.boxList__li {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -125,11 +126,13 @@ h1 {
 }
 .prev-button {
   position: absolute;
-  left: -3em !important;
+  left: 2em !important;
+  top: 0.8em !important;
 }
 .next-button {
   position: absolute;
-  right: -3em !important;
+  right: 2em !important;
+   top: 0.8em !important;
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .article {
@@ -166,14 +169,11 @@ h1 {
     margin: 2em;
     margin-left: 2em;
   }
-  .box {
-    margin: 0.3em;
-    padding-right: 0.3em;
-  }
+  
 
   .boxList__infor--submit {
     position: relative;
-    left: 40px;
+  
     width: 100px;
     height: 40px;
     border-radius: 15px;
@@ -224,16 +224,12 @@ h1 {
     margin: 2em;
     margin-left: 2em;
   }
-  .box {
-    margin: 0.4em;
-    padding-right: 0.4em;
-  }
 
   .boxList__infor--submit {
     position: relative;
-    left: 35px;
+    bottom: 20px;
     width: 100px;
-    height: 40px;
+    height: 45px;
     border-radius: 15px;
     border: 1px solid #a39595;
     background-color: #9e9e9e;

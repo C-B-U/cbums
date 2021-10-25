@@ -266,25 +266,7 @@ pc 1920px ~ 1200px
   .main__CBU-image {
     display: none;
   }
-  .main__member {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    width: 85%;
-    left: 45px;
-    top: 20px;
-    font-weight: bold;
-    z-index: 1;
-  }
-  .main__member > a {
-    color: white;
-  }
-  .main__member-join {
-    border-bottom: 2px solid white;
-  }
-  .main__member-login {
-    border-bottom: 2px solid white;
-  }
+  
 
   .main__CBU-image-mobile {
     z-index: 0;

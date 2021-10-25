@@ -1,13 +1,13 @@
 import React, { PureComponent } from "react";
-import "../../css/signUp/inputSignUpContent/inputSignUpContent.css";
+import style from "../../css/signUp/inputSignUpContent/inputSignUpContent.module.css";
 import SignUpBox from "./SignUpInputBox";
 
 class SignUpInputPage extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <article className="article">
-          <div className="article__inner">
+        <article className={style.article}>
+          <div className={style['article__inner']}>
             <SignUpBox />
           </div>
         </article>

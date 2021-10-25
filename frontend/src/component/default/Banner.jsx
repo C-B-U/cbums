@@ -3,6 +3,8 @@ import { Default, Mobile } from "../MediaQuery";
 import { Link } from "react-router-dom";
 import DefaultBanner from "../../images/default/header.png";
 import MobileBanner from "../../images/default/mobileBanner2.png";
+import style from "../../css/default/default.module.css";
+
 class Banner extends PureComponent {
   render() {
     const imgStyle = {
@@ -11,7 +13,7 @@ class Banner extends PureComponent {
     return (
       <React.Fragment>
         <Default>
-          <div className="main__CBU-image">
+          <div className={style['main__CBU-image']}>
             <Link to="/">
               <img
                 src={DefaultBanner}
@@ -22,7 +24,7 @@ class Banner extends PureComponent {
           </div>
         </Default>
         <Mobile>
-          <div className="main__CBU-image-moible">
+          <div className={style['main__CBU-image-moible']}>
             <img
               src={MobileBanner}
               alt="씨부엉 메인 배너 모바일"
