@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import style from "../../../css/study/study_make/study_make.module.css";
 
-class StudySlideExplanation extends PureComponent {
+class MakeStudyExplanation extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -20,4 +20,4 @@ class StudySlideExplanation extends PureComponent {
   }
 }
 
-export default StudySlideExplanation;
+export default MakeStudyExplanation;

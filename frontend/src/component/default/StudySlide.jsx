@@ -37,32 +37,32 @@ class StudySlide extends PureComponent {
         >
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="study_1">
-              <SlideBox studyName="CBUMS" Color="#bab843" />
+              <SlideBox contentName="CBUMS" Color="#bab843" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="study_2">
-              <SlideBox studyName="Java" Color="#837d75" />
+              <SlideBox contentName="Java" Color="#837d75" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="study_3">
-              <SlideBox studyName="파이썬" Color="#f4c853" />
+              <SlideBox contentName="파이썬" Color="#f4c853" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="study_4">
-              <SlideBox studyName="자료구조" Color="#ffb4c6" />
+              <SlideBox contentName="자료구조" Color="#ffb4c6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="study_5">
-              <SlideBox studyName="C언어" Color="#54d6b6" />
+              <SlideBox contentName="C언어" Color="#54d6b6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="study_6">
-              <SlideBox studyName="C++" Color="#c3a2f3" />
+              <SlideBox contentName="C++" Color="#c3a2f3" />
             </SwiperSlide>
           </Link>
         </Swiper>

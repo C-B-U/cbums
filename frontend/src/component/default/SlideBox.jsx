@@ -5,21 +5,21 @@ class SlideBox extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      studyName: "",
+      contentName: "",
       Color: "",
     };
   }
   render() {
-    const { studyName } = this.props;
+    const { contentName } = this.props;
     const { Color } = this.props;
 
     return (
       <React.Fragment>
         <div
-          className={style['main__slide-box']}
+          className={style["main__slide-box"]}
           style={{ backgroundColor: Color }}
         ></div>
-        <h3>{studyName}　</h3>
+        <h3>{contentName}　</h3>
       </React.Fragment>
     );
   }

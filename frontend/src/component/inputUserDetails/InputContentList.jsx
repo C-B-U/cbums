@@ -5,11 +5,11 @@ import "swiper/components/navigation/navigation.scss";
 import style from "../../css/signUp/inputSignUpContent/inputSignUpContent.module.css";
 import "../../css/slide.css";
 import "swiper/swiper.scss";
-import InputBoxList from "./InputBoxList";
+import InputContent from "./InputContent";
 import InputSlideButton from "./InputSlideButton";
 SwiperCore.use([Navigation]);
 
-class InputContent extends PureComponent {
+class InputContentList extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -29,7 +29,7 @@ class InputContent extends PureComponent {
               <ul className={style.boxList__infor}>
                 <li className={style.boxList__li}>
                   <SwiperSlide className={style.box} key="input_1">
-                    <InputBoxList
+                    <InputContent
                       title="이름"
                       className={style["boxList__infor-input"]}
                       type="text"
@@ -39,7 +39,7 @@ class InputContent extends PureComponent {
                   </SwiperSlide>
                 </li>
                 <SwiperSlide className={style.box} key="input_2">
-                  <InputBoxList
+                  <InputContent
                     title="학과"
                     className={style["boxList__infor-input"]}
                     type="text"
@@ -48,7 +48,7 @@ class InputContent extends PureComponent {
                   />
                 </SwiperSlide>
                 <SwiperSlide className={style.box} key="input_3">
-                  <InputBoxList
+                  <InputContent
                     title="전화번호"
                     className={style["boxList__infor-input"]}
                     type="text"
@@ -73,7 +73,4 @@ class InputContent extends PureComponent {
   }
 }
 
-export default InputContent;
-/*
- 
- */
+export default InputContentList;

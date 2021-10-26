@@ -4,7 +4,8 @@ import Kakao from "../../images/login/kakaoLogo.svg";
 import Google from "../../images/login/googleLogo.svg";
 import Naver from "../../images/login/naverLogo.svg";
 import style from "../../css/login/login.module.css";
-import AuthButton from "./AuthButton";
+
+import LoginButton from "./LoginButton";
 
 class LoginButtonList extends PureComponent {
   render() {
@@ -12,7 +13,7 @@ class LoginButtonList extends PureComponent {
       <React.Fragment>
         <div className={style.button_container}>
           <Link to="/">
-            <AuthButton
+            <LoginButton
               className={style.loginButton}
               bgStyle={{ backgroundColor: "#03C75A" }}
               tStyle={{ color: "#ffffff" }}
@@ -23,7 +24,7 @@ class LoginButtonList extends PureComponent {
             />
           </Link>
           <Link to="/">
-            <AuthButton
+            <LoginButton
               className={style.loginButton}
               bgStyle={{ backgroundColor: "#FEE500" }}
               tStyle={{ color: "#3c1e1e" }}
@@ -34,7 +35,7 @@ class LoginButtonList extends PureComponent {
             />
           </Link>
           <Link to="/">
-            <AuthButton
+            <LoginButton
               className={style.loginButton}
               bgStyle={{ backgroundColor: "#ffffff" }}
               tStyle={{ color: "#757575" }}

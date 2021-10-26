@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 
-class AuthButton extends PureComponent {
+class LoginButton extends PureComponent {
   render() {
     const { title } = this.props;
     return (
@@ -18,4 +18,4 @@ class AuthButton extends PureComponent {
   }
 }
 
-export default AuthButton;
+export default LoginButton;

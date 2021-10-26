@@ -28,32 +28,32 @@ class NoticeSlide extends PureComponent {
         >
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="notice_1">
-              <SlideBox studyName="진행사항 업로드" Color="#bab843" />
+              <SlideBox contentName="진행사항 업로드" Color="#bab843" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="notice_2">
-              <SlideBox studyName="동아리　 가입방법" Color="#837d75" />
+              <SlideBox contentName="동아리　 가입방법" Color="#837d75" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="notice_3">
-              <SlideBox studyName="스터디　 가입방법" Color="#f4c853" />
+              <SlideBox contentName="스터디　 가입방법" Color="#f4c853" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="notice_4">
-              <SlideBox studyName="규칙　　　" Color="#ffb4c6" />
+              <SlideBox contentName="규칙　　　" Color="#ffb4c6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="notice_5">
-              <SlideBox studyName="공지사항1" Color="#54d6b6" />
+              <SlideBox contentName="공지사항1" Color="#54d6b6" />
             </SwiperSlide>
           </Link>
           <Link to="/">
             <SwiperSlide className={style.swiper_slide} key="notice_6">
-              <SlideBox studyName="공지사항2" Color="#c3a2f3" />
+              <SlideBox contentName="공지사항2" Color="#c3a2f3" />
             </SwiperSlide>
           </Link>
         </Swiper>

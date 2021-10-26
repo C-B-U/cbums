@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import style from "../../../css/study/study_make/study_make.module.css";
-class StudySlideTag extends PureComponent {
+class MakeStudyTag extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +33,7 @@ class StudySlideTag extends PureComponent {
   render() {
     const tagList = this.state.tags.map((tag, i) => (
       <li
-        className={style['main__slide-tag-list-item']}
+        className={style["main__slide-tag-list-item"]}
         key={i}
         onClick={() => this.removeList(i)}
       >
@@ -42,7 +42,7 @@ class StudySlideTag extends PureComponent {
     ));
     return (
       <React.Fragment>
-        <div className={style['main__slide-tag']}>
+        <div className={style["main__slide-tag"]}>
           태그 <br />
           <form action="#" method="POST" name="study_tag">
             <input
@@ -54,13 +54,13 @@ class StudySlideTag extends PureComponent {
             />
             <button
               onClick={this.handleCreate}
-              className={style['main__slide-tag-button']}
+              className={style["main__slide-tag-button"]}
               type="button"
             >
               <p>+</p>
             </button>
-            <div className={style['tag-wrap']}></div>
-            <ul className={style['main__slide-tag-list']}>{tagList}</ul>
+            <div className={style["tag-wrap"]}></div>
+            <ul className={style["main__slide-tag-list"]}>{tagList}</ul>
           </form>
         </div>
       </React.Fragment>
@@ -68,4 +68,4 @@ class StudySlideTag extends PureComponent {
   }
 }
 
-export default StudySlideTag;
+export default MakeStudyTag;

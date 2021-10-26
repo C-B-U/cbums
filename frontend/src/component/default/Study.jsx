@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import ContainerTitle from "./ContainerTitle";
+import ArticleTitle from "./ArticleTitle";
 import StudySlide from "./StudySlide";
 import style from "../../css/default/default.module.css";
 
@@ -7,8 +7,8 @@ class Study extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className={style['main__study']}>
-          <ContainerTitle title="Recruiting Study" />
+        <div className={style["main__study"]}>
+          <ArticleTitle title="Recruiting Study" />
           <StudySlide />
         </div>
       </React.Fragment>

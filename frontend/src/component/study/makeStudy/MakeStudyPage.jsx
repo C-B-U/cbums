@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
-import StudyTitle from "./StudyTitle";
+import MakeStudyTitle from "./MakeStudyTitle";
 import style from "../../../css/study/study_make/study_make.module.css";
-import StudySlide from "./StudySlide";
+import MakeStudyContentList from "./MakeStudyContentList";
 
 class StudyMakePage extends PureComponent {
   render() {
@@ -9,8 +9,8 @@ class StudyMakePage extends PureComponent {
       <React.Fragment>
         <main>
           <div className={style.main_wrap}>
-            <StudyTitle title="스터디 개설" />
-            <StudySlide />
+            <MakeStudyTitle title="스터디 개설" />
+            <MakeStudyContentList />
           </div>
         </main>
       </React.Fragment>

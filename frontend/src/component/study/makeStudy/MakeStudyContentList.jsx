@@ -5,13 +5,13 @@ import "swiper/components/navigation/navigation.scss";
 import "../../../css/slide.css";
 import "swiper/swiper.scss";
 import style from "../../../css/study/study_make/study_make.module.css";
-import StudySlideButton from "./StudySlideButton";
-import StudySlideTag from "./StudySlideTag";
-import StudySlideExplanation from "./StudySlideExplanation";
-import StudySlideInformation from "./StudySlideInformation";
+import MakeStudyInformation from "./MakeStudyInformation";
+import MakeStudyExplanation from "./MakeStudyExplanation";
+import MakeStudyTag from "./MakeStudyTag";
+import MakeStudyButton from "./MakeStudyButton";
 SwiperCore.use([Navigation]);
 
-class StudySlide extends PureComponent {
+class MakeStudyContentList extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -29,26 +29,26 @@ class StudySlide extends PureComponent {
             >
               <SwiperSlide key="studymake_1" className={style.studymake_slide}>
                 <div className={style["studymake_slide-wrap"]}>
-                  <StudySlideInformation />
+                  <MakeStudyInformation />
                 </div>
               </SwiperSlide>
               <SwiperSlide key="studymake_2" className={style.studymake_slide}>
                 <div className={style["studymake_slide-wrap"]}>
-                  <StudySlideExplanation />
+                  <MakeStudyExplanation />
                 </div>
               </SwiperSlide>
               <SwiperSlide key="studymake_3" className={style.studymake_slide}>
                 <div className={style["studymake_slide-wrap"]}>
-                  <StudySlideTag />
+                  <MakeStudyTag />
                 </div>
               </SwiperSlide>
             </Swiper>
           </div>
-          <StudySlideButton />
+          <MakeStudyButton />
         </div>
       </React.Fragment>
     );
   }
 }
 
-export default StudySlide;
+export default MakeStudyContentList;

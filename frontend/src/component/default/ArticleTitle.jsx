@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 import style from "../../css/default/default.module.css";
 
-class ContainerTitle extends PureComponent {
+class ArticleTitle extends PureComponent {
   render() {
     const { title } = this.props;
     const iconStyle = {
@@ -33,4 +33,4 @@ class ContainerTitle extends PureComponent {
   }
 }
 
-export default ContainerTitle;
+export default ArticleTitle;

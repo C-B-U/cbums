@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import style from "../../../css/study/study_make/study_make.module.css";
 
-class StudyTitle extends PureComponent {
+class MakeStudyTitle extends PureComponent {
   render() {
     const { title } = this.props;
     return (
@@ -14,4 +14,4 @@ class StudyTitle extends PureComponent {
   }
 }
 
-export default StudyTitle;
+export default MakeStudyTitle;
