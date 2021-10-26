@@ -4,7 +4,7 @@ import style from "../../css/default/default.module.css";
 import Banner from "./Banner";
 import Notice from "./Notice";
 import Study from "./Study";
-import Line from "./Line";
+import ArticlePartition from "./ArticlePartition";
 import NavUserMenu from "../layout/NavUserMenu";
 class DefaultPage extends PureComponent {
   render() {
@@ -12,7 +12,7 @@ class DefaultPage extends PureComponent {
       <React.Fragment>
         <Default>
           <main>
-            <div className={style['main-wrap']}>
+            <div className={style["main-wrap"]}>
               <Banner />
               <Study />
               <Notice />
@@ -21,11 +21,11 @@ class DefaultPage extends PureComponent {
         </Default>
         <Mobile>
           <main>
-            <div className={style['main-wrap']}>
+            <div className={style["main-wrap"]}>
               <NavUserMenu />
               <Banner />
               <Study />
-              <Line />
+              <ArticlePartition />
               <Notice />
             </div>
           </main>

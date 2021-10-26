@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import style from "../../css/default/default.module.css";
 
-class Line extends PureComponent {
+class ArticlePartition extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -11,4 +11,4 @@ class Line extends PureComponent {
   }
 }
 
-export default Line;
+export default ArticlePartition;

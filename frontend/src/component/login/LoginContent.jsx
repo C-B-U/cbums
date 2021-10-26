@@ -1,17 +1,14 @@
 import React, { PureComponent } from "react";
-import { Switch, Route } from "react-router";
 import style from "../../css/login/login.module.css";
 import LoginButtonList from "./LoginButtonList";
-import SignUpButtonList from "../signUp/SignUpButtonList";
-class AuthBoxList extends PureComponent {
+
+
+class LoginContent extends PureComponent {
   render() {
     return (
       <React.Fragment>
         <div className={style.article__boxList}>
-          <Switch>
-            <Route path="/login" component={LoginButtonList} />
-            <Route path="/signup" component={SignUpButtonList} />
-          </Switch>
+          <LoginButtonList />
           <div
             className={`${style.boxList__schoolName} ${style.boxList__schoolName1}`}
           >
@@ -26,4 +23,4 @@ class AuthBoxList extends PureComponent {
   }
 }
 
-export default AuthBoxList;
+export default LoginContent;

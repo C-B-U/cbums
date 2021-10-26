@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import style from "../../../css/study/study_make/study_make.module.css";
 
-class StudySlideButton extends PureComponent {
+class MakeStudyButton extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,14 +29,14 @@ class StudySlideButton extends PureComponent {
       <React.Fragment>
         <div className={style.studymake_buttons}>
           <div
-            id={style['prevButton']}
+            id={style["prevButton"]}
             onClick={this.buttonPrevClick}
-            className='swiper-button-prev'
+            className="swiper-button-prev"
           >
             <h4>이전</h4>
           </div>
           <div
-            id={style['nextButton']}
+            id={style["nextButton"]}
             onClick={this.buttonNextClick}
             className={
               this.state.indexNumber === 2
@@ -47,10 +47,10 @@ class StudySlideButton extends PureComponent {
             <h4>다음</h4>
           </div>
         </div>
-        <div className={style['main__slide-submit']}>
+        <div className={style["main__slide-submit"]}>
           <button
-            className={this.state.indexNumber === 2 ? "" : style.disabled }
-            id={style['submitButton']}
+            className={this.state.indexNumber === 2 ? "" : style.disabled}
+            id={style["submitButton"]}
             type="button"
           >
             <h4>개설</h4>
@@ -61,4 +61,4 @@ class StudySlideButton extends PureComponent {
   }
 }
 
-export default StudySlideButton;
+export default MakeStudyButton;

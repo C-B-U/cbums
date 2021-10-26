@@ -4,18 +4,27 @@ import Kakao from "../../images/login/kakaoLogo.svg";
 import Google from "../../images/login/googleLogo.svg";
 import Naver from "../../images/login/naverLogo.svg";
 import style from "../../css/login/login.module.css";
-import AuthButton from "./AuthButton";
+
+import LoginButton from "./LoginButton";
 
 class LoginButtonList extends PureComponent {
   render() {
+    const naverBackgroundColor = { backgroundColor: "#03C75A" };
+    const naverTitleColor = { color: "#ffffff" };
+    const kakaoBackgroundColor = { backgroundColor: "#FEE500" };
+    const kakaoTitleColor = { color: "#3c1e1e" };
+    const googleBackgroundColor = { backgroundColor: "#ffffff" };
+    const googleTitleColor = { color: "#757575" };
+
+
     return (
       <React.Fragment>
         <div className={style.button_container}>
           <Link to="/">
-            <AuthButton
+            <LoginButton
               className={style.loginButton}
-              bgStyle={{ backgroundColor: "#03C75A" }}
-              tStyle={{ color: "#ffffff" }}
+              bgStyle={naverBackgroundColor}
+              tStyle={naverTitleColor}
               width="20"
               alt="네이버로고"
               title="네이버 로그인"
@@ -23,10 +32,10 @@ class LoginButtonList extends PureComponent {
             />
           </Link>
           <Link to="/">
-            <AuthButton
+            <LoginButton
               className={style.loginButton}
-              bgStyle={{ backgroundColor: "#FEE500" }}
-              tStyle={{ color: "#3c1e1e" }}
+              bgStyle={kakaoBackgroundColor}
+              tStyle={kakaoTitleColor}
               width="20"
               alt="카카오로고"
               title="카카오 로그인"
@@ -34,10 +43,10 @@ class LoginButtonList extends PureComponent {
             />
           </Link>
           <Link to="/">
-            <AuthButton
+            <LoginButton
               className={style.loginButton}
-              bgStyle={{ backgroundColor: "#ffffff" }}
-              tStyle={{ color: "#757575" }}
+              bgStyle={googleBackgroundColor}
+              tStyle={googleTitleColor}
               title="구글 로그인"
               alt="구글로고"
               src={Google}

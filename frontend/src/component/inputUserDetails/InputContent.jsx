@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 
 
-class InputBoxList extends PureComponent {
+class InputContent extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -18,4 +18,4 @@ class InputBoxList extends PureComponent {
   }
 }
 
-export default InputBoxList;
+export default InputContent;
