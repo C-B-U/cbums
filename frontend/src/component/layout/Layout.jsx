@@ -8,6 +8,7 @@ import "../../css/elementSetting.css";
 import SignUpPage from "../signUp/SignUpPage";
 import MakeStudyPage from "../study/makeStudy/MakeStudyPage";
 import InputUserDetailsPage from "../inputUserDetails/InputUserDetailsPage";
+import OpenedStudyPage from "../study/makeStudy/openedStudy/OpenedStudyPage";
 
 class Layout extends PureComponent {
   render() {
@@ -21,6 +22,7 @@ class Layout extends PureComponent {
             <Route path="/signup" component={SignUpPage} />
             <Route path="/input" component={InputUserDetailsPage} />
             <Route path="/makeStudy" component={MakeStudyPage} />
+            <Route path="/openedStudy" component={OpenedStudyPage} />
           </Switch>
           <Footer />
         </Router>
