@@ -5,7 +5,8 @@ class LoginButton extends PureComponent {
     const { title } = this.props;
     return (
       <React.Fragment>
-        <div className={this.props.className} style={this.props.bgStyle}>
+        <a href={this.props.href}>
+        <div className={this.props.className} style={this.props.bgStyle} onClick={this.props.onClick}>
           <img
             width={this.props.width}
             src={this.props.src}
@@ -13,6 +14,7 @@ class LoginButton extends PureComponent {
           />
           <span style={this.props.tStyle}>{title}</span>
         </div>
+        </a>
       </React.Fragment>
     );
   }

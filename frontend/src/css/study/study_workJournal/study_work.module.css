@@ -32,7 +32,7 @@ select{
     border: 0;
 }
 
-#search{
+.search{
     border: none;
     width: 10em;
 }

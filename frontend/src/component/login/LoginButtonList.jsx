@@ -1,38 +1,37 @@
 import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
 import Kakao from "../../images/login/kakaoLogo.svg";
 import Google from "../../images/login/googleLogo.svg";
 import Naver from "../../images/login/naverLogo.svg";
 import style from "../../css/login/login.module.css";
-
 import LoginButton from "./LoginButton";
 
 class LoginButtonList extends PureComponent {
+  constructor(props) {
+    super(props);
+
+  }
+ 
   render() {
-    const naverBackgroundColor = { backgroundColor: "#03C75A" };
+    const naverBackgroundColor = { backgroundColor: "#03C75A", cursor:"pointer" };
     const naverTitleColor = { color: "#ffffff" };
-    const kakaoBackgroundColor = { backgroundColor: "#FEE500" };
+    const kakaoBackgroundColor = { backgroundColor: "#FEE500", cursor:"pointer"  };
     const kakaoTitleColor = { color: "#3c1e1e" };
-    const googleBackgroundColor = { backgroundColor: "#ffffff" };
+    const googleBackgroundColor = { backgroundColor: "#ffffff" , cursor:"pointer" };
     const googleTitleColor = { color: "#757575" };
-
-
+    
     return (
       <React.Fragment>
         <div className={style.button_container}>
-          <Link to="/">
-            <LoginButton
-              className={style.loginButton}
-              bgStyle={naverBackgroundColor}
-              tStyle={naverTitleColor}
-              width="20"
-              alt="네이버로고"
-              title="네이버 로그인"
-              src={Naver}
-            />
-          </Link>
-          <Link to="/">
-            <LoginButton
+          <LoginButton
+            className={style.loginButton}
+            bgStyle={naverBackgroundColor}
+            tStyle={naverTitleColor}
+            width="20"
+            alt="네이버로고"
+            title="네이버 로그인"
+            src={Naver}
+          />
+            <LoginButton 
               className={style.loginButton}
               bgStyle={kakaoBackgroundColor}
               tStyle={kakaoTitleColor}
@@ -41,18 +40,15 @@ class LoginButtonList extends PureComponent {
               title="카카오 로그인"
               src={Kakao}
             />
-          </Link>
-          <Link to="/">
-            <LoginButton
-              className={style.loginButton}
-              bgStyle={googleBackgroundColor}
-              tStyle={googleTitleColor}
-              title="구글 로그인"
-              alt="구글로고"
-              src={Google}
-              width="23"
-            />
-          </Link>
+          <LoginButton
+            className={style.loginButton}
+            bgStyle={googleBackgroundColor}
+            tStyle={googleTitleColor}
+            title="구글 로그인"
+            alt="구글로고"
+            src={Google}
+            width="23"
+          />
         </div>
       </React.Fragment>
     );
