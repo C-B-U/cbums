@@ -1,0 +1,347 @@
+
+main{
+    background-color: #EFECE8;
+}
+.main_wrap{
+    width: 52.08%;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 15px 0px 20px -5px rgba(190,190,190,1), -15px 0px 20px -5px rgba(190,190,190,1);
+}
+
+.main__title{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 4em 2.7em 4em;
+ 
+}
+.main__search-wrap{
+    display: flex;
+    height: 30px;                 
+    border: solid 2px #c1c1c1;
+}
+.main__title-top{
+    display: flex;
+}
+.main__title-top > h2{
+    margin: 0;
+    color: #424043;
+    padding-bottom: 0.1em;
+    border-bottom:solid 2px #424043; 
+}
+.main__search{
+    display: flex;
+ 
+}
+select{
+    border: 0;
+}
+
+input{
+    border: none;
+    width: 10em;
+}
+
+.main__serach-button{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.main__serach-button > i{
+    color: #c1c1c1;
+    font-size: 1.2em;
+}
+.post_wrap{
+    margin-left: 3.5em;
+    cursor: pointer;
+}
+
+.post_title{
+    display: flex;
+    margin: 0.5em 0.5em;
+
+}
+.post_title:hover{
+   color: #c1c1c1;
+}
+.post_status{
+    padding: 0.2em 0.6em;
+    margin-right: 0.8em;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: white;
+}
+.post_status_unrecruited{
+    background-color: #ffa273;
+}
+.post_status_recruited{
+    background-color: #bebebe;
+}
+
+.title_text{
+    font-weight: bold;
+    margin: 0;
+    
+}
+.main__slide-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 0em;
+  cursor: pointer;
+}
+.main__slide-tag-list-item {
+  display: flex;
+  height: 23px;
+  margin: 0.3em 0.5em;
+  padding: 0.2em 0.5em 0.1em;
+  border-radius: 0.3em;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: #3e4042;
+  background-color: rgb(235, 238, 243);
+}
+.post_info{
+    margin: 0.8em 0.5em 0em;
+    padding: 0 0 1em 0;
+}
+
+.detail_wrap{
+    position: relative;
+}
+.comment_wrap{
+    position:absolute;
+    bottom: 3em;
+    right: 5em;
+    border: 1px solid rgb(180, 180, 180);
+    padding: 0.5em 1.3em;
+    border-radius: 1em;
+}
+.comment_number{
+    margin-left: 0.35em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.head_count{
+    position: absolute;
+    bottom: 1.2em;
+    right: 5.5em;
+    font-size: 0.85em;
+    color: #c52020;
+}
+.partition{
+    width: 93%;
+    border-top: 1px rgb(221, 221, 221) solid;
+    padding-bottom: 1em;
+}
+.info_name{
+    color: #818181;
+    margin-right: 0.8em;
+    font-size: 0.85em;
+}
+.info_date{
+    color: #818181;
+    font-size: 0.85em;
+}
+
+h3{
+    margin: 1em;
+    margin-top: 2em;
+}
+
+
+.main__tab-make-wrap{
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5em 3.5em;
+}
+
+.main__tab-make-mylist > a{
+    display: block;
+    padding: 0.3em 1em;
+    color: rgb(53, 53, 53);
+    border: 1px rgb(221, 221, 221)  solid;
+    font-size: 0.9em;
+    border-radius: 0.3em;
+}
+.main__tab-make-mylist > a:hover{
+    color: #a7a7a7;
+}
+.main__tab-make{
+    background-color: #757575;
+    color: white;
+    border-radius: 0.3em;
+    padding: 0.2em 0.5em;
+}
+.main__tab-make > a{
+    display: block;
+    padding: 0.2em 0.8em;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.main__tab-make:hover{
+     background-color:#a5a5a5;
+}
+
+
+.main__tab-list{
+    display: flex;
+    justify-content: center;
+}
+.main__tab-list > a{
+    color: red;
+    padding-bottom: 1.5em;
+}
+h3{
+    font-size: 1.1em;
+}
+
+
+@media all and (min-width:768px) and (max-width:1023px){
+
+    .main_wrap{
+        width: 60%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 15px 0px 20px -5px rgba(190,190,190,1), -15px 0px 20px -5px rgba(190,190,190,1);
+    }
+    .main__title{
+        display: flex;
+        justify-content: space-between;
+        padding: 2em 3em 2.7em 3em;
+    }
+    .post_wrap{
+        margin-left: 2.5em;
+    }
+    .main__title-top > h2{
+        margin: 0;
+        color: #424043;
+        padding-bottom: 0.1em;
+        border-bottom:solid 2px #424043; 
+        font-size: 1.3em;
+    }
+    .main__search{
+        display: flex;
+        
+    }
+    input{
+        border: none;
+        width: 8em;
+    }
+
+    .main__serach-button{
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .main__serach-button > i{
+        color: #c1c1c1;
+        font-size: 1.2em;
+    }
+    .main__tab-wrap{
+        width: 85%;
+        height: 450px;
+        margin: 0 auto;
+    }
+    .main__tab-menu li a{
+        color: white;
+        display: block;
+        padding: 1em 1.2em; 
+        font-weight: bold;
+        font-size: 1em;
+    }
+    
+     
+    .main__tab-make-wrap{
+        display: flex;
+        justify-content: space-between;
+        margin: 1.5em 2.5em;
+    }
+    
+    
+    .main__tab-list > a{
+        color: red;
+        font-size: 0.7em;
+    }
+  
+}
+
+
+@media all and (max-width:767px){
+    .main_wrap{
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 1px 0px 2px -5px rgba(190,190,190,1), -1px 0px 15px -5px rgba(190,190,190,1);
+    }
+    .post_wrap{
+    margin-left: 1.5em;
+}
+    .main__title{
+        display: flex;
+        justify-content: space-between;
+        padding: 2em 2em 2.7em 2em;
+    }
+    .main__title-top > h2{
+        margin: 0;
+        color: #424043;
+        padding-bottom: 0.1em;
+        border-bottom:solid 2px #424043; 
+        font-size: 1.3em;
+    }
+    .main__search{
+        display: flex;
+        
+    }
+    
+    input{
+        border: none;
+        width: 8em;
+    }
+
+    .main__serach-button{
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .main__serach-button > i{
+        color: #c1c1c1;
+        font-size: 1.2em;
+    }
+    .main__tab-wrap{
+        width: 89%;
+        height: 450px;
+        margin: 0 auto;
+    }
+
+    .main__tab-menu li a{
+        color: white;
+        display: block;
+        padding: 1em 1.2em; 
+        font-weight: bold;
+        font-size: 0.9em;
+    }
+    
+    .main__tab-make-wrap{
+        display: flex;
+        justify-content: space-between;
+        margin: 1.5em 2em;
+    }
+    
+    .main__tab-list > a{
+        color: red;
+        font-size: 1em;
+    }
+    .post_title{
+        display: flex;
+        margin: 0.5em 0.5em;
+    }
+    .title_text{
+        font-weight: bold;
+        margin: 0;
+        color:black;
+}
+}
