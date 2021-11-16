@@ -99,7 +99,7 @@ main {
   flex-direction: row;
 }
 .main__slide-tag-button {
-  background-color: #fff8f6;
+  background-color: #eff3fa;
   border: 1px solid #8f8f8f;
   color: #8f8f8f;
   cursor: pointer;
@@ -125,12 +125,12 @@ main {
   display: flex;
   height: 23px;
   margin: 0.3em 0.5em;
-  padding: 0.2em 0.5em 0.3em;
-  border: 1px solid rgb(93, 93, 93);
-  border-radius: 1em;
+  padding: 0.2em 0.5em 0.2em;
+  border-radius: 0.3em;
   font-weight: 500;
+  font-size: 0.9em;
   color: rgb(93, 93, 93);
-  background-color: #fff6f1;
+  background-color: rgb(235, 238, 243);
 }
 
 .swiper-pagination-bullet {
@@ -197,7 +197,7 @@ main {
   border-radius: 1em;
   color: #525252;
   border: 1px solid rgb(161, 161, 161);
-  background-color: rgb(255, 221, 205);
+  background-color: rgb(255, 240, 230);
   cursor: pointer;
 }
 .main__slide-submit > button > h4 {

@@ -1,0 +1,114 @@
+main{
+    background-color: #EFECE8;
+}
+.main_wrap{
+    width: 52.08%;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 15px 0px 20px -5px rgba(190,190,190,1), -15px 0px 20px -5px rgba(190,190,190,1);
+}
+.main__title-wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 4em 0em;
+}
+.main__title > h2{
+    margin: 0;
+    color: #424043;
+    padding-bottom: 0.1em;
+    border-bottom:solid 2px #424043; 
+}
+#title{
+    text-align:center;
+}
+
+.main__writing-table{
+    width: 81%;
+    margin: 3em 4em 2em 4em;
+    border-collapse: collapse;
+}
+.main__writing-table-checkbox-ul{
+    padding: 0;
+}
+.main__writing-table-checkbox{
+    display: flex;
+    margin: 0.5em;
+}
+.main__writing-table-button{
+    margin-right: 0.7em;
+    padding: 0.2em 0.5em;
+    position: relative;
+    bottom: 3px;
+    background-color: #ffb9b9;
+    border: 1px solid rgb(93, 93, 93);
+    border-radius: 0.5em;
+    cursor: pointer;
+    
+}
+th, td{
+    border: 1px solid #444444;
+    padding: 10px;
+}
+input,textarea{
+    margin: 0.5em;
+}
+.main__writing-button{
+    margin: 0em 4em 4em 5em;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 1em;
+    background-color: #fff1f5;
+    border: 1px solid rgb(93, 93, 93);
+    cursor: pointer;
+}
+
+@media all and (min-width:768px) and (max-width:1023px){
+    .main_wrap{
+        width: 60%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 15px 0px 20px -5px rgba(190,190,190,1), -15px 0px 20px -5px rgba(190,190,190,1);
+    }
+    .main__title-wrap{
+        display: flex;
+        justify-content: space-between;
+        padding: 2em 3em 0em 4em;
+    }
+    .main__title-top > h2{
+        margin: 0;
+        color: #424043;
+        padding-bottom: 0.1em;
+        border-bottom:solid 2px #424043; 
+        font-size: 1.3em;
+    }
+}
+@media all and (max-width:767px){
+    .main_wrap{
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 1px 0px 2px -5px rgba(190,190,190,1), -1px 0px 15px -5px rgba(190,190,190,1);
+    }
+    .main__title-wrap{
+        display: flex;
+        justify-content: space-between;
+        padding: 2em 2em 0em 2em;
+    }
+    .main__title-top > h2{
+        margin: 0;
+        color: #424043;
+        padding-bottom: 0.1em;
+        border-bottom:solid 2px #424043; 
+        font-size: 1.3em;
+    }
+    .main__writing-table{
+        margin: 2em;
+        width: 88%;
+    }
+    .main__writing-button{
+        margin: 0em 4em 4em 2.5em;
+    }
+  
+   
+    
+}

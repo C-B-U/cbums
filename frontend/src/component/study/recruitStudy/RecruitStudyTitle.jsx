@@ -1,15 +1,14 @@
 import React, { PureComponent } from "react";
+import style from "../../../css/study/study_recruit/study_recruit.module.css";
 import { FaSearch } from "react-icons/fa";
-import style from "../../../css/study/study_workJournal/study_work.module.css";
 
-class DetailedStudyTitle extends PureComponent {
+class RecruitStudyTitle extends PureComponent {
     render() {
-        const { studytitle } = this.props;
         return (
           <React.Fragment>
-            <div className={style["main__title-wrap"]}>
-              <div className={style["main__title"]}>
-                <h2>{studytitle}</h2>
+            <div className={style.main__title}>
+              <div className={style["main__title-top"]}>
+                <h2>스터디 모집</h2>
               </div>
               <div className={style["main__search-wrap"]}>
                 <div className={style["main__search"]}>
@@ -19,6 +18,7 @@ class DetailedStudyTitle extends PureComponent {
                         <select name="keyField">
                           <option value="subject">제목</option>
                           <option value="writer">작성자명</option>
+                          <option value="tag">태그</option>
                         </select>
                       </td>
                       <td>
@@ -47,8 +47,7 @@ class DetailedStudyTitle extends PureComponent {
             </div>
           </React.Fragment>
         );
-        }                  
     }
+}
 
-export default DetailedStudyTitle;
-
+export default RecruitStudyTitle;
