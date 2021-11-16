@@ -4,7 +4,7 @@ import { FaCalendarCheck } from "react-icons/fa";
 import { FaListAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-class DetailedStudyButtonList extends PureComponent {
+class StudyNavButtonList extends PureComponent {
     render() {
         return (
           <React.Fragment>
@@ -25,4 +25,4 @@ class DetailedStudyButtonList extends PureComponent {
     }
 }
 
-export default DetailedStudyButtonList;
+export default StudyNavButtonList;

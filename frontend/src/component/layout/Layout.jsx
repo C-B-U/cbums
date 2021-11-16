@@ -9,8 +9,8 @@ import SignUpPage from "../signUp/SignUpPage";
 import MakeStudyPage from "../study/makeStudy/MakeStudyPage";
 import InputUserDetailsPage from "../inputUserDetails/InputUserDetailsPage";
 import FinishMakeStudyPage from "../study/makeStudy/finishMakeStudy/FinishMakeStudyPage";
-import DetailedStudyPage from "../study/detailedstudy/DetailedStudyPage";
 import RecruitStudyPage from "../study/recruitStudy/RecruitStudyPage";
+import StudyNavPage from "../study/studyNav/StudyNavPage";
 
 class Layout extends PureComponent {
   render() {
@@ -26,7 +26,7 @@ class Layout extends PureComponent {
             <Route exact path="/study/recruit" component={RecruitStudyPage} />
             <Route exact path="/study/make" component={MakeStudyPage} />
             <Route path="/study/make/finish" component={FinishMakeStudyPage} />
-            <Route path="/study/detail" component={DetailedStudyPage} />
+            <Route path="/study/detail" component={StudyNavPage} />
             
           </Switch>
           <Footer />
