@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import style from "../../../../css/study/study_make_complete/study_make_complete.module.css";
+import style from "../../../css/study/study_make_complete/study_make_complete.module.css";
 
-class FinishMakeStudyTitle extends PureComponent {
+class RecruitDetailStudyTitle extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -20,4 +20,4 @@ class FinishMakeStudyTitle extends PureComponent {
   }
 }
 
-export default FinishMakeStudyTitle;
+export default RecruitDetailStudyTitle;
