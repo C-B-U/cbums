@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import style from "../../../../css/study/study_make_complete/study_make_complete.module.css";
+import style from "../../../css/study/study_make_complete/study_make_complete.module.css";
 
-class FinishMakeStudyContents extends PureComponent {
+class RecruitDetailStudyContents extends PureComponent {
   render() {
     const duration = "2021/1/1 ~";
     const furtherExplanation =
@@ -9,6 +9,7 @@ class FinishMakeStudyContents extends PureComponent {
     return (
       <React.Fragment>
         <div className={style["main__studyComplete-details-wrap"]}>
+          <div className={style.partition} />
           <div className={style["main__studyComplete-details-duration"]}>
             <strong>진행기간</strong>: {duration}
           </div>
@@ -23,4 +24,4 @@ class FinishMakeStudyContents extends PureComponent {
   }
 }
 
-export default FinishMakeStudyContents;
+export default RecruitDetailStudyContents;

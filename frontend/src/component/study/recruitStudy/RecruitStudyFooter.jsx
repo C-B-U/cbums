@@ -6,9 +6,6 @@ class RecruitStudyFooter extends PureComponent {
         return (
           <React.Fragment>
             <div className={style["main__tab-make-wrap"]}>
-              <div className={style["main__tab-make-mylist"]}>
-                <Link>내가 개설한 스터디</Link>
-              </div>
               <div className={style["main__tab-make"]}>
                 <Link>개설</Link>
               </div>

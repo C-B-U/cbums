@@ -153,7 +153,7 @@ h3{
 
 .main__tab-make-wrap{
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     margin: 1.5em 3.5em;
 }
 

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import style from "../../../../css/study/study_make_complete/study_make_complete.module.css";
+import style from "../../../css/study/study_make_complete/study_make_complete.module.css";
 
-class FinishMakeStudyWriter extends PureComponent {
+class RecruitDetailStudyWriter extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -14,4 +14,4 @@ class FinishMakeStudyWriter extends PureComponent {
   }
 }
 
-export default FinishMakeStudyWriter;
+export default RecruitDetailStudyWriter;
