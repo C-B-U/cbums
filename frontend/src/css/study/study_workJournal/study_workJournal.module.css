@@ -13,25 +13,22 @@ main{
     padding: 2em 4em 0em;
 }
 
-.main__title > h2{
-    margin: 0;
+.main__title{
     color: #847d74;
-    padding-bottom: 0.1em;
-    
 }
-
+.main__title>h2{
+    font-size: 1.5em;
+}
 select{
     border: 0;
 }
-
 
 .main__table-wrap {
     display: block;
     margin-top: 1em;
     padding: 1em;
-    height: 370px;
-    
 }
+
 .main__details-wrap{
     display: inline-flex;
     margin: 0em;
@@ -41,26 +38,25 @@ select{
     color: #333333;
 }
 .main__details{
-    padding: 0.8em 1em;
+    padding: 0.5em 1em;
 }
 .main__details-members{
-    margin-bottom: 0.5em;
+    margin: 0.5em 0.4em 0;
     font-size: 0.9em;
 }
 .main__details-tags > ul{
     display: flex;
-    margin: 0;
+    margin: 0.3em 0 0 0 ;
     padding: 0;
 }
 .main__details-tag-item{
-    margin-right: 0.5em;
+    margin: 0.3em 0.3em;
     padding: 0.1em 0.5em;
-    border: 1px solid rgb(133, 133, 133);
-    border-radius: 1em;
+    border-radius: 0.3em;
     font-weight: 500;
-    color: rgb(117, 117, 117);
     font-size: 0.9em;
-    background-color: #fff6f1;
+    color: #3e4042;
+    background-color: rgb(235, 238, 243);
 }
 
 .main__table-wrap > table {
@@ -73,21 +69,13 @@ td{
     text-align: center;  
     font-size: 0.9em; 
 }
-td > a{
-    color: black;
-}
-td> a:hover{
-    border-bottom: 1px solid black;
-}
+
 tr {
     border-bottom: 1px solid #f2f2f2;
     padding: 10px;
 }
-tr:hover{
+tbody> tr:hover{
     background-color: rgb(241, 241, 241);
-}
-tr:hover:first-child{
-    background-color: white;
 }
 
 .main__table th,.main__table td{
@@ -100,10 +88,9 @@ tr:hover:first-child{
 .view { width: 14%;}
 
 .main__writing{
-    
-    float: right;
-    margin: 1em 3.3em;
-    
+    display: flex;
+    justify-content: end;
+    margin-right: 5em;
 }
 .main__writing-button{
     padding: 0.3em 0.5em;
@@ -113,15 +100,13 @@ tr:hover:first-child{
     font-size: 0.87em;
     cursor: pointer;
 }
-
-.main__page-box > a{
+.main__page-box{
     display: flex;
     justify-content: center;
-    position: relative;
-    left:55px;
-    top: 40px;
+}
+.main__page-box-number{
+    margin-bottom: 8em;
     color: red; 
-    margin: 1em;
 }
 
 @media all and (min-width:768px) and (max-width:1023px){
@@ -136,10 +121,15 @@ tr:hover:first-child{
         display: block;
         padding: 2em 3em 0em 3em;
     }
-    .main__title-top > h2{
+    .main__title{
+        display: flex;
+        margin: 0 0 0 0.2em;
+        padding: 0;
+    }
+    .main__title> h2{
         margin: 0;
         padding-bottom: 0.1em;
-        font-size: 1.3em;
+        font-size: 1.5em;
     }
     .main__details-wrap{
         display: inline-flex;
@@ -162,19 +152,13 @@ tr:hover:first-child{
     .date {width: 20%;}
     .view { width: 13%;}
     .main__writing{
-        float: right;
-        margin: 1em;
+        margin-right: 2.5em;
+    }
+    .main__page-box-number{
+        margin-bottom: 5em;
+        color: red; 
     }
 
-    .main__page-box > a{
-        display: flex;
-        justify-content: center;
-        position: relative;
-        left:40px;
-        top: 40px;
-        color: red; 
-        margin: 1em;
-    }
 }
 
 @media all and (max-width:767px){
@@ -189,7 +173,7 @@ tr:hover:first-child{
         padding: 2em 3em 0em 3em;
     }
     .main__details-wrap{
-        display: inline-flex;
+        display: flex;
         margin: 0em;
         margin-top: 1em;
         border: 1px solid #cecece;
@@ -197,13 +181,23 @@ tr:hover:first-child{
         border-radius: 1em;
         color: #333333;
     }
-    .main__title-top > h2{
-        margin: 0;
+    .main__title{
+        display: flex;
+        margin: 0 0 0 0.2em;
+        padding: 0;
         padding-bottom: 0.1em;
         font-size: 1.3em;
     }
-   
-   
+    .main__title > h2{
+        margin: 0;
+        padding-bottom: 0.1em;
+        font-size: 1.2em;
+    }
+    .main__table-wrap{
+        display: block;
+        margin-top: 1em;
+        padding: 1em;
+    }
     .main__table-wrap > table {
         width:100%;
         margin: 0 auto;
@@ -211,17 +205,11 @@ tr:hover:first-child{
     }
     .main__table th{
         display: none;
-
     }
     .no {width: 10%;}
     .writer {width: 25%;}
     .date {width: 25%;}
     .view { width: 15%;}
-
-    .main__writing{
-        float: right;
-        margin: 1.5em 0.5em;
-    }
     .main__writing-button{
         padding: 0.6em 0.8em;
         border: 1px solid #d3d3d3;
@@ -230,16 +218,15 @@ tr:hover:first-child{
         font-size: 0.9em;
         cursor: pointer;
     }
-    
-    .main__page-box > a{
-        display: flex;
-        justify-content: center;
-        position: relative;
-        left:35px;
-        top: 45px;
-        color: red; 
-        margin: 1em;
+    .main__writing{
+        margin-right: 1.8em;
     }
-
-    
+    .main__writing-button{
+        padding: 0.3em 0.5em;
+    }
+    .main__page-box-number{
+        margin-bottom: 3em;
+        color: red; 
+    }
+  
 }

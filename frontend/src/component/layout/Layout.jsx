@@ -11,6 +11,8 @@ import InputUserDetailsPage from "../inputUserDetails/InputUserDetailsPage";
 import RecruitStudyPage from "../study/recruitStudy/RecruitStudyPage";
 import StudyNavPage from "../study/studyNav/StudyNavPage";
 import RecruitDetailStudyPage from "../study/recruitDetailStudy/RecruitDetailStudyPage";
+import StudyWorkJournalPage from "../study/studyWorkJournal/StudyWorkJournalPage";
+
 
 class Layout extends PureComponent {
   render() {
@@ -26,7 +28,8 @@ class Layout extends PureComponent {
             <Route exact path="/study/recruit" component={RecruitStudyPage} />
             <Route exact path="/study/make" component={MakeStudyPage} />
             <Route path="/study/recruit/detail" component={RecruitDetailStudyPage} />
-            <Route path="/study/detail" component={StudyNavPage} />
+            <Route exact path="/study/detail" component={StudyNavPage} />
+            <Route path="/study/detail/workjournal" component={StudyWorkJournalPage} />
           </Switch>
           <Footer />
         </Router>
