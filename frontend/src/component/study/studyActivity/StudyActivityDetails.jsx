@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import style from "../../../css/study/study_workJournal/study_workJournal.module.css";
 
-class StudyWorkJournalDetails extends PureComponent {
+class StudyActivityDetails extends PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -13,7 +13,8 @@ class StudyWorkJournalDetails extends PureComponent {
               <span>
                 <b>팀장</b>
                 (6기 최부엉)
-              </span> /
+              </span>{" "}
+              /
               <span>
                 <b> 팀원</b>
                 (5기 000, 6기 000, 7기 000)
@@ -33,4 +34,4 @@ class StudyWorkJournalDetails extends PureComponent {
   }
 }
 
-export default StudyWorkJournalDetails;
+export default StudyActivityDetails;
