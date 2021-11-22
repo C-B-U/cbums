@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import style from "../../../css/study/study_recruit/study_recruit.module.css";
 import { Link } from "react-router-dom";
-import { FaRegCommentDots } from "react-icons/fa";
 class RecruitStudyPost extends PureComponent {
     render() {
         return (

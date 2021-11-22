@@ -13,6 +13,7 @@ class RecruitStudyTitle extends PureComponent {
               <div className={style["main__search-wrap"]}>
                 <div className={style["main__search"]}>
                   <table width="200">
+                    <tbody>
                     <tr>
                       <td>
                         <select name="keyField">
@@ -41,6 +42,7 @@ class RecruitStudyTitle extends PureComponent {
                         </button>
                       </td>
                     </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>
