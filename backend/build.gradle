@@ -1,0 +1,73 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id "org.asciidoctor.convert" version "1.5.9.2"
+}
+
+group = 'com.backend'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	// Snippet 의 생성 위치를 지정
+	snippetsDir = file('build/generated-snippets')
+}
+
+asciidoctor {
+	// Snippets 디렉토리를 Input 디렉토리로 설정
+	inputs.dir snippetsDir
+	// 문서 생성 전 테스트가 실행되도록 test 에 종속 설정
+	dependsOn test
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.session:spring-session-core'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-test'
+	implementation 'org.hibernate:hibernate-java8:5.5.4.Final'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'javax.mail:mail:1.4.7'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:2.4.2'
+	implementation 'org.springframework.session:spring-session-jdbc:2.5.1'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.4'
+
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	compileOnly 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.20'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+	runtimeOnly 'mysql:mysql-connector-java'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+	testImplementation 'org.mockito:mockito-core:3.12.1'
+
+}
+bootJar {
+	// 빌드 전 문서 생성 확인
+	dependsOn asciidoctor
+	// 생성된 문서를 static/docs 에 복사
+	from ("${asciidoctor.outputDir}/html5") {
+		into 'static/docs'
+	}
+}
+
+test {
+	useJUnitPlatform()
+	outputs.dir snippetsDir
+}
+
+
+
