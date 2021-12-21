@@ -37,9 +37,9 @@ select{
     border: 0;
 }
 
-input{
+.search{
     border: none;
-    width: 10em;
+    width: 8em;
 }
 
 .main__serach-button{
@@ -225,9 +225,9 @@ h3{
         display: flex;
         
     }
-    input{
+    .search{
         border: none;
-        width: 8em;
+        width: 6em;
     }
 
     .main__serach-button{
@@ -256,7 +256,7 @@ h3{
      
     .main__tab-make-wrap{
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
         margin: 1.5em 2.5em;
     }
     
@@ -296,9 +296,9 @@ h3{
         
     }
     
-    input{
+    .search{
         border: none;
-        width: 8em;
+        width: 6em;
     }
 
     .main__serach-button{
@@ -327,7 +327,7 @@ h3{
     
     .main__tab-make-wrap{
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
         margin: 1.5em 2em;
     }
     

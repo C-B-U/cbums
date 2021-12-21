@@ -140,7 +140,6 @@ main {
 }
 textarea{
     width: 100%;
-    border: none;
     font-family: sans-serif;
     resize: none;
 }

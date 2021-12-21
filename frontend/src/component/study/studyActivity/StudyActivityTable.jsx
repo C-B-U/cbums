@@ -1,6 +1,12 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import style from "../../../css/study/study_workJournal/study_workJournal.module.css";
+import styled from "styled-components";
+
+const Td = styled.td`
+  text-align: center;
+  font-size: 0.9em;
+`;
 
 class StudyActivityTable extends PureComponent {
   render() {
@@ -25,32 +31,32 @@ class StudyActivityTable extends PureComponent {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
+              <tr style={{ textAlign: "center" }}>
+                <Td>1</Td>
                 <Link>
-                  <td>스터디 1주차</td>
+                  <Td>스터디 1주차</Td>
                 </Link>
-                <td>6기 최부엉</td>
-                <td>2021.07.05</td>
-                <td>20</td>
+                <Td>6기 최부엉</Td>
+                <Td>2021.07.05</Td>
+                <Td>20</Td>
               </tr>
-              <tr>
-                <td>2</td>
+              <tr style={{ textAlign: "center" }}>
+                <Td>2</Td>
                 <Link>
-                  <td>스터디 2주차</td>
+                  <Td>스터디 2주차</Td>
                 </Link>
-                <td>6기 최부엉</td>
-                <td>2021.07.03</td>
-                <td>13</td>
+                <Td>6기 최부엉</Td>
+                <Td>2021.07.03</Td>
+                <Td>13</Td>
               </tr>
-              <tr>
-                <td>3</td>
+              <tr style={{ textAlign: "center" }}>
+                <Td>3</Td>
                 <Link>
-                  <td>스터디 3주차</td>
+                  <Td>스터디 3주차</Td>
                 </Link>
-                <td>6기 최부엉</td>
-                <td>2021.07.01</td>
-                <td>3</td>
+                <Td>6기 최부엉</Td>
+                <Td>2021.07.01</Td>
+                <Td>3</Td>
               </tr>
             </tbody>
           </table>
