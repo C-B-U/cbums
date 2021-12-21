@@ -65,10 +65,7 @@ select{
   border-collapse: collapse;
 }
 
-td{
-    text-align: center;  
-    font-size: 0.9em; 
-}
+
 
 tr {
     border-bottom: 1px solid #f2f2f2;

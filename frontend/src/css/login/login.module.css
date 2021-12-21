@@ -47,10 +47,7 @@ h1 {
   background-color: white;
 }
 
-.article__boxList label {
-  font-size: 1.125rem;
-  font-weight: bold;
-}
+
 .boxList__schoolName {
   font-size: 0.8125rem;
   color: #847d74;

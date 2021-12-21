@@ -12,6 +12,8 @@ import RecruitStudyPage from "../study/recruitStudy/RecruitStudyPage";
 import StudyNavPage from "../study/studyNav/StudyNavPage";
 import RecruitDetailStudyPage from "../study/recruitDetailStudy/RecruitDetailStudyPage";
 import StudyActivityPage from "../study/studyActivity/StudyActivityPage";
+import WriteStudyActivityPage from "../study/WriteStudyActivity/WriteStudyActivityPage";
+import ReadStudyActivityPage from "../study/ReadStudyActivity/ReadStudyActivityPage";
 
 
 class Layout extends PureComponent {
@@ -33,9 +35,16 @@ class Layout extends PureComponent {
             />
             <Route exact path="/study/detail" component={StudyNavPage} />
             <Route
+              exact
               path="/study/detail/activity"
               component={StudyActivityPage}
             />
+            <Route
+              exact path="/study/detail/activity/write"
+              component={WriteStudyActivityPage}
+            />
+            <Route exact path="/study/detail/activity/read" component={ReadStudyActivityPage}/>
+            {/* 연동 후 url의 'detail'은 {스터디 고유번호}로 변경 */}
           </Switch>
           <Footer />
         </Router>
