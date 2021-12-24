@@ -71,9 +71,7 @@ tr {
     border-bottom: 1px solid #f2f2f2;
     padding: 10px;
 }
-tbody> tr:hover{
-    background-color: rgb(241, 241, 241);
-}
+
 
 .main__table th,.main__table td{
     padding: 0.8em 0;
