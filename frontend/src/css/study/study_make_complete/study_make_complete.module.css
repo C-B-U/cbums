@@ -138,11 +138,7 @@ main {
     font-weight: bold;
     color: #383838;
 }
-textarea{
-    width: 100%;
-    font-family: sans-serif;
-    resize: none;
-}
+
 textarea::placeholder{
     color: #bebebe;
 }
@@ -175,11 +171,89 @@ textarea::placeholder{
 .applicant_icon{
     margin-left: 0.3em;
 }
+
+.plan_title{
+    display: flex;
+    justify-content: flex-start;
+
+}
+.plan_textarea{
+    margin: 0.3em;
+}
+.plan_h3{
+    font-weight: bold;
+    margin: 0.5em;
+    color: #383838;
+}
+.schedule_wrap{
+    margin: 1em 0 6em;
+}
+.schedule_table{
+    width: 95%;
+    margin: 0.7em;
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+
+}
+.schedule_table thead th{
+     padding: 0.6em;
+    border-right: 1px solid #ccc;
+    background: #ffe5d6;
+}
+.schedule_table tbody th{
+    border-bottom: 1px solid #ccc;
+    background: #ececec;
+}
+.schedule_table tbody td{
+    padding: 0.4em;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.date{
+    width: 45px;
+}
+.plan_save_wrap{
+    display: flex;
+    justify-content: end;
+    margin: 1em 1.2em;
+}
+.plan_save{
+    border-radius: 0.2em;
+    padding: 0.4em 0.8em;
+    border: none;
+    font-size: 1em;
+    background-color: #646464;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.schedule_line_wrap{
+    display: flex;
+    justify-content: end;
+    margin-right: 1.3em;
+}
+.schedule_line_add{
+    margin-right: 1.2em;
+    padding: 0.3em 0.4em;
+    border: 1px solid #ccc;
+    border-radius: 0.2em;
+    font-size: 0.9em;
+    background: #ececec;
+    cursor: pointer;
+}
+.schedule_line_remove{
+    padding: 0.3em 0.4em;
+    border: 1px solid #ccc;
+    border-radius: 0.2em;
+    font-size: 0.9em;
+    background: #ececec;
+    cursor: pointer;
+}
 .openedStudy__openTable{
     display: flex;
     justify-content: center;
 }
-
 .openedStudy__table {
     border-collapse: collapse;
     text-align: center;
@@ -277,6 +351,45 @@ textarea::placeholder{
 .view_info > ul > li:hover{
     color: rgb(180, 180, 180);
 }
+.button_wrap{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0.5em 1.5em 1em;
+}
+.list_button{
+    margin-right: 1.2em;
+    padding: 0.2em 0.4em;
+    border: 1px solid #ccc;
+    border-radius: 0.2em;
+    font-size: 0.9em;
+    background: white;
+    cursor: pointer;
+     color: #4e4e4e;
+}
+.writer_button{
+    display: flex;
+    justify-content: end;
+    margin-right: 0.3em;  
+}
+.modify_button{
+    margin-right: 1.2em;
+    padding: 0.3em 0.4em;
+    border: 1px solid #ccc;
+    border-radius: 0.2em;
+    font-size: 0.9em;
+    background: white;
+    color: #4e4e4e;
+    cursor: pointer;
+}
+.delete_button{
+    padding: 0.3em 0.4em;
+    border: 1px solid #ccc;
+    border-radius: 0.2em;
+    font-size: 0.9em;
+    background: white;
+     color: #4e4e4e;
+    cursor: pointer;
+}
 
 @media all and (min-width:768px) and (max-width:1023px) {
     .main_wrap{
@@ -311,7 +424,33 @@ textarea::placeholder{
     font-weight: bold;
     font-size: 0.8em;
 }
-    
+.schedule_table{
+    font-size: 0.8em;
+}
+.schedule_table tbody td{
+    padding: 0.4em;
+}
+.schedule_times{
+    width: 13%;
+}
+.schedule_content{
+    width: 35%;
+}
+.schedule_method{
+    width: 40%;
+}
+.date{
+    width: 45px;
+}
+.schedule_line_wrap{
+    margin-right: 0.8em;
+}
+.plan_save_wrap{
+    margin: 1em  0.8em;
+}
+.writer_button{
+    margin-right: 0;  
+}
 }
 
 @media all and (max-width:767px) {
@@ -357,5 +496,31 @@ textarea::placeholder{
     font-weight: bold;
     font-size: 0.8em;
 }
-    
+.schedule_table{
+    font-size: 0.8em;
+}
+.schedule_table tbody td{
+    padding: 0.3em;
+}
+.schedule_times{
+    width: 15%;
+}
+.schedule_content{
+    width: 35%;
+}
+.schedule_method{
+    width: 40%;
+}
+.date{
+    width: 45px;
+}
+.schedule_line_wrap{
+    margin-right: 0.6em;
+}
+.plan_save_wrap{
+    margin: 1em  0.6em;
+}
+.writer_button{
+    margin-right: 0;  
+}
 }
