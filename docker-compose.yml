@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  client:
+    build:
+      context: ./frontend
+    ports:
+      - 3000:3000
+    container_name: client_container
+    networks:
+      - frontend-network
+
+  database:
+    image: mysql
+    container_name: db_container
+    environment:
+      - MYSQL_DATABASE=cbums
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=1234
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    volumes:
+      - "./database/spring_social/:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    networks:
+      - backend-network
+
+  application:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: backend
+    ports:
+      - "80:8080"
+    container_name: application_container
+    restart: always
+    links:
+      - database
+    depends_on:
+      - database
+    networks:
+      - backend-network
+      - frontend-network
+
+networks:
+  backend-network:
+  frontend-network:

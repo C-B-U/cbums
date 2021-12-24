@@ -30,7 +30,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	implementation 'org.springframework.session:spring-session-core'
-	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-test'
 	implementation 'org.hibernate:hibernate-java8:5.5.4.Final'
@@ -47,7 +46,7 @@ dependencies {
 
 	testCompileOnly 'org.projectlombok:lombok:1.18.20'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
-	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
