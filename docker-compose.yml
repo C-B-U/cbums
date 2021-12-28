@@ -31,11 +31,9 @@ services:
       dockerfile: Dockerfile
     image: backend
     ports:
-      - "80:8080"
+      - "8000:8080"
     container_name: application_container
     restart: always
-    links:
-      - database
     depends_on:
       - database
     networks:
