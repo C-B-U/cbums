@@ -2,12 +2,35 @@ version: "3.7"
 
 services:
   client:
-    build:
-      context: ./frontend
-    ports:
-      - 3000:3000
     container_name: client_container
+    # command: tail -f /dev/null # DEBUG: uncomment to keep container running
+    depends_on:
+      - application
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+      args:
+        - REACT_APP_API_BASE_URL=$API_BASE_URL
+    volumes:
+      - ./frontend:/app/frontend
     networks:
+      - frontend-network
+
+  # Nginx Reserse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    # command: tail -f /dev/null # DEBUG: uncomment to keep container running
+    depends_on:
+      - client
+      - application
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/config:/etc/nginx
+      - ./nginx/certs:/etc/ssl/private
+    networks:
+      - backend-network
       - frontend-network
 
   database:
@@ -29,7 +52,6 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: backend
     ports:
       - "8000:8080"
     container_name: application_container
