@@ -19,8 +19,9 @@ main{
     border-bottom:solid 2px #424043; 
     
 }
-#title{
+.tdTitlle{
     text-align:center;
+    
 }
 
 .main__writing-table{

@@ -5,7 +5,7 @@ class RecruitStudyPost extends PureComponent {
     render() {
         return (
           <React.Fragment>
-            <Link>
+            <Link to="/">
               <div className={style.post_wrap}>
                 <div className={style.post_title}>
                   <span

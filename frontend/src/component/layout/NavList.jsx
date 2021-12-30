@@ -40,7 +40,7 @@ class NavList extends PureComponent {
         </Default>
         <Mobile>
           <div id="mysidenav" className={style['nav-wrap-sidenav']}>
-            <a href="#" className={style.closebtn} onClick={this.closeNav}>
+            <a href="#!" className={style.closebtn} onClick={this.closeNav}>
               x
             </a>
             <Link to="/">카테고리1</Link>

@@ -9,7 +9,7 @@ class RecruitDetailStudyComment extends PureComponent {
             <form>
               <div className={style.comment_container}>
                 <div className={style.comment_writer}>부엉이</div>
-                <Textarea autoComplete="off" placeholder="댓글을 입력하세요" style={{border: "none"}}/>
+                <Textarea autoComplete="off" placeholder="댓글을 입력하세요" style={{width:"90%", border: "none", resize:"none"}}/>
                 <div className={style.comment_submit_wrap}>
                   <button className={style.comment_submit} type="submit">
                     등록

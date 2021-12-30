@@ -33,27 +33,27 @@ class StudyActivityTable extends PureComponent {
             <tbody>
               <tr style={{ textAlign: "center" }}>
                 <Td>1</Td>
-                <Link>
-                  <Td>스터디 1주차</Td>
-                </Link>
+                <Td>
+                  <Link to="/">스터디 1주차</Link>
+                </Td>
                 <Td>6기 최부엉</Td>
                 <Td>2021.07.05</Td>
                 <Td>20</Td>
               </tr>
               <tr style={{ textAlign: "center" }}>
                 <Td>2</Td>
-                <Link>
-                  <Td>스터디 2주차</Td>
-                </Link>
+                <Td>
+                  <Link to="/">스터디 2주차</Link>
+                </Td>
                 <Td>6기 최부엉</Td>
                 <Td>2021.07.03</Td>
                 <Td>13</Td>
               </tr>
               <tr style={{ textAlign: "center" }}>
                 <Td>3</Td>
-                <Link>
-                  <Td>스터디 3주차</Td>
-                </Link>
+                <Td>
+                  <Link to="/">스터디 3주차</Link>
+                </Td>
                 <Td>6기 최부엉</Td>
                 <Td>2021.07.01</Td>
                 <Td>3</Td>
