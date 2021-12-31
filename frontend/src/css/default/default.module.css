@@ -340,9 +340,7 @@ pc 1920px ~ 1200px
     font-weight: bold;
     color: white;
   }
-  h3:hover {
-    font-size: 1.3em;
-  }
+
   .header-wrap {
     width: 100%;
   }

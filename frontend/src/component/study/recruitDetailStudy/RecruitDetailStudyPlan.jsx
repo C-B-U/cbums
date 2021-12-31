@@ -37,7 +37,7 @@ class RecruitDetailStudyPlan extends PureComponent {
   
     }
     removeLine = () => {
-        if (this.state.listNum == 3) {
+        if (this.state.listNum === 3) {
             return;
         }
         const { list } = this.state;

@@ -84,7 +84,7 @@ tr {
 
 .main__writing{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 5em;
 }
 .main__writing-button{

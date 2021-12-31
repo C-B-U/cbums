@@ -44,17 +44,18 @@ main{
     cursor: pointer;
     
 }
-.main__reading-table td{
+.main__reading-table tbody td{
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
     padding: 1em;
 }
-.main__reading-table th{
-    width: 23%;
+.title{
+    width: 10%;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     background-color: #f3f6f7;
     padding: 10px;
+    font-weight: bold;
 }
 
 .main__reading-table input{
@@ -134,6 +135,10 @@ main{
     padding: 1em;
     padding-bottom: 3em;
 }
+.title{width: 25%;}
+  .studytitle{
+        width:60%
+    }
 @media all and (min-width:768px) and (max-width:1023px){
     .main_wrap{
         width: 60%;
@@ -166,7 +171,10 @@ main{
         font-size: 0.87em;
         text-align: center;       
     }
-    .title{width: 60%;}
+    .title{width: 35%;}
+    .studytitle{
+        width:50%
+    }
 }
 @media all and (max-width:767px){
     .main_wrap{
@@ -208,6 +216,8 @@ main{
         font-size: 0.85em;
         text-align: center;       
     }
-    .title{width: 50%;}
-    
+    .title{width: 30%;}
+      .studytitle{
+        width:50%
+    }
 }

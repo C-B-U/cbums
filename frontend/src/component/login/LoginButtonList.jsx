@@ -6,10 +6,6 @@ import style from "../../css/login/login.module.css";
 import LoginButton from "./LoginButton";
 
 class LoginButtonList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-  }
  
   render() {
     const naverBackgroundColor = { backgroundColor: "#03C75A", cursor:"pointer" };

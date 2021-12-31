@@ -144,7 +144,7 @@ textarea::placeholder{
 }
 .comment_submit_wrap{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .comment_submit{
     padding: 0.3em 0.8em;
@@ -216,7 +216,7 @@ textarea::placeholder{
 }
 .plan_save_wrap{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin: 1em 1.2em;
 }
 .plan_save{
@@ -230,7 +230,7 @@ textarea::placeholder{
 }
 .schedule_line_wrap{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 1.3em;
 }
 .schedule_line_add{
@@ -368,7 +368,7 @@ textarea::placeholder{
 }
 .writer_button{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 0.3em;  
 }
 .modify_button{
