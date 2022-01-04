@@ -7,7 +7,7 @@ class RecruitStudyFooter extends PureComponent {
           <React.Fragment>
             <div className={style["main__tab-make-wrap"]}>
               <div className={style["main__tab-make"]}>
-                <Link to="/">개설</Link>
+                <Link to="/study/make">개설</Link>
               </div>
             </div>
             <div className={style["main__tab-list"]}>
