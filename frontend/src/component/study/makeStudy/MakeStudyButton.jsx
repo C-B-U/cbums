@@ -48,13 +48,12 @@ class MakeStudyButton extends PureComponent {
           </div>
         </div>
         <div className={style["main__slide-submit"]}>
-          <button
+          <input
             className={this.state.indexNumber === 2 ? "" : style.disabled}
             id={style["submitButton"]}
-            type="button"
-          >
-            <h4>개설</h4>
-          </button>
+            type="submit"
+            value="개설"
+          />
         </div>
       </React.Fragment>
     );

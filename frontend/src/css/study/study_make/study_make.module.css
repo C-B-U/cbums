@@ -186,7 +186,7 @@ main {
   position: relative;
   z-index: 2;
 }
-.main__slide-submit > button {
+.main__slide-submit > input{
   display: flex;
   position: absolute;
   width: 3.63em;
@@ -195,20 +195,15 @@ main {
   right: 37px;
   font-size: 1em;
   border-radius: 1em;
+  font-weight: bold;
+  justify-content: center;
+  align-content: center;
   color: #525252;
   border: 1px solid rgb(161, 161, 161);
   background-color: rgb(255, 240, 230);
   cursor: pointer;
 }
-.main__slide-submit > button > h4 {
-  display: flex;
-  position: absolute;
-  top: -17px;
-  left: 12px;
-  justify-content: center;
-  align-content: center;
-}
-.main__slide-submit > button.disabled {
+.main__slide-submit > input.disabled {
   display: none;
 }
 @media all and (min-width: 768px) and (max-width: 1023px) {

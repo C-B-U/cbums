@@ -28,7 +28,7 @@ class NavList extends PureComponent {
               <Link to="/">공지사항</Link>
             </li>
             <li>
-              <Link to="/">스터디</Link>
+              <Link to="/study/recruit">스터디</Link>
             </li>
             <li>
               <Link to="/">컨텐츠</Link>

@@ -5,7 +5,7 @@ class MakeStudyTag extends PureComponent {
     super(props);
     this.state = {
       input: "",
-      tags: ["#web", "#스터디"],
+      tags: ["스터디"],
     };
     this.removeList = this.removeList.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -13,14 +13,15 @@ class MakeStudyTag extends PureComponent {
   }
   handleInput = (event) => {
     this.setState({
-      input: "#" + event.target.value,
+      input: event.target.value,
     });
   };
   handleCreate = (event) => {
     this.setState({
       tags: this.state.tags.concat(this.state.input),
-      input: " ",
+      input: "",
     });
+    this.props.handleTag(this.state.tags);
   };
   removeList = (i) => {
     this.setState({
@@ -44,24 +45,22 @@ class MakeStudyTag extends PureComponent {
       <React.Fragment>
         <div className={style["main__slide-tag"]}>
           태그 <br />
-          <form action="#" method="POST" name="study_tag">
-            <input
-              onChange={this.handleInput}
-              className={style.studymake_input}
-              name="tag"
-              autoComplete="off"
-              placeholder="태그 입력 (클릭 시 삭제)"
-            />
-            <button
-              onClick={this.handleCreate}
-              className={style["main__slide-tag-button"]}
-              type="button"
-            >
-              <p>+</p>
-            </button>
-            <div className={style["tag-wrap"]}></div>
-            <ul className={style["main__slide-tag-list"]}>{tagList}</ul>
-          </form>
+          <input
+            onChange={this.handleInput}
+            className={style.studymake_input}
+            name="tag"
+            autoComplete="off"
+            placeholder="태그 입력 (클릭 시 삭제)"
+          />
+          <button
+            onClick={this.handleCreate}
+            className={style["main__slide-tag-button"]}
+            type="button"
+          >
+            <p>+</p>
+          </button>
+          <div className={style["tag-wrap"]}></div>
+          <ul className={style["main__slide-tag-list"]}>{tagList}</ul>
         </div>
       </React.Fragment>
     );

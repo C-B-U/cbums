@@ -14,7 +14,7 @@ class RecruitStudyPost extends PureComponent {
                     모집중
                   </span>
                   <div className={style.title_text}>
-                    {this.props.studyTitle}
+                    {this.props.studyName}
                   </div>
                 </div>
                 <div className={style.post_tags}>
