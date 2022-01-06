@@ -14,17 +14,16 @@ class RecruitStudyContainer extends PureComponent {
     this.getStudy = this.getStudy.bind(this);
   }
   getStudy = () => {
-    axios
-      .get("/api/project")
+    axios.get("localhost:8000/api/project")
       .then(res => {
-        this.setState({
-          studyName: res.name,
-          userName: res.producer,
-          recruit: res.producerHidden,
-          maxMember: res.maximumMember,
-          postDate: res.registerDatetime,
-        });
-        console.log(res);
+        // this.setState({
+        //   studyName: res.name,
+        //   userName: res.producer,
+        //   recruit: res.producerHidden,
+        //   maxMember: res.maximumMember,
+        //   postDate: res.registerDatetime,
+        // });
+        console.log(res.data);
       })
       .catch((e) => {
         console.log(e);
