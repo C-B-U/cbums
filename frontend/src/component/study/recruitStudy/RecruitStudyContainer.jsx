@@ -14,7 +14,7 @@ class RecruitStudyContainer extends PureComponent {
     this.getStudy = this.getStudy.bind(this);
   }
   getStudy = () => {
-    axios.get("localhost:8000/api/project")
+    axios.get("/api/project")
       .then(res => {
         // this.setState({
         //   studyName: res.name,
