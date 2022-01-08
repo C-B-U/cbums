@@ -1,4 +1,4 @@
-package com.cbums;
+package com.cbums.api;
 
 import com.cbums.core.member.domain.AuthProvider;
 import com.cbums.core.member.domain.Member;
@@ -6,28 +6,33 @@ import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.project.domain.Project;
 import com.cbums.core.project.domain.ProjectRepository;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.cbums.core.project.dto.ProjectResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
-import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.List;
 
-@SpringBootTest
-public class DatabaseSampleSupplier {
+@RestController
+@RequestMapping("/api/sample")
+@RequiredArgsConstructor
+public class DBSampleController {
 
-    @Autowired
-    private MemberRepository memberRepository;
-    @Autowired
-    private ProjectRepository projectRepository;
+    private final MemberRepository memberRepository;
+    private final ProjectRepository projectRepository;
 
-    @DisplayName("사용자 데이터 저장")
-    @Test
-    public void insertMember() {
+    @GetMapping("")
+    public String hello() {
+        return "샘플 데이터입니다";
+    }
+
+    @GetMapping("/member")
+    public ResponseEntity<Void> insertMember() {
         Member member0 = Member.builder()
                 .name("홍길동")
                 .email("Test123@naver.com")
@@ -61,12 +66,12 @@ public class DatabaseSampleSupplier {
         memberRepository.save(member2);
         memberRepository.save(member3);
 
-        assertThat(true);
+        return ResponseEntity.ok().build();
     }
 
-    @DisplayName("프로젝트 데이터 저장")
-    @Test
-    public void insertProject() {
+    @GetMapping("/project")
+    public ResponseEntity<Void> insertProject() {
+
         Member projectProducer1 = Member.builder()
                 .name("스터디 제작자1")
                 .email("admin@naver.com")
@@ -124,6 +129,7 @@ public class DatabaseSampleSupplier {
         projectRepository.save(project0);
         projectRepository.save(project1);
         projectRepository.save(project2);
-        assertThat(true);
+
+        return ResponseEntity.ok().build();
     }
 }
