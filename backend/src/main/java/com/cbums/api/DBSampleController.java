@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -102,9 +103,10 @@ public class DBSampleController {
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(5)
                 .producer(projectProducer1)
-                .producerHidden(false)
-                .icon("aa.jpg")
-                .registerNumber(4)
+                .startDate(LocalDate.now())
+                .finishDate(LocalDate.now())
+                .rule("asdf")
+                .additionalExplain("adsfasdf")
                 .build();
 
         Project project1 = Project.builder()
@@ -112,9 +114,10 @@ public class DBSampleController {
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(6)
                 .producer(projectProducer2)
-                .producerHidden(false)
-                .icon("abba.jpg")
-                .registerNumber(4)
+                .startDate(LocalDate.now())
+                .finishDate(LocalDate.now())
+                .rule("asdf")
+                .additionalExplain("adsfasdf")
                 .build();
 
         Project project2 = Project.builder()
@@ -122,9 +125,10 @@ public class DBSampleController {
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(6)
                 .producer(projectProducer3)
-                .producerHidden(false)
-                .icon("aacc.jpg")
-                .registerNumber(2)
+                .startDate(LocalDate.now())
+                .finishDate(LocalDate.now())
+                .rule("asdf")
+                .additionalExplain("adsfasdf")
                 .build();
         projectRepository.save(project0);
         projectRepository.save(project1);

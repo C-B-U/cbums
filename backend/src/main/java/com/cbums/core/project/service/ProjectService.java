@@ -33,23 +33,23 @@ public class ProjectService {
     private final TagService tagService;
 
     @Transactional
-    public Long createProject(SessionUser user, ProjectRequest projectRequest) {
-        Project project = buildProject(projectRequest);
+    public Long createProject(SessionUser user, CreateProjectRequest createProjectRequest) {
+        Project project = buildProject(createProjectRequest);
         project.setRegisterDatetime(LocalDateTime.now());
         Member producer = memberService.findByName(user.getName());
         project.setProducer(producer);
-        //현재 기간이 몇 기수인지 자동으로 입력 TODO
-        project.setRegisterNumber(10);
 
         return projectRepository.save(project).getProjectId();
     }
 
-    private Project buildProject(ProjectRequest projectRequest) {
+    private Project buildProject(CreateProjectRequest createProjectRequest) {
         return new Project().builder()
-                .producerHidden(projectRequest.isProducerHidden())
-                .icon(projectRequest.getIcon())
-                .maximumMember(projectRequest.getMaximumMember())
-                .name(projectRequest.getName())
+                .name(createProjectRequest.getName())
+                .maximumMember(createProjectRequest.getMaximumMember())
+                .startDate(createProjectRequest.getStartDate())
+                .finishDate(createProjectRequest.getFinishDate())
+                .rule(createProjectRequest.getRule())
+                .additionalExplain(createProjectRequest.getAdditionalExplain())
                 .build();
     }
 
@@ -83,15 +83,13 @@ public class ProjectService {
     }
 
     @Transactional
-    public void updateProject(SessionUser user, Long projectId, ProjectRequest projectRequest) {
+    public void updateProject(SessionUser user, Long projectId, CreateProjectRequest createProjectRequest) {
         Project project = findById(projectId);
 
         confirmMember(user, project.getProducer());
 
-        project.setName(projectRequest.getName());
-        project.setMaximumMember(projectRequest.getMaximumMember());
-        project.setProducerHidden(projectRequest.isProducerHidden());
-        project.setIcon(projectRequest.getIcon());
+        project.setName(createProjectRequest.getName());
+        project.setMaximumMember(createProjectRequest.getMaximumMember());
 
     }
     public void finishProject(SessionUser user, Long projectId) {

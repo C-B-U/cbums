@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -28,13 +29,11 @@ public class Project {
     @JoinColumn(name="member_id")
     private Member producer;
 
-    @Column(nullable = false)
-    private Boolean producerHidden;
+    private LocalDate startDate;
+    private LocalDate finishDate;
 
-    private String icon;
-
-    @Column(nullable = false)
-    private Integer registerNumber;
+    private String rule;
+    private String additionalExplain;
 
     @Column
     @ColumnDefault("1")
@@ -45,13 +44,17 @@ public class Project {
     private Boolean finished = false;
 
     @Builder
-    public Project(String name, LocalDateTime registerDatetime, Integer maximumMember, Member producer, Boolean producerHidden, String icon, Integer registerNumber) {
+    public Project(Long projectId, String name, LocalDateTime registerDatetime, Integer maximumMember, Member producer, LocalDate startDate, LocalDate finishDate, String rule, String additionalExplain, Boolean recruit, Boolean finished) {
+        this.projectId = projectId;
         this.name = name;
         this.registerDatetime = registerDatetime;
         this.maximumMember = maximumMember;
         this.producer = producer;
-        this.producerHidden = producerHidden;
-        this.icon = icon;
-        this.registerNumber = registerNumber;
+        this.startDate = startDate;
+        this.finishDate = finishDate;
+        this.rule = rule;
+        this.additionalExplain = additionalExplain;
+        this.recruit = recruit;
+        this.finished = finished;
     }
 }
