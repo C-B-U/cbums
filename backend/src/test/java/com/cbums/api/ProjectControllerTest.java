@@ -1,7 +1,7 @@
 package com.cbums.api;
 
 import com.cbums.config.auth.CustomOAuth2UserService;
-import com.cbums.core.project.dto.ProjectRequest;
+import com.cbums.core.project.dto.CreateProjectRequest;
 import com.cbums.core.project.service.ProjectService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +40,7 @@ class ProjectControllerTest {
     @MockBean
     CustomOAuth2UserService customOAuth2UserService;
 
-    private ProjectRequest projectRequest;
+    private CreateProjectRequest createProjectRequest;
 
     private ObjectMapper objectMapper;
 
@@ -54,7 +54,7 @@ class ProjectControllerTest {
                 //  .apply(springSecurity())
                 .build();
 
-        projectRequest = ProjectRequest.builder()
+        createProjectRequest = CreateProjectRequest.builder()
                 .name("name")
                 .maximumMember(4)
                 .producerHidden(true)
@@ -86,7 +86,7 @@ class ProjectControllerTest {
     @Test
     public void createProject() throws Exception {
         mockMvc.perform(post("/project")
-                        .content(objectMapper.writeValueAsString(projectRequest))
+                        .content(objectMapper.writeValueAsString(createProjectRequest))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andDo(print());
@@ -96,7 +96,7 @@ class ProjectControllerTest {
     @Test
     public void updateProject() throws Exception {
         mockMvc.perform(patch("/project/{id}",1l)
-                        .content(objectMapper.writeValueAsString(projectRequest))
+                        .content(objectMapper.writeValueAsString(createProjectRequest))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andDo(print());
@@ -106,7 +106,7 @@ class ProjectControllerTest {
     @Test
     public void updateRecruit() throws Exception {
         mockMvc.perform(patch("/project/recruit/{id}",1l)
-                        .content(objectMapper.writeValueAsString(projectRequest))
+                        .content(objectMapper.writeValueAsString(createProjectRequest))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andDo(print());
@@ -116,7 +116,7 @@ class ProjectControllerTest {
     @Test
     public void finishProject() throws Exception {
         mockMvc.perform(patch("/project/finish/{id}",1l)
-                        .content(objectMapper.writeValueAsString(projectRequest))
+                        .content(objectMapper.writeValueAsString(createProjectRequest))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andDo(print());

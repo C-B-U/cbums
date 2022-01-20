@@ -3,6 +3,7 @@ package com.cbums.core.project.dto;
 import com.cbums.core.project.domain.Project;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,9 +19,10 @@ public class ProjectResponse {
     private LocalDateTime registerDatetime;
     private Integer maximumMember;
     private String producer;
-    private boolean producerHidden;
-    private String icon;
-    private Integer registerNumber;
+    private LocalDate startDate;
+    private LocalDate finishDate;
+    private String rule;
+    private String additionalExplain;
     private boolean isRecruit;
 
     public static ProjectResponse of(Project project) {
@@ -30,9 +32,10 @@ public class ProjectResponse {
                 project.getRegisterDatetime(),
                 project.getMaximumMember(),
                 project.getProducer().getName(),
-                project.getProducerHidden(),
-                project.getIcon(),
-                project.getRegisterNumber(),
+                project.getStartDate(),
+                project.getFinishDate(),
+                project.getRule(),
+                project.getAdditionalExplain(),
                 project.getRecruit());
     }
 

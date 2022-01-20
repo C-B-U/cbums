@@ -34,18 +34,18 @@ public class ProjectController {
 
     @PostMapping("")
     public ResponseEntity<Void> createProject(@LoginUser SessionUser user,
-                                              @Valid @RequestBody ProjectRequest projectRequest) {
+                                              @Valid @RequestBody CreateProjectRequest createProjectRequest) {
 
-        Long result = projectService.createProject(user, projectRequest);
+        Long result = projectService.createProject(user, createProjectRequest);
         return ResponseEntity.created(URI.create("/project/" + result)).build();
     }
 
     @PatchMapping("/{seq}")
     public ResponseEntity<Void> updateProject(@LoginUser SessionUser user,
                                               @PathVariable("seq") Long projectId,
-                                              @Valid @RequestBody ProjectRequest projectRequest) {
+                                              @Valid @RequestBody CreateProjectRequest createProjectRequest) {
 
-        projectService.updateProject(user, projectId, projectRequest);
+        projectService.updateProject(user, projectId, createProjectRequest);
         return ResponseEntity.ok().build();
     }
 

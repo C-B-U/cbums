@@ -8,7 +8,7 @@ import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.domain.UserRoleType;
 import com.cbums.core.project.domain.Project;
 import com.cbums.core.project.domain.ProjectRepository;
-import com.cbums.core.project.dto.ProjectRequest;
+import com.cbums.core.project.dto.CreateProjectRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ class ProjectServiceTest {
     private ProjectService projectService;
 
     private Member member;
-    private ProjectRequest projectRequest;
+    private CreateProjectRequest createProjectRequest;
 
     @BeforeEach
     void setUp() {
@@ -47,8 +47,7 @@ class ProjectServiceTest {
                 .provider(AuthProvider.KAKAO)
                 .build();
 
-        projectRequest = ProjectRequest.builder()
-                .icon("icon.jpg")
+        createProjectRequest = CreateProjectRequest.builder()
                 .maximumMember(4)
                 .name("프로젝트 이름!")
                 .producerHidden(false)
@@ -63,14 +62,12 @@ class ProjectServiceTest {
         //given
         SessionUser user = new SessionUser(memberRepository.save(member));
         //when
-        Long resultId = projectService.createProject(user, projectRequest);
+        Long resultId = projectService.createProject(user, createProjectRequest);
         Project result = projectRepository.getById(resultId);
 
         //then
-        assertThat(result.getIcon()).isEqualTo(projectRequest.getIcon());
-        assertThat(result.getMaximumMember()).isEqualTo(projectRequest.getMaximumMember());
-        assertThat(result.getName()).isEqualTo(projectRequest.getName());
-        assertThat(result.getProducerHidden()).isEqualTo(projectRequest.isProducerHidden());
+        assertThat(result.getMaximumMember()).isEqualTo(createProjectRequest.getMaximumMember());
+        assertThat(result.getName()).isEqualTo(createProjectRequest.getName());
     }
 
     @DisplayName("project 수정")
@@ -78,19 +75,16 @@ class ProjectServiceTest {
     public void updateProject() {
         //given
         SessionUser user = new SessionUser(memberRepository.save(member));
-        Long sampleId = projectService.createProject(user, projectRequest);
+        Long sampleId = projectService.createProject(user, createProjectRequest);
 
-        projectRequest.setIcon("새로운 아이콘");
-        projectRequest.setMaximumMember(2);
-        projectRequest.setProducerHidden(true);
+        createProjectRequest.setMaximumMember(2);
+        createProjectRequest.setProducerHidden(true);
         //when
-        projectService.updateProject(user, sampleId, projectRequest);
+        projectService.updateProject(user, sampleId, createProjectRequest);
         Project result = projectRepository.getById(sampleId);
         //then
-        assertThat(result.getIcon()).isEqualTo(projectRequest.getIcon());
-        assertThat(result.getMaximumMember()).isEqualTo(projectRequest.getMaximumMember());
-        assertThat(result.getName()).isEqualTo(projectRequest.getName());
-        assertThat(result.getProducerHidden()).isEqualTo(projectRequest.isProducerHidden());
+        assertThat(result.getMaximumMember()).isEqualTo(createProjectRequest.getMaximumMember());
+        assertThat(result.getName()).isEqualTo(createProjectRequest.getName());
     }
 
     @DisplayName("타인이 임의로 수정하는 것 차단")
@@ -98,7 +92,7 @@ class ProjectServiceTest {
     public void blockUpdate() {
         //given
         SessionUser user = new SessionUser(memberRepository.save(member));
-        Long sampleId = projectService.createProject(user, projectRequest);
+        Long sampleId = projectService.createProject(user, createProjectRequest);
 
         Member newMember = Member.builder()
                 .name("새로운 사용자")
@@ -110,13 +104,12 @@ class ProjectServiceTest {
 
         SessionUser newUser = new SessionUser(memberRepository.save(newMember));
 
-        projectRequest.setIcon("새로운 아이콘");
-        projectRequest.setMaximumMember(2);
-        projectRequest.setProducerHidden(true);
+        createProjectRequest.setMaximumMember(2);
+        createProjectRequest.setProducerHidden(true);
 
         //when & then
         assertThrows(AccessException.class,
-                () -> projectService.updateProject(newUser, sampleId, projectRequest));
+                () -> projectService.updateProject(newUser, sampleId, createProjectRequest));
 
     }
 
@@ -125,7 +118,7 @@ class ProjectServiceTest {
     public void updateRecruit() {
         //given
         SessionUser user = new SessionUser(memberRepository.save(member));
-        Long sampleId = projectService.createProject(user, projectRequest);
+        Long sampleId = projectService.createProject(user, createProjectRequest);
 
         //when
         projectService.updateRecruit(user,sampleId);
@@ -147,7 +140,7 @@ class ProjectServiceTest {
     public void finishProject() {
         //given
         SessionUser user = new SessionUser(memberRepository.save(member));
-        Long sampleId = projectService.createProject(user, projectRequest);
+        Long sampleId = projectService.createProject(user, createProjectRequest);
 
         //when
         projectService.finishProject(user, sampleId);
