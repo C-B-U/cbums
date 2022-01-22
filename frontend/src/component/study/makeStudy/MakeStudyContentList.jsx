@@ -8,6 +8,7 @@ import style from "../../../css/study/study_make/study_make.module.css";
 import MakeStudyInformation from "./MakeStudyInformation";
 import MakeStudyExplanation from "./MakeStudyExplanation";
 import MakeStudyTag from "./MakeStudyTag";
+
 SwiperCore.use([Navigation]);
 
 class MakeStudyContentList extends PureComponent {
@@ -54,9 +55,8 @@ class MakeStudyContentList extends PureComponent {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.studyName);
-    
   };
+
   render() {
     return (
       <React.Fragment>
