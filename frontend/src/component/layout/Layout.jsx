@@ -30,21 +30,26 @@ class Layout extends PureComponent {
             <Route exact path="/study/recruit" component={RecruitStudyPage} />
             <Route exact path="/study/make" component={MakeStudyPage} />
             <Route
-              path="/study/recruit/detail"
+              exact
+              path="/study/recruit/:projectId"
               component={RecruitDetailStudyPage}
             />
-            <Route exact path="/study/detail" component={StudyNavPage} />
+            <Route exact path="/study/:projectId" component={StudyNavPage} />
             <Route
               exact
-              path="/study/detail/activity"
+              path="/study/:projectId/activity"
               component={StudyActivityPage}
             />
             <Route
-              exact path="/study/detail/activity/write"
+              exact
+              path="/study/:projectId/activity/write"
               component={WriteStudyActivityPage}
             />
-            <Route exact path="/study/detail/activity/read" component={ReadStudyActivityPage}/>
-            {/* 연동 후 url의 'detail'은 {스터디 고유번호}로 변경 */}
+            <Route
+              exact
+              path="/study/:projectId/activity/read"
+              component={ReadStudyActivityPage}
+            />
           </Switch>
           <Footer />
         </Router>
