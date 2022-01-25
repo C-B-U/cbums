@@ -26,6 +26,7 @@ class LoginButtonList extends PureComponent {
             alt="네이버로고"
             title="네이버 로그인"
             src={Naver}
+            href="http://localhost:8000/oauth2/authorization/naver"
           />
             <LoginButton 
               className={style.loginButton}
@@ -35,6 +36,7 @@ class LoginButtonList extends PureComponent {
               alt="카카오로고"
               title="카카오 로그인"
               src={Kakao}
+              href="http://localhost:8000/oauth2/authorization/kakao"
             />
           <LoginButton
             className={style.loginButton}
@@ -44,6 +46,7 @@ class LoginButtonList extends PureComponent {
             alt="구글로고"
             src={Google}
             width="23"
+            href="http://localhost:8000/oauth2/authorization/google"
           />
         </div>
       </React.Fragment>

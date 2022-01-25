@@ -5,6 +5,7 @@ class SingUpButton extends PureComponent {
     const { title } = this.props;
     return (
       <React.Fragment>
+        <a href={this.props.href}>
         <div className={this.props.className} style={this.props.bgStyle}>
           <img
             width={this.props.width}
@@ -13,6 +14,7 @@ class SingUpButton extends PureComponent {
           />
           <span style={this.props.tStyle}>{title}</span>
         </div>
+        </a>
       </React.Fragment>
     );
   }

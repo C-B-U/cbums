@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
 import Kakao from "../../images/login/kakaoLogo.svg";
 import Google from "../../images/login/googleLogo.svg";
 import Naver from "../../images/login/naverLogo.svg";
@@ -18,7 +17,6 @@ class SignUpButtonList extends PureComponent {
     return (
       <React.Fragment>
         <div className={style.button_container}>
-          <Link to="/">
             <SignUpButton
               className={style.loginButton}
               bgStyle={naverBackgroundColor}
@@ -27,9 +25,8 @@ class SignUpButtonList extends PureComponent {
               width="20"
               alt="네이버로고"
               src={Naver}
+              href="http://localhost:8000/oauth2/authorization/naver"
             />
-          </Link>
-          <Link to="/">
             <SignUpButton
               className={style.loginButton}
               bgStyle={kakaoBackgroundColor}
@@ -38,9 +35,8 @@ class SignUpButtonList extends PureComponent {
               width="20"
               alt="카카오로고"
               src={Kakao}
+              href="http://localhost:8000/oauth2/authorization/kakao"
             />
-          </Link>
-          <Link to="/">
             <SignUpButton
               className={style.loginButton}
               bgStyle={googleBackgroundColor}
@@ -49,8 +45,8 @@ class SignUpButtonList extends PureComponent {
               width="23"
               alt="구글로고"
               src={Google}
+              href="http://localhost:8000/oauth2/authorization/google"
             />
-          </Link>
         </div>
       </React.Fragment>
     );
