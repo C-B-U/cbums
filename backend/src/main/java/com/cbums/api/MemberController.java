@@ -27,20 +27,6 @@ public class MemberController {
         return ResponseEntity.created(URI.create("/member/"+result)).build();
     }
 
-    @PatchMapping("/nick-name/")
-    public ResponseEntity<Void> updateNickName(@LoginUser SessionUser user,
-                                             @Valid @RequestBody UpdateNickNameRequest updateNickNameRequest) {
-        memberService.updateNickName(user, updateNickNameRequest);
-        return ResponseEntity.ok().build();
-    }
-
-    @PatchMapping("/introduce/")
-    public ResponseEntity<Void> updateIntroduce(@LoginUser SessionUser user,
-                                               @Valid @RequestBody  UpdateIntroduceRequest updateIntroduceRequest) {
-        memberService.updateIntroduce(user, updateIntroduceRequest);
-        return ResponseEntity.ok().build();
-    }
-
     //회원 상세 페이지
     @GetMapping("/{memberId}")
     public ResponseEntity<MemberResponse> getMember(@PathVariable("memberId") Long memberId) {
