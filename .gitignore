@@ -2,7 +2,7 @@
 goorm.manifest
 
 # mysql 세팅 파일
-projects/mysql_setting.py
+studies/mysql_setting.py
 
 # 가상환경
 venvs/
@@ -22,7 +22,7 @@ build/
 .apt_generated
 .classpath
 .factorypath
-.project
+.study
 .settings
 .springBeans
 .sts4-cache

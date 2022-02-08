@@ -4,20 +4,16 @@ import com.cbums.core.member.domain.AuthProvider;
 import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.domain.UserRoleType;
-import com.cbums.core.project.domain.Project;
-import com.cbums.core.project.domain.ProjectRepository;
-import com.cbums.core.project.dto.ProjectResponse;
+import com.cbums.core.study.domain.Study;
+import com.cbums.core.study.domain.StudyRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/sample")
@@ -25,7 +21,7 @@ import java.util.List;
 public class DBSampleController {
 
     private final MemberRepository memberRepository;
-    private final ProjectRepository projectRepository;
+    private final StudyRepository studyRepository;
 
     @GetMapping("")
     public String hello() {
@@ -98,7 +94,7 @@ public class DBSampleController {
         memberRepository.save(projectProducer2);
         memberRepository.save(projectProducer3);
 
-        Project project0 = Project.builder()
+        Study study0 = Study.builder()
                 .name("자바 스터디")
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(5)
@@ -109,7 +105,7 @@ public class DBSampleController {
                 .additionalExplain("adsfasdf")
                 .build();
 
-        Project project1 = Project.builder()
+        Study study1 = Study.builder()
                 .name("파이썬 스터디")
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(6)
@@ -120,7 +116,7 @@ public class DBSampleController {
                 .additionalExplain("adsfasdf")
                 .build();
 
-        Project project2 = Project.builder()
+        Study study2 = Study.builder()
                 .name("알고리즘 스터디")
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(6)
@@ -130,9 +126,9 @@ public class DBSampleController {
                 .rule("asdf")
                 .additionalExplain("adsfasdf")
                 .build();
-        projectRepository.save(project0);
-        projectRepository.save(project1);
-        projectRepository.save(project2);
+        studyRepository.save(study0);
+        studyRepository.save(study1);
+        studyRepository.save(study2);
 
         return ResponseEntity.ok().build();
     }

@@ -4,17 +4,15 @@ import com.cbums.core.member.domain.AuthProvider;
 import com.cbums.core.member.domain.Member;
 import com.cbums.core.member.domain.MemberRepository;
 import com.cbums.core.member.domain.UserRoleType;
-import com.cbums.core.project.domain.Project;
-import com.cbums.core.project.domain.ProjectRepository;
+import com.cbums.core.study.domain.Study;
+import com.cbums.core.study.domain.StudyRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 @SpringBootTest
@@ -23,7 +21,7 @@ public class DatabaseSampleSupplier {
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
-    private ProjectRepository projectRepository;
+    private StudyRepository studyRepository;
 
     @DisplayName("사용자 데이터 저장")
     @Test
@@ -92,7 +90,7 @@ public class DatabaseSampleSupplier {
         memberRepository.save(projectProducer2);
         memberRepository.save(projectProducer3);
 
-        Project project0 = Project.builder()
+        Study study0 = Study.builder()
                 .name("자바 스터디")
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(5)
@@ -102,7 +100,7 @@ public class DatabaseSampleSupplier {
                 .registerNumber(4)
                 .build();
 
-        Project project1 = Project.builder()
+        Study study1 = Study.builder()
                 .name("파이썬 스터디")
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(6)
@@ -112,7 +110,7 @@ public class DatabaseSampleSupplier {
                 .registerNumber(4)
                 .build();
 
-        Project project2 = Project.builder()
+        Study study2 = Study.builder()
                 .name("알고리즘 스터디")
                 .registerDatetime(LocalDateTime.now())
                 .maximumMember(6)
@@ -121,9 +119,9 @@ public class DatabaseSampleSupplier {
                 .icon("aacc.jpg")
                 .registerNumber(2)
                 .build();
-        projectRepository.save(project0);
-        projectRepository.save(project1);
-        projectRepository.save(project2);
+        studyRepository.save(study0);
+        studyRepository.save(study1);
+        studyRepository.save(study2);
         assertThat(true);
     }
 }
